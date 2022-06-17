@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+:root {
+
+    --cor1: #D2232A;
+    --cor2: #000000;
+    
+    
+    --fonte-mengão: 'Rajdhani' , Arial , 'cursive' 
+
+    
+
+
+
+
+
+
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient( to top, #D2232A, black);
+}
+
+header {
+    background-color: #D2232A;
+    margin: auto;
+    
+   
+}
+
+ header img  {
+    display: block;
+    width: 10%;
+    margin: auto;
+   
+}
+
+
+
+nav {
+    background-color: var(--cor2);
+    padding-bottom: 30px;
+    font-family: var(--fonte-mengão);
+    padding-bottom: 20px;
+    
+}
+
+nav a {
+    
+    text-decoration: none;
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+    transition-duration: 1.5s;
+
+}
+
+nav a:hover {
+
+    background-color: var(--cor1);
+}
+
+
+    
+
+h1 {
+    text-align: center;
+    font-family: var(--fonte-mengão);
+    color: var(--cor2);
+    
+}
+
+h3 {
+    text-align: center;
+    font-family: var(--fonte-mengão);
+    color: var(--cor2);
+    font-size: 2.0em;
+    background-image: linear-gradient(to right , var(--cor1), transparent);
+}
+
+main {
+    background-color: white;
+    min-width: 300px;
+    max-width: 1000px;
+    padding: 20px;
+    margin: auto;
+    box-shadow: 0px 0px 20px var(--cor2) ;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+main .sobre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    line-height: 2.5em;
+    text-indent: 30px;
+    
+    color: black;
+}
+
+div {
+    background-color: var(--cor2);
+    padding: 20px 20px 20px 20px;
+    margin: 10px -20px 10px -20px;
+    border: 10px solid red;
+}
+
+main div img {
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    
+}
+
+main div .textoimg {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: justify;
+    font-size: 0.8em;
+    color: white;
+}
+
+div .destaques {
+    padding: 10px;
+    color: white;
+    
+}
