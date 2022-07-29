@@ -1,0 +1,9 @@
+Projeto Cordel (Passo a Passo):
+
+1- Estrutura do Site em HTML:
+Body {
+    Header (Cabeçalho)
+    Main > Article (Artigo no Main)
+    H1 & Paragráfos
+    Divs para colocar as fotos dentro como fundo e os textos
+}

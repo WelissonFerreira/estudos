@@ -1,0 +1,121 @@
+ 
+ * {
+    margin: 0px;
+    padding: 0px;
+}
+ 
+
+
+
+:root {
+
+
+--font-destaque: 'bebas' , 'cursive';
+--font-dois: 'satisfy' , 'cursive';
+
+}
+ 
+ @font-face {
+    font-family: 'bebas';
+    src: url(fonts/BebasNeue-Regular.ttf);
+ }
+
+ @font-face {
+    font-family: 'satisfy';
+    src: url(fonts/Satisfy-Regular.ttf);
+ }
+ 
+ header {
+
+    
+    background-color: black;
+    padding-bottom: 150px;
+    
+    
+}
+header > p {
+    font-family: var(--font-destaque);
+    color: white;
+    text-align: center;
+    
+}
+
+ header > h1 {
+    font-family: var(--font-destaque);
+    color: white;
+    text-align: center;
+    font-size: 120px;
+    padding-top: 70px;
+}
+
+header > p > a {
+    color: white;
+}
+
+main > article > p {
+    font-family: var(--font-dois);
+    font-size: 5em;
+    padding-right: 20px;
+    padding-left: 60px;
+    
+}
+
+main #segundo {
+    
+    background-image: url(imagens/img1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 230px;
+    
+}
+
+#segundo > p {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.308);
+    
+    
+}
+
+main #terceiro {
+    padding-top: 230px;
+
+
+
+}
+
+main #quarto {
+    padding-top: 230px;
+
+}
+
+main #quinto {
+    color: white;
+    background-image: url(imagens/img2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 230px;
+
+}
+
+main #sexto {
+    padding-top: 230px;
+
+}
+
+main #setimo {
+    padding-top: 230px;
+}
+
+footer {
+    font-family: var(--font-destaque);
+    font-size: 25px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+footer > a {
+    color: white;
+}

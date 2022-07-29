@@ -27,8 +27,15 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica    , sans-serif;
+    background-position: center center;
     background-image: url(imagens/mengowalppaper\ 22.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+
+    
+    
+    
     
 }
 
@@ -100,6 +107,7 @@ main {
     box-shadow: 0px 0px 20px var(--cor2) ;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    
 }
 
 main .sobre {
