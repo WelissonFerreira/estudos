@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades Relativas</title>
+    <style>
+    html {
+    height: 100vh;
+    }
+    body {
+        margin: 0; /* Remove a margem padrão do body para evitar scroll desnecessário */
+        height: 100%;
+    }
+    #containerpai {
+        background-color: lightgray;
+        height: 50%; /* O elemento pai ocupa 50% da altura do body (e consequentemente do html) */
+        display: flex; /* Para facilitar o posicionamento dos filhos */
+        flex-direction: column; /* Coloca os filhos em coluna */
+
+    }
+    .filho {
+        background-color: lightblue;
+        border: 1px solid gray;
+        margin: 10px; 
+    }
+    .filho-1 {
+        height: 20%;
+        
+
+    }
+    .filho-2 {
+        height: 30%;
+    }
+    .filho-3 {
+        height: 50%;
+    }
+
+    </style>
+</head>
+<body>
+    <h1>Praticando Unidade Relativas</h1>
+    <div id="containerpai">
+        
+
+        <div class="filho filho-1">FILHO 1</div>
+        <div class="filho filho-2">FILHO 2</div>
+        <div class="filho filho-3">FILHO 3</div>
+    </div>
+</body>
+</html>

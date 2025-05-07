@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsividade</title>
+    <style>
+        body {
+        margin: 0;
+        height: 100vh;
+        background: url(backcinzavermelho.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        
+        }
+        div#pai {
+            height: 75%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            
+        }
+
+        .filho1 {
+            text-align: center;
+            align-items: center;
+        }
+        
+
+        h1 {
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+            
+        }
+        p {
+            font-size: 90%;
+        }
+
+        /* Media Query para tablets (larguras entre 768px e 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            h1 {
+                font-size: 1.8rem; /* Aumenta o tamanho do título em tablets */
+            }
+            p {
+                font-size: 1.8rem; /* Aumenta o tamanho da fonte do parágrafo em tablets */
+            }
+            button {
+                font-size: 1.5rem; /* Opcional: aumentar o tamanho do botão também */
+                padding: 0.8rem 1.5rem; /* Opcional: aumentar o padding do botão */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Praticando responsividade</h1>
+
+    <div id="pai">
+    <div class="filho1"></div>
+    <p>Este é o conteudo centralizado sobre a imagem de fundo</p>
+    <button>Clique aqui</button>
+    
+    </div>
+</body>
+</html>
