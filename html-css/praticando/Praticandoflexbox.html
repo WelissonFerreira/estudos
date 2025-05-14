@@ -19,52 +19,61 @@
 
     header {
     display: flex;
-    height: 6%;
+    height: 3.8rem;
     align-items: center;
-    border-bottom: 0.1px solid #cccccc91;
+    border-bottom: 1px solid #cccccc91;
     }
 
     h2#nome1 {
         display: flex;
         background-color: #0A66C2;
         width: 1.6%;
-        padding: 1rem 1rem;
-        align-items:center ;
-        justify-content: center;
-        height: 30px;
+        padding: 0.7rem 1rem;
+        align-items: center;
+        justify-content: center; 
         color: white;
         margin-left: 18%;
         border-radius: 3px;
         font-size: 1.9rem;
         font-weight: 400px;
-        line-height: 1.5rem;
+        line-height: 1rem;
     }
 
     h2.pes {
         display: flex;
-        margin-left: 10px;
-        font-size: 1.1rem;
-        border-radius: 3px;
+        margin-left: 1%;
+        font-size: 1rem;
+        border-radius: 50px;
+        padding: 0.5rem;
+        background-color: rgba(167, 160, 160, 0.479);
+        color: #191919c4;
     }
 
     ul {
         display: flex;
-        font-size: 0.8rem;
-        margin-left: 300px;
+        font-size: 0.75rem;
+        margin-left: 70%;
         gap: 2.2rem;
         list-style: none;
+        
+        
+        
     }
 
     li {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 2%;
         flex-direction: column;
     }
     i {
         
         font-size: 20px;
         color: #191919c4;
+    }
+
+    .nao-quebrar {
+        white-space: nowrap;
     }
 
 
@@ -81,8 +90,12 @@
 
         <nav class="menu">
         <ul>
-        <li> <i class="fas fa-home"></i>Inicio</li>
-        <li><i class="fa-solid fa-users"></i>Minha Rede</li>
+        <li><i class="fas fa-home"></i>Inicio</li>
+
+        <li><i class="fa-solid fa-users"></i>
+            <span class="nao-quebrar">Minha Rede</span>
+        </li>
+
         <li><i class="fa-solid fa-briefcase"></i>Vagas</li>
         <li><i class="fa-solid fa-envelope"></i>Mensagens</li>
         <li><i class="fa-solid fa-bell"></i>Notificações</li>
