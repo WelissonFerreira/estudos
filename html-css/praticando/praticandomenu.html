@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(128, 128, 128);
+            width: 100%;
+            height: 100%;
+        }
+        header {
+            background-color: antiquewhite;
+            display: flex;
+            height: 8%;
+            width: 100vw;
+            align-items: center;
+            
+            
+        }
+        div#container1 {
+            display: flex;
+            margin-left: 50%;
+            
+            
+        }
+        h1 {
+            color: black;
+            
+        }
+
+        nav {
+            display: flex;
+            margin-left: 20%;
+            border: 3px solid rgba(128, 128, 128, 0.301);
+            height: 100%;
+            align-items: center;
+
+            
+            
+        }
+        ul {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            
+        }
+        div#principal  {
+            display: flex;
+            gap: 10px;
+            margin-top: 1%;
+            
+            
+        }
+        #containercaixa1 {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            width: 45vw;
+            height: 45vh;
+            gap: 10px;
+            margin-left: 2%;
+            
+            
+        }
+        .form1 {
+            text-align: center;
+        }
+        .camponome {
+            display: flex;
+            gap: 5px;
+            margin-left: 2%;
+        }
+
+        .camponascimento {
+            display: flex;
+            gap: 5px;
+            margin-left: 2%;
+        }
+
+        .campotelefone {
+            display: flex;
+            gap: 5px;
+            margin-left: 2%;
+        }
+        .campoemail {
+            display: flex;
+            gap: 5px;
+            margin-left: 2%;
+        }
+
+        .campoendereco {
+            display: flex;
+            gap: 5px;
+            margin-left: 2%;
+        }
+        
+        #containercaixa2 {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            margin-left: 5%;
+            width: 45vw;
+            height: 45vh;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="container1">
+            <h1>CENTRO</h1>
+        </div>
+
+        
+            <nav>
+                <ul>
+                    <li>Home |</li>
+                    <li>Sobre |</li>
+                    <li>Contato |</li>
+                    <li>Central de Ajuda |</li>
+                    <li>Trabalhe Conosco</li>
+                </ul>
+            </nav>
+    
+    </header>
+
+    <div id="principal">
+        <div id="containercaixa1">
+            <h2 class="form1">Formulario:</h2>
+            
+                <div class="camponome">
+                    <label for="nome">Nome completo: </label>
+                    <input type="text" name="nome" id="nome">
+                </div>
+
+                <div class="camponascimento">
+                    <label for="nascimento">Data de nascimento:</label>
+                    <input type="date" name="" id="">
+                </div>
+
+                <div class="campotelefone">
+                    <label for="telefone">Telefone: </label>
+                    <input type="tel" name="telefone" id="telefone">
+                </div>
+
+                <div class="campoemail">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                
+                <div class="campoendereco">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" name="endereco" id="endereco">
+                </div>
+                
+                <div class="campocep">
+                    <label for="cep">CEP: </label>
+                    <input type="text" name="cep" id="cep">
+                </div>
+
+                <div class="campoestado">
+                    <label for="estado">Estado: </label>
+                    <select name="estado" id="estado">
+                        <option value="selecione">Selecione</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas </option>
+                        <option value="PA">Pará</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        
+                    </select>
+                </div>
+
+
+            
+            
+        </div>
+
+        <div id="containercaixa2">
+            <h2 class="form1">Formulário 2</h2>
+        </div>
+
+        
+            
+
+
+
+        
+    </div>
+</body>
+</html>
