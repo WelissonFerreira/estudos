@@ -1,0 +1,378 @@
+    main#containerpai {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        height: calc(100vh - 8%);
+    
+}
+    .h2sobre {
+        color: black;
+    }
+
+    .sobrenos {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        font-size: 1.2rem;
+        background-Color: #ADD8E6;
+        border-radius: 25px;
+        width: 50vw;
+        margin: auto;
+        padding: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    }
+
+    .textosobrenos {
+    line-height: 1.8;
+    margin-bottom: 10px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    
+
+    }
+
+    .sobrenos:hover {
+        
+        transform: scale(1.02);
+        transition: all 0.5s ease-in-out;
+    }
+
+    .filho {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: auto;
+        width: 60vw;
+        margin: auto;
+        flex-shrink: 1;
+        color: black;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        margin-bottom: 10px;
+
+    
+}
+
+    
+    .filho-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+}
+
+    .filho-1 img {
+        width: 80%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+    .filho-1 img:hover {
+        border-color: #000;
+        transform: scale(1.02);
+        transition: all 0.5s ease-in-out;
+}
+
+
+    .filho-2 {
+        padding-top: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    
+    }
+
+    .filho-3 {
+        display: flex;
+        padding-top: 20px;
+        width: 50vw;
+        height: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    
+    }
+
+    .produto {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+    
+    }
+
+    .produto img {
+        width: 300px;
+        height: 300px;
+        transition: transform 0.5s ease-out;
+       
+    }
+
+    
+
+    .produto img:hover {
+        transform: translateY(-10px);
+    }
+
+
+
+    .botoes-produto {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    
+    }
+
+    button {
+        background-Color: transparent;
+        border: none;
+        gap: 2px;
+        background-Color: #ADD8E6;
+        color: black;
+        padding: 5px 6px;
+        border-radius: 25px 25px;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+    }
+    button:hover {
+        background-Color: black;
+        color: white;
+    }
+    i {
+        margin-left: 5px;
+    }
+
+    .promocao {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+        gap: 8px;
+        transition: transform 0.5s ease-out;
+    }
+
+    .fotopromocao {
+        width: 100%;
+        height: auto;
+        transition: transform 0.8s ease-out;
+        width: 800px;
+        height: 800px;
+    }
+
+    .fotopromocao:hover {
+        transform: translateY(-10px);
+    }
+
+    
+
+    .nomeperf {
+        margin: 10px 0;
+        text-shadow: 5px 5px 25px white;
+        font-size: 1rem;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 8px;
+    
+    
+    }
+    .nomeperf:hover {
+        background-Color: black;
+        color: white;
+        
+    }
+
+    .preco {
+        text-shadow: 2px 3px 25px white;
+        margin: 5px 0;
+        font-family: DMSans, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 20px;
+        line-height: 28px;
+    
+    }
+
+    .deldest {
+        color: black;
+        text-shadow: 5px 5px 25px white;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1rem;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 3px;
+        
+    }
+    .spamdest {
+        color: black;
+        text-shadow: 5px 5px 25px white;
+        margin: 7px;
+        font-family: DMSans, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 20px;
+        line-height: 28px;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 5px;
+
+    }
+
+    .perfdest {
+        color: black;
+        text-shadow: 5px 5px 25px white;
+        margin-top: 15px;
+        font-family: DMSans, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 20px;
+        line-height: 28px;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 3px;
+    }
+
+    .ofertsem {
+        color: black;
+        text-shadow: 5px 5px 25px white;
+        margin-top: 15px;
+        font-family: DMSans, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 20px;
+        line-height: 28px;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+    .ofertsem:hover {
+        background-Color: black;
+        color: white;
+    }
+
+
+    .perfdest:hover {
+        background-Color: black;
+        color: white;
+    }
+    .spamdest:hover {
+        background-Color: black;
+        color: white;
+    }
+
+    .deldest:hover {
+        background-Color: black;
+        color: white;
+    }
+
+    .botoesdest {
+        color: black; 
+        background-Color: #ADD8E6;
+    }
+    .botoesdest:hover {
+        background-Color: black;
+        color: white;
+    }
+
+
+    @media (max-width: 768px) {
+    
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        height: auto;
+        padding: 10px 0;
+        
+        
+    }
+
+    .sobrenos {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        background-Color: #ADD8E6;
+        border: 2px solid #5ecdf1;
+        border-radius: 25px;
+        width: 60vw;
+        margin: auto;
+        padding: 10px;
+    
+    }
+    .textosobrenos {
+    line-height: 1.2;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 0.8rem;
+    
+    
+    
+    }
+
+    h1, p {
+        font-size: 0.8rem;
+        padding-bottom: 5px;
+    }
+    
+    ul {
+        padding-bottom: 15px;
+    }
+    li {
+        font-size: 0.5rem;
+        
+    }
+
+    .produto img {
+        width: 150px;
+        height: 150px;
+    }
+
+    button { 
+        padding: 3px 4px;
+    }
+
+    .filho-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+    .filho-1 img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .filho-3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .fotopromocao {
+        width: 300px;
+        height: 300px;
+        display: block;
+        margin: 0 auto;
+        
+    }
+    }
+
+    .ofertsem {
+        max-width: 320px;
+        width: 50vw;
+        text-align: center;
+        color: black;
+        text-shadow: 5px 5px 25px white;
+        font-family: DMSans, Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 0.9rem;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 1px;
+        
+    }

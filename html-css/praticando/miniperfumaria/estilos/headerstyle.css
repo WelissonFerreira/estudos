@@ -1,0 +1,103 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
+    }
+    body, html {
+      width: 100%; /*Resolve problema de rolagem lateral*/
+      height: 100vh;
+      background-Color: #f1e9b5;
+      font-weight: bolder;
+      /*overflow-x: hidden;*/
+    
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      background-Color: #6FCBFC;
+      height: 8%;
+      box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+      
+      
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      border: 1px solid black;
+      border-radius: 15px;
+      letter-spacing: 2px;
+      padding: 3px;
+      transition: transform 0.5s ease-out;
+      color: black;
+      
+    }
+
+    h1:hover {
+      background-Color: black;
+      color: white;
+      transform: translateY(-5px);
+    }
+    
+
+    .fraseinicial {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.8rem;
+      border: 1px solid black;
+      border-radius: 15px;
+      padding: 5px;
+      transition: transform 0.5s ease-out;
+      color: black;
+    }
+
+    .fraseinicial:hover {
+      background-Color: black;
+      color: white;
+      transform: translateY(-5px);
+    }
+    p, h1 {
+      
+      color: rgba(0, 0, 0, 0.822);
+      
+      
+      
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      flex-wrap: wrap;
+      
+      
+    }
+    li {
+      font-size: 0.8rem;
+      list-style-type: none;
+      border: 2px solid black;
+      border-radius: 15px;
+      letter-spacing: 2px;
+      transition: transform 0.5s ease-out;
+      color: black;
+      padding: 3px;
+    }
+
+    li:hover {
+      background-Color: black;
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    
+
+    
+
+    
+
+
+
+
+    
