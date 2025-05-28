@@ -4,44 +4,42 @@
 .item-do-menu {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        gap: 15px;
         background-Color: lightgray;
-        justify-content: space-between;
-        max-width: 330px;
-        padding: 10px;
-        margin: 20px auto;
-        margin-bottom: 20px;
         border-radius: 25px;
         box-shadow: 1px 1px 12px 2px white;
+        padding: 10px;
+        max-width: 500px;
+        
     }
 
     .item-do-menu li {
         list-style-type: none;
         padding: 2px;
-        font-size: 0.8rem;
+        font-size: 0.8rem;   
         
         
     }
 
+    .info-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        margin: auto;
+        align-items: center;
+    }
+    
     
 
-    h3 {
-        padding-bottom: 15px;
-        height: 30px;
-        width: 180px;
-        font-size: 1.3rem;
-        font-weight: bolder;
-        text-align: center;
-        margin: auto;
-        
-    }
 
     h4 {
         font-size: 1rem;
         padding-bottom: 5px;
-        line-height: 2.5;
-        text-align: center;
-        height: 50px;
-        width: 280px;
+        
+        
+        
         
         
     }
@@ -59,26 +57,30 @@
     }
 
     .fotosanduba {
-        width: 150px;
-        height: 150px;
-        margin: auto;
-        display: block;
-    
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+
+        
     }
     #botoes-produto {
         display: flex;
-        flex-direction: row;
-        gap: 5px;
-        padding: 5px 6px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        
         
     }
     button {
-        background-Color: transparent;
+        font-size: 0.8rem;
         border: none;
         border-radius: 25px;
         background-Color: black;
         color: white;
-        padding: 5px 6px;
+        padding: 5px 10px;
+        cursor: pointer;
+        white-space: nowrap;
+        
         
     }
 
@@ -86,3 +88,4 @@
         background-Color: #edbb5a;
         color: black;
     }
+
