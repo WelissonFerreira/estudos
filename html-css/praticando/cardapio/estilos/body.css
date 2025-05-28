@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/* Corpo */
+
+.item-do-menu {
+        display: flex;
+        flex-direction: column;
+        background-Color: lightgray;
+        justify-content: space-between;
+        max-width: 330px;
+        padding: 10px;
+        margin: 20px auto;
+        margin-bottom: 20px;
+        border-radius: 25px;
+        box-shadow: 1px 1px 12px 2px white;
+    }
+
+    .item-do-menu li {
+        list-style-type: none;
+        padding: 2px;
+        font-size: 0.8rem;
+        
+        
+    }
+
+    
+
+    h3 {
+        padding-bottom: 15px;
+        height: 30px;
+        width: 180px;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        text-align: center;
+        margin: auto;
+        
+    }
+
+    h4 {
+        font-size: 1rem;
+        padding-bottom: 5px;
+        line-height: 2.5;
+        text-align: center;
+        height: 50px;
+        width: 280px;
+        
+        
+    }
+
+    p {
+        padding-bottom: 5px;
+        font-size: 0.8rem;
+    }
+
+    span {
+        font-size: 1.1rem;
+        font-weight: bolder;
+        display: block;
+        text-align: right;
+    }
+
+    .fotosanduba {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        display: block;
+    
+    }
+    #botoes-produto {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        padding: 5px 6px;
+        
+    }
+    button {
+        background-Color: transparent;
+        border: none;
+        border-radius: 25px;
+        background-Color: black;
+        color: white;
+        padding: 5px 6px;
+        
+    }
+
+    button:hover {
+        background-Color: #edbb5a;
+        color: black;
+    }

@@ -1,0 +1,126 @@
+@charset "UTF-8";
+/* Mobile First */
+
+* {
+        padding: 0px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        padding: 20px;
+        background-Color: #1a1a1a;
+        gap: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: row;
+        font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: white;
+        
+    }
+
+    .secao1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: row;
+        
+        
+        }
+
+    body {
+        background-Color: #1a1a1a;
+        font-size: 10px;
+    }
+
+
+    
+    
+    h2 {
+        color: white;
+        background-Color: #303030;
+        border-radius: 25px;
+    }
+
+    h2 {
+        text-align: center;
+        height: 30px;
+        width: 200px;
+        background-Color: #303030;
+        font-size: 1.7rem;
+        
+    }
+
+    h2:hover {
+        background-Color: #1a1a1a;
+        color: white;
+    }
+
+    h4, p, span {
+        color: black;
+    }
+
+    .pmenu {
+        font-size: 1.3rem;
+        color: white;
+        text-align: center;
+        font-weight: 400;
+        
+    }
+    .navbar {
+        font-size: 1.2rem;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        background-Color: #303030;
+        border-radius: 25px;
+    }
+
+    .navbar li a {
+        display: block;
+        padding: 10px 15px;
+    }
+
+    .navbar li a:hover {
+        background-Color: #1a1a1a;        
+        color: white;
+    }
+    
+
+
+
+    header {
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        flex-direction: column;
+        padding-top: 10px;
+    }
+
+    .logomenu {
+        width: 100px;
+        height: 100px;
+        
+    }
+
+
+
+    
+    a {
+        text-decoration: none;
+        color: white;
+
+    }
+
+    @media screen and (max-width: 400px) {
+        .navbar {
+            font-size: 0.9rem;
+        }
+        
+    }
