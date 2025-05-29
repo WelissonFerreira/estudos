@@ -11,6 +11,23 @@
         box-shadow: 1px 1px 12px 2px white;
         padding: 10px;
         max-width: 500px;
+        min-width: 374px;
+        min-height: 327px;
+        
+    }
+
+.item-do-menu-bebidas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        background-Color: lightgray;
+        border-radius: 25px;
+        box-shadow: 1px 1px 12px 2px white;
+        padding: 10px;
+        max-width: 500px;
+        min-width: 390px;
+        min-height: 327px;
         
     }
 
@@ -88,4 +105,15 @@
         background-Color: #edbb5a;
         color: black;
     }
+    
+    @media screen and (max-width: 400px) {
+        .item-do-menu {
+            width: 100%;
+            min-width: 330px;
+        }
 
+        .item-do-menu-bebidas {
+            width: 100%;
+            min-width: 330px;
+        }
+    }

@@ -9,6 +9,7 @@
 
     main {
         padding: 20px;
+        padding-bottom: 120px;
         background-Color: #1a1a1a;
         gap: 30px;
         display: flex;
@@ -119,9 +120,58 @@
 
     }
 
-    @media screen and (max-width: 400px) {
+    footer {
+    position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
+    bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
+    width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
+    background-color: #303030; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
+    padding: 5px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
+    z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
+    margin: auto;
+    
+    
+    }
+
+    .navbarinferior {
+        background-color: #303030;
+        color: white;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        list-style-type: none;
+        align-items: center;
+        
+
+}
+
+    .navbarinferior li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        gap: 5px;
+        font-size: 1.5rem;
+        transition: transform 0.8s ease-out;
+}
+
+    .navbarinferior li a:hover {
+        background-color: #edbb5a;
+        transform: translateY(-10px);
+}
+
+.spanmenu {
+    font-size: 0.9rem;
+    color: white;
+}
+
+    
+
+    @media screen and (max-width: 450px) {
         .navbar {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         
     }
+
