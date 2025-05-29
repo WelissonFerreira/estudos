@@ -124,3 +124,15 @@
             min-width: 335px;
         }
     }
+
+    @media screen and (max-width: 600px) {
+        .item-do-menu {
+            width: 100%;
+            min-width: 330px;
+        }
+
+        .item-do-menu-bebidas {
+            width: 100%;
+            min-width: 390px;
+        }
+    }
