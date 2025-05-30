@@ -54,7 +54,7 @@ header {
 
 /* Navbar */
 .navbar {
-    font-size: 1.2rem;
+    font-size: 1rem;
     list-style-type: none;
     display: flex;
     flex-direction: row;
@@ -168,7 +168,7 @@ h2:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    
 }
 
 
