@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/* Mobile First */
+
+/* Reset básico */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo do site */
+body {
+    background-color: #191919; 
+    font-size: 10px;
+    color: white;
+    
+    
+}
+
+/* Main container */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    padding-bottom: 100px;
+    background-color: #252525; 
+    border-radius: 25px;
+}
+
+
+
+
+/* Cabeçalho */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+/* Logo */
+.logomenu {
+    width: 100px;
+    height: 100px;
+}
+
+/* Navbar */
+.navbar {
+    font-size: 1.2rem;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: #303030;
+    width: 360px;
+    border-radius: 25px;
+    margin-bottom: 15px; 
+    
+}
+
+.navbar li a {
+    display: block;
+    padding: 20px 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.navbar li a:hover {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.navbarinferior {
+    background-Color: #303030;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+
+}
+
+.navbarinferior li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px;
+    gap: 5px;
+    font-size: 1.3rem;
+    transition: transform 0.8s ease-out;
+}
+
+
+.navbarinferior li a:hover {
+    background-Color: #edbb5a;
+    transform: translateY(-10px);
+}
+
+/* Título */
+h2 {
+    color: white;
+    background-color: #303030;
+    border-radius: 25px;
+    text-align: center;
+    height: 30px;
+    width: 200px;
+    font-size: 1.7rem;
+}
+
+h2:hover {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* Parágrafo do menu */
+.pmenu {
+    font-size: 1.3rem;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+
+
+
+/* Itens do menu */
+.item-pai {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    background-color: #303030;
+    border: 1px solid gray;
+    padding: 10px 0;
+    width: 360px;
+    margin: auto;
+    border: 1px solid white;
+    /*border-radius: 10px;*/
+    box-shadow: 1px 3px 2px 5px gray;
+    
+}
+
+.card-pai {
+    display: flex;
+    gap: 15px;
+    
+
+
+}
+
+.card-image {
+    
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+
+.card-conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+
+
+}
+
+
+
+.card-pai li {
+    list-style-type: none;
+    padding: 2px;
+    font-size: 0.8rem;
+}
+
+/* Imagem do sanduíche */
+.fotosanduba {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+}
+
+.fotobebidas {
+    width: 130px;
+    height: 120px;
+    
+}
+
+
+
+
+
+/* Botões do produto */
+#botoes-produto {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+button {
+    font-size: 0.7rem;
+    border: none;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    
+}
+
+button:hover {
+    background-color: #edbb5a;
+    color: black;
+}
+
+/* Textos */
+h4 {
+    font-size: 1rem;
+    padding-bottom: 5px;
+    
+}
+
+p {
+    padding-bottom: 3px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    
+}
+
+span {
+    font-size: 0.8rem;
+    font-weight: bolder;
+    display: block;
+    text-align: right;
+    color: green;
+}
+
+.spanmenu {
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* Cor de texto padrão para h4, p, span */
+h4, p {
+    color: white;
+    font-size: 0.8rem;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.vermais {
+    color: #90cafc;
+    text-decoration: underline;
+}
+
+footer {
+  position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
+  bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
+  width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
+  background-Color: #303030; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
+  padding: 10px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
+  z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
+
+
+}
+
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 400px) {
+    .navbar {
+        
+        width: 100%;
+        padding: 10px 0; 
+    }
+
+    .navbar li a {
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+    .item-pai {
+        width: 100%;
+        
+        
+    }
+    
+}
