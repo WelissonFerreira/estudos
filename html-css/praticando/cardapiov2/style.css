@@ -146,9 +146,9 @@ h2:hover {
     padding: 10px 0;
     width: 360px;
     margin: auto;
-    border: 1px solid white;
+    border: 1px solid gray;
     /*border-radius: 10px;*/
-    box-shadow: 1px 3px 2px 5px gray;
+    box-shadow: 1px 1px 8px 1px gray;
     
 }
 
