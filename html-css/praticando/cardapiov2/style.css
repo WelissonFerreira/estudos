@@ -52,7 +52,9 @@ header {
     height: 100px;
 }
 
-/* Navbar */
+/* =================================== */
+
+/* MENU TOPO */
 .navbar {
     font-size: 1rem;
     list-style-type: none;
@@ -81,35 +83,9 @@ header {
     color: white;
 }
 
-.navbarinferior {
-    background-Color: #303030;
-    color: white;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    list-style-type: none;
+/* =========================== */
 
-}
-
-.navbarinferior li a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 0px;
-    gap: 5px;
-    font-size: 1.3rem;
-    transition: transform 0.8s ease-out;
-}
-
-
-.navbarinferior li a:hover {
-    background-Color: #edbb5a;
-    transform: translateY(-10px);
-}
-
-/* Título */
+/* TITULO PRINCIPAL */
 h2 {
     color: white;
     background-color: #303030;
@@ -135,7 +111,7 @@ h2:hover {
 
 
 
-/* Itens do menu */
+/* CONTEUDO PRINCIPAL - CARDS, IMG, DESCRIÇÕES, PREÇO */
 .item-pai {
     display: flex;
     flex-direction: row;
@@ -190,7 +166,7 @@ h2:hover {
     font-size: 0.8rem;
 }
 
-/* Imagem do sanduíche */
+/* CONTROLE DE IMAGENS, SANDUICHES, BEBIDAS, AÇAI... */
 .fotosanduba {
     width: 90px;
     height: 90px;
@@ -207,7 +183,7 @@ h2:hover {
 
 
 
-/* Botões do produto */
+/* BOTÕES DO PRODUTO, DIV PRINCIPAL, CONTROLE DOS BOTÕES */
 #botoes-produto {
     display: flex;
     gap: 10px;
@@ -234,18 +210,26 @@ button:hover {
     color: black;
 }
 
-/* Textos */
-h4 {
+/* CONTROLE DE TEXTOS, SUBTITULOS, PREÇOS E DESCRIÇÕES */
+.titulo-produtos {
     font-size: 1rem;
     padding-bottom: 5px;
     
 }
 
-p {
+
+.descricao-produtos {
     padding-bottom: 3px;
     font-size: 0.8rem;
     line-height: 1.4;
-    
+    color: white;
+}
+
+.descricao-ingredientes {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: white;
+    padding-bottom: 5px;
 }
 
 span {
@@ -262,10 +246,7 @@ span {
 }
 
 /* Cor de texto padrão para h4, p, span */
-h4, p {
-    color: white;
-    font-size: 0.8rem;
-}
+
 
 /* Links */
 a {
@@ -273,10 +254,9 @@ a {
     color: white;
 }
 
-.vermais {
-    color: #90cafc;
-    text-decoration: underline;
-}
+
+
+/* CONTROLE DO MENU INFERIOR */
 
 footer {
   position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
@@ -289,6 +269,102 @@ footer {
 
 }
 
+/* MENU INFERIOR */
+
+.navbarinferior {
+    background-Color: #303030;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+
+}
+
+.navbarinferior li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0px;
+    gap: 5px;
+    font-size: 1.3rem;
+    transition: transform 0.8s ease-out;
+}
+
+
+.navbarinferior li a:hover {
+    background-Color: #edbb5a;
+    transform: translateY(-10px);
+}
+
+/* CONTROLAR CONTADOR DO CARRINHO */
+
+.carrinho-item {
+    position: relative; /* Define este elemento como referência para posicionamento absoluto dos filhos */
+}
+
+.contcarrinho {
+    position: absolute; /*Permite posicionar o contador em relação ao .carrinho-item   */
+    top: -5px; /* Move o contador um pouco para cima do ícone */
+    right: 5px;  /* Move o contador para a direita, colando no canto do ícone */
+    background-color: red;  /* Cor de fundo da bolinha do contador */
+    color: white; /* Cor do texto (número) do contador */
+    font-size: 0.7rem; /* Tamanho da fonte dentro da bolinha */
+    width: 16px; /* Largura da bolinha */
+    height: 16px; /* Altura da bolinha */
+    display: flex; /* Usa Flexbox para centralizar o conteúdo */
+    justify-content: center; /* Centraliza horizontalmente o número */
+    align-items: center; /* Centraliza verticalmente o número */
+    border-radius: 50%; /* Transforma o quadrado em um círculo (bolinha) */
+    font-weight: bold;  /* Deixa o número em negrito */
+    z-index: 10;  /* Garante que a bolinha fique na frente de outros elementos se houver sobreposição */
+}
+
+
+
+
+
+/* =================================== */
+
+/* MODAL E CONTROLE DO MODAL */
+
+
+
+.modal {
+    display: none; /* Esconde o modal por padrão */
+    position: fixed; /* Fixa o modal na tela */
+    z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total da tela */
+    height: 100%; /* Altura total da tela */
+    overflow: auto; /* Permite rolagem se necessário */
+    background-color: rgba(148, 140, 140, 0.733); 
+    
+}
+
+.modal-content {
+    background-color: #303030;
+    margin: 15% auto; /* Centraliza o modal na tela */
+    padding: 20px;
+    width: 80%; /* Largura do modal */
+    max-width: 500px; /* Largura máxima do modal */
+    border: 1px solid #888;
+    border-radius: 10px; /* Bordas arredondadas */
+    position: relative; /* Para posicionar o botão de fechar */
+}
+
+/* BOTÃO USADO PARA ABRIR O MODAL */
+
+.botaomodal {
+    color: #90cafc;
+    text-decoration: underline;
+}
+
+
+ /* ======================================= */
 /* Responsividade para telas pequenas */
 @media screen and (max-width: 400px) {
     .navbar {
