@@ -354,6 +354,16 @@ footer {
     border: 1px solid #888;
     border-radius: 10px; /* Bordas arredondadas */
     position: relative; /* Para posicionar o botão de fechar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+    
+}
+
+.modal-content li {
+    list-style-type: square;
 }
 
 /* BOTÃO USADO PARA ABRIR O MODAL */
@@ -363,6 +373,22 @@ footer {
     text-decoration: underline;
 }
 
+.descricao-produtos-modal {
+    padding-bottom: 3px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+.fotolanchemodal {
+    display: flex;
+    justify-content: center;
+    
+    
+    
+}
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
