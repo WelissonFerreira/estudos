@@ -290,14 +290,14 @@ footer {
     padding: 5px 0px;
     gap: 5px;
     font-size: 1.3rem;
-    transition: transform 0.8s ease-out;
+    /*transition: transform 0.8s ease-out;*/
 }
 
 
-.navbarinferior li a:hover {
+/*.navbarinferior li a:hover {
     background-Color: #edbb5a;
     transform: translateY(-10px);
-}
+}*/
 
 /* CONTROLAR CONTADOR DO CARRINHO */
 
