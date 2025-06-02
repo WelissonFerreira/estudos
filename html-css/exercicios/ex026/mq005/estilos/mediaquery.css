@@ -1,0 +1,22 @@
+@charset "UFT-8";
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    #burguer {
+        display: none;
+    
+}
+
+    menu {
+        display: block;
+    }
+
+    menu ul li {
+        display: inline-block;
+    }
+
+    main {
+        width: 768px;
+    }
+}
+
+
