@@ -37,15 +37,15 @@ h1 {
 }
 
 
-menu {
+nav {
     display: none;
 }
 
-menu ul {
+nav ul {
     list-style-type: none;
 }
 
-menu ul li a {
+nav ul li a {
     display: block;
     padding: 10px;
     text-decoration: none;
@@ -55,7 +55,7 @@ menu ul li a {
     border-top: 2px solid rgb(185, 185, 185);
 }
 
-menu ul li a:hover {
+nav ul li a:hover {
     background-color: rgba(19, 19, 19, 0.836);
 }
 
