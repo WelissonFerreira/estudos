@@ -127,7 +127,7 @@ btnAbriModal.forEach(function(botaoAtual) {
 
 
 
- // Configurando botão do carrinnho para o contador do carrinho
+ // Configurando botão do carrinnho para o contador do carrinho e para pegar os objetos
 let btnCarrinhoContador = document.querySelectorAll('.AdicionarCarrinho')
 let contadorCarrinho = document.querySelector('.contcarrinho')
 let ValorCarrinho = 0
@@ -155,7 +155,17 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
     })
 })
 
+// Abrir o Carrinho
 
+let abrirCarrinho = document.querySelector('#botaoCarrinho')
+let modalCarrinho = document.querySelector("#ModalCarrinho")
+
+    abrirCarrinho.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        modalCarrinho.style.display = 'block'
+
+    })
 
     
 

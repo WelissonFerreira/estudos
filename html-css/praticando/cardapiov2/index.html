@@ -277,7 +277,7 @@
             <li class="inav"><a href="#"><i class="fa-solid fa-credit-card"></i><span class="spanmenu">Pagar</span></a></li>
 
             <li class="inav carrinho-item">
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i>
+            <a id="botaoCarrinho" href="#"><i class="fa-solid fa-cart-shopping"></i>
                 <span class="spanmenu">Carrinho</span>
                 <span class="contcarrinho">0</span>
             </a></li>
@@ -290,6 +290,20 @@
 
 
     </footer>
+
+    <div id="ModalCarrinho" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="itens-do-carrinho">
+                <p>Seu carrinho está vazio</p>
+            </div>
+            <div id="total-carrinho">
+                <h3>Total: R$ 0,00</h3>
+            </div>
+            <button id="finalizar-compra">Finalizar Compra</button>
+        </div>
+    </div>
 
     <script src="js.js"></script>
 </body>
