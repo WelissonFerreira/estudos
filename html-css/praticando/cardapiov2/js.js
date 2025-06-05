@@ -88,7 +88,7 @@ let catalogoDeProdutos = {
 // 2. Variável para TODOS os botões "Ver mais"
 let btnAbriModal = document.querySelectorAll('.botaomodal');
 
-
+// FUNÇÃO BOTÃO VER MAIS
 btnAbriModal.forEach(function(botaoAtual) { 
     botaoAtual.addEventListener('click', function(event) {
         event.preventDefault();
@@ -130,17 +130,20 @@ btnAbriModal.forEach(function(botaoAtual) {
  // Configurando botão do carrinnho para o contador do carrinho e para pegar os objetos
 let btnCarrinhoContador = document.querySelectorAll('.AdicionarCarrinho')
 let contadorCarrinho = document.querySelector('.contcarrinho')
-let ValorCarrinho = 0
+let valorCarrinho = 0
 let itensCarrinho = [];
 // Para cada botão de adicionar ao carrinho, adicione um 'click listener'
+// FUNÇÃO CONTADOR DO CARRINHO E ADICIONAR PRODUTO NO CARRINHO
 btnCarrinhoContador.forEach(function(botaoCarrinho) {
     botaoCarrinho.addEventListener('click', function() {
         
         // Incrementa o valor do contador do carrinho
-        ValorCarrinho = ValorCarrinho + 1
+        valorCarrinho = valorCarrinho + 1
         // Atualiza o texto exibido no contador do carrinho
-        contadorCarrinho.textContent = ValorCarrinho
+        contadorCarrinho.textContent = valorCarrinho
         
+        // BLOCO IMPORTANTE: PEGA O PRODUTO NOS DADOS DOS OBJETOS CRIADOS
+
         // Pega o ID único do produto a partir do atributo 'data-produto-id' do botão clicado
         let seletorDoCarrinho = botaoCarrinho.dataset.produtoId; //
         
@@ -149,24 +152,55 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
 
         itensCarrinho.push(produtoSelecionado)
 
+        // CHAMANDO FUNÇÃO EXIBIR ITENS DO CARRINHO
+        mostrarItensDoCarrinho() 
+
         // Opcional: Loga o array do carrinho no console para ver os itens adicionados
         console.log(itensCarrinho);
 
     })
 })
 
-// Abrir o Carrinho
 
+// FUNÇÃO ABRIR CARRINHO
 let abrirCarrinho = document.querySelector('#botaoCarrinho')
 let modalCarrinho = document.querySelector("#ModalCarrinho")
+let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
     abrirCarrinho.addEventListener('click', function(event) {
         event.preventDefault();
 
         modalCarrinho.style.display = 'block'
 
+        // CHAMANDO FUNÇÃO EXIBIR ITENS DO CARRINHO
+        mostrarItensDoCarrinho()
+
     })
 
+    // FUNÇÃO FECHAR CARRINHO
+    fecharCarrinho.addEventListener('click', function() {
+        modalCarrinho.style.display = 'none'
+    })
+
+    //FUNÇÃO EXIBIR ITENS DO CARRINHO
+    let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
+    function mostrarItensDoCarrinho() {
+        itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
+        // Próximo passo: verificar se o carrinho está vazio
+        if (itensCarrinho.length === 0) {
+            itensDoCarrinhoDiv.textContent = "Seu carrinho está vazio!"
+        } else {
+            itensCarrinho.forEach(function(item) { // Percorrendo os itens do Carrinho com forEach
+                // Criando DIV e pegando nome do produto
+                let divNomeProduto = document.createElement('div')
+                itensDoCarrinhoDiv.appendChild(divNomeProduto)
+                divNomeProduto.textContent = item.nome
+
+                let spanPrecoProduto = document.createElement('span')
+                itensDoCarrinhoDiv.appendChild(spanPrecoProduto)
+                spanPrecoProduto.textContent = `${item.preco.toFixed(2).replace('.',',')}`;
+            })
+        }
+    }
+
     
-
-
