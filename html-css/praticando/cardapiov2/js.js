@@ -153,7 +153,7 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
         itensCarrinho.push(produtoSelecionado)
 
         // CHAMANDO FUNÇÃO EXIBIR ITENS DO CARRINHO
-        mostrarItensDoCarrinho() 
+        atualizarCarrinho()
 
         // Opcional: Loga o array do carrinho no console para ver os itens adicionados
         console.log(itensCarrinho);
@@ -173,7 +173,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         modalCarrinho.style.display = 'block'
 
         // CHAMANDO FUNÇÃO EXIBIR ITENS DO CARRINHO
-        mostrarItensDoCarrinho()
+        atualizarCarrinho()
 
     })
 
@@ -202,5 +202,22 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
             })
         }
     }
+
+    // FUNÇÃO ATUALIZAR CARRINHO
+    function atualizarCarrinho() {
+        mostrarItensDoCarrinho() // Garante que a lista de itens seja exibida e atualizada
+
+        let valorTotalCarrinho = document.querySelector('#total-carrinho')
+        let somaDoTotal = 0
+        itensCarrinho.forEach(function(item) {
+            somaDoTotal = item.preco + somaDoTotal
+            
+        })
+
+        let h3Total = valorTotalCarrinho.querySelector('h3');
+            h3Total.textContent = `Total: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
+    }
+    
+    
 
     
