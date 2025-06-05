@@ -209,10 +209,15 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
         let valorTotalCarrinho = document.querySelector('#total-carrinho')
         let somaDoTotal = 0
+
+
+
         itensCarrinho.forEach(function(item) {
+
             somaDoTotal = item.preco + somaDoTotal
-            
         })
+
+        
 
         let h3Total = valorTotalCarrinho.querySelector('h3');
             h3Total.textContent = `Total: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
@@ -220,4 +225,3 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
     
     
 
-    
