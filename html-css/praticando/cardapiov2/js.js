@@ -1,4 +1,3 @@
-// Catálogo de todos os produtos disponíveis
 let catalogoDeProdutos = {
     "produto-arthur-grande": { // Esta é a CHAVE, que corresponde ao seu data-produto-id
         nome: "Especial Arthur Grande",
@@ -88,7 +87,7 @@ let catalogoDeProdutos = {
 // 2. Variável para TODOS os botões "Ver mais"
 let btnAbriModal = document.querySelectorAll('.botaomodal');
 
-// FUNÇÃO BOTÃO VER MAIS
+// FUNÇÃO PARA VER DETALHES DOS PRODUTOS
 btnAbriModal.forEach(function(botaoAtual) { 
     botaoAtual.addEventListener('click', function(event) {
         event.preventDefault();
@@ -132,8 +131,9 @@ let btnCarrinhoContador = document.querySelectorAll('.AdicionarCarrinho')
 let contadorCarrinho = document.querySelector('.contcarrinho')
 let valorCarrinho = 0
 let itensCarrinho = [];
+
+// FUNÇÃO CONTADOR DO CARRINHO
 // Para cada botão de adicionar ao carrinho, adicione um 'click listener'
-// FUNÇÃO CONTADOR DO CARRINHO E ADICIONAR PRODUTO NO CARRINHO
 btnCarrinhoContador.forEach(function(botaoCarrinho) {
     botaoCarrinho.addEventListener('click', function() {
         
@@ -142,18 +142,24 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
         // Atualiza o texto exibido no contador do carrinho
         contadorCarrinho.textContent = valorCarrinho
         
-        // BLOCO IMPORTANTE: PEGA O PRODUTO NOS DADOS DOS OBJETOS CRIADOS
-
         // Pega o ID único do produto a partir do atributo 'data-produto-id' do botão clicado
         let seletorDoCarrinho = botaoCarrinho.dataset.produtoId; //
         
         // Usa o ID para encontrar e obter o objeto completo do produto no 'catalogoDeProdutos'
         let produtoSelecionado = catalogoDeProdutos[seletorDoCarrinho]; 
-
+        // Adiciona os produtos no Carrinho
         itensCarrinho.push(produtoSelecionado)
-
-        // CHAMANDO FUNÇÃO EXIBIR ITENS DO CARRINHO
+        // Chama a Função atualizar o carrinho
         atualizarCarrinho()
+        
+        
+        
+        
+        
+        
+
+
+
 
         // Opcional: Loga o array do carrinho no console para ver os itens adicionados
         console.log(itensCarrinho);
@@ -162,27 +168,26 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
 })
 
 
-// FUNÇÃO ABRIR CARRINHO
 let abrirCarrinho = document.querySelector('#botaoCarrinho')
-let modalCarrinho = document.querySelector("#ModalCarrinho")
+let modalCarrinho = document.querySelector('#ModalCarrinho')
 let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
+    // FUNÇÃO ABRIR CARRINHO
     abrirCarrinho.addEventListener('click', function(event) {
         event.preventDefault();
 
         modalCarrinho.style.display = 'block'
 
-        // CHAMANDO FUNÇÃO EXIBIR ITENS DO CARRINHO
         atualizarCarrinho()
 
     })
-
-    // FUNÇÃO FECHAR CARRINHO
+    // FUNÇÃO FECHAR O CARRINHO
     fecharCarrinho.addEventListener('click', function() {
-        modalCarrinho.style.display = 'none'
+      modalCarrinho.style.display = 'none';
     })
 
-    //FUNÇÃO EXIBIR ITENS DO CARRINHO
+    
+     //FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
@@ -191,14 +196,69 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
             itensDoCarrinhoDiv.textContent = "Seu carrinho está vazio!"
         } else {
             itensCarrinho.forEach(function(item) { // Percorrendo os itens do Carrinho com forEach
-                // Criando DIV e pegando nome do produto
-                let divNomeProduto = document.createElement('div')
-                itensDoCarrinhoDiv.appendChild(divNomeProduto)
-                divNomeProduto.textContent = item.nome
 
+                // Criando uma div Pai para controlar melhor o FlexBox
+                let divItemCarrinho = document.createElement('div'); // Cria a div Pai
+                divItemCarrinho.classList.add('item-do-carrinho'); // *** Importante: adicione uma classe para o CSS ***
+
+                // Criando DIV e pegando nome do produto
+                let divNomeProduto = document.createElement('h3')
+                divNomeProduto.textContent = item.nome
+                
+                // Cria um paragrafo e pega a descrição do produto
+                let descricaoProduto = document.createElement('p')
+                descricaoProduto.textContent = `${item.descricao}`
+                
+                // Cria um span e pega o preço do produto.
                 let spanPrecoProduto = document.createElement('span')
-                itensDoCarrinhoDiv.appendChild(spanPrecoProduto)
-                spanPrecoProduto.textContent = `${item.preco.toFixed(2).replace('.',',')}`;
+                spanPrecoProduto.textContent = `R$ ${item.preco.toFixed(2).replace('.',',')}`;
+                spanPrecoProduto.classList.add('precoCarrinho')
+
+                // Botão Remover Itens
+                let botaoRemover = document.createElement('button')
+                // Cria o elemento <i> para o ícone do Font Awesome
+                let iconeRemover = document.createElement('i');
+                iconeRemover.classList.add('fa-solid', 'fa-trash-can'); // Adiciona as classes do Font Awesome
+
+                
+                botaoRemover.classList.add('btnRemover')
+
+                // Div Controle de Quantidades de Itens
+                let divControleDeQuantidade = document.createElement('div') // Div 
+                divControleDeQuantidade.classList.add('controles-quantidade')
+
+                let botaoAumentar = document.createElement('button') // Botão de Aumentar
+                botaoAumentar.textContent = `+`
+                botaoAumentar.classList.add('btnAumentar')
+
+                let spanQuantidade = document.createElement('span')
+                spanQuantidade.textContent = `1`
+                spanQuantidade.classList.add('quantidade-item')
+
+
+                let botaoDiminuir = document.createElement('button') // Botão de Diminuir
+                botaoDiminuir.textContent = `-` // Conteudo do botão
+                botaoDiminuir.classList.add('btnDiminuir')
+                
+
+                // Tornando a div, p e span filhos da nova DIV criada
+                divItemCarrinho.appendChild(divNomeProduto);
+                divItemCarrinho.appendChild(descricaoProduto);
+                divItemCarrinho.appendChild(spanPrecoProduto);
+
+                // Tornando os botões filhos da nova DIV Criada
+                
+                divControleDeQuantidade.appendChild(botaoAumentar);
+                divControleDeQuantidade.appendChild(spanQuantidade)
+                divControleDeQuantidade.appendChild(botaoDiminuir);
+                divControleDeQuantidade.appendChild(botaoRemover);
+                botaoRemover.appendChild(iconeRemover);
+                
+                // Conectando a nova DIV a div maior que é "itens-do-carrinho"
+                itensDoCarrinhoDiv.appendChild(divItemCarrinho)
+                // Conectando a div Controle de quantidades
+                divItemCarrinho.appendChild(divControleDeQuantidade)
+                
             })
         }
     }
@@ -217,11 +277,8 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
             somaDoTotal = item.preco + somaDoTotal
         })
 
-        
 
         let h3Total = valorTotalCarrinho.querySelector('h3');
             h3Total.textContent = `Total: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
+            h3Total.classList.add('precoCarrinhoTotal')
     }
-    
-    
-

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+    @charset "UTF-8";
 /* Mobile First */
 
 /* Reset básico */
@@ -56,7 +56,7 @@ header {
 
 /* MENU TOPO */
 .navbar {
-    font-size: 1rem;
+    font-size: 0.8rem;
     list-style-type: none;
     display: flex;
     flex-direction: row;
@@ -64,9 +64,10 @@ header {
     align-items: center;
     gap: 30px;
     background-color: #303030;
-    width: 360px;
+    width: 380px;
     border-radius: 25px;
     margin-bottom: 15px; 
+    margin: auto;
     
 }
 
@@ -75,7 +76,7 @@ header {
     padding: 20px 10px;
     text-decoration: none;
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .navbar li a:hover {
@@ -193,7 +194,7 @@ h2:hover {
     align-items: center;
 }
 
-button {
+.AdicionarCarrinho {
     font-size: 0.7rem;
     border: none;
     border-radius: 25px;
@@ -205,7 +206,7 @@ button {
     
 }
 
-button:hover {
+.AdicionarCarrinho:hover {
     background-color: #edbb5a;
     color: black;
 }
@@ -237,7 +238,7 @@ span {
     font-weight: bolder;
     display: block;
     text-align: right;
-    color: green;
+    color: white;
 }
 
 .spanmenu {
@@ -389,6 +390,121 @@ footer {
     
     
 }
+
+/*  MODAL DO CARRINHO: */
+.modal-content-carrinho {
+    background-color: #303030;
+    margin: 15% auto; /* Centraliza o modal na tela */
+    padding: 20px;
+    width: 80%; /* Largura do modal */
+    max-width: 500px; /* Largura máxima do modal */
+    border: 1px solid #888;
+    border-radius: 10px; /* Bordas arredondadas */
+    position: relative; /* Para posicionar o botão de fechar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    
+}
+
+.h3Carrinho {
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+
+
+.item-do-carrinho {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid gray;
+  gap: 5px;
+  margin: 10px;
+  
+}
+
+#finalizar-compra {
+  margin-top: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#finalizar-compra:hover {
+  background-color: #edbb5a;
+  color: black;
+}
+
+.precoCarrinho {
+  margin: 5px;
+  /*text-align: left;*/
+}
+
+.precoCarrinhoTotal {
+  font-size: 0.8rem;
+}
+
+/* Botões do Carrinho */
+.controles-quantidade {
+  
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+  margin-top: 7px;
+  margin-bottom: 20px;
+
+}
+
+
+.btnDiminuir, .btnAumentar, .btnRemover {
+  color: white;
+  background-Color: #303030;
+  border: 1px solid white;
+  cursor: pointer;
+   padding: 5px 5px;
+    border-radius: 5px; /* Cantos arredondados */
+    font-weight: bold;
+    font-size: 1rem;
+    width: 15px; /* Largura fixa */
+    height: 15px; /* Altura fixa */
+    display: flex; /* Para centralizar o + e - */
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.btnRemover {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  padding: 10px 5px;
+}
+
+.btnAumentar:hover,
+.btnDiminuir:hover {
+    background-color: #edbb5a; /* Efeito de hover */
+    color: black;
+}
+
+.quantidade-item {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    min-width: 25px;
+    text-align: center;
+}
+
+
+
+
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
