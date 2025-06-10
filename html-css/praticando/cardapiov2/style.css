@@ -420,6 +420,8 @@ footer {
     flex-direction: column;
     gap: 5px;
     border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px 1px gray;
     padding: 10px 5px;
     margin: 10px;
 
@@ -449,7 +451,7 @@ footer {
 }
 
 .precoCarrinhoTotal {
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -513,7 +515,9 @@ footer {
     text-align: center;
 }
 
-
+.nomeProduto {
+    text-align: center;
+}
 
 
 

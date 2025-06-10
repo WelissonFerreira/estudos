@@ -204,6 +204,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 // Criando DIV e pegando nome do produto
                 let divNomeProduto = document.createElement('h3')
                 divNomeProduto.textContent = item.nome
+                divNomeProduto.classList.add('nomeProduto')
                 
                 // Cria um paragrafo e pega a descrição do produto
                 let descricaoProduto = document.createElement('p')
