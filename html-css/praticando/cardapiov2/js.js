@@ -183,7 +183,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
     })
     // FUNÇÃO FECHAR O CARRINHO
     fecharCarrinho.addEventListener('click', function() {
-      modalCarrinho.style.display = 'none';
+        modalCarrinho.style.display = 'none';
     })
 
     

@@ -409,67 +409,68 @@ footer {
 }
 
 .h3Carrinho {
-  margin: auto;
-  margin-bottom: 15px;
+    margin: auto;
+    margin-bottom: 15px;
 }
 
 
 
 .item-do-carrinho {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  border: 1px solid gray;
-  gap: 5px;
-  margin: 10px;
-  
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid gray;
+    padding: 10px 5px;
+    margin: 10px;
+
 }
 
 #finalizar-compra {
-  margin-top: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 25px;
-  background-color: black;
-  color: white;
-  padding: 5px 10px;
-  cursor: pointer;
-  white-space: nowrap;
+    margin-top: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 #finalizar-compra:hover {
-  background-color: #edbb5a;
-  color: black;
+    background-color: #edbb5a;
+    color: black;
 }
 
 .precoCarrinho {
-  margin: 5px;
-  /*text-align: left;*/
+    margin: 5px;
+    
+    /*text-align: left;*/
 }
 
 .precoCarrinhoTotal {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 /* Botões do Carrinho */
 .controles-quantidade {
-  
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 15px;
-  margin-top: 7px;
-  margin-bottom: 20px;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 7px;
+    margin-bottom: 20px;
 
 }
 
 
 .btnDiminuir, .btnAumentar, .btnRemover {
-  color: white;
-  background-Color: #303030;
-  border: 1px solid white;
-  cursor: pointer;
-   padding: 5px 5px;
+    color: black;
+    background-Color: white;
+    border: 1px solid white;
+    cursor: pointer;
     border-radius: 5px; /* Cantos arredondados */
     font-weight: bold;
     font-size: 1rem;
@@ -478,14 +479,25 @@ footer {
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;
-  
+    padding-top: 1px;
+    
+}
+
+.btnDiminuir {
+    padding-bottom: 2px;
+}
+
+.btnAumentar {
+    padding-top: 3px;
 }
 
 .btnRemover {
-  width: 20px;
-  height: 20px;
-  border-radius: 2px;
-  padding: 10px 5px;
+    border-radius: 5px;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    background-color: #303030;
+    color: white;
 }
 
 .btnAumentar:hover,
@@ -498,9 +510,10 @@ footer {
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    min-width: 25px;
     text-align: center;
 }
+
+
 
 
 
