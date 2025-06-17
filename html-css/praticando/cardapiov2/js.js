@@ -351,3 +351,12 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
             
     }
+
+    // FUNÇÃO EXIBIR DADOS
+
+    const exibirModalDados = document.querySelector('#ModalDados')
+    const btnFinalizar = document.getElementById('finalizar-compra')
+    btnFinalizar.addEventListener('click', function() {
+        exibirModalDados.style.display = 'block'
+        modalCarrinho.style.display = 'none'
+    })

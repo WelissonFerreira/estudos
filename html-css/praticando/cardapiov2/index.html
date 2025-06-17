@@ -307,11 +307,13 @@
 
     <div id="ModalDados" class="modal">
         <div class="ConteudoModalDados">
-            <form>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome">
-                <label>Nome: </label></input>
-                <input type="tel" id="cell" name="cell" placeholder="Seu WhatsApp">
-                <label>Telefone</label></input>
+            <form id="formularioDados">
+                <label>Nome: <input type="text" id="nome" name="nome" placeholder="Seu nome"></input></label>
+                <label>Telefone: <input type="tel" id="cell" name="cell" placeholder="Seu WhatsApp"></input></label>
+                    <div id="divBotoesDados">
+                        <button id="AvancarPedido">Avançar</button>
+                        <button id="VoltarPedido">Voltar</button>
+                    </div>
             </form>
         </div>
     </div>
