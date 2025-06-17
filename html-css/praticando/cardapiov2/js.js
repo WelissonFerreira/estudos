@@ -136,36 +136,39 @@ let itensCarrinho = [];
 // Para cada botão de adicionar ao carrinho, adicione um 'click listener'
 btnCarrinhoContador.forEach(function(botaoCarrinho) {
     botaoCarrinho.addEventListener('click', function() {
+        // Incrementa o valor do contador do carrinho (este pode continuar)
         
-        // Incrementa o valor do contador do carrinho
-        valorCarrinho = valorCarrinho + 1
-        // Atualiza o texto exibido no contador do carrinho
-        contadorCarrinho.textContent = valorCarrinho
         
         // Pega o ID único do produto a partir do atributo 'data-produto-id' do botão clicado
-        let seletorDoCarrinho = botaoCarrinho.dataset.produtoId; //
+        let seletorDoCarrinho = botaoCarrinho.dataset.produtoId;
         
         // Usa o ID para encontrar e obter o objeto completo do produto no 'catalogoDeProdutos'
-        let produtoSelecionado = catalogoDeProdutos[seletorDoCarrinho]; 
-        // Adiciona os produtos no Carrinho
-        itensCarrinho.push(produtoSelecionado)
-        // Chama a Função atualizar o carrinho
-        atualizarCarrinho()
-        
-        
-        
-        
-        
-        
+        let produtoSelecionado = catalogoDeProdutos[seletorDoCarrinho];
 
+        // *** A PARTIR DAQUI É O NOVO CÓDIGO QUE SUBSTITUI O SEU `itensCarrinho.push(...)` ***
+        // 1. Procurar se o item já existe no carrinho
+        let itemExistente = itensCarrinho.find(function(item) {
+            return item.produtoId === seletorDoCarrinho;
+});
 
+        if (itemExistente) {
+            // 2. Se o item já existe, incrementa a quantidade dele
+            itemExistente.quantidade++;
+        } else {
+            // 3. Se o item NÃO existe, adiciona ele ao carrinho com quantidade 1
+            itensCarrinho.push({
+                produtoId: seletorDoCarrinho, // Adicione o ID para fácil referência
+                produto: produtoSelecionado,
+                quantidade: 1
+            });
+        }
+        // *** FIM DO NOVO CÓDIGO ***
 
-
-        // Opcional: Loga o array do carrinho no console para ver os itens adicionados
-        console.log(itensCarrinho);
-
-    })
-})
+        // Chama a Função atualizar o carrinho (este pode continuar)
+        atualizarCarrinho();
+        console.log(itensCarrinho); // Verifique o novo formato do carrinho
+    });
+});
 
 
 let abrirCarrinho = document.querySelector('#botaoCarrinho')
@@ -197,50 +200,95 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         } else {
             itensCarrinho.forEach(function(item) { // Percorrendo os itens do Carrinho com forEach
 
+            
+
                 // Criando uma div Pai para controlar melhor o FlexBox
                 let divItemCarrinho = document.createElement('div'); // Cria a div Pai
                 divItemCarrinho.classList.add('item-do-carrinho'); // *** Importante: adicione uma classe para o CSS ***
 
                 // Criando DIV e pegando nome do produto
                 let divNomeProduto = document.createElement('h3')
-                divNomeProduto.textContent = item.nome
+                divNomeProduto.textContent = item.produto.nome
                 divNomeProduto.classList.add('nomeProduto')
                 
                 // Cria um paragrafo e pega a descrição do produto
                 let descricaoProduto = document.createElement('p')
-                descricaoProduto.textContent = `${item.descricao}`
+                descricaoProduto.textContent = `${item.produto.descricao}`
                 
                 // Cria um span e pega o preço do produto.
                 let spanPrecoProduto = document.createElement('span')
-                spanPrecoProduto.textContent = `R$ ${item.preco.toFixed(2).replace('.',',')}`;
+                spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
                 spanPrecoProduto.classList.add('precoCarrinho')
 
-                // Botão Remover Itens
+                // BOTÃO REMOVER ITENS
                 let botaoRemover = document.createElement('button')
                 // Cria o elemento <i> para o ícone do Font Awesome
                 let iconeRemover = document.createElement('i');
                 iconeRemover.classList.add('fa-solid', 'fa-trash-can'); // Adiciona as classes do Font Awesome
-
-                
                 botaoRemover.classList.add('btnRemover')
+
+                botaoRemover.addEventListener('click', function() {
+                let encontrarItem = itensCarrinho.indexOf(item)
+                itensCarrinho.splice(encontrarItem, 1)
+
+                contadorCarrinho.textContent = `0`
+                
+                atualizarCarrinho()
+
+
+                })
 
                 // Div Controle de Quantidades de Itens
                 let divControleDeQuantidade = document.createElement('div') // Div 
                 divControleDeQuantidade.classList.add('controles-quantidade')
-
+                
+                // BOTÃO AUMENTAR
                 let botaoAumentar = document.createElement('button') // Botão de Aumentar
                 botaoAumentar.textContent = `+`
                 botaoAumentar.classList.add('btnAumentar')
 
+                botaoAumentar.addEventListener('click', function() {
+                let quantidadeTotal = item.quantidade + 1
+                item.quantidade = quantidadeTotal
+                spanQuantidade.textContent = `${quantidadeTotal}`
+
+                
+                
+
+                atualizarCarrinho()
+                
+                })
+                
+                // SPAN QUANTIDADE | TEXTO HTML
                 let spanQuantidade = document.createElement('span')
-                spanQuantidade.textContent = `1`
+                spanQuantidade.textContent = item.quantidade
                 spanQuantidade.classList.add('quantidade-item')
 
 
+
+                // BOTÃO DIMINUIR
                 let botaoDiminuir = document.createElement('button') // Botão de Diminuir
                 botaoDiminuir.textContent = `-` // Conteudo do botão
                 botaoDiminuir.classList.add('btnDiminuir')
                 
+                botaoDiminuir.addEventListener('click', function() {
+
+                if (item.quantidade === 1) {
+                    let encontrarItem = itensCarrinho.indexOf(item)
+                    itensCarrinho.splice(encontrarItem, 1)
+                    //contadorCarrinho.textContent = `0`
+                    atualizarCarrinho()
+                    
+                } else {
+                    let quantidadeTotal = item.quantidade - 1
+                
+                    item.quantidade = quantidadeTotal
+                    spanQuantidade.textContent = `${quantidadeTotal}`
+
+                    atualizarCarrinho()
+                }
+
+                })
 
                 // Tornando a div, p e span filhos da nova DIV criada
                 divItemCarrinho.appendChild(divNomeProduto);
@@ -261,7 +309,10 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 divItemCarrinho.appendChild(divControleDeQuantidade)
                 
             })
+
+            
         }
+        
     }
 
     // FUNÇÃO ATUALIZAR CARRINHO
@@ -271,15 +322,32 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         let valorTotalCarrinho = document.querySelector('#total-carrinho')
         let somaDoTotal = 0
 
-
+        let totalItensCarrinho = 0
 
         itensCarrinho.forEach(function(item) {
 
-            somaDoTotal = item.preco + somaDoTotal
+        totalItensCarrinho = totalItensCarrinho + item.quantidade
+        
+
+        
         })
+
+        contadorCarrinho.textContent = `${totalItensCarrinho}`
+
+        
+
+
+        itensCarrinho.forEach(function(item) {
+            somaDoTotal = (item.produto.preco * item.quantidade) + somaDoTotal
+            
+        })
+
+    
 
 
         let h3Total = valorTotalCarrinho.querySelector('h3');
             h3Total.textContent = `Total: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
             h3Total.classList.add('precoCarrinhoTotal')
+
+            
     }
