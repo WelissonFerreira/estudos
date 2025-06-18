@@ -360,3 +360,52 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         exibirModalDados.style.display = 'block'
         modalCarrinho.style.display = 'none'
     })
+
+    // FUNÇÃO BOTÃO VOLTAR
+
+    const btnVoltar = document.getElementById('VoltarPedido')
+
+    btnVoltar.addEventListener('click', function(event) {
+        event.preventDefault();
+        exibirModalDados.style.display = 'none'
+        modalCarrinho.style.display = 'block'
+    })
+
+    
+  // FUNÇÃO FAZER PEDIDO
+    const btnAvancar = document.getElementById('AvancarPedido')
+    const exibirModalPedido = document.getElementById('ModalFazerPedido')
+    const divPedido = document.getElementById('Pedido')
+    const totalPreco = document.getElementById('ValorTotalPedidoFinal')
+    const divItensListaPedido = document.getElementById('itensListadosNoPedido')
+    let precoItens = 0
+
+    btnAvancar.addEventListener('click', function() {
+        exibirModalPedido.style.display = 'block'
+        divItensListaPedido.textContent = ``
+        precoItens = 0
+
+        itensCarrinho.forEach(function(item) {
+        let addPedido = document.createElement('li')
+        addPedido.textContent = `Item: ${item.quantidade}x ${item.produto.nome} `
+        divItensListaPedido.appendChild(addPedido)
+
+        let addPreco = document.createElement('span')
+        addPreco.textContent = ` Preço: R$ ${item.produto.preco.toFixed(2).replace('.', ',')}`
+        divItensListaPedido.appendChild(addPreco)
+
+        precoItens += item.produto.preco * item.quantidade
+
+        
+        
+    })
+
+        totalPreco.textContent = `R$ ${precoItens.toFixed(2).replace('.', ',')}`
+
+    })
+
+    const btnVoltarPedido = document.getElementById('voltarPedido')
+        btnVoltarPedido.addEventListener('click', function() {
+        exibirModalPedido.style.display = 'none'
+        exibirModalDados.style.display = 'block'
+    })

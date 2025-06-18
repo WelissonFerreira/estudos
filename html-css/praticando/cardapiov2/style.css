@@ -518,6 +518,8 @@ footer {
 
 /* MODAL DADOS */
 
+/* MODAL DADOS */
+
 .ConteudoModalDados {
     background-color: #303030;
     margin: 15% auto; /* Centraliza o modal na tela */
@@ -557,7 +559,22 @@ footer {
     white-space: nowrap;
 }
 
+/* MODAL FINALIZAR PEDIDO */
 
+.ContModalFazerPedido {
+    background-color: #303030;
+    margin: 15% auto; /* Centraliza o modal na tela */
+    padding: 20px;
+    width: 80%; /* Largura do modal */
+    max-width: 500px; /* Largura máxima do modal */
+    border: 1px solid #888;
+    border-radius: 10px; /* Bordas arredondadas */
+    position: relative; /* Para posicionar o botão de fechar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+}
 
  /* ======================================= */
 /* Responsividade para telas pequenas */

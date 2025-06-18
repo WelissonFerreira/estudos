@@ -305,19 +305,40 @@
         </div>
     </div>
 
+    <!--Modal Dados-->
     <div id="ModalDados" class="modal">
         <div class="ConteudoModalDados">
             <form id="formularioDados">
-                <label>Nome: <input type="text" id="nome" name="nome" placeholder="Seu nome"></input></label>
-                <label>Telefone: <input type="tel" id="cell" name="cell" placeholder="Seu WhatsApp"></input></label>
+                <fieldset>
+                    <label for="nome">Nome: <input type="text" id="nome" name="nome" placeholder="Seu nome"></input></label> <br>
+                    <label for="telefone">Telefone: <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input></label>
+                    <legend>Tipo de Pedido</legend> <br>
+                    <label for="Entrega"><input type="radio" name="Entrega" id="Entrega" checked> Entrega </label>
+                    <label for="Retirada"><input type="radio" name="Retirada" id="Retirada">Retirada</label>
+                </fieldset>
                     <div id="divBotoesDados">
-                        <button id="AvancarPedido">Avançar</button>
+                        <button id="AvancarPedido" type="button">Avançar</button>
                         <button id="VoltarPedido">Voltar</button>
                     </div>
             </form>
         </div>
     </div>
 
+    <!--Modal Fazer Pedido-->
+    <div id="ModalFazerPedido" class="modal">
+        <div class="ContModalFazerPedido">
+            <div id="divbotaoPedidoVoltar"><button id="voltarPedido">Voltar</button></div>
+                <div id="Pedido">
+                    <p>Seu pedido: </p>
+                    <div id="itensListadosNoPedido"> 
+                </div>
+            </div>
+                <span id="ValorTotalPedidoFinal">Total: R$: </span>
+            <div id="divBotoesPedido">
+                <button id="Finalizar-Pedido">Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js.js"></script>
 </body>
