@@ -314,14 +314,16 @@
                         <input type="text" id="nome" name="nome" placeholder="Seu nome"></input> <br>
                     <label for="cell">Telefone:</label>
                         <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
-                            <legend>Tipo de Pedido</legend> <br>
+                            <legend>Preencha os dados</legend> <br>
                                 <input type="radio" name="TipoPedido" id="Entrega" checked>
                                 <label for="Entrega">Entrega</label>
                                 <input type="radio" name="TipoPedido" id="Retirada">
                                 <label for="Retirada">Retirada</label>
 
                                 <div id="formEntrega">
-                                    <label for="Rua">Rua:</label>
+                                    <label for="CEP">CEP: </label>
+                                    <input type="text" name="CEP" id="CEP" maxlength="9">
+                                    <label for="Rua">Rua</label>
                                     <input type="text" name="Rua" id="Rua">
                                     <label for="Numero">Número:</label>
                                     <input type="number" name="Numeri" id="Numero">
