@@ -310,11 +310,39 @@
         <div class="ConteudoModalDados">
             <form id="formularioDados">
                 <fieldset>
-                    <label for="nome">Nome: <input type="text" id="nome" name="nome" placeholder="Seu nome"></input></label> <br>
-                    <label for="telefone">Telefone: <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input></label>
-                    <legend>Tipo de Pedido</legend> <br>
-                    <label for="Entrega"><input type="radio" name="Entrega" id="Entrega" checked> Entrega </label>
-                    <label for="Retirada"><input type="radio" name="Retirada" id="Retirada">Retirada</label>
+                    <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome"></input> <br>
+                    <label for="cell">Telefone:</label>
+                        <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
+                            <legend>Tipo de Pedido</legend> <br>
+                                <input type="radio" name="TipoPedido" id="Entrega" checked>
+                                <label for="Entrega">Entrega</label>
+                                <input type="radio" name="TipoPedido" id="Retirada">
+                                <label for="Retirada">Retirada</label>
+
+                                <div id="formEntrega">
+                                    <label for="Rua">Rua:</label>
+                                    <input type="text" name="Rua" id="Rua">
+                                    <label for="Numero">Número:</label>
+                                    <input type="number" name="Numeri" id="Numero">
+                                        <label for="Bairro">Bairro:</label>
+                                    <select name="Bairro" id="Bairro">
+                                        <optgroup label="Bairros">
+                                            <option value="Selecionar">Selecionar</option>
+                                            <option value="FTS">Feitosa</option>
+                                            <option value="FR">Farol</option>
+                                            <option value="JC">Jacintinho</option>
+                                            <option value="PXT">Peixoto</option>
+                                            <option value="BRD">Barro Duro</option>
+                                            <option value="SRR">Serraria</option>
+                                            <option value="CRZ">Cruz das Almas</option>
+                                        </optgroup>
+                                    </select>
+                                    <br>
+                                    <label for="complemento">Complemento (opcional):</label>
+                                    <input type="text" name="complemento" id="complemento">
+
+                                </div>
                 </fieldset>
                     <div id="divBotoesDados">
                         <button id="AvancarPedido" type="button">Avançar</button>
