@@ -33,7 +33,9 @@ main {
     border-radius: 25px;
 }
 
-
+#principal {
+    background-image: url(imagens/back1.png);
+}
 
 
 /* Cabeçalho */
