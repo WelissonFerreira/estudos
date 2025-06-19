@@ -576,6 +576,40 @@ footer {
     font-size: 1rem;
 }
 
+#voltarPedido, #Finalizar-Pedido {
+    border-radius: 25px;
+    background-Color: white;
+    color: lightblue;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+}
+
+ /* ======================================= */
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 400px) {
+    .navbar {
+        
+        width: 100%;
+        padding: 10px 0; 
+    }
+
+    .navbar li a {
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+    .item-pai {
+        width: 100%;
+        
+        
+    }
+    
+}
+
  /* ======================================= */
 /* Responsividade para telas pequenas */
 @media screen and (max-width: 400px) {

@@ -180,6 +180,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         event.preventDefault();
 
         modalCarrinho.style.display = 'block'
+        document.body.style.overflow = 'hidden'
 
         atualizarCarrinho()
 
@@ -187,6 +188,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
     // FUNÇÃO FECHAR O CARRINHO
     fecharCarrinho.addEventListener('click', function() {
         modalCarrinho.style.display = 'none';
+        document.body.style.overflow = 'auto'
     })
 
     
@@ -371,6 +373,14 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         modalCarrinho.style.display = 'block'
     })
 
+
+    // EVENTO BOTÃO FECHAR
+
+    const botaoFecharPedido = document.querySelector('.close-button-dados')
+    botaoFecharPedido.addEventListener('click', function() {
+    exibirModalDados.style.display = 'none'
+    document.body.style.overflow = 'auto'
+})
     
   // FUNÇÃO FAZER PEDIDO
     const btnAvancar = document.getElementById('AvancarPedido')
@@ -382,6 +392,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
     btnAvancar.addEventListener('click', function() {
         exibirModalPedido.style.display = 'block'
+        exibirModalDados.style.display = 'none'
         divItensListaPedido.textContent = ``
         precoItens = 0
 
@@ -408,4 +419,10 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         btnVoltarPedido.addEventListener('click', function() {
         exibirModalPedido.style.display = 'none'
         exibirModalDados.style.display = 'block'
+    })
+
+    const btnFecharPedido = document.querySelector('.close-button-pedido')
+    btnFecharPedido.addEventListener('click', function() {
+    exibirModalPedido.style.display = 'none'
+    document.body.style.overflow = 'auto'
     })
