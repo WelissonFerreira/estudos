@@ -426,3 +426,35 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
     exibirModalPedido.style.display = 'none'
     document.body.style.overflow = 'auto'
     })
+
+    //FUNÇÃO TOPO (OPEN-CLOSE)
+    let openClose = document.getElementById('open-close')
+    let data = new Date()
+    let hora = data.getHours()
+
+    function AbertoFechado() {
+        if (hora >= 18  && hora < 24 ) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function exibirOpenClose() {
+        let ResultadoFuncao = AbertoFechado()
+
+        if (ResultadoFuncao === true) {
+            openClose.textContent = `Aberto!`
+            openClose.style.color = `white`
+            openClose.style.backgroundColor = 'green'
+
+        } else {
+            openClose.textContent = `Fechado`
+            openClose.style.color = 'white'
+            openClose.style.backgroundColor = `#e74c3c`
+            openClose.style.width = '40px'
+            openClose.style.padding = '2px'
+        }
+    }
+
+    exibirOpenClose();

@@ -50,9 +50,36 @@ header {
 
 /* Logo */
 .logomenu {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    
 }
+
+.h2topo {
+    margin-top: 20px;
+}
+
+.pmenu {
+    background-color: #303030;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+}
+
+#topomenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#open-close {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    
+}
+
+
 
 /* =================================== */
 
