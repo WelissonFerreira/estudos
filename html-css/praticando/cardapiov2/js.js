@@ -431,6 +431,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
     let openClose = document.getElementById('open-close')
     let data = new Date()
     let hora = data.getHours()
+    //let hora = 10
 
     function AbertoFechado() {
         if (hora >= 18  && hora < 24 ) {
@@ -444,16 +445,41 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         let ResultadoFuncao = AbertoFechado()
 
         if (ResultadoFuncao === true) {
-            openClose.textContent = `Aberto!`
-            openClose.style.color = `white`
-            openClose.style.backgroundColor = 'green'
+            let p1 = document.createElement('p')
+            p1.textContent = 'Aberto!'
+            
+            p1.style.color = `white`
+            p1.style.backgroundColor = 'green'
+            p1.style.padding = '5px'
+            p1.style.margin = '5px'
+            p1.style.borderRadius = '3px'
+            openClose.appendChild(p1)
+            
+
+            let novoP = document.createElement('p')
+            novoP.textContent = `Estamos funcionando!`
+            openClose.appendChild(novoP)
 
         } else {
-            openClose.textContent = `Fechado`
-            openClose.style.color = 'white'
-            openClose.style.backgroundColor = `#e74c3c`
-            openClose.style.width = '40px'
-            openClose.style.padding = '2px'
+
+            let p2 = document.createElement('p2')
+            p2.textContent = 'Fechado!'
+
+            p2.style.color = `white`
+            p2.style.backgroundColor = 'rgb(158, 26, 24)'
+            p2.style.padding = '5px'
+            p2.style.margin = '5px'
+            p2.style.borderRadius = '3px'
+            openClose.appendChild(p2)
+
+            let novoP2 = document.createElement('p')
+
+            novoP2.textContent = `Não estamos funcionando`
+            novoP2.style.color = 'white'
+            novoP2.style.backgroundColor = ``
+            novoP2.style.padding = '2px'
+
+            openClose.appendChild(novoP2)
         }
     }
 
