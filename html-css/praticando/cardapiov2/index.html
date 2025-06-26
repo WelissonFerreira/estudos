@@ -20,6 +20,39 @@
                 
             </time>
     </section>
+
+    <!--MODAL HORÁRIOS-->
+
+    <div id="modalhorarios">
+        <div class="contmodalhorarios">
+            <span class="close-button-horarios">&times;</span>
+            <h3 class="h3modal">ARTHUR LANCHES</h3>
+            <p class="pmodalhorario">Tempo médio delivery: 30-60 minutos</p>
+            <p class="pmodalhorario">Tempo médio balcão: 30 - 50 minutos</p>
+            <br>
+            <span class="modal-sub-titulos">Horários de Funcionamento</span>
+            <ul>
+                <li class="modal-dia">Domingo: <span class="modal-horas">18:00 - 23:59</span></li> 
+                <li class="modal-dia">Segunda-Feira: <span class="modal-horas">Fechado</span></li>
+                <li class="modal-dia">Terça-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+                <li class="modal-dia">Quarta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+                <li class="modal-dia">Quinta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+                <li class="modal-dia">Sexta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+                <li class="modal-dia">Sábado: <span class="modal-horas">18:00 - 23:59</span></li>
+            </ul>
+
+            <span class="modal-sub-titulos">Métodos de Pagamento</span>
+            <ul>
+                <li class="formapagamento-modal">Dinheiro</li>
+                <li class="formapagamento-modal">PIX</li>
+                <li class="formapagamento-modal">Cartão de Débito - Maquininha</li>
+                <li class="formapagamento-modal">Cartão de Crédito - Maquininha</li>
+            </ul>
+
+            
+        </div>
+    </div>
+
     <header>
 
         <!-- <img class="imgtopo" src="imagens/topo6.png" alt=""> !-->
@@ -328,16 +361,16 @@
                     <label for="cell">Telefone:</label>
                         <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
                             <legend>Preencha os dados</legend> <br>
-                                <input type="radio" name="TipoPedido" id="Entrega" checked>
+                                <input type="radio" name="TipoPedido" id="Entrega">
                                 <label for="Entrega">Entrega</label>
-                                <input type="radio" name="TipoPedido" id="Retirada">
+                                <input type="radio" name="TipoPedido" id="Retirada" checked>
                                 <label for="Retirada">Retirada</label>
 
                                 <div id="formEntrega">
                                     <label for="CEP">CEP: </label>
-                                    <input type="text" name="CEP" id="CEP" maxlength="9">
+                                    <input type="text" name="CEP" id="CEP" maxlength="9"> <br>
                                     <label for="Rua">Rua</label>
-                                    <input type="text" name="Rua" id="Rua">
+                                    <input type="text" name="Rua" id="Rua"> <br>
                                     <label for="Numero">Número:</label>
                                     <input type="number" name="Numeri" id="Numero">
                                         <label for="Bairro">Bairro:</label>

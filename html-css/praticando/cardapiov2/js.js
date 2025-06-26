@@ -464,6 +464,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
             let p2 = document.createElement('p2')
             p2.textContent = 'Fechado!'
+            p2.classList.add('btn-fechado-horarios')
 
             p2.style.color = `white`
             p2.style.backgroundColor = 'rgb(158, 26, 24)'
@@ -474,13 +475,27 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
             let novoP2 = document.createElement('p')
 
-            novoP2.textContent = `Não estamos funcionando`
+            novoP2.textContent = `Horário de funcionamento: 18:00 - 23:59`
             novoP2.style.color = 'white'
             novoP2.style.backgroundColor = ``
             novoP2.style.padding = '2px'
 
+            novoP2.classList.add('botao-horarios-P2')
             openClose.appendChild(novoP2)
+
+
+            novoP2.addEventListener('click', function() {
+            modalhorarios.style.display = 'block'
+        })
         }
+
+        let botaoFechar = document.querySelector('.close-button-horarios')
+            botaoFechar.addEventListener('click', function() {
+                modalhorarios.style.display = 'none'
+            }) 
     }
 
     exibirOpenClose();
+
+
+
