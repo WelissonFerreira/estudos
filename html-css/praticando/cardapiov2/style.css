@@ -686,11 +686,12 @@ footer {
 #formularioDados label,
 #formularioDados textarea {
     margin-bottom: 10px; /* Adiciona 10px de espaço abaixo de cada campo */
+    margin-left: 10px;
 }
 
 #formularioDados fieldset {
-    margin-bottom: 30px; /* Espaço entre cada grupo de campos */
-}
+    margin-bottom: 20px; /* Espaço entre cada grupo de campos */
+}k
 
 legend {
     margin-bottom: 10px;
