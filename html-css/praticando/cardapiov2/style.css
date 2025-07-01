@@ -643,8 +643,10 @@ footer {
 }
 
 fieldset {
+    
     margin: 25px;
     padding: 25px;
+    margin-left: 10px;
 }
 
 #divBotoesDados {
