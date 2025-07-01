@@ -624,16 +624,17 @@ footer {
 
 .ConteudoModalDados {
     background-color: #303030;
-    margin: 15% auto; /* Centraliza o modal na tela */
+    margin: 15% auto;
     padding: 20px;
-    width: 90%; /* Largura do modal */
-    max-width: 500px; /* Largura máxima do modal */
+    width: 90%;
+    max-width: 500px;
     border: 1px solid #888;
-    border-radius: 10px; /* Bordas arredondadas */
-    position: relative; /* Para posicionar o botão de fechar */
+    border-radius: 10px;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; /* Mude aqui para 'column' */
+    justify-content: center; /* Mantive isso, mas pode ser ajustado se precisar de espaçamento */
+    align-items: center; /* Adicione isso para centralizar os itens horizontalmente dentro do modal */
     font-size: 1rem;
 }
 
@@ -646,12 +647,13 @@ footer {
 fieldset {
     padding: 25px;
     margin: auto;
-    
+
 }
 
 #divBotoesDados {
     display: flex;
-    justify-content: center;
+    flex-direction: row; /* Garante que os botões fiquem lado a lado */
+    justify-content: center; /* Centraliza os botões */
     padding-top: 15px;
     gap: 15px;
 }
@@ -708,7 +710,7 @@ fieldset {
 #formularioDados {
     display: flex;
     gap: 25px;
-    flex-direction: row;
+    flex-direction: column;
     
 }
 
