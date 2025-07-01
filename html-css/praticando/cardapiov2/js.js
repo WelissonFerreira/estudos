@@ -79,25 +79,25 @@ let catalogoDeProdutos = {
         descricao: "Coca-Cola em lata de 250 ml",
         imagem: "https://s3-sa-east-1.amazonaws.com/loja2/5f3dd775f8306fac0109bb1f4df90bba.png"
     },
-    
+
 }
 
 
-/* Botão ver mais programado */ 
+/* Botão ver mais programado */
 // 2. Variável para TODOS os botões "Ver mais"
 let btnAbriModal = document.querySelectorAll('.botaomodal');
 
 // FUNÇÃO PARA VER DETALHES DOS PRODUTOS
-btnAbriModal.forEach(function(botaoAtual) { 
+btnAbriModal.forEach(function(botaoAtual) {
     botaoAtual.addEventListener('click', function(event) {
         event.preventDefault();
-        
+    
         //  Exibir o modal correspondente ao botão clicado
         let SeletorDoModal = botaoAtual.dataset.modelTarget; // Acessa o valor do atributo data-model-target do HTML
         let modalParaAbrir = document.querySelector(SeletorDoModal); // Seleciona o modal correspondente
 
         modalParaAbrir.style.display = 'block'; // Exibe o modal
-        
+    
         // 1. Encontrar o botão de fechar DENTRO DESTE modal que abriu
         let fecharbotaomodal = modalParaAbrir.querySelector('.close-button')
 
@@ -137,11 +137,11 @@ let itensCarrinho = [];
 btnCarrinhoContador.forEach(function(botaoCarrinho) {
     botaoCarrinho.addEventListener('click', function() {
         // Incrementa o valor do contador do carrinho (este pode continuar)
-        
-        
+    
+    
         // Pega o ID único do produto a partir do atributo 'data-produto-id' do botão clicado
         let seletorDoCarrinho = botaoCarrinho.dataset.produtoId;
-        
+    
         // Usa o ID para encontrar e obter o objeto completo do produto no 'catalogoDeProdutos'
         let produtoSelecionado = catalogoDeProdutos[seletorDoCarrinho];
 
@@ -174,35 +174,58 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
 let abrirCarrinho = document.querySelector('#botaoCarrinho')
 let modalCarrinho = document.querySelector('#ModalCarrinho')
 let fecharCarrinho = document.querySelector('.close-button-carrinho')
+let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio');
 
     // FUNÇÃO ABRIR CARRINHO
-    abrirCarrinho.addEventListener('click', function(event) {
+
+        
+    
+        abrirCarrinho.addEventListener('click', function(event) {
         event.preventDefault();
 
-        modalCarrinho.style.display = 'block'
-        document.body.style.overflow = 'hidden'
+        if (itensCarrinho.length === 0) {
+        // Exibe a mensagem de carrinho vazio
+        mensagemCarrinhoVazioDiv.textContent = "Seu carrinho está vazio!";
+        mensagemCarrinhoVazioDiv.style.display = 'block';
 
-        atualizarCarrinho()
+        // Opcional: Adicionar um temporizador para a mensagem desaparecer
+        setTimeout(function() {
+            mensagemCarrinhoVazioDiv.style.display = 'none';
+            mensagemCarrinhoVazioDiv.textContent = ""; // Limpa o texto
+        }, 1500); // A mensagem desaparece após 1.5 segundos (3000 milissegundos)
 
-    })
-    // FUNÇÃO FECHAR O CARRINHO
-    fecharCarrinho.addEventListener('click', function() {
+        // Garante que o modal do carrinho NÃO abra se estiver vazio
+        modalCarrinho.style.display = 'none'; 
+        document.body.style.overflow = 'auto'; // Garante que a rolagem esteja liberada
+    } else {
+        // Se houver itens, esconde a mensagem e abre o modal
+        mensagemCarrinhoVazioDiv.style.display = 'none'; // Esconde a mensagem caso estivesse visível
+        modalCarrinho.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        atualizarCarrinho();
+        fecharCarrinho.addEventListener('click', function() {
         modalCarrinho.style.display = 'none';
         document.body.style.overflow = 'auto'
-    })
+        })
+    }
+});
 
-    
      //FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
         // Próximo passo: verificar se o carrinho está vazio
         if (itensCarrinho.length === 0) {
-            itensDoCarrinhoDiv.textContent = "Seu carrinho está vazio!"
+            
+            
+
         } else {
             itensCarrinho.forEach(function(item) { // Percorrendo os itens do Carrinho com forEach
-
             
+            /*let mensagemVazio = document.createElement('p');
+            mensagemVazio.textContent = "Seu carrinho está vazio! Adicione alguns produtos.";
+            itensDoCarrinhoDiv.appendChild(mensagemVazio);
+        */
 
                 // Criando uma div Pai para controlar melhor o FlexBox
                 let divItemCarrinho = document.createElement('div'); // Cria a div Pai
@@ -212,11 +235,11 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 let divNomeProduto = document.createElement('h3')
                 divNomeProduto.textContent = item.produto.nome
                 divNomeProduto.classList.add('nomeProduto')
-                
+            
                 // Cria um paragrafo e pega a descrição do produto
                 let descricaoProduto = document.createElement('p')
                 descricaoProduto.textContent = `${item.produto.descricao}`
-                
+            
                 // Cria um span e pega o preço do produto.
                 let spanPrecoProduto = document.createElement('span')
                 spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
@@ -234,16 +257,17 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 itensCarrinho.splice(encontrarItem, 1)
 
                 contadorCarrinho.textContent = `0`
-                
+
                 atualizarCarrinho()
 
+                
 
                 })
 
                 // Div Controle de Quantidades de Itens
-                let divControleDeQuantidade = document.createElement('div') // Div 
+                let divControleDeQuantidade = document.createElement('div') // Div
                 divControleDeQuantidade.classList.add('controles-quantidade')
-                
+            
                 // BOTÃO AUMENTAR
                 let botaoAumentar = document.createElement('button') // Botão de Aumentar
                 botaoAumentar.textContent = `+`
@@ -254,13 +278,13 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 item.quantidade = quantidadeTotal
                 spanQuantidade.textContent = `${quantidadeTotal}`
 
-                
-                
+            
+            
 
                 atualizarCarrinho()
-                
+            
                 })
-                
+            
                 // SPAN QUANTIDADE | TEXTO HTML
                 let spanQuantidade = document.createElement('span')
                 spanQuantidade.textContent = item.quantidade
@@ -272,7 +296,7 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 let botaoDiminuir = document.createElement('button') // Botão de Diminuir
                 botaoDiminuir.textContent = `-` // Conteudo do botão
                 botaoDiminuir.classList.add('btnDiminuir')
-                
+            
                 botaoDiminuir.addEventListener('click', function() {
 
                 if (item.quantidade === 1) {
@@ -280,10 +304,10 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                     itensCarrinho.splice(encontrarItem, 1)
                     //contadorCarrinho.textContent = `0`
                     atualizarCarrinho()
-                    
+                
                 } else {
                     let quantidadeTotal = item.quantidade - 1
-                
+            
                     item.quantidade = quantidadeTotal
                     spanQuantidade.textContent = `${quantidadeTotal}`
 
@@ -298,28 +322,35 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
                 divItemCarrinho.appendChild(spanPrecoProduto);
 
                 // Tornando os botões filhos da nova DIV Criada
-                
+            
                 divControleDeQuantidade.appendChild(botaoAumentar);
                 divControleDeQuantidade.appendChild(spanQuantidade)
                 divControleDeQuantidade.appendChild(botaoDiminuir);
                 divControleDeQuantidade.appendChild(botaoRemover);
                 botaoRemover.appendChild(iconeRemover);
-                
+            
                 // Conectando a nova DIV a div maior que é "itens-do-carrinho"
                 itensDoCarrinhoDiv.appendChild(divItemCarrinho)
                 // Conectando a div Controle de quantidades
                 divItemCarrinho.appendChild(divControleDeQuantidade)
-                
+            
             })
 
-            
-        }
         
+        }
+    
     }
 
     // FUNÇÃO ATUALIZAR CARRINHO
     function atualizarCarrinho() {
         mostrarItensDoCarrinho() // Garante que a lista de itens seja exibida e atualizada
+
+        if (itensCarrinho.length === 0) {
+            modalCarrinho.style.display = 'none'
+            document.body.style.overflow = 'auto'
+          // Certifique-se de que a mensagem de carrinho vazio temporária não esteja visível aqui
+        mensagemCarrinhoVazioDiv.style.display = 'none'; 
+        }
 
         let valorTotalCarrinho = document.querySelector('#total-carrinho')
         let somaDoTotal = 0
@@ -329,29 +360,29 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         itensCarrinho.forEach(function(item) {
 
         totalItensCarrinho = totalItensCarrinho + item.quantidade
-        
+    
 
-        
+    
         })
 
         contadorCarrinho.textContent = `${totalItensCarrinho}`
 
-        
+    
 
 
         itensCarrinho.forEach(function(item) {
             somaDoTotal = (item.produto.preco * item.quantidade) + somaDoTotal
-            
+        
         })
 
-    
+
 
 
         let h3Total = valorTotalCarrinho.querySelector('h3');
             h3Total.textContent = `Total: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
             h3Total.classList.add('precoCarrinhoTotal')
 
-            
+        
     }
 
     // FUNÇÃO EXIBIR DADOS
@@ -380,8 +411,8 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
     botaoFecharPedido.addEventListener('click', function() {
     exibirModalDados.style.display = 'none'
     document.body.style.overflow = 'auto'
-})
     
+})
   // FUNÇÃO FAZER PEDIDO
     const btnAvancar = document.getElementById('AvancarPedido')
     const exibirModalPedido = document.getElementById('ModalFazerPedido')
@@ -407,8 +438,8 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
 
         precoItens += item.produto.preco * item.quantidade
 
-        
-        
+    
+    
     })
 
         totalPreco.textContent = `R$ ${precoItens.toFixed(2).replace('.', ',')}`
@@ -447,14 +478,14 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         if (ResultadoFuncao === true) {
             let p1 = document.createElement('p')
             p1.textContent = 'Aberto!'
-            
+    
             p1.style.color = `white`
             p1.style.backgroundColor = 'green'
             p1.style.padding = '5px'
             p1.style.margin = '5px'
             p1.style.borderRadius = '3px'
             openClose.appendChild(p1)
-            
+    
 
             let novoP = document.createElement('p')
             novoP.textContent = `Estamos funcionando!`
@@ -492,10 +523,24 @@ let fecharCarrinho = document.querySelector('.close-button-carrinho')
         let botaoFechar = document.querySelector('.close-button-horarios')
             botaoFechar.addEventListener('click', function() {
                 modalhorarios.style.display = 'none'
-            }) 
+            })
     }
 
     exibirOpenClose();
 
+    // EVENTO OPÇÃO ENTREGA
+    let opcaoEntrega = document.querySelector('#Entrega')
+    let Formul = document.querySelector('.CformEntrega')
+    
 
+    opcaoEntrega.addEventListener('click', function() {
+        Formul.classList.remove('CformEntrega')
+    })
 
+    // EVENTO OPÇÃO RETIRADA
+    let opcaoRetirada = document.querySelector('.CRetirada')
+    
+    opcaoRetirada.addEventListener('click', function() {
+        Formul.classList.add('CformEntrega')
+    })
+    

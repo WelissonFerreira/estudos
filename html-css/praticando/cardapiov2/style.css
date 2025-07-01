@@ -1,3 +1,4 @@
+@charset "UTF-8";
     @charset "UTF-8";
 /* Mobile First */
 
@@ -10,11 +11,9 @@
 
 /* Corpo do site */
 body {
-    background-color: #191919; 
+    background-color: #191919;
     font-size: 10px;
     color: white;
-    
-    
 }
 
 /* Main container */
@@ -29,7 +28,7 @@ main {
     height: 100%;
     padding: 30px;
     padding-bottom: 100px;
-    background-color: #252525; 
+    background-color: #252525;
     border-radius: 25px;
 }
 
@@ -51,7 +50,7 @@ header {
 /* Logo */
 .logomenu {
     width: 120px;
-    height: 120px;   
+    height: 120px;  
 }
 
 .h2topo {
@@ -89,9 +88,8 @@ header {
     background-color: #303030;
     width: 380px;
     border-radius: 25px;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     margin: auto;
-    
 }
 
 .navbar li a {
@@ -154,26 +152,22 @@ h2:hover {
     border: 1px solid gray;
     /*border-radius: 10px;*/
     box-shadow: 1px 1px 8px 1px gray;
-    
 }
 /*Teste */
 .card-pai {
     display: flex;
     gap: 15px;
-    
-
-
 }
 
 .card-image {
-    
+
     width: 90px;
     height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 
@@ -205,7 +199,7 @@ h2:hover {
 .fotobebidas {
     width: 130px;
     height: 120px;
-    
+
 }
 
 
@@ -231,7 +225,7 @@ h2:hover {
     padding: 5px 10px;
     cursor: pointer;
     white-space: nowrap;
-    
+
 }
 
 .AdicionarCarrinho:hover {
@@ -243,7 +237,7 @@ h2:hover {
 .titulo-produtos {
     font-size: 1rem;
     padding-bottom: 5px;
-    
+
 }
 
 
@@ -351,6 +345,25 @@ footer {
     z-index: 10;  /* Garante que a bolinha fique na frente de outros elementos se houver sobreposição */
 }
 
+#mensagem-carrinho-vazio {
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #303030;
+    color: white;
+    padding: 8px 15px; /* Reduzi um pouco o padding para diminuir o tamanho geral */
+    margin-top: -25px;
+    z-index: 1000;
+    font-weight: bold;
+    text-align: center;
+    width: auto; /* Permite que a largura se ajuste ao conteúdo, até o max-width */
+    height: auto; /* Garante que a altura se ajuste, quebrando linhas se necessário */
+    white-space: nowrap; /* Permite que o texto quebre linhas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-size: 0.6em; /* Opcional: Reduz o tamanho da fonte um pouco para economizar espaço */
+}
+
 
 
 
@@ -370,7 +383,7 @@ footer {
     width: 100%; /* Largura total da tela */
     height: 100%; /* Altura total da tela */
     overflow: auto; /* Permite rolagem se necessário */
-    background-color: #303030; 
+    background-color: #303030;
 }
 
 .modal-content {
@@ -423,7 +436,7 @@ footer {
     height: 60%;
     margin-top: 100px;
     display: none;
-    
+
 }
 
 .contmodalhorarios {
@@ -435,13 +448,13 @@ footer {
     border: 1px solid #888;
     border-radius: 10px;
     position: relative;
-    
+
 }
 
     .h3modal {
         padding: 5px;
         color: #fe7f48;
-        
+    
     }
     .pmodalhorario {
         padding: 5px;
@@ -463,7 +476,7 @@ footer {
         align-items: center;
         font-size: 0.8rem;
         font-weight: bold;
-        
+    
     }
 
     .formapagamento-modal {
@@ -570,7 +583,7 @@ footer {
     justify-content: center;
     align-items: center;
     /*padding-top: 1px;*/
-    
+
 }
 
 .btnDiminuir {
@@ -629,6 +642,11 @@ footer {
     flex-direction: column;
 }
 
+fieldset {
+    margin: 25px;
+    padding: 25px;
+}
+
 #divBotoesDados {
     display: flex;
     justify-content: center;
@@ -677,33 +695,53 @@ footer {
 
 /* FORMULÁRIO */
 
+.CformEntrega {
+    display: none;
+
+}
+
+
+
+
 #formularioDados {
     display: flex;
-    gap: 15px;
+    gap: 25px;
+    
 }
 
 #formularioDados input,
 #formularioDados label,
 #formularioDados textarea {
-    margin-bottom: 10px; /* Adiciona 10px de espaço abaixo de cada campo */
+    margin-bottom: 15px; /* Adiciona 10px de espaço abaixo de cada campo */
     margin-left: 10px;
+}
+
+#Rua, #Numero, #complemento, #nome, #cell {
+    margin-top: 3px;
+}
+
+#Bairro {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-left: 8px;
 }
 
 #formularioDados fieldset {
     margin-bottom: 20px; /* Espaço entre cada grupo de campos */
-}k
+}
 
 legend {
     margin-bottom: 10px;
+    
 }
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
 @media screen and (max-width: 400px) {
     .navbar {
-        
+    
         width: 100%;
-        padding: 10px 0; 
+        padding: 10px 0;
     }
 
     .navbar li a {
@@ -715,19 +753,19 @@ legend {
 }
     .item-pai {
         width: 100%;
-        
-        
-    }
     
+    
+    }
+
 }
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
 @media screen and (max-width: 400px) {
     .navbar {
-        
+    
         width: 100%;
-        padding: 10px 0; 
+        padding: 10px 0;
     }
 
     .navbar li a {
@@ -739,8 +777,8 @@ legend {
 }
     .item-pai {
         width: 100%;
-        
-        
-    }
     
+    
+    }
+
 }
