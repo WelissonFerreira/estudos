@@ -643,7 +643,7 @@ footer {
 }
 
 fieldset {
-    
+    width: 250px;
     margin: 25px;
     padding: 25px;
     margin-left: 10px;
@@ -715,7 +715,7 @@ fieldset {
 #formularioDados label,
 #formularioDados textarea {
     margin-bottom: 15px; /* Adiciona 10px de espaço abaixo de cada campo */
-    margin-left: 1px;
+    margin-left: 5px;
 }
 
 #Rua, #Numero, #complemento, #nome, #cell {
