@@ -715,7 +715,7 @@ fieldset {
 #formularioDados label,
 #formularioDados textarea {
     margin-bottom: 15px; /* Adiciona 10px de espaço abaixo de cada campo */
-    margin-left: 10px;
+    margin-left: 1px;
 }
 
 #Rua, #Numero, #complemento, #nome, #cell {
