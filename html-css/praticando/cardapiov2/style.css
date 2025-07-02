@@ -636,6 +636,7 @@ footer {
     justify-content: center; /* Mantive isso, mas pode ser ajustado se precisar de espaçamento */
     align-items: center; /* Adicione isso para centralizar os itens horizontalmente dentro do modal */
     font-size: 1rem;
+    
 }
 
 
@@ -717,7 +718,10 @@ footer {
 }
 
 .close-button-dados {
-    margin-left: 450px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    
     
 }
 
