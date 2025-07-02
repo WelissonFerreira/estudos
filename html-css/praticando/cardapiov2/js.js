@@ -419,7 +419,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     const divPedido = document.getElementById('Pedido')
     const totalPreco = document.getElementById('ValorTotalPedidoFinal')
     const divItensListaPedido = document.getElementById('itensListadosNoPedido')
-    let precoItens = 0
+    let precoTotalDosItens = 0
 
     btnAvancar.addEventListener('click', function() {
         exibirModalPedido.style.display = 'block'
@@ -445,6 +445,83 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         totalPreco.textContent = `R$ ${precoItens.toFixed(2).replace('.', ',')}`
 
     })
+
+
+    // ENVIAR PEDIDO PARA O WHATTSAPP
+    const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
+
+btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
+    // 1. Capturar os dados pessoais e de entrega
+    let nomeCliente = document.querySelector('#nome').value;
+    let telefoneCliente = document.querySelector('#cell').value;
+    let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
+
+    let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`; // Título mais descritivo
+
+    // Adiciona os dados do cliente
+    mensagemWhatsApp += `*Dados do Cliente:*\n`;
+    mensagemWhatsApp += `Nome: ${nomeCliente}\n`;
+    mensagemWhatsApp += `Telefone: ${telefoneCliente}\n`;
+    mensagemWhatsApp += `Tipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`; // Formata melhor o tipo de pedido
+
+    // Se for entrega, adiciona os detalhes do endereço
+    if (tipoPedido === 'Entrega') {
+        let bairro = document.querySelector('#Bairro').value;
+        let rua = document.querySelector('#Rua').value;
+        let numero = document.querySelector('#Numero').value;
+        let complemento = document.querySelector('#complemento').value;
+
+        mensagemWhatsApp += `\n*Endereço de Entrega:*\n`;
+        mensagemWhatsApp += `Bairro: ${bairro}\n`;
+        mensagemWhatsApp += `Rua: ${rua}\n`;
+        mensagemWhatsApp += `Número: ${numero}\n`;
+        if (complemento) { // Adiciona o complemento apenas se houver
+            mensagemWhatsApp += `Complemento: ${complemento}\n`;
+        }
+    }
+
+    // --- Adicionar os itens do carrinho ---
+    mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
+
+    if (itensCarrinho.length > 0) {
+        itensCarrinho.forEach((item, index) => {
+            mensagemWhatsApp += `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})\n`;
+            // Opcional: Adicionar ingredientes se for relevante para o pedido final
+            // if (item.produto.ingredientes && item.produto.ingredientes.length > 0) {
+            //     mensagemWhatsApp += `    - Ingredientes: ${item.produto.ingredientes.join(', ')}\n`;
+            // }
+        });
+    } else {
+        mensagemWhatsApp += `Nenhum item adicionado ao carrinho (isso não deveria acontecer se o botão de finalizar estiver ativo).\n`;
+    }
+
+    // Adiciona o total final do pedido (usando o precoTotalDosItens já calculado)
+    mensagemWhatsApp += `\n*Total do Pedido: R$ ${precoTotalDosItens.toFixed(2).replace('.', ',')}*\n`;
+
+    // Seu número de WhatsApp (inclua o código do país e DDD, sem formatação)
+    let numeroWhatsApp = '558299261614'; // **Maceió, AL, Brasil - Exemplo: 55 82 99999-9999**
+                                        // Certifique-se de que este número é o correto!
+
+    // Codifica a mensagem para URL
+    let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
+
+    // Constrói o link do WhatsApp
+    let linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+    // Abre o link em uma nova aba
+    window.open(linkWhatsApp, '_blank');
+
+    // Opcional: Fechar o modal de pedido após enviar
+    document.querySelector('#ModalFazerPedido').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Libera a rolagem da página
+});
+
+// ... (resto do seu código JavaScript) ...
+
+
+
+
+
 
     const btnVoltarPedido = document.getElementById('voltarPedido')
         btnVoltarPedido.addEventListener('click', function() {
@@ -544,7 +621,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     opcaoRetirada.addEventListener('click', function() {
 
         document.querySelector('#formEntrega').style.display = 'none'
-        
+
         document.querySelector('#Bairro').value = 'Selecionar'
         document.querySelector('#Rua').value = ''
         document.querySelector('#Numero').value = ''
