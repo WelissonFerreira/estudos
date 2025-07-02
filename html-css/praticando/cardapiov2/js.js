@@ -531,6 +531,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     // EVENTO OPÇÃO ENTREGA
     let opcaoEntrega = document.querySelector('.CEntrega')
     let Formul = document.querySelector('#formEntrega')
+
     
 
     opcaoEntrega.addEventListener('click', function() {
@@ -541,6 +542,13 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     let opcaoRetirada = document.querySelector('.CRetirada')
     
     opcaoRetirada.addEventListener('click', function() {
+
         document.querySelector('#formEntrega').style.display = 'none'
+        
+        document.querySelector('#Bairro').value = 'Selecionar'
+        document.querySelector('#Rua').value = ''
+        document.querySelector('#Numero').value = ''
+        document.querySelector('#complemento').value = ''
+        
     })
     
