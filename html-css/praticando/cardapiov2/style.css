@@ -55,6 +55,12 @@ header {
 
 .h2topo {
     margin-top: 10px;
+    color:#fe7f48 ;
+    font-size: 1.3rem;
+    background-color: #303030;
+    border-radius: 25px;
+    padding: 10px;
+    letter-spacing: 3px;
 }
 
 #topomenu {
@@ -108,20 +114,6 @@ header {
 /* =========================== */
 
 /* TITULO PRINCIPAL */
-h2 {
-    color: white;
-    background-color: #303030;
-    border-radius: 25px;
-    text-align: center;
-    height: 30px;
-    width: 200px;
-    font-size: 1.7rem;
-}
-
-h2:hover {
-    background-color: #1a1a1a;
-    color: white;
-}
 
 /* Parágrafo do menu */
 .pmenu {
