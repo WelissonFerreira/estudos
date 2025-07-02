@@ -289,7 +289,7 @@ footer {
   position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
   bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
   width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
-  background-Color: #303030; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
+  background-Color: #E8931F; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
   padding: 10px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
   z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
 
@@ -299,7 +299,7 @@ footer {
 /* MENU INFERIOR */
 
 .navbarinferior {
-    background-Color: #303030;
+    background-Color: #E8931F;
     color: white;
     font-size: 1rem;
     display: flex;
@@ -317,6 +317,7 @@ footer {
     padding: 5px 0px;
     gap: 5px;
     font-size: 1.3rem;
+    color: black;
     /*transition: transform 0.8s ease-out;*/
 }
 
