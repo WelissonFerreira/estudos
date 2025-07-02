@@ -356,45 +356,46 @@
         <div class="ConteudoModalDados">
             <span class="close-button-dados">&times;</span>
             <form id="formularioDados">
-                <fieldset>
-                    <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome"></input> <br>
-                    <label for="cell">Telefone:</label>
-                        <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
-                            <legend>Preencha os dados</legend> <br>
-                                <input type="radio" name="TipoPedido" class="CEntrega" id="Entrega">
-                                <label for="Entrega">Entrega</label>
-                                <input type="radio" name="TipoPedido" class="CRetirada" id="Retirada" checked>
-                                <label for="Retirada">Retirada</label>
+    
+    <div class="opcao-dados">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome"></input>
+        <label for="cell">Telefone:</label>
+        <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
+    </div>
 
-                                <div id="formEntrega" class="CformEntrega">
-                                    <label for="Bairro">Bairro:</label>
-                                    <select name="Bairro" id="Bairro">
-                                        <optgroup label="Bairros">
-                                            <option value="Selecionar">Selecionar</option>
-                                            <option value="FTS">Feitosa</option>
-                                            <option value="FR">Farol</option>
-                                            <option value="JC">Jacintinho</option>
-                                            <option value="PXT">Peixoto</option>
-                                            <option value="BRD">Barro Duro</option>
-                                            <option value="SRR">Serraria</option>
-                                            <option value="CRZ">Cruz das Almas</option>
-                                        </optgroup>
-                                    </select>
-                                    <br>
-                                    
-                                    <label for="Rua">Rua:</label>
-                                    <input type="text" name="Rua" id="Rua" placeholder="Nome da Rua"> <br>
-                                    <label for="Numero">Número:</label>
-                                    <input type="number" name="Numeri" id="Numero" placeholder="Número da Casa"> <br>
-                                    <label for="complemento">Complemento (opcional):</label>
-                                    <input type="text" name="complemento" id="complemento" placeholder="Ex: Em frente a Padaria">
-                                    
+    <div class="opcao-pedido">
+    <input type="radio" name="TipoPedido" class="CEntrega" id="Entrega">
+    <label for="Entrega">Entrega</label>
+    <input type="radio" name="TipoPedido" class="CRetirada" id="Retirada" checked>
+    <label for="Retirada">Retirada</label>
+    </div>
 
-                                </div>
-                </fieldset>
-                    
-            </form>
+    <div id="formEntrega" class="CformEntrega">
+        <label for="Bairro">Bairro:</label>
+    <select name="Bairro" id="Bairro">
+        <optgroup label="Bairros">
+            <option value="Selecionar">Selecionar</option>
+            <option value="FTS">Feitosa</option>
+            <option value="FR">Farol</option>
+            <option value="JC">Jacintinho</option>
+            <option value="PXT">Peixoto</option>
+            <option value="BRD">Barro Duro</option>
+            <option value="SRR">Serraria</option>
+            <option value="CRZ">Cruz das Almas</option>
+        </optgroup>    
+    </select>
+
+        <label for="Rua">Rua:</label>
+        <input type="text" name="Rua" id="Rua" placeholder="Nome da Rua">
+
+        <label for="Numero">Número:</label>
+        <input type="number" name="Numeri" id="Numero" placeholder="Número da Casa">
+
+        <label for="complemento">Complemento (opcional):</label>
+        <input type="text" name="complemento" id="complemento" placeholder="Ex: Em frente a Padaria">
+    </div>
+</form>
             <div id="divBotoesDados">
                         <button id="AvancarPedido" type="button">Avançar</button>
                         <button id="VoltarPedido">Voltar</button>

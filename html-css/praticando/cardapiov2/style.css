@@ -638,16 +638,7 @@ footer {
     font-size: 1rem;
 }
 
-#formularioDados {
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-}
 
-fieldset {
-    padding: 25px;
-    margin: auto;
-}
 
 #divBotoesDados {
     display: flex;
@@ -699,52 +690,43 @@ fieldset {
 /* FORMULÁRIO */
 
 .CformEntrega {
-    display: none;
+
+    display: flex;
+    flex-direction: column;
 
 }
 
 
 
-
-#formularioDados {
-    display: flex;
-    gap: 25px;
-    flex-direction: column;
+#formEntrega {
+    display: none;
     
 }
 
-#divBotoesDados {
+.opcao-pedido {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-#formularioDados input,
-#formularioDados label,
-#formularioDados textarea {
-    margin-bottom: 15px; /* Adiciona 10px de espaço abaixo de cada campo */
-    margin-left: 5px;
+.opcao-dados {
+    display: flex;
+    flex-direction: column;
 }
 
-#Rua, #Numero, #complemento, #nome, #cell {
+.close-button-dados {
+    margin-left: 450px;
+    
+}
+
+#nome, #cell, #Bairro, #Rua, #Numero, #complemento {
+    margin-bottom: 10px;
     margin-top: 3px;
 }
 
-#Bairro {
-    margin-bottom: 10px;
-    margin-top: 5px;
-    margin-left: 8px;
-}
 
-#formularioDados fieldset {
-    margin-bottom: 20px; /* Espaço entre cada grupo de campos */
-}
-
-legend {
-    margin-bottom: 10px;
-    
-}
 
  /* ======================================= */
 /* Responsividade para telas pequenas */

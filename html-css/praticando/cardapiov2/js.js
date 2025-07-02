@@ -529,18 +529,18 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     exibirOpenClose();
 
     // EVENTO OPÇÃO ENTREGA
-    let opcaoEntrega = document.querySelector('#Entrega')
-    let Formul = document.querySelector('.CformEntrega')
+    let opcaoEntrega = document.querySelector('.CEntrega')
+    let Formul = document.querySelector('#formEntrega')
     
 
     opcaoEntrega.addEventListener('click', function() {
-        Formul.classList.remove('CformEntrega')
+        document.querySelector('#formEntrega').style.display = 'flex'
     })
 
     // EVENTO OPÇÃO RETIRADA
     let opcaoRetirada = document.querySelector('.CRetirada')
     
     opcaoRetirada.addEventListener('click', function() {
-        Formul.classList.add('CformEntrega')
+        document.querySelector('#formEntrega').style.display = 'none'
     })
     
