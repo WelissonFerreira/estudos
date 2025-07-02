@@ -448,7 +448,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
 
     // ENVIAR PEDIDO PARA O WHATTSAPP
-    const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
+const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
 btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     // 1. Capturar os dados pessoais e de entrega
@@ -480,27 +480,28 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
         }
     }
 
-    // --- Adicionar os itens do carrinho ---
+    // --- Adicionar os itens do carrinho e CALCULAR O TOTAL AQUI ---
     mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
+
+    // Crie uma variável local para o total final que será enviado no WhatsApp
+    let totalFinalParaWhatsApp = 0; 
 
     if (itensCarrinho.length > 0) {
         itensCarrinho.forEach((item, index) => {
             mensagemWhatsApp += `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})\n`;
-            // Opcional: Adicionar ingredientes se for relevante para o pedido final
-            // if (item.produto.ingredientes && item.produto.ingredientes.length > 0) {
-            //     mensagemWhatsApp += `    - Ingredientes: ${item.produto.ingredientes.join(', ')}\n`;
-            // }
+            
+            // SOME O PREÇO DE CADA ITEM AO TOTAL FINAL DO WHATSAPP
+            totalFinalParaWhatsApp += item.produto.preco * item.quantidade; 
         });
     } else {
-        mensagemWhatsApp += `Nenhum item adicionado ao carrinho (isso não deveria acontecer se o botão de finalizar estiver ativo).\n`;
+        mensagemWhatsApp += `Nenhum item adicionado ao carrinho.\n`;
     }
 
-    // Adiciona o total final do pedido (usando o precoTotalDosItens já calculado)
-    mensagemWhatsApp += `\n*Total do Pedido: R$ ${precoTotalDosItens.toFixed(2).replace('.', ',')}*\n`;
+    // Adiciona o total final do pedido (usando a nova variável totalFinalParaWhatsApp)
+    mensagemWhatsApp += `\n*Total do Pedido: R$ ${totalFinalParaWhatsApp.toFixed(2).replace('.', ',')}*\n`;
 
     // Seu número de WhatsApp (inclua o código do país e DDD, sem formatação)
-    let numeroWhatsApp = '558299261614'; // **Maceió, AL, Brasil - Exemplo: 55 82 99999-9999**
-                                        // Certifique-se de que este número é o correto!
+    let numeroWhatsApp = '558299261614'; 
 
     // Codifica a mensagem para URL
     let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
