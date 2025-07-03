@@ -33,7 +33,7 @@ main {
 }
 
 #principal {
-    background-image: url(imagens/backteste1att.jpg);
+    background-image: url(imagens/backteste1.jpg);
     background-color: white;
 }
 
@@ -46,8 +46,8 @@ header {
     gap: 30px;
     flex-direction: column;
     padding-top: 10px;
-    /*background-color: #E8931F;*/
-    background-image: url(imagens/testepart2.jpg);
+    background-color: #E8931F;
+    background-image: url(imagens/);
     background-size: contain;
     
 }
