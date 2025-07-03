@@ -54,8 +54,8 @@ header {
 
 /* Logo */
 .logomenu {
-    width: 120px;
-    height: 120px;  
+    width: 150px;
+    height: 150px; 
 }
 
 .h2topo {
@@ -97,33 +97,27 @@ header {
 
 /* MENU TOPO */
 .navbar {
-    font-size: 0.8rem;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    background-color: #E8931F;
-    width: 380px;
-    border-radius: 25px;
-    margin-bottom: 15px;
-    margin: auto;
-    width: 360px;
+    list-style-type: none; /* Remove os marcadores de lista */
+    display: flex; /* Transforma em um container flexível */
+    justify-content: center; /* Centraliza os itens horizontalmente dentro do .navbar */
+    align-items: center; /* Centraliza os itens verticalmente (se o .navbar tiver altura definida) */
+    gap: 30px; /* Espaçamento entre os itens */
+    margin: 15px auto; /* Centraliza o .navbar horizontalmente e adiciona margem superior/inferior */
+    width: fit-content; /* Faz a largura se ajustar ao conteúdo dos itens */
+  
 }
 
 .navbar li a {
-    display: block;
-    padding: 20px 10px;
-    text-decoration: none;
-    color: black;
-    font-size: 0.9rem;
+    background-color: #E8931F; /* Cor de fundo para CADA item */
+    border-radius: 20px; /* Borda arredondada para CADA item */
+    padding: 8px 15px; /* Preenchimento interno para CADA item (texto ao redor) */
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: black; /* Cor do texto do link (branco para contrastar com o laranja) */
+    font-size: 0.9rem; /* Tamanho da fonte do link */
+    display: inline-block; /* Crucial para padding e background funcionarem corretamente */
 }
 
-.navbar li a:hover {
-    background-color: #1a1a1a;
-    color: white;
-}
+
 
 /* =========================== */
 

@@ -9,419 +9,493 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Bebas+Neue&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
 </head>
 <body>
 
     <section id="topomenu">
-        <img class="logomenu" src="imagens/logomenup-removebg-preview.png">
-    </section>
+    <img class="logomenu" src="imagens/testelogo.jpg">
+</section>
 
-    <section id="open-close">
-        <time datetime="">
-                <span class="spanhora"></span>               
-        </time>
-    </section>
+<section id="open-close">
+    <time datetime="">
+        <span class="spanhora"></span>
+    </time>
+</section>
+<!-- MODAL HORARIOS -->
+<div id="modalhorarios">
+    <div class="contmodalhorarios">
+        <span class="close-button-horarios">&times;</span>
+        <h3 class="h3modal">ARTHUR LANCHES</h3>
+        <p class="pmodalhorario">Tempo médio delivery: 30-60 minutos</p>
+        <p class="pmodalhorario">Tempo médio balcão: 30 - 50 minutos</p>
+        <br>
+        <span class="modal-sub-titulos">Horários de Funcionamento</span>
+        <ul>
+            <li class="modal-dia">Domingo: <span class="modal-horas">18:00 - 23:59</span></li>
+            <li class="modal-dia">Segunda-Feira: <span class="modal-horas">Fechado</span></li>
+            <li class="modal-dia">Terça-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+            <li class="modal-dia">Quarta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+            <li class="modal-dia">Quinta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+            <li class="modal-dia">Sexta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
+            <li class="modal-dia">Sábado: <span class="modal-horas">18:00 - 23:59</span></li>
+        </ul>
 
-    <!--MODAL HORÁRIOS-->
+        <span class="modal-sub-titulos">Métodos de Pagamento</span>
+        <ul>
+            <li class="formapagamento-modal">Dinheiro</li>
+            <li class="formapagamento-modal">PIX</li>
+            <li class="formapagamento-modal">Cartão de Débito - Maquininha</li>
+            <li class="formapagamento-modal">Cartão de Crédito - Maquininha</li>
+        </ul>
 
-    <div id="modalhorarios">
-        <div class="contmodalhorarios">
-            <span class="close-button-horarios">&times;</span>
-            <h3 class="h3modal">ARTHUR LANCHES</h3>
-            <p class="pmodalhorario">Tempo médio delivery: 30-60 minutos</p>
-            <p class="pmodalhorario">Tempo médio balcão: 30 - 50 minutos</p>
-            <br>
-            <span class="modal-sub-titulos">Horários de Funcionamento</span>
-            <ul>
-                <li class="modal-dia">Domingo: <span class="modal-horas">18:00 - 23:59</span></li>
-                <li class="modal-dia">Segunda-Feira: <span class="modal-horas">Fechado</span></li>
-                <li class="modal-dia">Terça-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
-                <li class="modal-dia">Quarta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
-                <li class="modal-dia">Quinta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
-                <li class="modal-dia">Sexta-Feira: <span class="modal-horas">18:00 - 23:59</span></li>
-                <li class="modal-dia">Sábado: <span class="modal-horas">18:00 - 23:59</span></li>
-            </ul>
 
-            <span class="modal-sub-titulos">Métodos de Pagamento</span>
-            <ul>
-                <li class="formapagamento-modal">Dinheiro</li>
-                <li class="formapagamento-modal">PIX</li>
-                <li class="formapagamento-modal">Cartão de Débito - Maquininha</li>
-                <li class="formapagamento-modal">Cartão de Crédito - Maquininha</li>
-            </ul>
+    </div>
+</div>
 
-        
+<header>
+
+
+    <h2 class="h2topo">ARTHUR LANCHES</h2>
+    <p class="pmenu">Seja bem-vindo ao Arthur Lanches! <br> Faça já o seu pedido!!</p>
+
+
+</header>
+
+<main id="principal">
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="#">Especias</a></li>
+            <li><a href="#">Passaportes</a></li>
+            <li><a href="#">Bebidas</a></li>
+        </ul>
+    </nav>
+    <!-- PRODUTO E MODAL - ESPECIAL ARTHUR GRANDE -->
+    <section class="item-pai">
+        <div class="card-pai">
+            <div class="card-image">
+                <img class="fotosanduba" src="https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png">
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Especial Arthur Grande</h4>
+                <p class="descricao-produtos">Especial da casa, dividido em 4 pedaços e servem 4 pessoas.</p>
+                <p class="descricao-ingredientes"> Ingredientes: 2x Salsicha | 2x Hamburguer... <a class="botaomodal"
+                        href="#expansao" data-model-target="#model-arthur-grande">Ver mais</a> </p>
+                <div id="botoes-produto">
+                    <span>R$ 55,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-arthur-grande"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div id="model-arthur-grande" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2 class="descricao-produtos-modal">Detalhes do Produto</h2>
+                    <ul>
+                        <li>2x Salsicha</li>
+                        <li>2x Hamburguer</li>
+                        <li>2x Calabresa</li>
+                        <li>2x Bacon</li>
+                        <li>2x Salada</li>
+                        <li>2x Tomate</li>
+                    </ul>
+                    <div class="fotolanchemodal"><img class="fotosanduba"
+                            src="https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png"></div>
+                </div>
+            </div>
+
         </div>
-    </div>
-
-    <header>
-
-
-    
-        <h2 class="h2topo">ARTHUR LANCHES</h2>
-        <p class="pmenu">Seja bem-vindo ao Arthur Lanches! <br> Faça já o seu pedido!!</p>
-    
-    
-
-    </header>
-
-    <main id="principal">
-    
-            <nav>
-                <ul class="navbar">
-                    <li><a href="#">Especias</a></li>
-                    <li><a href="#">Passaportes</a></li>
-                    <li><a href="#">Bebidas</a></li>
-                </ul>
-            </nav>
-
-    <!--Produto 1-->
-    <section class="item-pai">
-    <div class="card-pai">
-                <div class="card-image">
-                    <img class="fotosanduba" src="https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png">
-                </div>
-
-                <div class="card-conteudo">
-                    <h4 class="titulo-produtos">Especial Arthur Grande</h4>
-                    <p class="descricao-produtos">Especial da casa, dividido em 4 pedaços e servem 4 pessoas.</p>
-                    <p class="descricao-ingredientes"> Ingredientes: 2x Salsicha | 2x Hamburguer... <a class="botaomodal" href="#expansao" data-model-target="#model-arthur-grande">Ver mais</a> </p>                                                            
-                        <div id="botoes-produto">
-                            <span>R$ 55,00</span>
-                            <button class="AdicionarCarrinho" data-produto-id="produto-arthur-grande"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
-                        </div>              
-                </div>
-            
-                <!--Modal 1 (Produto1)-->
-                <div id="model-arthur-grande" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2 class="descricao-produtos-modal">Detalhes do Produto</h2>
-                            <ul>
-                                <li>2x Salsicha</li>
-                                <li>2x Hamburguer</li>
-                                <li>2x Calabresa</li>
-                                <li>2x Bacon</li>
-                                <li>2x Salada</li>
-                                <li>2x Tomate</li>
-                            </ul>
-                            <div class="fotolanchemodal"><img class="fotosanduba" src="https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png"></div>
-                    </div>
-                </div>
-
-    </div>
-    </section>
-
-    
-
-
-
-
-
-    <!--Produto 2-->
-    <section class="item-pai">
-    <div class="card-pai">
-                <div class="card-image">
-                    <img class="fotosanduba" src="https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png">        
-                </div>
-
-                <div class="card-conteudo">
-                    <h4 class="titulo-produtos">Especial Arthur Baby</h4>
-                    <p class="descricao-produtos">Especial da casa, dividido em 2 pedaços e servem 2 pessoas.</p>
-                    <p class="descricao-ingredientes"> Ingredientes: 1x Salsicha | 1x Hamburguer...<a class="botaomodal" href="#expansao" data-model-target="#model-arthur-baby">Ver mais</a> </p>                    
-                        <div id="botoes-produto">
-                            <span>R$ 40,00</span>
-                            <button class="AdicionarCarrinho" data-produto-id="produto-arthur-baby"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
-                        </div>
-                </div>
-
-                <!--Modal 2 (Produto2)-->
-                <div id="model-arthur-baby" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>Detalhes do Produto</h2>
-                            <ul>
-                                <li>1x Salsicha</li>
-                                <li>1x Hamburguer</li>
-                                <li>1x Calabresa</li>
-                                <li>1x Bacon</li>
-                                <li>1x Salada</li>
-                                <li>1x Tomate</li>
-                            </ul>
-                    </div>
-                </div>
-
-
-    </div>
-    </section>
-
-    
-
-
-
-
-    <!--Produto3-->
-    <section class="item-pai">
-    <div class="card-pai">
-
-                <div class="card-image">
-                    <img class="fotosanduba" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">
-                
-                </div>
-
-                <div class="card-conteudo">
-                    <h4 class="titulo-produtos">Passaporte de Carne</h4>
-                    <p class="descricao-produtos">Passaporte de carne super recheado</p>
-                    <p class="descricao-ingredientes">Ingredientes: Pão Bola | Carne Moída...<a class="botaomodal" href="#expansao" data-model-target="#model-passaporte-carne">Ver mais</a> </p>
-                    <div id="botoes-produto">
-                        <span>R$ 17,00</span>
-                        <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-carne"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
-                    </div>
-                </div>
-    
-                <!--Modal 3 (Produto3)-->
-                <div id="model-passaporte-carne" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>Detalhes do Produto</h2>
-                            <ul>
-                                <li>1x Pão</li>
-                                <li>Carne Moída</li>
-                                <li>1x Salsicha</li>
-                                <li>Batata Palha</li>
-                                <li>Milho e Ervilha</li>
-                                <li>Catchup</li>
-                                <li>Maionese</li>
-                            </ul>
-                    </div>
-                </div>
-    </div>
     </section>
 
 
 
 
-
-    <!--Produto4-->
+    <!-- PRODUTO E MODAL - ESPECIAL ARTHUR BABY -->
     <section class="item-pai">
-    <div class="card-pai">
-                <div class="card-image">
-                    <img class="fotosanduba" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">                  
+        <div class="card-pai">
+            <div class="card-image">
+                <img class="fotosanduba"
+                    src="https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png">
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Especial Arthur Baby</h4>
+                <p class="descricao-produtos">Especial da casa, dividido em 2 pedaços e servem 2 pessoas.</p>
+                <p class="descricao-ingredientes"> Ingredientes: 1x Salsicha | 1x Hamburguer...<a class="botaomodal"
+                        href="#expansao" data-model-target="#model-arthur-baby">Ver mais</a> </p>
+                <div id="botoes-produto">
+                    <span>R$ 40,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-arthur-baby"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
                 </div>
+            </div>
 
-                <div class="card-conteudo">
-                    <h4 class="titulo-produtos">Passaporte de Frango</h4>
-                    <p class="descricao-produtos">Passaporte de frango super recheado</p>
-                    <p class="descricao-ingredientes">Ingredientes: Pão Bola | Frango Desfiado...<a class="botaomodal" href="#expansao" data-model-target="#model-passaporte-frango">Ver mais</a> </p>
-
-                    <div id="botoes-produto">
-                        <span>R$ 18,00</span>
-                        <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-frango"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>  
-                    </div>
-                </div>    
-
-                <!--Modal 4 (Produto4)-->
-                <div id="model-passaporte-frango" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>Detalhes do Produto</h2>
-                            <ul>
-                                <li>1x Pão</li>
-                                <li>Frango Desfiado</li>
-                                <li>1x Salsicha</li>
-                                <li>Milho e Ervilha</li>
-                                <li>Catchup</li>
-                                <li>Maionese</li>
-                            </ul>
-                    </div>
+            <div id="model-arthur-baby" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>1x Salsicha</li>
+                        <li>1x Hamburguer</li>
+                        <li>1x Calabresa</li>
+                        <li>1x Bacon</li>
+                        <li>1x Salada</li>
+                        <li>1x Tomate</li>
+                    </ul>
                 </div>
-    </div>
+            </div>
+
+
+        </div>
     </section>
 
-    
 
-    <!--Produto5-->
+
+        <!-- PRODUTO E MODAL - PASSAPORTE DE CARNE -->
     <section class="item-pai">
-    <div class="card-pai">
-                <div class="card-image">
-                    <img class="fotosanduba" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">                  
-                </div>
+        <div class="card-pai">
 
-                <div class="card-conteudo">
-                    <h4 class="titulo-produtos">X-Bacon</h4>
-                    <p class="descricao-produtos">Especial da casa, dividido em 4 pedaços e servem 4 pessoas.</p>
-                    <p class="descricao-ingredientes">Ingredientes: 1x Pão Bola | 1x Hamburguer ...<a class="botaomodal" href="#expansao" data-model-target="#model-xbacon">Ver mais</a> </p>
-                    <div id="botoes-produto">
-                        <span>R$ 22,00</span>
-                        <button class="AdicionarCarrinho" data-produto-id="produto-xbacon"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>  
-                    </div>
+            <div class="card-image">
+                <img class="fotosanduba"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">
+
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Passaporte de Carne</h4>
+                <p class="descricao-produtos">Passaporte de carne super recheado</p>
+                <p class="descricao-ingredientes">Ingredientes: Pão Bola | Carne Moída...<a class="botaomodal"
+                        href="#expansao" data-model-target="#model-passaporte-carne">Ver mais</a> </p>
+                <div id="botoes-produto">
+                    <span>R$ 17,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-carne"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
                 </div>
-            
-                <!--Modal 5 (Produto5)-->
-                <div id="model-xbacon" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>Detalhes do Produto</h2>
-                            <ul>
-                                <li>1x Pão</li>
-                                <li>Bacon</li>
-                                <li>1x Hamburguer</li>
-                                <li>1x Ovo</li>
-                                <li>Salada</li>
-                                <li>Tomate</li>
-                            </ul>
-                    </div>
-                </div>          
-    </div>
+            </div>
+
+            <div id="model-passaporte-carne" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>1x Pão</li>
+                        <li>Carne Moída</li>
+                        <li>1x Salsicha</li>
+                        <li>Batata Palha</li>
+                        <li>Milho e Ervilha</li>
+                        <li>Catchup</li>
+                        <li>Maionese</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    
-    
-        <!--Produto6-->
+
+
+
+
+    <!-- PRODUTO E MODAL - PASSAPORTE DE FRANGO -->
     <section class="item-pai">
-    <div class="card-pai">
-                <div class="card-image-bebidas">
-                    <img class="fotobebidas" src="https://s3-sa-east-1.amazonaws.com/loja2/5f3dd775f8306fac0109bb1f4df90bba.png">
+        <div class="card-pai">
+            <div class="card-image">
+                <img class="fotosanduba"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Passaporte de Frango</h4>
+                <p class="descricao-produtos">Passaporte de frango super recheado</p>
+                <p class="descricao-ingredientes">Ingredientes: Pão Bola | Frango Desfiado...<a class="botaomodal"
+                        href="#expansao" data-model-target="#model-passaporte-frango">Ver mais</a> </p>
+
+                <div id="botoes-produto">
+                    <span>R$ 18,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-frango"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
                 </div>
+            </div>
 
-                <div class="card-conteudo">
-                    <h4 class="titulo-produtos">Coca-Cola 250 ml</h4>
-                    <p class="descricao-produtos">Coca-Cola em lata de 250 ml</p>
-                    <p class="descricao-ingredientes"><a class="botaomodal" href="#expansao" data-model-target="#model-coca250ml">Ver mais</a> </p>
-                        <div id="botoes-produto">
-                            <span>R$ 6,00</span>
-                            <button class="AdicionarCarrinho" data-produto-id="produto-cocacola"><i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>  
-                        </div>
-                </div>    
-
-                <!--Modal 6 (Produto5)-->
-                <div id="model-coca250ml" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <h2>Detalhes do Produto</h2>
-                            <ul>
-                                <li>Coca Caçulinha 250ml</li>
-                            </ul>
-                    </div>
-                </div>          
-    </div>
+            <div id="model-passaporte-frango" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>1x Pão</li>
+                        <li>Frango Desfiado</li>
+                        <li>1x Salsicha</li>
+                        <li>Milho e Ervilha</li>
+                        <li>Catchup</li>
+                        <li>Maionese</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
-    
 
 
-    
+    <!-- PRODUTO E MODAL - PASSAPORTE DE CARNE DE SOL -->
+    <section class="item-pai">
+        <div class="card-pai">
+            <div class="card-image">
+                <img class="fotosanduba"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Passaporte de Frango</h4>
+                <p class="descricao-produtos">Passaporte de frango super recheado</p>
+                <p class="descricao-ingredientes">Ingredientes: Pão Bola | Frango Desfiado...<a class="botaomodal"
+                        href="#expansao" data-model-target="#model-passaporte-frango">Ver mais</a> </p>
+
+                <div id="botoes-produto">
+                    <span>R$ 18,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-frango"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div id="model-passaporte-frango" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>1x Pão Sedão</li>
+                        <li>Frango Desfiado</li>
+                        <li>1x Salsicha</li>
+                        <li>Tomate</li>
+                        <li>Milho e Ervilha</li>
+                        <li>Ketchup</li>
+                        <li>Maionese</li>
+                        <li>Batata Palha</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-        
+    <!-- PRODUTO E MODAL - PASSAPORTE DE MISTO -->
+    <section class="item-pai">
+        <div class="card-pai">
+            <div class="card-image">
+                <img class="fotosanduba"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">
+            </div>
 
-    </main>
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Passaporte de Frango</h4>
+                <p class="descricao-produtos">Passaporte de frango super recheado</p>
+                <p class="descricao-ingredientes">Ingredientes: Pão Bola | Frango Desfiado...<a class="botaomodal"
+                        href="#expansao" data-model-target="#model-passaporte-frango">Ver mais</a> </p>
 
-    <footer>
-        <ul class="navbarinferior">
-            <li class="inav"><a href="#"><i class="fa-solid fa-house"></i><span class="spanmenu">Início</span></a></li>
-            <li class="inav"><a href="#"><i class="fa-solid fa-credit-card"></i><span class="spanmenu">Pagar</span></a></li>
+                <div id="botoes-produto">
+                    <span>R$ 18,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-frango"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
+                </div>
+            </div>
 
-            <li class="inav carrinho-item">
+            <div id="model-passaporte-frango" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>1x Pão</li>
+                        <li>Frango Desfiado</li>
+                        <li>1x Salsicha</li>
+                        <li>Milho e Ervilha</li>
+                        <li>Catchup</li>
+                        <li>Maionese</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="item-pai">
+        <div class="card-pai">
+            <div class="card-image">
+                <img class="fotosanduba"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s">
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">X-Bacon</h4>
+                <p class="descricao-produtos">Especial da casa, dividido em 4 pedaços e servem 4 pessoas.</p>
+                <p class="descricao-ingredientes">Ingredientes: 1x Pão Bola | 1x Hamburguer ...<a class="botaomodal"
+                        href="#expansao" data-model-target="#model-xbacon">Ver mais</a> </p>
+                <div id="botoes-produto">
+                    <span>R$ 22,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-xbacon"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div id="model-xbacon" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>1x Pão</li>
+                        <li>Bacon</li>
+                        <li>1x Hamburguer</li>
+                        <li>1x Ovo</li>
+                        <li>Salada</li>
+                        <li>Tomate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="item-pai">
+        <div class="card-pai">
+            <div class="card-image-bebidas">
+                <img class="fotobebidas"
+                    src="https://s3-sa-east-1.amazonaws.com/loja2/5f3dd775f8306fac0109bb1f4df90bba.png">
+            </div>
+
+            <div class="card-conteudo">
+                <h4 class="titulo-produtos">Coca-Cola 250 ml</h4>
+                <p class="descricao-produtos">Coca-Cola em lata de 250 ml</p>
+                <p class="descricao-ingredientes"><a class="botaomodal" href="#expansao"
+                        data-model-target="#model-coca250ml">Ver mais</a> </p>
+                <div id="botoes-produto">
+                    <span>R$ 6,00</span>
+                    <button class="AdicionarCarrinho" data-produto-id="produto-cocacola"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho</button>
+                </div>
+            </div>
+
+            <div id="model-coca250ml" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Detalhes do Produto</h2>
+                    <ul>
+                        <li>Coca Caçulinha 250ml</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+<footer>
+    <ul class="navbarinferior">
+        <li class="inav"><a href="#"><i class="fa-solid fa-house"></i><span class="spanmenu">Início</span></a></li>
+        <li class="inav"><a href="#"><i class="fa-solid fa-credit-card"></i><span class="spanmenu">Pagar</span></a>
+        </li>
+
+        <li class="inav carrinho-item">
             <a id="botaoCarrinho" href="#"><i class="fa-solid fa-cart-shopping"></i>
                 <span class="spanmenu">Pedidos</span>
                 <span class="contcarrinho">0</span>
                 <div id="mensagem-carrinho-vazio" style="display: none;"></div>
-            </a></li>
-            
-
-            <li class="inav"><a href="#"><i class="fa-brands fa-whatsapp"></i><span class="spanmenu">WhatsApp</span></a></li>
-        </ul>
+            </a>
+        </li>
 
 
+        <li class="inav"><a href="#"><i class="fa-brands fa-whatsapp"></i><span class="spanmenu">WhatsApp</span></a>
+        </li>
+    </ul>
 
 
-    </footer>
 
-    <div id="ModalCarrinho" class="modal">
-        <div class="modal-content-carrinho">
-            <span class="close-button-carrinho">&times;</span>
-            <h2 class="h3Carrinho">Meus Pedidos</h2>
-            <div id="itens-do-carrinho">
-                <p>Seu carrinho está vazio</p>
+
+</footer>
+
+<div id="ModalCarrinho" class="modal">
+    <div class="modal-content-carrinho">
+        <span class="close-button-carrinho">&times;</span>
+        <h2 class="h3Carrinho">Meus Pedidos</h2>
+        <div id="itens-do-carrinho">
+            <p>Seu carrinho está vazio</p>
+        </div>
+        <div id="total-carrinho">
+            <h3>Total: R$ 0,00</h3>
+        </div>
+        <button id="finalizar-compra">Avançar</button>
+    </div>
+</div>
+
+<div id="ModalDados" class="modal">
+    <div class="ConteudoModalDados">
+        <span class="close-button-dados">&times;</span>
+        <form id="formularioDados">
+
+            <div class="opcao-dados">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome"></input>
+                <label for="cell">Telefone:</label>
+                <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
             </div>
-            <div id="total-carrinho">
-                <h3>Total: R$ 0,00</h3>
+
+            <div class="opcao-pedido">
+                <input type="radio" name="TipoPedido" class="CEntrega" id="Entrega">
+                <label for="Entrega">Entrega</label>
+                <input type="radio" name="TipoPedido" class="CRetirada" id="Retirada" checked>
+                <label for="Retirada">Retirada</label>
             </div>
-            <button id="finalizar-compra">Avançar</button>
+
+            <div id="formEntrega" class="CformEntrega">
+                <label for="Bairro">Bairro:</label>
+                <select name="Bairro" id="Bairro">
+                    <optgroup label="Bairros">
+                        <option value="Selecionar">Selecionar</option>
+                        <option value="Feitosa">Feitosa</option>
+                        <option value="Farol">Farol</option>
+                        <option value="Jacintinho">Jacintinho</option>
+                        <option value="Peixoto">Peixoto</option>
+                        <option value="Barro Duro">Barro Duro</option>
+                        <option value="Serraria">Serraria</option>
+                        <option value="Cruz das Almas">Cruz das Almas</option>
+                    </optgroup>
+                </select>
+
+                <label for="Rua">Rua:</label>
+                <input type="text" name="Rua" id="Rua" placeholder="Nome da Rua">
+
+                <label for="Numero">Número:</label>
+                <input type="number" name="Numeri" id="Numero" placeholder="Número da Casa">
+
+                <label for="complemento">Complemento (opcional):</label>
+                <input type="text" name="complemento" id="complemento" placeholder="Ex: Em frente a Padaria">
+            </div>
+        </form>
+        <div id="divBotoesDados">
+            <button id="AvancarPedido" type="button">Avançar</button>
+            <button id="VoltarPedido">Voltar</button>
         </div>
     </div>
+</div>
 
-    <!--Modal Dados-->
-    <div id="ModalDados" class="modal">
-        <div class="ConteudoModalDados">
-            <span class="close-button-dados">&times;</span>
-            <form id="formularioDados">
-    
-    <div class="opcao-dados">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" placeholder="Seu nome"></input>
-        <label for="cell">Telefone:</label>
-        <input type="cell" id="cell" name="cell" placeholder="Seu WhatsApp"></input>
-    </div>
-
-    <div class="opcao-pedido">
-    <input type="radio" name="TipoPedido" class="CEntrega" id="Entrega">
-    <label for="Entrega">Entrega</label>
-    <input type="radio" name="TipoPedido" class="CRetirada" id="Retirada" checked>
-    <label for="Retirada">Retirada</label>
-    </div>
-
-    <div id="formEntrega" class="CformEntrega">
-        <label for="Bairro">Bairro:</label>
-    <select name="Bairro" id="Bairro">
-        <optgroup label="Bairros">
-            <option value="Selecionar">Selecionar</option>
-            <option value="Feitosa">Feitosa</option>
-            <option value="Farol">Farol</option>
-            <option value="Jacintinho">Jacintinho</option>
-            <option value="Peixoto">Peixoto</option>
-            <option value="Barro Duro">Barro Duro</option>
-            <option value="Serraria">Serraria</option>
-            <option value="Cruz das Almas">Cruz das Almas</option>
-        </optgroup>    
-    </select>
-
-        <label for="Rua">Rua:</label>
-        <input type="text" name="Rua" id="Rua" placeholder="Nome da Rua">
-
-        <label for="Numero">Número:</label>
-        <input type="number" name="Numeri" id="Numero" placeholder="Número da Casa">
-
-        <label for="complemento">Complemento (opcional):</label>
-        <input type="text" name="complemento" id="complemento" placeholder="Ex: Em frente a Padaria">
-    </div>
-</form>
-            <div id="divBotoesDados">
-                        <button id="AvancarPedido" type="button">Avançar</button>
-                        <button id="VoltarPedido">Voltar</button>
-                    </div>
-        </div>
-    </div>
-
-    <!--Modal Fazer Pedido-->
-    <div id="ModalFazerPedido" class="modal">
-        <div class="ContModalFazerPedido">
-            <span class="close-button-pedido">&times;</span>
-            <div id="divbotaoPedidoVoltar"><button id="voltarPedido">Voltar</button></div>
-                <div id="Pedido">
-                    <p>Seu pedido: </p>
-                    <div id="itensListadosNoPedido">
-                </div>
-            </div>
-                <span id="ValorTotalPedidoFinal">Total: R$: </span>
-                
-            <div id="divBotoesPedido">
-                <button id="Finalizar-Pedido">Finalizar Pedido</button>
+<div id="ModalFazerPedido" class="modal">
+    <div class="ContModalFazerPedido">
+        <span class="close-button-pedido">&times;</span>
+        <div id="divbotaoPedidoVoltar"><button id="voltarPedido">Voltar</button></div>
+        <div id="Pedido">
+            <p>Seu pedido: </p>
+            <div id="itensListadosNoPedido">
             </div>
         </div>
+        <span id="ValorTotalPedidoFinal">Total: R$: </span>
+
+        <div id="divBotoesPedido">
+            <button id="Finalizar-Pedido">Finalizar Pedido</button>
+        </div>
     </div>
+</div>
 
     <script src="js.js"></script>
 </body>

@@ -571,10 +571,9 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
 
         } else {
 
-            let p2 = document.createElement('p2')
+            let p2 = document.createElement('p')
             p2.textContent = 'Fechado!'
             p2.classList.add('btn-fechado-horarios')
-
             p2.style.color = `white`
             p2.style.backgroundColor = 'rgb(158, 26, 24)'
             p2.style.padding = '5px'
@@ -582,10 +581,14 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             p2.style.borderRadius = '3px'
             openClose.appendChild(p2)
 
+            let p3 = document.createElement('p')
+            p3.textContent = 'Não estamos funcionando no momento!'
+            openClose.appendChild(p3)
+            p3.style.color = 'black'
             let novoP2 = document.createElement('p')
 
             novoP2.textContent = `Horário de funcionamento: 18:00 - 23:59`
-            novoP2.style.color = 'white'
+            novoP2.style.color = 'black'
             novoP2.style.backgroundColor = ``
             novoP2.style.padding = '2px'
 
