@@ -58,22 +58,6 @@ header {
     height: 150px; 
 }
 
-.h2topo {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-size: 2.2rem;
-    margin-top: 10px;
-    color: black ;
-    background-color: #E8931F;
-    border-radius: 25px;
-    padding: 10px;
-    letter-spacing: 1px;
-    box-sizing: border-box;
-    padding-right: 25px;
-    padding-left: 25px;
-    
-}
-
 #topomenu {
     display: flex;
     align-items: center;
@@ -139,6 +123,11 @@ header {
 }
 
 .navbar li a {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    letter-spacing: 1px;
     background-color: #E8931F; /* Cor de fundo para CADA item */
     border-radius: 20px; /* Borda arredondada para CADA item */
     padding: 8px 15px; /* Preenchimento interno para CADA item (texto ao redor) */
@@ -251,7 +240,12 @@ header {
 }
 
 .AdicionarCarrinho {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
     font-size: 0.7rem;
+    letter-spacing: 1px;
     border: none;
     border-radius: 25px;
     background-color: #E8931F;
@@ -266,6 +260,10 @@ header {
 
 /* CONTROLE DE TEXTOS, SUBTITULOS, PREÇOS E DESCRIÇÕES */
 .titulo-produtos {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
     font-size: 1rem;
     padding-bottom: 5px;
     color: black;
@@ -274,6 +272,10 @@ header {
 
 
 .descricao-produtos {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
     padding-bottom: 3px;
     font-size: 0.8rem;
     line-height: 1.4;
@@ -281,6 +283,10 @@ header {
 }
 
 .descricao-ingredientes {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
     font-size: 0.8rem;
     line-height: 1.4;
     color: black;
