@@ -183,9 +183,6 @@ header {
 }
 
 .card-image {
-
-    width: 90px;
-    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -217,6 +214,8 @@ header {
     width: 90px;
     height: 90px;
     border-radius: 10px;
+    margin-left: 10px;
+    
 }
 
 .fotobebidas {
@@ -267,6 +266,7 @@ header {
     font-size: 1rem;
     padding-bottom: 5px;
     color: black;
+    margin-left: -65px
 
 }
 
@@ -280,6 +280,7 @@ header {
     font-size: 0.8rem;
     line-height: 1.4;
     color: black;
+    
 }
 
 .descricao-ingredientes {
@@ -334,7 +335,6 @@ footer {
 
 .navbarinferior {
     background-Color: #E8931F;
-    color: white;
     font-size: 1rem;
     display: flex;
     flex-direction: row;
@@ -344,6 +344,9 @@ footer {
 }
 
 .navbarinferior li a {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -446,7 +449,11 @@ footer {
 /* BOTÃO USADO PARA ABRIR O MODAL */
 
 .botaomodal {
-    color: #90cafc;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    color: #E8931F;
     text-decoration: underline;
 }
 
@@ -498,7 +505,7 @@ footer {
     .pmodalhorario {
         padding: 5px;
         font-size: 0.8rem;
-         
+        
     }
 
     .modal-sub-titulos {
