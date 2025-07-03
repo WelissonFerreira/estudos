@@ -574,32 +574,26 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             let p2 = document.createElement('p')
             p2.textContent = 'Fechado!'
             p2.classList.add('btn-fechado-horarios')
-            p2.style.color = `white`
-            p2.style.backgroundColor = 'rgb(158, 26, 24)'
-            p2.style.padding = '5px'
-            p2.style.margin = '5px'
-            p2.style.borderRadius = '3px'
             openClose.appendChild(p2)
 
-            let p3 = document.createElement('p')
-            p3.textContent = 'Não estamos funcionando no momento!'
-            openClose.appendChild(p3)
-            p3.style.color = 'black'
+
             let novoP2 = document.createElement('p')
-
-            novoP2.textContent = `Horário de funcionamento: 18:00 - 23:59`
-            novoP2.style.color = 'black'
-            novoP2.style.backgroundColor = ``
-            novoP2.style.padding = '2px'
-
-            novoP2.classList.add('botao-horarios-P2')
+            novoP2.textContent = `Horário de funcionamento: `
+            novoP2.classList.add('msghorariofuncionamento')
             openClose.appendChild(novoP2)
+            
+            let p3 = document.createElement('p')
+            p3.textContent = '18:00 - 23:59'
+            p3.classList.add('msgfuncionamento')
+            openClose.appendChild(p3)
 
-
-            novoP2.addEventListener('click', function() {
+            p3.addEventListener('click', function() {
             modalhorarios.style.display = 'block'
         })
         }
+
+
+
 
         let botaoFechar = document.querySelector('.close-button-horarios')
             botaoFechar.addEventListener('click', function() {
