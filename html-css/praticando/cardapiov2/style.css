@@ -1,5 +1,5 @@
 @charset "UTF-8";
-    @charset "UTF-8";
+@charset "UTF-8";
 /* Mobile First */
 
 /* Reset básico */
@@ -182,22 +182,15 @@ header {
     gap: 15px;
 }
 
-.card-image {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-}
 
 
 .card-conteudo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
     gap: 2px;
-
 
 }
 
@@ -218,10 +211,24 @@ header {
     
 }
 
-.fotobebidas {
-    width: 130px;
-    height: 120px;
 
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fotobebidas {
+    width: 100px;
+    height: 80px;
+    
+}
+
+.card-image-bebidas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -266,7 +273,7 @@ header {
     font-size: 1rem;
     padding-bottom: 5px;
     color: black;
-    margin-left: -65px
+    /*margin-left: -65px*/
 
 }
 
@@ -280,6 +287,7 @@ header {
     font-size: 0.8rem;
     line-height: 1.4;
     color: black;
+    margin-right: 3px;
     
 }
 
@@ -293,6 +301,7 @@ header {
     color: black;
     padding-bottom: 5px;
 }
+
 
 span {
     font-size: 0.8rem;
