@@ -119,7 +119,7 @@ header {
     gap: 30px; /* Espaçamento entre os itens */
     margin: 15px auto; /* Centraliza o .navbar horizontalmente e adiciona margem superior/inferior */
     width: fit-content; /* Faz a largura se ajustar ao conteúdo dos itens */
-  
+
 }
 
 .navbar li a {
@@ -135,6 +135,26 @@ header {
     color: black; /* Cor do texto do link (branco para contrastar com o laranja) */
     font-size: 0.9rem; /* Tamanho da fonte do link */
     display: inline-block; /* Crucial para padding e background funcionarem corretamente */
+}
+
+#menu-opcoes {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: center;
+    width: 360px;
+    margin: auto;
+}
+
+.titulo-passaporte {
+    color: black;
+    margin: auto;
+    font-size: 0.9rem;
+    background-color: #E8931F; /* Cor de fundo para CADA item */
+    border-radius: 20px; /* Borda arredondada para CADA item */
+    padding: 8px 35px; /* Preenchimento interno para CADA item (texto ao redor) */
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 
@@ -473,11 +493,16 @@ footer {
     color: white;
     margin: auto;
     text-align: center;
+    position: relative;
 }
 
 .fotolanchemodal {
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 /* MODAL HORÁRIOS */
