@@ -144,12 +144,13 @@ header {
 .titulo-passaporte {
     color: black;
     margin: auto;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     background-color: #E8931F; /* Cor de fundo para CADA item */
     border-radius: 20px; /* Borda arredondada para CADA item */
-    padding: 8px 35px; /* Preenchimento interno para CADA item (texto ao redor) */
+    padding: 8px 15px; /* Preenchimento interno para CADA item (texto ao redor) */
     margin-bottom: 10px;
     margin-top: 20px;
+    letter-spacing: 1px;
 }
 
 
