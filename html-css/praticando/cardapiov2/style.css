@@ -123,11 +123,10 @@ header {
 }
 
 .navbar li a {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-weight: bolder;
+    font-weight: bold;
     font-style: normal;
-    letter-spacing: 1px;
     background-color: #E8931F; /* Cor de fundo para CADA item */
     border-radius: 20px; /* Borda arredondada para CADA item */
     padding: 8px 15px; /* Preenchimento interno para CADA item (texto ao redor) */
@@ -135,7 +134,7 @@ header {
     color: black; /* Cor do texto do link (branco para contrastar com o laranja) */
     font-size: 0.9rem; /* Tamanho da fonte do link */
     display: inline-block; /* Crucial para padding e background funcionarem corretamente */
-    font-size: 8px;
+    font-size: 9px;
     
 }
 
