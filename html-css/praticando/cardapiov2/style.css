@@ -588,7 +588,6 @@ footer {
 .modal-content-carrinho {
     background-color: #E8931F;
     margin: 15% auto; /* Centraliza o modal na tela */
-    margin-left: 18px;
     padding: 20px;
     width: 80%; /* Largura do modal */
     max-width: 500px; /* Largura máxima do modal */
@@ -717,7 +716,6 @@ footer {
 .ConteudoModalDados {
     background-color: #E8931F;
     margin: 15% auto;
-    margin-left: 10px;
     padding: 20px;
     width: 90%;
     max-width: 500px;
@@ -759,7 +757,6 @@ footer {
 .ContModalFazerPedido {
     background-color: #E8931F;
     margin: 15% auto; /* Centraliza o modal na tela */
-    margin-left: 25px;
     padding: 20px;
     width: 80%; /* Largura do modal */
     max-width: 500px; /* Largura máxima do modal */
