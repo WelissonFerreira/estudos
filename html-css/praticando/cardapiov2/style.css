@@ -572,9 +572,23 @@ footer {
 /*=================================================== */
 
 /*  MODAL DO CARRINHO: */
+
+#ModalCarrinho {
+    background-image: url(imagens/backteste1.jpg);
+}
+
+#ModalDados {
+    background-image: url(imagens/backteste1.jpg);
+}
+
+#ModalFazerPedido {
+    background-image: url(imagens/backteste1.jpg);
+}
+
 .modal-content-carrinho {
-    background-color: #303030;
+    background-color: #E8931F;
     margin: 15% auto; /* Centraliza o modal na tela */
+    margin-left: 18px;
     padding: 20px;
     width: 80%; /* Largura do modal */
     max-width: 500px; /* Largura máxima do modal */
@@ -626,6 +640,7 @@ footer {
     margin: 5px;
     padding-top: 30px;
     /*text-align: left;*/
+    color: white;
 }
 
 .precoCarrinhoTotal {
@@ -700,8 +715,9 @@ footer {
 /* MODAL DADOS */
 
 .ConteudoModalDados {
-    background-color: #303030;
+    background-color: #E8931F;
     margin: 15% auto;
+    margin-left: 10px;
     padding: 20px;
     width: 90%;
     max-width: 500px;
@@ -741,8 +757,9 @@ footer {
 /* MODAL FINALIZAR PEDIDO */
 
 .ContModalFazerPedido {
-    background-color: #303030;
+    background-color: #E8931F;
     margin: 15% auto; /* Centraliza o modal na tela */
+    margin-left: 25px;
     padding: 20px;
     width: 80%; /* Largura do modal */
     max-width: 500px; /* Largura máxima do modal */

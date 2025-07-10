@@ -11,7 +11,7 @@ let catalogoDeProdutos = {
             "2x Salada",
             "2x Tomate"
         ],
-        imagem: "https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png"
+        imagem: "imagens/arthur-grande.jpg"
     },
 
     "produto-arthur-baby": {
@@ -26,7 +26,7 @@ let catalogoDeProdutos = {
             "1x Salada",
             "1x Tomate"
         ],
-        imagem: "https://bing.com/th/id/BCO.6614432f-37cc-4f4a-b0d0-a8374cd7cf25.png"
+        imagem: ""
     },
 
     "produto-passaporte-carne": {
@@ -42,7 +42,7 @@ let catalogoDeProdutos = {
             "Catchup",
             "Maionese"
         ],
-        imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s"
+        imagem: ""
     },
 
     "produto-passaporte-frango": {
@@ -56,7 +56,7 @@ let catalogoDeProdutos = {
             "Milho e Ervilha",
             "Maionese"
         ],
-        imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s"
+        imagem: ""
     },
 
     "produto-xbacon": {
@@ -70,14 +70,35 @@ let catalogoDeProdutos = {
             "Salada",
             "Tomate",
         ],
-        imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BfCtfn9H3hiFEp4fMcYVnQi-waU3Aj0wqg&s"
+        imagem: ""
     },
+
+    "produto-passaporte-carnesol": {
+        nome: "Passaporte de Carne de Sol",
+        preco: 25.00,
+        descricao: "Passaporte de Carne de Sol super recheado",
+        ingredientes: [ 
+            "1x Pão Sedão",
+            "Carne de Sol",
+            "1x Salsicha",
+            "Catupiry",
+            "Queijo Coalho",
+            "Tomate Verde",
+            "Milho e Ervilha",
+            "Queijo Ralado",
+            "Ketchup",
+            "Maionese",
+            "Batata Palha",
+        ],
+        imagem: ""
+    },
+
 
     "produto-cocacola": {
         nome: "Coca-Cola 250 ml" ,
         preco: 6.00 ,
         descricao: "Coca-Cola em lata de 250 ml",
-        imagem: "https://s3-sa-east-1.amazonaws.com/loja2/5f3dd775f8306fac0109bb1f4df90bba.png"
+        imagem: ""
     },
 
 }
@@ -222,10 +243,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         } else {
             itensCarrinho.forEach(function(item) { // Percorrendo os itens do Carrinho com forEach
             
-            /*let mensagemVazio = document.createElement('p');
-            mensagemVazio.textContent = "Seu carrinho está vazio! Adicione alguns produtos.";
-            itensDoCarrinhoDiv.appendChild(mensagemVazio);
-        */
+            
 
                 // Criando uma div Pai para controlar melhor o FlexBox
                 let divItemCarrinho = document.createElement('div'); // Cria a div Pai
@@ -244,6 +262,10 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 let spanPrecoProduto = document.createElement('span')
                 spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
                 spanPrecoProduto.classList.add('precoCarrinho')
+
+                // Criar um img e pegar a imagem de cada produto.
+                let imagemProduto = document.createElement('img')
+                imagemProduto.src = `${item.produto.imagem}`
 
                 // BOTÃO REMOVER ITENS
                 let botaoRemover = document.createElement('button')
@@ -320,6 +342,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 divItemCarrinho.appendChild(divNomeProduto);
                 divItemCarrinho.appendChild(descricaoProduto);
                 divItemCarrinho.appendChild(spanPrecoProduto);
+                divItemCarrinho.appendChild(imagemProduto)
 
                 // Tornando os botões filhos da nova DIV Criada
             
