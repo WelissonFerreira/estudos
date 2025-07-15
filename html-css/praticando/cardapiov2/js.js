@@ -231,7 +231,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     }
 });
 
-     //FUNÇÃO EXIBIR ITENS DO CARRINHO
+//FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
@@ -245,19 +245,21 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
             
             
 
-                // Criando uma div Pai para controlar melhor o FlexBox
+                // Criando uma DIV Pai para controlar melhor o FlexBox
                 let divItemCarrinho = document.createElement('div'); // Cria a div Pai
                 divItemCarrinho.classList.add('item-do-carrinho'); // *** Importante: adicione uma classe para o CSS ***
 
-                // Criando DIV e pegando nome do produto
-                let divNomeProduto = document.createElement('h3')
-                divNomeProduto.textContent = item.produto.nome
-                divNomeProduto.classList.add('nomeProduto')
+
+                // Criando h3 e pegando nome do produto
+                let h3NomeProduto = document.createElement('h3')
+                h3NomeProduto.textContent = item.produto.nome
+                h3NomeProduto.classList.add('nomeProduto')
             
                 // Cria um paragrafo e pega a descrição do produto
                 let descricaoProduto = document.createElement('p')
                 descricaoProduto.textContent = `${item.produto.descricao}`
-            
+                descricaoProduto.classList.add('descricaoProduto')
+
                 // Cria um span e pega o preço do produto.
                 let spanPrecoProduto = document.createElement('span')
                 spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
@@ -266,7 +268,23 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 // Criar um img e pegar a imagem de cada produto.
                 let imagemProduto = document.createElement('img')
                 imagemProduto.src = `${item.produto.imagem}`
+                imagemProduto.classList.add('imagemProduto')
 
+
+                // DIV para produto e descrição
+                let divProdutoDescricao = document.createElement('div')
+                divProdutoDescricao.classList.add('divProdutoDescricao')
+            
+                // DIV para produto e descrição e controle de de quantidades.
+
+                let divInfoProdutos = document.createElement('div')
+                divInfoProdutos.classList.add('divInfoProdutos')
+
+                // Div só para a imagem
+                let divImagem = document.createElement('div'); // DIV Para controlar imagem
+                divImagem.classList.add('divImagem')
+
+                
                 // BOTÃO REMOVER ITENS
                 let botaoRemover = document.createElement('button')
                 // Cria o elemento <i> para o ícone do Font Awesome
@@ -286,7 +304,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
                 })
 
-                // Div Controle de Quantidades de Itens
+                // DIV Controle de Quantidades de Itens
                 let divControleDeQuantidade = document.createElement('div') // Div
                 divControleDeQuantidade.classList.add('controles-quantidade')
             
@@ -337,25 +355,39 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 }
 
                 })
+                
+                // Envolvendo a imagem dentro de uma div, colocando a div na di Item Carrinho
+                
+                divImagem.appendChild(imagemProduto);
 
-                // Tornando a div, p e span filhos da nova DIV criada
-                divItemCarrinho.appendChild(divNomeProduto);
-                divItemCarrinho.appendChild(descricaoProduto);
-                divItemCarrinho.appendChild(spanPrecoProduto);
-                divItemCarrinho.appendChild(imagemProduto)
+                // Tornando a h3 e p (descricao dos produtos) filhos da DIV divProdutoDescricao e divProdutoDescricao filho de divInfoProdutos lá em baixo
+                
+                divProdutoDescricao.appendChild(h3NomeProduto);
+                divProdutoDescricao.appendChild(descricaoProduto);
+                
+                                                
 
                 // Tornando os botões filhos da nova DIV Criada
-            
+
+                divControleDeQuantidade.appendChild(spanPrecoProduto);
                 divControleDeQuantidade.appendChild(botaoAumentar);
                 divControleDeQuantidade.appendChild(spanQuantidade)
                 divControleDeQuantidade.appendChild(botaoDiminuir);
                 divControleDeQuantidade.appendChild(botaoRemover);
                 botaoRemover.appendChild(iconeRemover);
             
+                
+                // Conectando a div Controle de quantidades e divProdutoDescricao a divInfoProdutos
+                divInfoProdutos.appendChild(divProdutoDescricao)
+                divInfoProdutos.appendChild(divControleDeQuantidade)
+
+                // DivInfoProdutos filho de DivItemCarrinho
+                divItemCarrinho.appendChild(divImagem)
+                divItemCarrinho.appendChild(divInfoProdutos)
+
+
                 // Conectando a nova DIV a div maior que é "itens-do-carrinho"
                 itensDoCarrinhoDiv.appendChild(divItemCarrinho)
-                // Conectando a div Controle de quantidades
-                divItemCarrinho.appendChild(divControleDeQuantidade)
             
             })
 
