@@ -4,12 +4,19 @@ let catalogoDeProdutos = {
         preco: 55.00,
         descricao: "Especial da casa, dividido em 4 pedaços e servem 4 pessoas.",
         ingredientes: [
+            "Pão Grande",
+            "Bacon",
+            "Calabresa",
+            "Frango Desfiado",
+            "Filé de Alcatra",
             "2x Salsicha",
+            "2x Ovos",
             "2x Hamburguer",
-            "2x Calabresa",
-            "2x Bacon",
-            "2x Salada",
-            "2x Tomate"
+            "2x Queijo",
+            "2x Presunto",
+            "Molho Rosé",
+            "Salada",
+            "Tomate"
         ],
         imagem: "imagens/arthur-grande.jpg"
     },
@@ -34,7 +41,7 @@ let catalogoDeProdutos = {
         preco: 17.00,
         descricao: "Passaporte de carne super recheado",
         ingredientes: [
-            "1x Pão",
+            "Pão",
             "Carne Moída",
             "1x Salsicha",
             "Batata Palha",
@@ -50,11 +57,14 @@ let catalogoDeProdutos = {
         preco: 18.00,
         descricao: "Passaporte de frango super recheado",
         ingredientes: [
-            "1x Pão",
-            "Frango Desfiado",
-            "1x Salsicha",
-            "Milho e Ervilha",
-            "Maionese"
+            "Pão",
+            "Bacon",
+            "Hambúrguer",
+            "Ovo",
+            "Queijo",
+            "Presunto",
+            "Molho Rosé",
+            "Salada"
         ],
         imagem: ""
     },
@@ -62,9 +72,9 @@ let catalogoDeProdutos = {
     "produto-xbacon": {
         nome: "X-Bacon",
         preco: 22.00,
-        descricao: "Especial da casa, dividido em 4 pedaços e servem 4 pessoas.",
+        descricao: "X-Bacon topadão.",
         ingredientes: [
-            "1x Pão",
+            "Pão",
             "Bacon",
             "1x Ovo",
             "Salada",
@@ -73,12 +83,13 @@ let catalogoDeProdutos = {
         imagem: ""
     },
 
+
     "produto-passaporte-carnesol": {
         nome: "Passaporte de Carne de Sol",
         preco: 25.00,
         descricao: "Passaporte de Carne de Sol super recheado",
         ingredientes: [ 
-            "1x Pão Sedão",
+            "Pão",
             "Carne de Sol",
             "1x Salsicha",
             "Catupiry",
@@ -93,13 +104,321 @@ let catalogoDeProdutos = {
         imagem: ""
     },
 
+    "produto-passaporte-misto": {
+      nome: "Passaporte de Misto",
+      preco: 24.00,
+      descricao: "Passaporte de Misto super recheado",
+      ingredientes: [
+        "Pão",
+        "Carne Moída",
+        "Frango Desfiado",
+        "Salsicha",
+        "Milho e Ervilha",
+        "Queijo Ralado",
+        "Kettchup",
+        "Maionese",
+        "Batata Palha",
+      ],
+      imagem: ""
+    },
 
-    "produto-cocacola": {
+    "produto-xtudo": {
+      nome: "X-Tudo",
+      preco: 34.00,
+      descricao: "X-Tudo Super recheado. Serve 2 pessoas.",
+      ingredientes: [
+        "Pão Grande",
+        "Bacon",
+        "Calabresa",
+        "Frango Desfiado",
+        "Salsicha",
+        "Hamburguer",
+        "Ovo",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
+      imagem: ""
+    },
+
+    "produto-misto-quente": {
+      nome: "Misto Quente",
+      preco: 12.00,
+      descricao: "Misto Quente naquele modelo",
+      ingredientes: [
+        "Pão Assado na chapa",
+        "2 Fatias de Queijo",
+        "2 Fatias de Presunto"
+      ],
+      imagem: ""
+    },
+
+    "produto-queijo-quente": {
+      nome: "Queijo Quente",
+      preco: 12.00,
+      descricao: "Queijo Quente naquele padrão",
+      ingredientes: [
+        "Pão Assado na chapa",
+        "3 Fatias de Queijo"
+      ],
+      imagem: ""
+    },
+
+    "produto-americano": {
+      nome: "Americano",
+      preco: 16.00,
+      descricao: "Americano clássico naquele padrão",
+      ingredientes: [ 
+        "Pão",
+        "Ovo",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
+      imagem: ""
+    },
+
+    "produto-bauru": {
+      nome: "Baurú",
+      preco: 16.00,
+      descricao: "Baurú daquele jeito",
+      ingredientes: [
+        "Pão",
+        "Salsicha",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada",
+    ],
+      imagem: ""
+    },
+
+    "produto-hamburguer": {
+      nome: "Hambúrguer",
+      preco: 17.00,
+      descricao: "Hambúrguer daquele jeito",
+      ingredientes: [
+        "Pão",
+        "Hambúrguer",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+    ],
+      imagem: ""
+    },
+
+    "produto-xburguer": {
+      nome: "X-Burguer",
+      preco: 18.00,
+      descricao: "X Burguersão daquele jeito",
+      ingredientes: [
+        "Pão",
+        "Hambúrguer",
+        "Queijo",
+        "Presunto",
+        "Ovo",
+        "Molho Rosé",
+        "Salada"
+    ],
+      imagem: ""
+    },
+
+    "produto-xsalsicha": {
+      nome: "X-Salsicha",
+      preco: 18.00,
+      descricao: "X Salsichão daquele jeito",
+      ingredientes: [
+        "Pão",
+        "Salsicha",
+        "Hambúrguer",
+        "Queijo",
+        "Presunto",
+        "Molho",
+        "Salada"
+    ],
+      imagem: ""
+    },
+
+    "produto-minuano": {
+      nome: "Minuano",
+      preco: 20.00,
+      descricao: "Minuano clássico naquele padrão",
+      ingredientes: [
+        "Pão",
+        "Ovo",
+        "Salsicha",
+        "Hambúrguer",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+    ],
+      imagem: ""
+    },
+
+     "produto-xfrango": {
+      nome: "X-Frango",
+      preco: 22.00,
+      descricao: "X-Frango topadão",
+      ingredientes: [
+        "Pão",
+        "Frango Desfiado",
+        "Catupiry",
+        "Milho",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+    ],
+      imagem: ""
+    },
+
+    "produto-XCarneDeSol": {
+      nome: "X-Carne de Sol",
+      preco: 22.00,
+      descricao: "X-Carne de Sol topadão",
+      ingredientes: [
+        "Pão",
+        "Carne de Sol",
+    ],
+      imagem: ""
+    },
+
+    "produto-xcalabresa": {
+      nome: "X-Calabresa",
+      preco: 20.00,
+      descricao: "X-Calabresa topadão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-FrangoSalada": {
+      nome: "Frango Salada",
+      preco: 22.00,
+      descricao: "Frango Salada naquele padrão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-xfile": {
+      nome: "X-Filé",
+      preco: 23.00,
+      descricao: "X-Filé topadão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-filebacon": {
+      nome: "Filé Bacon",
+      preco: 26.00,
+      descricao: "Filé-Bacon topadão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-frangobresa": {
+      nome: "Frango-Bresa",
+      preco: 25.00,
+      descricao: "Frango-Bresa topadão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-filefrango": {
+      nome: "Filé-Frango",
+      preco: 26.00,
+      descricao: "Filé-Frango topadão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-CarneDeSolCaipira": {
+      nome: "Carne de Sol Caipira",
+      preco: 25.00,
+      descricao: "Carne de Sol Caipira topadão",
+      ingredientes: ["1x Pão..."],
+      imagem: ""
+    },
+
+    "produto-cocacola250ml": {
         nome: "Coca-Cola 250 ml" ,
         preco: 6.00 ,
         descricao: "Coca-Cola em lata de 250 ml",
         imagem: ""
     },
+
+    "produto-guarana250ml": {
+      nome: "Guaraná 250ml",
+      preco: 6.00,
+      descricao: "Guanará em lata de 250 ml",
+      imagem: ""
+    },
+
+    "produto-soda250ml": {
+      nome: "Soda 250ml",
+      preco: 6.00,
+      descricao: "Soda em lata de 250 ml",
+      imagem: ""
+    },
+
+    "produto-cocacola1l": {
+      nome: "Coca-Cola 1L",
+      preco: 10.00,
+      descricao: "Coca-Cola 1L",
+      imagem: ""
+    },
+
+    "produto-guarana1L": {
+      nome: "Guaraná 1L",
+      preco: 8.00,
+      descricao: "Guaraná 1L",
+      imagem: ""
+    },
+
+    "produto-fanta1L": {
+      nome: "Fanta 1L",
+      preco: 8.00,
+      descricao: "Fanta 1L",
+      imagem: ""
+    },
+
+    "produto-soda1L": {
+      nome: "Soda 1L",
+      preco: 8.00,
+      descricao: "Soda 1L",
+      imagem: ""
+    },
+
+    "produto-cocacola2L": {
+      nome: "Coca-Cola 2L",
+      preco: 13.00,
+      descricao: "Coca-Cola 2L",
+      imagem: ""
+    },
+
+    "produto-guarana2L": {
+      nome: "Guaraná 2L",
+      preco: 12.00,
+      descricao: "Guaraná 2L",
+      imagem: ""
+    },
+
+    "produto-fanta2L": {
+      nome: "Fanta 2L",
+      preco: 12.00,
+      descricao: "Fanta 2L",
+      imagem: ""
+    },
+
+    "produto-soda2L": {
+      nome: "Soda 2L",
+      preco: 12.00,
+      descricao: "Soda 2L",
+      imagem: ""
+    }
 
 }
 
@@ -118,6 +437,7 @@ btnAbriModal.forEach(function(botaoAtual) {
         let modalParaAbrir = document.querySelector(SeletorDoModal); // Seleciona o modal correspondente
 
         modalParaAbrir.style.display = 'block'; // Exibe o modal
+        document.body.style.overflow = 'hidden';
     
         // 1. Encontrar o botão de fechar DENTRO DESTE modal que abriu
         let fecharbotaomodal = modalParaAbrir.querySelector('.close-button')
@@ -126,6 +446,7 @@ btnAbriModal.forEach(function(botaoAtual) {
         fecharbotaomodal.addEventListener('click', function() {
             // 3. Fazer APENAS ESTE modal desaparecer
             modalParaAbrir.style.display = 'none';
+            document.body.style.overflow = 'auto';
         })
 
         // Opcional: Fechar o modal clicando fora dele
@@ -184,14 +505,26 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
             });
         }
         // *** FIM DO NOVO CÓDIGO ***
-
-        // Chama a Função atualizar o carrinho (este pode continuar)
+        // Chama a Função atualizar o carrinho este pode continuar
         atualizarCarrinho();
+        
+        // --- NOVA LÓGICA A SER ADICIONADA ---
+        // 1. Encontra o modal de detalhes do produto pai do botão clicado
+        let modalDeProdutoAtivo = botaoCarrinho.closest('.modal');
+
+        // 2. Verifica se encontrou e esconde o modal
+        if (modalDeProdutoAtivo) {
+            modalDeProdutoAtivo.style.display = 'none';
+        }
+
+        // 3. Restaura a rolagem do body
+        document.body.style.overflow = 'auto';
+        // --- FIM DA NOVA LÓGICA ---
         console.log(itensCarrinho); // Verifique o novo formato do carrinho
     });
 });
 
-
+// ==========================================================================================
 let abrirCarrinho = document.querySelector('#botaoCarrinho')
 let modalCarrinho = document.querySelector('#ModalCarrinho')
 let fecharCarrinho = document.querySelector('.close-button-carrinho')
@@ -224,14 +557,18 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         modalCarrinho.style.display = 'block';
         document.body.style.overflow = 'hidden';
         atualizarCarrinho();
+        
+
         fecharCarrinho.addEventListener('click', function() {
         modalCarrinho.style.display = 'none';
         document.body.style.overflow = 'auto'
+        
+        
         })
     }
 });
 
-//FUNÇÃO EXIBIR ITENS DO CARRINHO
+     //FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
@@ -260,6 +597,10 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 descricaoProduto.textContent = `${item.produto.descricao}`
                 descricaoProduto.classList.add('descricaoProduto')
 
+                let ingredientesProdutos = document.createElement('p')
+                ingredientesProdutos.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`
+                ingredientesProdutos.classList.add('ingredientesProdutos')
+
                 // Cria um span e pega o preço do produto.
                 let spanPrecoProduto = document.createElement('span')
                 spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
@@ -270,6 +611,19 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 imagemProduto.src = `${item.produto.imagem}`
                 imagemProduto.classList.add('imagemProduto')
 
+                // Cria a div para controlar o input e label
+                let divObs = document.createElement('div');
+                divObs.classList.add('divObs');
+                // Label
+                let labelObs = document.createElement('label') 
+                labelObs.textContent = ''    
+                
+                // Input
+                let inputObs = document.createElement('input')
+                inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...'
+                inputObs.classList.add('inputObs')
+                
+                
 
                 // DIV para produto e descrição
                 let divProdutoDescricao = document.createElement('div')
@@ -279,6 +633,14 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
                 let divInfoProdutos = document.createElement('div')
                 divInfoProdutos.classList.add('divInfoProdutos')
+
+                /* // DIV FANTASMA
+                let divFantasmaMeio = document.createElement('divFantasmaMeio')
+                divFantasmaMeio.textContent = 'TESTE' */
+                //  DIV controle de botões
+                let divControleBotoes = document.createElement('div')
+                divControleBotoes.classList.add('divControleBotoes')
+                
 
                 // Div só para a imagem
                 let divImagem = document.createElement('div'); // DIV Para controlar imagem
@@ -360,26 +722,37 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 
                 divImagem.appendChild(imagemProduto);
 
-                // Tornando a h3 e p (descricao dos produtos) filhos da DIV divProdutoDescricao e divProdutoDescricao filho de divInfoProdutos lá em baixo
+                divControleDeQuantidade.appendChild(spanPrecoProduto);
+                
+                divControleBotoes.appendChild(botaoAumentar);
+                divControleBotoes.appendChild(spanQuantidade)
+                divControleBotoes.appendChild(botaoDiminuir);
+                divControleBotoes.appendChild(botaoRemover);
+                botaoRemover.appendChild(iconeRemover);
+
+                
+                
                 
                 divProdutoDescricao.appendChild(h3NomeProduto);
                 divProdutoDescricao.appendChild(descricaoProduto);
-                
-                                                
+                divProdutoDescricao.appendChild(ingredientesProdutos);
 
+                divObs.appendChild(labelObs)
+                divObs.appendChild(inputObs)
+
+                divProdutoDescricao.appendChild(divObs);
+                
+                
                 // Tornando os botões filhos da nova DIV Criada
 
-                divControleDeQuantidade.appendChild(spanPrecoProduto);
-                divControleDeQuantidade.appendChild(botaoAumentar);
-                divControleDeQuantidade.appendChild(spanQuantidade)
-                divControleDeQuantidade.appendChild(botaoDiminuir);
-                divControleDeQuantidade.appendChild(botaoRemover);
-                botaoRemover.appendChild(iconeRemover);
+                
             
                 
                 // Conectando a div Controle de quantidades e divProdutoDescricao a divInfoProdutos
                 divInfoProdutos.appendChild(divProdutoDescricao)
                 divInfoProdutos.appendChild(divControleDeQuantidade)
+                //divControleDeQuantidade.appendChild(divFantasmaMeio)
+                divControleDeQuantidade.appendChild(divControleBotoes)
 
                 // DivInfoProdutos filho de DivItemCarrinho
                 divItemCarrinho.appendChild(divImagem)
@@ -395,6 +768,8 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         }
     
     }
+
+// ==========================================================================================
 
     // FUNÇÃO ATUALIZAR CARRINHO
     function atualizarCarrinho() {
@@ -484,7 +859,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
         itensCarrinho.forEach(function(item) {
         let addPedido = document.createElement('li')
-        addPedido.textContent = `Item: ${item.quantidade}x ${item.produto.nome} `
+        addPedido.textContent = `Item: ${item.quantidade}x ${item.produto.nome} `;
         divItensListaPedido.appendChild(addPedido)
 
         let addPreco = document.createElement('span')
@@ -497,7 +872,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     
     })
 
-        totalPreco.textContent = `R$ ${precoItens.toFixed(2).replace('.', ',')}`
+        totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
 
     })
 
@@ -605,23 +980,23 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
         }
     }
 
+
+
     function exibirOpenClose() {
         let ResultadoFuncao = AbertoFechado()
 
         if (ResultadoFuncao === true) {
             let p1 = document.createElement('p')
             p1.textContent = 'Aberto!'
-    
-            p1.style.color = `white`
+            p1.style.color = 'white'
             p1.style.backgroundColor = 'green'
             p1.style.padding = '5px'
             p1.style.margin = '5px'
             p1.style.borderRadius = '3px'
             openClose.appendChild(p1)
-    
 
             let novoP = document.createElement('p')
-            novoP.textContent = `Estamos funcionando!`
+            novoP.textContent = 'Estamos funcionando!'
             openClose.appendChild(novoP)
 
         } else {
@@ -630,10 +1005,8 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             p2.textContent = 'Fechado!'
             p2.classList.add('btn-fechado-horarios')
             openClose.appendChild(p2)
-
-
             let novoP2 = document.createElement('p')
-            novoP2.textContent = `Horário de funcionamento: `
+            novoP2.textContent = 'Horário de funcionamento: '
             novoP2.classList.add('msghorariofuncionamento')
             openClose.appendChild(novoP2)
             
@@ -654,6 +1027,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             botaoFechar.addEventListener('click', function() {
                 modalhorarios.style.display = 'none'
             })
+    
     }
 
     exibirOpenClose();
@@ -680,5 +1054,4 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
         document.querySelector('#Numero').value = ''
         document.querySelector('#complemento').value = ''
         
-    })
-    
+    }) 
