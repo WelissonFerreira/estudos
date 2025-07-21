@@ -570,6 +570,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
      //FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
+    let labelObs = "";
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
         // Próximo passo: verificar se o carrinho está vazio
@@ -615,8 +616,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 let divObs = document.createElement('div');
                 divObs.classList.add('divObs');
                 // Label
-                let labelObs = document.createElement('label') 
-                labelObs.textContent = ''    
+                labelObs = inputObs.value;
                 
                 // Input
                 let inputObs = document.createElement('input')
@@ -919,7 +919,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     if (itensCarrinho.length > 0) {
         itensCarrinho.forEach((item, index) => {
             mensagemWhatsApp += `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})\n`;
-            
+            mensagemWhatsApp += `Observação: ${labelObs}`
             // SOME O PREÇO DE CADA ITEM AO TOTAL FINAL DO WHATSAPP
             totalFinalParaWhatsApp += item.produto.preco * item.quantidade; 
         });
