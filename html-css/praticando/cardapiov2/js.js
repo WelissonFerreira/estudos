@@ -570,7 +570,6 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
      //FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
-    let labelObs = "";
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
         // Próximo passo: verificar se o carrinho está vazio
@@ -616,12 +615,16 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
                 let divObs = document.createElement('div');
                 divObs.classList.add('divObs');
                 // Label
-                labelObs = inputObs.value;
+                let labelObs = document.createElement('label')
                 
                 // Input
                 let inputObs = document.createElement('input')
                 inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...'
                 inputObs.classList.add('inputObs')
+
+                inputObs.addEventListener('input', function() {
+                    item.observacao = inputObs.value; 
+                })
                 
                 
 
@@ -918,8 +921,13 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
 
     if (itensCarrinho.length > 0) {
         itensCarrinho.forEach((item, index) => {
-            mensagemWhatsApp += `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})\n`;
-            mensagemWhatsApp += `Observação: ${labelObs}`
+          
+            linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})`;
+            if (item.observacao && item.observacao.trim() !== '') {
+              linhaItem += `Observação: ${item.observacao}`
+            }
+
+            mensagemWhatsApp += linhaItem + `\n`
             // SOME O PREÇO DE CADA ITEM AO TOTAL FINAL DO WHATSAPP
             totalFinalParaWhatsApp += item.produto.preco * item.quantidade; 
         });
