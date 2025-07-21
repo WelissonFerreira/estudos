@@ -751,7 +751,7 @@ footer {
     cursor: pointer;
     /* border-radius: 5px; */ /* Cantos arredondados */
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.4rem;
     width: 15px; /* Largura fixa */
     height: 15px; /* Altura fixa */
     display: flex; /* Para centralizar o + e - */
@@ -768,6 +768,7 @@ footer {
 
 
 .btnRemover {
+    font-size: 1rem;
     border-radius: 5px;
     width: 22px;
     height: 22px;
@@ -780,6 +781,7 @@ footer {
 .btnDiminuir:hover {
     background-color: #edbb5a; /* Efeito de hover */
     color: black;
+    
 }
 
 .quantidade-item {
