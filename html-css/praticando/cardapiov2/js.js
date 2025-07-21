@@ -867,6 +867,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
         let addPreco = document.createElement('span')
         addPreco.textContent = ` Preço: R$ ${item.produto.preco.toFixed(2).replace('.', ',')}`
+        addPreco.classList.add('precoFazerPedido')
         divItensListaPedido.appendChild(addPreco)
 
         precoItens += item.produto.preco * item.quantidade

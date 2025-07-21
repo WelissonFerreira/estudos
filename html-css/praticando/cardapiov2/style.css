@@ -277,6 +277,21 @@ header {
 
 }
 
+.close-button-carrinho {
+    position: absolute;
+    font-size: 0.5rem;
+    font-weight: bolder;
+    top: 45px;
+    right: 25px;
+    width: 50px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+}
+
 
 
 /* CONTROLE DE TEXTOS, SUBTITULOS, PREÇOS E DESCRIÇÕES */
@@ -840,6 +855,7 @@ footer {
     gap: 15px;
 }
 
+
 #AvancarPedido, #VoltarPedido {
     margin-top: 10px;
     font-size: 1rem;
@@ -850,6 +866,8 @@ footer {
     padding: 5px 10px;
     cursor: pointer;
     white-space: nowrap;
+
+
 }
 
 /* MODAL FINALIZAR PEDIDO */
@@ -880,8 +898,51 @@ footer {
     color: white;
     cursor: pointer;
     border: none;
-    padding: 5px;
     margin: 5px;
+}
+
+#Finalizar-Pedido {
+    padding: 5px;
+}
+
+#voltarPedido {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 50px;
+    padding: 2´x;
+}
+
+#Pedido {
+    margin-top: 25px;
+    
+}
+
+#itensListadosNoPedido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formas-pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+#ValorTotalPedidoFinal {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.precoFazerPedido {
+    text-align: left;
+}
+
+#divBotoesPedido {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
 }
 
 /* FORMULÁRIO */
@@ -917,8 +978,30 @@ footer {
     position: absolute;
     top: 15px;
     right: 15px;
-    
-    
+    font-size: 0.5rem;
+    font-weight: bolder;
+    width: 50px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+}
+
+.close-button-pedido {
+    position: absolute;
+    font-size: 0.5rem;
+    font-weight: bolder;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
 }
 
 #nome, #cell, #Bairro, #Rua, #Numero, #complemento {
