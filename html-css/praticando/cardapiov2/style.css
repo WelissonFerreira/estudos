@@ -623,13 +623,15 @@ footer {
     margin: 10px auto;
     background-Color: white;
     border-radius: 10px;
+    flex-wrap: wrap;
+    
     
 }
 
 .divImagem {
     justify-content: center;
     align-items: center;
-    
+    margin: auto;
     
   
 }
@@ -648,6 +650,7 @@ footer {
   justify-content: start;
   align-items: start;
   gap: 10px;
+  
 }
 
 
@@ -795,6 +798,7 @@ footer {
     padding-bottom: 5px;
     margin-top: 10px;
     color: black;
+    margin: auto;
 }
 
 /* MODAL DADOS */
