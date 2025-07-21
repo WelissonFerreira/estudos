@@ -924,7 +924,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
           
             linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})`;
             if (item.observacao && item.observacao.trim() !== '') {
-              linhaItem += `Observação: ${item.observacao}`
+              linhaItem += `Observação: ${item.observacao} \n`
             }
 
             mensagemWhatsApp += linhaItem + `\n`
