@@ -83,7 +83,11 @@ header {
     font-size: 0.8rem;
     text-decoration: underline;
     cursor: pointer;
+
 }
+
+
+
 
 .msghorariofuncionamento {
     color: black;
@@ -94,8 +98,28 @@ header {
     font-style: normal;
     font-size: 0.8rem;
     cursor: pointer;
-    
+
 }
+
+.divFuncionamento {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.msgverhorarios {
+    color: black;
+    padding: 2px;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+
 
 .btn-fechado-horarios {
     color: white;
@@ -139,7 +163,7 @@ header {
 
 
 
-.titulo-passaporte {
+#titulo-passaporte, #titulo-sanduiches, #titulo-especiais, #titulo-bebidas {
     color: black;
     margin: auto;
     font-size: 0.7rem;
@@ -283,8 +307,7 @@ header {
     font-weight: bolder;
     top: 45px;
     right: 25px;
-    width: 50px;
-    padding: 5px 10px;
+    padding: 3px 5px;
     border: none;
     cursor: pointer;
     background-color: black;
@@ -656,6 +679,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    width: 100%;
     
 
 }
@@ -737,6 +761,7 @@ footer {
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 400;
+
 }
 
 .ingredientesProdutos {

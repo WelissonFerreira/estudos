@@ -1,5 +1,7 @@
+
 let catalogoDeProdutos = {
     "produto-arthur-grande": { // Esta é a CHAVE, que corresponde ao seu data-produto-id
+        tipo: "lanche",
         nome: "Especial Arthur Grande",
         preco: 55.00,
         descricao: "Especial da casa, dividido em 4 pedaços e servem 4 pessoas.",
@@ -18,10 +20,11 @@ let catalogoDeProdutos = {
             "Salada",
             "Tomate"
         ],
-        imagem: "imagens/arthur-grande.jpg"
+        imagem: ""
     },
 
     "produto-arthur-baby": {
+        tipo: "lanche",
         nome: "Especial Arthur Baby",
         preco: 40.00,
         descricao: "Especial da casa, dividido em 2 pedaços e servem 2 pessoas.",
@@ -37,6 +40,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-passaporte-carne": {
+        tipo: "lanche",
         nome: "Passaporte de Carne",
         preco: 17.00,
         descricao: "Passaporte de carne super recheado",
@@ -53,6 +57,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-passaporte-frango": {
+        tipo: "lanche",
         nome: "Passaporte de Frango",
         preco: 18.00,
         descricao: "Passaporte de frango super recheado",
@@ -70,21 +75,27 @@ let catalogoDeProdutos = {
     },
 
     "produto-xbacon": {
+        tipo: "lanche",
         nome: "X-Bacon",
         preco: 22.00,
         descricao: "X-Bacon topadão.",
         ingredientes: [
             "Pão",
             "Bacon",
+            "Hambúrguer",
             "1x Ovo",
+            "Queijo",
+            "Presunto",
+            "Molho Rosé",
             "Salada",
-            "Tomate",
+            "Tomate"
         ],
         imagem: ""
     },
 
 
     "produto-passaporte-carnesol": {
+        tipo: "lanche",
         nome: "Passaporte de Carne de Sol",
         preco: 25.00,
         descricao: "Passaporte de Carne de Sol super recheado",
@@ -105,6 +116,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-passaporte-misto": {
+      tipo: "lanche",
       nome: "Passaporte de Misto",
       preco: 24.00,
       descricao: "Passaporte de Misto super recheado",
@@ -123,6 +135,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-xtudo": {
+      tipo: "lanche",
       nome: "X-Tudo",
       preco: 34.00,
       descricao: "X-Tudo Super recheado. Serve 2 pessoas.",
@@ -143,6 +156,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-misto-quente": {
+      tipo: "lanche",
       nome: "Misto Quente",
       preco: 12.00,
       descricao: "Misto Quente naquele modelo",
@@ -155,6 +169,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-queijo-quente": {
+      tipo: "lanche",
       nome: "Queijo Quente",
       preco: 12.00,
       descricao: "Queijo Quente naquele padrão",
@@ -166,6 +181,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-americano": {
+      tipo: "lanche",
       nome: "Americano",
       preco: 16.00,
       descricao: "Americano clássico naquele padrão",
@@ -181,6 +197,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-bauru": {
+      tipo: "lanche",
       nome: "Baurú",
       preco: 16.00,
       descricao: "Baurú daquele jeito",
@@ -196,6 +213,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-hamburguer": {
+      tipo: "lanche",
       nome: "Hambúrguer",
       preco: 17.00,
       descricao: "Hambúrguer daquele jeito",
@@ -211,6 +229,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-xburguer": {
+      tipo: "lanche",
       nome: "X-Burguer",
       preco: 18.00,
       descricao: "X Burguersão daquele jeito",
@@ -227,6 +246,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-xsalsicha": {
+      tipo: "lanche",
       nome: "X-Salsicha",
       preco: 18.00,
       descricao: "X Salsichão daquele jeito",
@@ -243,6 +263,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-minuano": {
+      tipo: "lanche",
       nome: "Minuano",
       preco: 20.00,
       descricao: "Minuano clássico naquele padrão",
@@ -260,6 +281,7 @@ let catalogoDeProdutos = {
     },
 
      "produto-xfrango": {
+      tipo: "lanche",
       nome: "X-Frango",
       preco: 22.00,
       descricao: "X-Frango topadão",
@@ -277,6 +299,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-XCarneDeSol": {
+      tipo: "lanche",
       nome: "X-Carne de Sol",
       preco: 22.00,
       descricao: "X-Carne de Sol topadão",
@@ -288,6 +311,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-xcalabresa": {
+      tipo: "lanche",
       nome: "X-Calabresa",
       preco: 20.00,
       descricao: "X-Calabresa topadão",
@@ -296,6 +320,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-FrangoSalada": {
+      tipo: "lanche",
       nome: "Frango Salada",
       preco: 22.00,
       descricao: "Frango Salada naquele padrão",
@@ -304,6 +329,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-xfile": {
+      tipo: "lanche",
       nome: "X-Filé",
       preco: 23.00,
       descricao: "X-Filé topadão",
@@ -312,6 +338,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-filebacon": {
+      tipo: "lanche",
       nome: "Filé Bacon",
       preco: 26.00,
       descricao: "Filé-Bacon topadão",
@@ -320,6 +347,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-frangobresa": {
+      tipo: "lanche",
       nome: "Frango-Bresa",
       preco: 25.00,
       descricao: "Frango-Bresa topadão",
@@ -328,6 +356,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-filefrango": {
+      tipo: "lanche",
       nome: "Filé-Frango",
       preco: 26.00,
       descricao: "Filé-Frango topadão",
@@ -336,6 +365,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-CarneDeSolCaipira": {
+      tipo: "lanche",
       nome: "Carne de Sol Caipira",
       preco: 25.00,
       descricao: "Carne de Sol Caipira topadão",
@@ -344,6 +374,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-cocacola250ml": {
+        tipo: "bebida",
         nome: "Coca-Cola 250 ml" ,
         preco: 6.00 ,
         descricao: "Coca-Cola em lata de 250 ml",
@@ -351,20 +382,31 @@ let catalogoDeProdutos = {
     },
 
     "produto-guarana250ml": {
+      tipo: "bebida",
       nome: "Guaraná 250ml",
       preco: 6.00,
       descricao: "Guanará em lata de 250 ml",
       imagem: ""
     },
 
+    "produto-fanta250ml": {
+      tipo: "bebida",
+      nome: "Fanta 250ml",
+      preco: 6.00,
+      descricao: "Fanta em lata de 250 ml",
+      imagem: ""
+    },
+
     "produto-soda250ml": {
+      tipo: "bebida",
       nome: "Soda 250ml",
       preco: 6.00,
       descricao: "Soda em lata de 250 ml",
       imagem: ""
     },
 
-    "produto-cocacola1l": {
+    "produto-cocacola1L": {
+      tipo: "bebida",
       nome: "Coca-Cola 1L",
       preco: 10.00,
       descricao: "Coca-Cola 1L",
@@ -372,6 +414,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-guarana1L": {
+      tipo: "bebida",
       nome: "Guaraná 1L",
       preco: 8.00,
       descricao: "Guaraná 1L",
@@ -379,6 +422,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-fanta1L": {
+      tipo: "bebida",
       nome: "Fanta 1L",
       preco: 8.00,
       descricao: "Fanta 1L",
@@ -386,6 +430,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-soda1L": {
+      tipo: "bebida",
       nome: "Soda 1L",
       preco: 8.00,
       descricao: "Soda 1L",
@@ -393,6 +438,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-cocacola2L": {
+      tipo: "bebida",
       nome: "Coca-Cola 2L",
       preco: 13.00,
       descricao: "Coca-Cola 2L",
@@ -400,6 +446,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-guarana2L": {
+      tipo: "bebida",
       nome: "Guaraná 2L",
       preco: 12.00,
       descricao: "Guaraná 2L",
@@ -407,6 +454,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-fanta2L": {
+      tipo: "bebida",
       nome: "Fanta 2L",
       preco: 12.00,
       descricao: "Fanta 2L",
@@ -414,6 +462,7 @@ let catalogoDeProdutos = {
     },
 
     "produto-soda2L": {
+      tipo: "bebida",
       nome: "Soda 2L",
       preco: 12.00,
       descricao: "Soda 2L",
@@ -578,195 +627,146 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
             
 
         } else {
-            itensCarrinho.forEach(function(item) { // Percorrendo os itens do Carrinho com forEach
-            
-            
+            itensCarrinho.forEach(function(item) {
 
-                // Criando uma DIV Pai para controlar melhor o FlexBox
-                let divItemCarrinho = document.createElement('div'); // Cria a div Pai
-                divItemCarrinho.classList.add('item-do-carrinho'); // *** Importante: adicione uma classe para o CSS ***
+    // 1. Criar a DIV principal do item do carrinho
+    let divItemCarrinho = document.createElement('div');
+    divItemCarrinho.classList.add('item-do-carrinho');
 
+    // 2. Criar os elementos que SEMPRE existem para qualquer produto (lanche ou bebida)
+    let h3NomeProduto = document.createElement('h3');
+    h3NomeProduto.textContent = item.produto.nome;
+    h3NomeProduto.classList.add('nomeProduto');
 
-                // Criando h3 e pegando nome do produto
-                let h3NomeProduto = document.createElement('h3')
-                h3NomeProduto.textContent = item.produto.nome
-                h3NomeProduto.classList.add('nomeProduto')
-            
-                // Cria um paragrafo e pega a descrição do produto
-                let descricaoProduto = document.createElement('p')
-                descricaoProduto.textContent = `${item.produto.descricao}`
-                descricaoProduto.classList.add('descricaoProduto')
+    let descricaoProduto = document.createElement('p');
+    descricaoProduto.textContent = `${item.produto.descricao}`;
+    descricaoProduto.classList.add('descricaoProduto');
 
-                let ingredientesProdutos = document.createElement('p')
-                ingredientesProdutos.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`
-                ingredientesProdutos.classList.add('ingredientesProdutos')
+    let spanPrecoProduto = document.createElement('span');
+    spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
+    spanPrecoProduto.classList.add('precoCarrinho');
 
-                // Cria um span e pega o preço do produto.
-                let spanPrecoProduto = document.createElement('span')
-                spanPrecoProduto.textContent = `R$ ${item.produto.preco.toFixed(2).replace('.',',')}`;
-                spanPrecoProduto.classList.add('precoCarrinho')
+    let imagemProduto = document.createElement('img');
+    imagemProduto.src = `${item.produto.imagem}`;
+    imagemProduto.classList.add('imagemProduto');
 
-                // Criar um img e pegar a imagem de cada produto.
-                let imagemProduto = document.createElement('img')
-                imagemProduto.src = `${item.produto.imagem}`
-                imagemProduto.classList.add('imagemProduto')
+    // Crie a div para a imagem (será filha de divItemCarrinho)
+    let divImagem = document.createElement('div');
+    divImagem.classList.add('divImagem');
+    divImagem.appendChild(imagemProduto); // Anexe a imagem à sua div
 
-                // Cria a div para controlar o input e label
-                let divObs = document.createElement('div');
-                divObs.classList.add('divObs');
-                // Label
-                let labelObs = document.createElement('label')
-                
-                // Input
-                let inputObs = document.createElement('input')
-                inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...'
-                inputObs.classList.add('inputObs')
-
-                inputObs.addEventListener('input', function() {
-                    item.observacao = inputObs.value; 
-                })
-                
-                
-
-                // DIV para produto e descrição
-                let divProdutoDescricao = document.createElement('div')
-                divProdutoDescricao.classList.add('divProdutoDescricao')
-            
-                // DIV para produto e descrição e controle de de quantidades.
-
-                let divInfoProdutos = document.createElement('div')
-                divInfoProdutos.classList.add('divInfoProdutos')
-
-                /* // DIV FANTASMA
-                let divFantasmaMeio = document.createElement('divFantasmaMeio')
-                divFantasmaMeio.textContent = 'TESTE' */
-                //  DIV controle de botões
-                let divControleBotoes = document.createElement('div')
-                divControleBotoes.classList.add('divControleBotoes')
-                
-
-                // Div só para a imagem
-                let divImagem = document.createElement('div'); // DIV Para controlar imagem
-                divImagem.classList.add('divImagem')
-
-                
-                // BOTÃO REMOVER ITENS
-                let botaoRemover = document.createElement('button')
-                // Cria o elemento <i> para o ícone do Font Awesome
-                let iconeRemover = document.createElement('i');
-                iconeRemover.classList.add('fa-solid', 'fa-trash-can'); // Adiciona as classes do Font Awesome
-                botaoRemover.classList.add('btnRemover')
-
-                botaoRemover.addEventListener('click', function() {
-                let encontrarItem = itensCarrinho.indexOf(item)
-                itensCarrinho.splice(encontrarItem, 1)
-
-                contadorCarrinho.textContent = `0`
-
-                atualizarCarrinho()
-
-                
-
-                })
-
-                // DIV Controle de Quantidades de Itens
-                let divControleDeQuantidade = document.createElement('div') // Div
-                divControleDeQuantidade.classList.add('controles-quantidade')
-            
-                // BOTÃO AUMENTAR
-                let botaoAumentar = document.createElement('button') // Botão de Aumentar
-                botaoAumentar.textContent = `+`
-                botaoAumentar.classList.add('btnAumentar')
-
-                botaoAumentar.addEventListener('click', function() {
-                let quantidadeTotal = item.quantidade + 1
-                item.quantidade = quantidadeTotal
-                spanQuantidade.textContent = `${quantidadeTotal}`
-
-            
-            
-
-                atualizarCarrinho()
-            
-                })
-            
-                // SPAN QUANTIDADE | TEXTO HTML
-                let spanQuantidade = document.createElement('span')
-                spanQuantidade.textContent = item.quantidade
-                spanQuantidade.classList.add('quantidade-item')
+    
 
 
+    // 3. Criar a DIV pai 'divProdutoDescricao'
+    // Ela precisa ser criada AQUI porque vai receber o nome, descrição, e talvez ingredientes
+    let divProdutoDescricao = document.createElement('div');
+    divProdutoDescricao.classList.add('divProdutoDescricao');
 
-                // BOTÃO DIMINUIR
-                let botaoDiminuir = document.createElement('button') // Botão de Diminuir
-                botaoDiminuir.textContent = `-` // Conteudo do botão
-                botaoDiminuir.classList.add('btnDiminuir')
-            
-                botaoDiminuir.addEventListener('click', function() {
-
-                if (item.quantidade === 1) {
-                    let encontrarItem = itensCarrinho.indexOf(item)
-                    itensCarrinho.splice(encontrarItem, 1)
-                    //contadorCarrinho.textContent = `0`
-                    atualizarCarrinho()
-                
-                } else {
-                    let quantidadeTotal = item.quantidade - 1
-            
-                    item.quantidade = quantidadeTotal
-                    spanQuantidade.textContent = `${quantidadeTotal}`
-
-                    atualizarCarrinho()
-                }
-
-                })
-                
-                // Envolvendo a imagem dentro de uma div, colocando a div na di Item Carrinho
-                
-                divImagem.appendChild(imagemProduto);
-
-                divControleDeQuantidade.appendChild(spanPrecoProduto);
-                
-                divControleBotoes.appendChild(botaoAumentar);
-                divControleBotoes.appendChild(spanQuantidade)
-                divControleBotoes.appendChild(botaoDiminuir);
-                divControleBotoes.appendChild(botaoRemover);
-                botaoRemover.appendChild(iconeRemover);
-
-                
-                
-                
-                divProdutoDescricao.appendChild(h3NomeProduto);
-                divProdutoDescricao.appendChild(descricaoProduto);
-                divProdutoDescricao.appendChild(ingredientesProdutos);
-
-                divObs.appendChild(labelObs)
-                divObs.appendChild(inputObs)
-
-                divProdutoDescricao.appendChild(divObs);
-                
-                
-                // Tornando os botões filhos da nova DIV Criada
-
-                
-            
-                
-                // Conectando a div Controle de quantidades e divProdutoDescricao a divInfoProdutos
-                divInfoProdutos.appendChild(divProdutoDescricao)
-                divInfoProdutos.appendChild(divControleDeQuantidade)
-                //divControleDeQuantidade.appendChild(divFantasmaMeio)
-                divControleDeQuantidade.appendChild(divControleBotoes)
-
-                // DivInfoProdutos filho de DivItemCarrinho
-                divItemCarrinho.appendChild(divImagem)
-                divItemCarrinho.appendChild(divInfoProdutos)
+    // Adicione os elementos comuns (nome, descrição, observação) à divProdutoDescricao
+    divProdutoDescricao.appendChild(h3NomeProduto);
+    divProdutoDescricao.appendChild(descricaoProduto);
 
 
-                // Conectando a nova DIV a div maior que é "itens-do-carrinho"
-                itensDoCarrinhoDiv.appendChild(divItemCarrinho)
-            
-            })
+    // 4. Lógica CONDICIONAL para ingredientes (só para lanches)
+    if (item.produto.tipo === 'lanche') {
+        let ingredientesProdutos = document.createElement('p');
+        ingredientesProdutos.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`;
+        ingredientesProdutos.classList.add('ingredientesProdutos');
+        divProdutoDescricao.appendChild(ingredientesProdutos); // Anexe ingredientes se for lanche
 
+        // Crie a div para observações e seus elementos (será filha de divProdutoDescricao)
+      let divObs = document.createElement('div');
+      divObs.classList.add('divObs');
+      let labelObs = document.createElement('label');
+      let inputObs = document.createElement('input');
+      inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...';
+      inputObs.classList.add('inputObs');
+      inputObs.addEventListener('input', function() {
+        item.observacao = inputObs.value;
+      });
+      divObs.appendChild(labelObs);
+      divObs.appendChild(inputObs);
+      divProdutoDescricao.appendChild(divObs); // Adicione a div de observações APÓS os ingredientes, se houver
+    }
+
+    
+
+
+    // 5. Criar e preencher as divs de controle de quantidade e botões
+    let divControleDeQuantidade = document.createElement('div');
+    divControleDeQuantidade.classList.add('controles-quantidade');
+
+    let divControleBotoes = document.createElement('div');
+    divControleBotoes.classList.add('divControleBotoes');
+
+    let botaoAumentar = document.createElement('button');
+    botaoAumentar.textContent = `+`;
+    botaoAumentar.classList.add('btnAumentar');
+    botaoAumentar.addEventListener('click', function() {
+        let quantidadeTotal = item.quantidade + 1;
+        item.quantidade = quantidadeTotal;
+        spanQuantidade.textContent = `${quantidadeTotal}`;
+        atualizarCarrinho();
+    });
+
+    let spanQuantidade = document.createElement('span');
+    spanQuantidade.textContent = item.quantidade;
+    spanQuantidade.classList.add('quantidade-item');
+
+    let botaoDiminuir = document.createElement('button');
+    botaoDiminuir.textContent = `-`;
+    botaoDiminuir.classList.add('btnDiminuir');
+    botaoDiminuir.addEventListener('click', function() {
+        if (item.quantidade === 1) {
+            let encontrarItem = itensCarrinho.indexOf(item);
+            itensCarrinho.splice(encontrarItem, 1);
+            atualizarCarrinho();
+        } else {
+            let quantidadeTotal = item.quantidade - 1;
+            item.quantidade = quantidadeTotal;
+            spanQuantidade.textContent = `${quantidadeTotal}`;
+            atualizarCarrinho();
+        }
+    });
+
+    let botaoRemover = document.createElement('button');
+    let iconeRemover = document.createElement('i');
+    iconeRemover.classList.add('fa-solid', 'fa-trash-can');
+    botaoRemover.classList.add('btnRemover');
+    botaoRemover.addEventListener('click', function() {
+        let encontrarItem = itensCarrinho.indexOf(item);
+        itensCarrinho.splice(encontrarItem, 1);
+        atualizarCarrinho();
+    });
+
+    // Anexar botões e span de quantidade à divControleBotoes
+    divControleBotoes.appendChild(botaoAumentar);
+    divControleBotoes.appendChild(spanQuantidade);
+    divControleBotoes.appendChild(botaoDiminuir);
+    botaoRemover.appendChild(iconeRemover); // Ícone no botão
+    divControleBotoes.appendChild(botaoRemover); // Botão à div de botões
+
+
+    // Anexar o preço e os controles de botões à divControleDeQuantidade
+    divControleDeQuantidade.appendChild(spanPrecoProduto);
+    divControleDeQuantidade.appendChild(divControleBotoes);
+
+
+    // 6. Criar e preencher a divInfoProdutos
+    let divInfoProdutos = document.createElement('div');
+    divInfoProdutos.classList.add('divInfoProdutos');
+    divInfoProdutos.appendChild(divProdutoDescricao); // divProdutoDescricao é filha
+    divInfoProdutos.appendChild(divControleDeQuantidade); // divControleDeQuantidade é filha
+
+
+    // 7. Anexar divImagem e divInfoProdutos à divItemCarrinho
+    divItemCarrinho.appendChild(divImagem);
+    divItemCarrinho.appendChild(divInfoProdutos);
+
+    // 8. Anexar a divItemCarrinho à div principal do carrinho
+    itensDoCarrinhoDiv.appendChild(divItemCarrinho);
+});
         
         }
     
@@ -954,7 +954,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     // Opcional: Fechar o modal de pedido após enviar
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto'; // Libera a rolagem da página
-});
+}); 
 
 // ... (resto do seu código JavaScript) ...
 
@@ -979,7 +979,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     let openClose = document.getElementById('open-close')
     let data = new Date()
     let hora = data.getHours()
-    //let hora = 10
+    //let hora = 18
 
     function AbertoFechado() {
         if (hora >= 18  && hora < 24 ) {
@@ -1018,11 +1018,22 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             novoP2.textContent = 'Horário de funcionamento: '
             novoP2.classList.add('msghorariofuncionamento')
             openClose.appendChild(novoP2)
+
+            let divFuncionamento = document.createElement('div')
+            divFuncionamento.classList.add('divFuncionamento')
+            openClose.appendChild(divFuncionamento)
             
             let p3 = document.createElement('p')
             p3.textContent = '18:00 - 23:59'
             p3.classList.add('msgfuncionamento')
-            openClose.appendChild(p3)
+            divFuncionamento.appendChild(p3)
+
+            let p4 = document.createElement('p')
+            p4.textContent = '<- Ver os horários'
+            p4.classList.add('msgverhorarios')
+            divFuncionamento.appendChild(p4)
+
+
 
             p3.addEventListener('click', function() {
             modalhorarios.style.display = 'block'
@@ -1064,3 +1075,4 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
         document.querySelector('#complemento').value = ''
         
     }) 
+
