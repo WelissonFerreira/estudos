@@ -881,9 +881,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     })
 
         totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
-        } else {
-          
-        }
+        } 
 
 
     })
