@@ -25,7 +25,6 @@ main {
     margin: auto;
     width: 100%;
     height: 100%;
-    padding: 30px;
     padding-bottom: 100px;
     background-color: #252525;
     border-radius: 25px;
@@ -140,8 +139,11 @@ header {
     justify-content: center; /* Centraliza os itens horizontalmente dentro do .navbar */
     align-items: center; /* Centraliza os itens verticalmente (se o .navbar tiver altura definida) */
     gap: 10px; /* Espaçamento entre os itens */
-    margin: 15px auto; /* Centraliza o .navbar horizontalmente e adiciona margem superior/inferior */
-    width: fit-content; /* Faz a largura se ajustar ao conteúdo dos itens */
+    width: 100%;
+    max-width: 600px;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 20px;
     
 }
 
@@ -152,12 +154,11 @@ header {
     font-style: normal;
     background-color: #E8931F; /* Cor de fundo para CADA item */
     border-radius: 20px; /* Borda arredondada para CADA item */
-    padding: 8px 15px; /* Preenchimento interno para CADA item (texto ao redor) */
+    padding: 2px 5px; /* Preenchimento interno para CADA item (texto ao redor) */
     text-decoration: none; /* Remove sublinhado dos links */
     color: black; /* Cor do texto do link (branco para contrastar com o laranja) */
     font-size: 0.9rem; /* Tamanho da fonte do link */
-    display: inline-block; /* Crucial para padding e background funcionarem corretamente */
-    font-size: 9px;
+
     
 }
 
@@ -208,7 +209,8 @@ header {
     background-color: white;
     border: 1px solid gray;
     padding: 10px 0;
-    width: 360px;
+    width: 90vw;
+    max-width: 600px;
     margin: auto;
     /*border: 1px solid gray;*/
     border-radius: 10px;
@@ -637,6 +639,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     font-size: 1rem;
+    width: 100vw;
 }
 
 #ModalCarrinho {
@@ -663,6 +666,7 @@ footer {
     background-Color: white;
     border-radius: 10px;
     flex-wrap: wrap;
+    width: 100%;
     
     
 }
@@ -1087,11 +1091,11 @@ footer {
     display: block;
     padding: 5px 5px;
     text-decoration: none;
-    color: white;
-    font-size: 1rem;
+    color: black;
+    font-size: 0.8rem;
 }
     .item-pai {
-        width: 100%;
+        width: 97%;
     
     
     }
