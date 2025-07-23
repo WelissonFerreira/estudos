@@ -141,7 +141,7 @@ header {
     gap: 10px; /* Espaçamento entre os itens */
     width: 100%;
     max-width: 600px;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     margin: auto;
     margin-top: 20px;
     
@@ -307,7 +307,7 @@ header {
     position: absolute;
     font-size: 0.5rem;
     font-weight: bolder;
-    top: 45px;
+    top: 0px;
     right: 25px;
     padding: 3px 5px;
     border: none;
@@ -858,20 +858,20 @@ footer {
 
 .ConteudoModalDados {
     background-color: white;
-    margin: 40% auto;
+    /* margin: 40% auto; */
     padding: 20px;
-    width: 90%;
-    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
     border: 1px solid #888;
     border-radius: 10px;
     position: relative;
     display: flex;
-    flex-direction: column; /* Mude aqui para 'column' */
-    justify-content: center; /* Mantive isso, mas pode ser ajustado se precisar de espaçamento */
-    align-items: center; /* Adicione isso para centralizar os itens horizontalmente dentro do modal */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 1rem;
     color: black;
-    
 }
 
 .mensagem-erro {
@@ -920,15 +920,16 @@ footer {
 }
 
 .ContModalFazerPedido {
-    background-color: white;
+background-color: white;
     color: black;
-    margin: 40% auto; /* Centraliza o modal na tela */
+    /* margin: 40% auto; */
     padding: 20px;
-    width: 80%; /* Largura do modal */
-    max-width: 500px; /* Largura máxima do modal */
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
     border: 1px solid #888;
-    border-radius: 10px; /* Bordas arredondadas */
-    position: relative; /* Para posicionar o botão de fechar */
+    border-radius: 10px;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
