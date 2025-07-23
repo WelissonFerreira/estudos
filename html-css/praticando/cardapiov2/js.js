@@ -855,10 +855,14 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     let precoTotalDosItens = 0
 
     btnAvancar.addEventListener('click', function() {
-        exibirModalPedido.style.display = 'block'
-        exibirModalDados.style.display = 'none'
-        divItensListaPedido.textContent = ``
-        precoItens = 0
+
+        const possoAvancar = verificarCampos()
+
+        if (possoAvancar === true) {
+          exibirModalPedido.style.display = 'block'
+          exibirModalDados.style.display = 'none'
+          divItensListaPedido.textContent = ``
+          precoItens = 0
 
         itensCarrinho.forEach(function(item) {
         let addPedido = document.createElement('li')
@@ -877,6 +881,10 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     })
 
         totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
+        } else {
+          
+        }
+
 
     })
 
@@ -979,7 +987,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     let openClose = document.getElementById('open-close')
     let data = new Date()
     let hora = data.getHours()
-    //let hora = 18
+    //let hora = 10
 
     function AbertoFechado() {
         if (hora >= 18  && hora < 24 ) {
@@ -1018,22 +1026,11 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             novoP2.textContent = 'Horário de funcionamento: '
             novoP2.classList.add('msghorariofuncionamento')
             openClose.appendChild(novoP2)
-
-            let divFuncionamento = document.createElement('div')
-            divFuncionamento.classList.add('divFuncionamento')
-            openClose.appendChild(divFuncionamento)
             
             let p3 = document.createElement('p')
             p3.textContent = '18:00 - 23:59'
             p3.classList.add('msgfuncionamento')
-            divFuncionamento.appendChild(p3)
-
-            let p4 = document.createElement('p')
-            p4.textContent = '<- Ver os horários'
-            p4.classList.add('msgverhorarios')
-            divFuncionamento.appendChild(p4)
-
-
+            openClose.appendChild(p3)
 
             p3.addEventListener('click', function() {
             modalhorarios.style.display = 'block'
@@ -1076,3 +1073,72 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
         
     }) 
 
+
+
+
+    function verificarCampos() {
+
+    const inputNome = document.getElementById('nomeUsuario')
+    const valorNome = inputNome.value;
+
+    const inputCell = document.getElementById('cellUsuario')
+    const valorCell = inputCell.value;
+
+    const selectBairro = document.getElementById('Bairro')
+    const valorBairro = selectBairro.value;
+
+    const inputRua = document.getElementById('Rua')
+    const valorRua = inputRua.value;
+
+    const inputNumero = document.getElementById('NumeroCasa')
+    const valorNumero = inputNumero.value
+
+    const erroNome = document.getElementById('erroNome')
+    const erroCell = document.getElementById('erroCell')
+    const erroBairro = document.getElementById('erroBairro')
+    const erroRua = document.getElementById('erroRua')
+    const erroNumero = document.getElementById('erroNumero')
+      
+      let todosPreenchidos = true;
+      
+      if (!valorNome) {
+        erroNome.style.display = 'block';
+        todosPreenchidos = false;
+    } else {
+      erroNome.style.display = 'none';
+    }
+
+      if (!valorCell) {
+        erroCell.style.display = 'block';
+        todosPreenchidos = false;
+      } else {
+        erroCell.style.display = 'none'
+      }
+
+      if (valorBairro === 'Selecionar' || !valorBairro) {
+        erroBairro.style.display = 'block'
+        todosPreenchidos = false;
+      } else {
+        erroBairro.style.display = 'none';
+      }
+
+      if (!valorRua) {
+        erroRua.style.display = 'block';
+        todosPreenchidos = false;
+      } else {
+        erroRua.style.display = 'none';
+      }
+
+      if (!valorNumero) {
+        erroNumero.style.display = 'block'
+        todosPreenchidos = false;
+      } else {
+        erroNumero.style.display = 'none'
+      }
+
+      // Retorna o resultado final
+      return todosPreenchidos
+
+
+
+    }
