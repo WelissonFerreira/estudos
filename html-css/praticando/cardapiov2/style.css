@@ -867,21 +867,22 @@ footer {
 
 /* Conteúdo do Modal de Dados - Onde está o formulário */
 .ConteudoModalDados {
-    background-color: white; /* Cor de fundo do formulário */
+    background-color: white; /* O fundo que você quer para o formulário */
     color: black;
-    margin: 0; /* Remova todas as margens para ele preencher a tela */
-    padding: 20px; /* Adicione padding interno para o conteúdo não colar nas bordas */
-    width: 100%; /* Ocupe 100% da largura do pai */
-    height: 100%; /* Ocupe 100% da altura do pai */
-    max-width: none; /* Remova o max-width para que ele possa preencher a tela em mobile */
-    border: none; /* Remova a borda se quiser um visual mais limpo e sem "caixa" */
-    border-radius: 0; /* Remova o border-radius para cantos retos */
-    position: relative;
+    margin: 0;           /* Sem margens externas, preenche o pai */
+    padding: 20px;       /* Padding interno para o conteúdo do formulário */
+    width: 100%;         /* Ocupa 100% da largura do #ModalDados */
+    height: 100%;        /* Ocupa 100% da altura do #ModalDados */
+    max-width: none;     /* Crucial para não limitar a largura em mobile */
+    border: none;        /* Remove a borda se quiser um visual limpo */
+    border-radius: 0;    /* Remove o arredondamento */
+
     display: flex;
-    flex-direction: column;
-    justify-content: start; /* Alinhe o conteúdo ao topo do formulário */
-    align-items: center; /* Centraliza horizontalmente o conteúdo */
+    flex-direction: column; /* Organiza o conteúdo interno em coluna */
+    justify-content: start; /* Alinha o conteúdo ao topo */
+    align-items: center;    /* Centraliza itens horizontalmente */
     font-size: 1rem;
+    box-sizing: border-box; /* Garante que padding e border não causem overflow */
 }
 
 
@@ -898,6 +899,42 @@ footer {
     margin-top: -8px;
     margin-bottom: 10px;
     margin-right: 50px;
+}
+
+#formularioDados {
+    display: flex;
+    flex-direction: column; /* Para organizar os campos em coluna */
+    width: 100%; /* Ocupa 100% da largura do ConteudoModalDados */
+    flex-grow: 1; /* Permite que o formulário ocupe a altura restante dentro do ConteudoModalDados */
+    padding: 0; /* Remova qualquer padding que possa existir aqui por padrão */
+    margin: 0;  /* Remova qualquer margem que possa existir aqui por padrão */
+    overflow-y: auto; /* Se o formulário for muito longo, ele rola internamente */
+    box-sizing: border-box;
+}
+
+
+.opcao-dados,
+.opcao-pedido,
+#formEntrega {
+    width: 100%; /* Faz essas divs preencherem a largura do formulário */
+    box-sizing: border-box;
+    /* Adicione padding se necessário para espaçamento interno de cada seção */
+    padding-inline: 5px; /* Exemplo: um pequeno padding nas laterais das seções */
+}
+
+/* Ajuste para os labels e inputs dentro dessas divs */
+.opcao-dados label,
+.opcao-pedido label {
+    width: 100%; /* Garante que o label ocupe a largura completa */
+    margin-top: 10px; /* Adiciona um espaço acima dos labels */
+}
+
+#nomeUsuario, #cellUsuario, #Bairro, #Rua, #NumeroCasa, #complemento {
+    width: 100%; /* Inputs devem preencher a largura de sua div pai */
+    box-sizing: border-box; /* Essencial para inputs com padding/border */
+    padding: 8px; /* Adicione um padding para que o texto não cole nas bordas do input */
+    margin-bottom: 10px; /* Espaço entre os inputs */
+    font-size: 1rem; /* Garante um tamanho de fonte legível */
 }
 
 
@@ -1105,7 +1142,7 @@ background-color: white;
     padding: 5px 5px;
     text-decoration: none;
     color: black;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
 }
     .item-pai {
         width: 97%;
