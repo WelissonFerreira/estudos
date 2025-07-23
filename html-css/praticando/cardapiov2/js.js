@@ -1026,11 +1026,22 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             novoP2.textContent = 'Horário de funcionamento: '
             novoP2.classList.add('msghorariofuncionamento')
             openClose.appendChild(novoP2)
+
+            let divFuncionamento = document.createElement('div')
+            divFuncionamento.classList.add('divFuncionamento')
+            openClose.appendChild(divFuncionamento)
             
             let p3 = document.createElement('p')
             p3.textContent = '18:00 - 23:59'
             p3.classList.add('msgfuncionamento')
-            openClose.appendChild(p3)
+            divFuncionamento.appendChild(p3)
+
+            let p4 = document.createElement('p')
+            p4.textContent = '<- Ver os horários'
+            p4.classList.add('msgverhorarios')
+            divFuncionamento.appendChild(p4)
+
+
 
             p3.addEventListener('click', function() {
             modalhorarios.style.display = 'block'
