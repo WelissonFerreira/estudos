@@ -850,28 +850,38 @@ footer {
 
 /* MODAL DADOS */
 
+/* MODAL DADOS - O overlay que cobre a tela toda */
 #ModalDados {
-    background-color: #E8931F;
-}
-
-/* MODAL DADOS */
-
-.ConteudoModalDados {
-    background-color: white;
-    /* margin: 40% auto; */
-    padding: 20px;
+    display: none; /* Mantém 'none' para que ele não apareça por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    max-width: 600px;
-    border: 1px solid #888;
-    border-radius: 10px;
+    overflow: auto; /* Permite rolagem se o formulário for muito longo */
+    background-color: transparent; /* Torne o fundo do overlay transparente */
+
+    /* Não precisamos de justify-content/align-items aqui se o ConteudoModalDados vai preencher tudo */
+}
+
+/* Conteúdo do Modal de Dados - Onde está o formulário */
+.ConteudoModalDados {
+    background-color: white; /* Cor de fundo do formulário */
+    color: black;
+    margin: 0; /* Remova todas as margens para ele preencher a tela */
+    padding: 20px; /* Adicione padding interno para o conteúdo não colar nas bordas */
+    width: 100%; /* Ocupe 100% da largura do pai */
+    height: 100%; /* Ocupe 100% da altura do pai */
+    max-width: none; /* Remova o max-width para que ele possa preencher a tela em mobile */
+    border: none; /* Remova a borda se quiser um visual mais limpo e sem "caixa" */
+    border-radius: 0; /* Remova o border-radius para cantos retos */
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: start; /* Alinhe o conteúdo ao topo do formulário */
+    align-items: center; /* Centraliza horizontalmente o conteúdo */
     font-size: 1rem;
-    color: black;
 }
 
 
