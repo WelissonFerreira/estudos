@@ -967,6 +967,7 @@ footer {
 
 #ModalFazerPedido {
     background-color: #E8931F;
+    display: none;
 }
 
 .ContModalFazerPedido {
