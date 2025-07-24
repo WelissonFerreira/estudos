@@ -859,8 +859,8 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         const possoAvancar = verificarCampos()
 
         if (possoAvancar === true) {
-          exibirModalPedido.style.display = 'block'
           exibirModalDados.style.display = 'none'
+          exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
           precoItens = 0
 
