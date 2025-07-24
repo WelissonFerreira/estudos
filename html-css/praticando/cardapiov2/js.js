@@ -1035,7 +1035,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             divFuncionamento.appendChild(p3)
 
             let p4 = document.createElement('p')
-            p4.textContent = '<- Ver os horários'
+            p4.textContent = '<- Ver os horários | TESTE'
             p4.classList.add('msgverhorarios')
             divFuncionamento.appendChild(p4)
 
