@@ -856,9 +856,9 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
     btnAvancar.addEventListener('click', function() {
 
-        const possoAvancar = verificarCampos()
+        /*const possoAvancar = verificarCampos()*/
 
-        if (possoAvancar === true) {
+        /*if (possoAvancar === true) {*/
           exibirModalDados.style.display = 'none'
           exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
@@ -881,7 +881,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     })
 
         totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
-        } 
+        /*}*/ 
 
 
     })
@@ -1035,7 +1035,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             divFuncionamento.appendChild(p3)
 
             let p4 = document.createElement('p')
-            p4.textContent = '<- Ver os horários | TESTE1'
+            p4.textContent = '<- Ver os horários | TESTE2'
             p4.classList.add('msgverhorarios')
             divFuncionamento.appendChild(p4)
 
