@@ -854,7 +854,7 @@ footer {
 #ModalDados {
     display: none; /* Mantém 'none' para que ele não apareça por padrão */
     position: fixed;
-    z-index: 1000;
+    z-index: 1001;
     left: 0;
     top: 0;
     width: 100%;
@@ -968,6 +968,7 @@ footer {
 #ModalFazerPedido {
     background-color: #E8931F;
     display: none;
+    z-index: 1001;
 }
 
 .ContModalFazerPedido {
