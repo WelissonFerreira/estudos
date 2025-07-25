@@ -210,7 +210,6 @@ header {
     border: 1px solid gray;
     padding: 10px 0;
     width: 90vw;
-    max-width: 600px;
     margin: auto;
     /*border: 1px solid gray;*/
     border-radius: 10px;
@@ -1133,7 +1132,7 @@ background-color: white;
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 300px) and (max-width: 400px) {
     .navbar {
     
         width: 100%;
@@ -1163,3 +1162,99 @@ background-color: white;
     }
 
 }
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+
+    .navbar {
+    
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    #menu-opcoes {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .navbar li a {
+    display: block;
+    padding: 3px 2px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+}
+    .item-pai {
+        width: 95%;
+    
+    
+    }
+
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+        .navbar {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        
+    }
+
+    #menu-opcoes {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+
+    }
+
+    .navbar li a {
+    display: block;
+    padding: 3px 2px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+    .item-pai {
+        width: 95%;
+    
+    }
+
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+        .navbar {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        
+    }
+
+    #menu-opcoes {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+
+    }
+
+    .navbar li a {
+    display: block;
+    padding: 3px 2px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+    .item-pai {
+        width: 100%;
+    
+    }
+}
+
+
+
