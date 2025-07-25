@@ -1,4 +1,3 @@
-
 let catalogoDeProdutos = {
     "produto-arthur-grande": { // Esta é a CHAVE, que corresponde ao seu data-produto-id
         tipo: "lanche",
@@ -818,6 +817,8 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         
     }
 
+    // MODAL DADOS DINÂMICAMENTE CONFIGURADO A PARTIR DAQUI ATÉ O ======
+
     // FUNÇÃO EXIBIR DADOS
 
     const exibirModalDados = document.querySelector('#ModalDados')
@@ -846,23 +847,175 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     document.body.style.overflow = 'auto'
     
 })
-  // FUNÇÃO FAZER PEDIDO
+  // FUNÇÃO AVANÇAR PEDIDO
     const btnAvancar = document.getElementById('AvancarPedido')
+    console.log('Botão Avançar encontrado:', btnAvancar); 
     const exibirModalPedido = document.getElementById('ModalFazerPedido')
     const divPedido = document.getElementById('Pedido')
     const totalPreco = document.getElementById('ValorTotalPedidoFinal')
     const divItensListaPedido = document.getElementById('itensListadosNoPedido')
+
     let precoTotalDosItens = 0
 
-    btnAvancar.addEventListener('click', function() {
+      btnAvancar.addEventListener('click', function() {
 
-        /*const possoAvancar = verificarCampos()*/
+      let possoAvancar = false
 
-        /*if (possoAvancar === true) {*/
+      if (opcaoRetirada.checked) {
+        possoAvancar = verificarCamposRetirada();
+      } else if (opcaoEntrega.checked) {
+        possoAvancar = verificarCamposEntrega();
+      }
+
+      if (possoAvancar) {
+        //Apenas uma linha para abrir o Modal Junto com os itens.
+        abrirModalPedidoEListarItens()
+      } else {
+
+      }
+    
+
+    })
+
+
+    
+
+      
+
+      
+      // EVENTO OPÇÃO ENTREGA
+    let opcaoEntrega = document.querySelector('.CEntrega')
+    let Formul = document.querySelector('#formEntrega')
+
+    opcaoEntrega.addEventListener('click', function() {
+        document.querySelector('#formEntrega').style.display = 'flex'
+    })
+
+
+
+
+
+    
+
+
+
+    // EVENTO OPÇÃO RETIRADA
+    let opcaoRetirada = document.querySelector('.CRetirada')
+    
+    opcaoRetirada.addEventListener('click', function() {
+
+        document.querySelector('#formEntrega').style.display = 'none'
+
+        document.querySelector('#Bairro').value = 'Selecionar'
+        document.querySelector('#Rua').value = ''
+        document.querySelector('#Numero').value = ''
+        document.querySelector('#complemento').value = ''
+        
+    }) 
+
+      // FUNÇÃO QUE VALIDA OS DADOS PARA RETIRADA
+      function verificarCamposRetirada() {
+        const inputNome = document.getElementById('nomeUsuario')
+        const valorNome = inputNome.value
+
+        const inputCell = document.getElementById('cellUsuario')
+        const valorCell = inputCell.value
+
+        let dadosPreenchidos = true
+
+        if (valorNome === "") {
+          erroNome.style.display = 'block';
+          dadosPreenchidos = false;
+        } else {
+          erroNome.style.display = 'none'
+        }
+
+        if (valorCell === "") {
+          erroCell.style.display = 'block';
+          dadosPreenchidos = false;
+        } else {
+          erroCell.style.display = 'none'
+        }
+
+        return dadosPreenchidos
+      }
+
+      /*=============*/
+
+        function verificarCamposEntrega() {
+
+    const inputNome = document.getElementById('nomeUsuario')
+    const valorNome = inputNome.value;
+
+    const inputCell = document.getElementById('cellUsuario')
+    const valorCell = inputCell.value;
+
+    const selectBairro = document.getElementById('Bairro')
+    const valorBairro = selectBairro.value;
+
+    const inputRua = document.getElementById('Rua')
+    const valorRua = inputRua.value;
+
+    const inputNumero = document.getElementById('NumeroCasa')
+    const valorNumero = inputNumero.value
+
+    const erroNome = document.getElementById('erroNome')
+    const erroCell = document.getElementById('erroCell')
+    const erroBairro = document.getElementById('erroBairro')
+    const erroRua = document.getElementById('erroRua')
+    const erroNumero = document.getElementById('erroNumero')
+      
+      let todosPreenchidos = true;
+      
+      if (!valorNome) {
+        erroNome.style.display = 'block';
+        todosPreenchidos = false;
+    } else {
+      erroNome.style.display = 'none';
+    }
+
+      if (!valorCell) {
+        erroCell.style.display = 'block';
+        todosPreenchidos = false;
+      } else {
+        erroCell.style.display = 'none'
+      }
+
+      if (valorBairro === 'Selecionar') {
+        erroBairro.style.display = 'block'
+        todosPreenchidos = false;
+      } else {
+        erroBairro.style.display = 'none';
+      }
+
+      if (!valorRua) {
+        erroRua.style.display = 'block';
+        todosPreenchidos = false;
+      } else {
+        erroRua.style.display = 'none';
+      }
+
+      if (!valorNumero) {
+        erroNumero.style.display = 'block'
+        todosPreenchidos = false;
+      } else {
+        erroNumero.style.display = 'none'
+      }
+
+      // Retorna o resultado final
+      return todosPreenchidos
+
+
+
+    }
+
+    function abrirModalPedidoEListarItens() {
+          
           exibirModalDados.style.display = 'none'
           exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
           precoItens = 0
+
 
         itensCarrinho.forEach(function(item) {
         let addPedido = document.createElement('li')
@@ -875,20 +1028,20 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         divItensListaPedido.appendChild(addPreco)
 
         precoItens += item.produto.preco * item.quantidade
+      })
+
+            totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
+
+          
+    }
 
     
-    
-    })
 
-        totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
-        /*}*/ 
-
-
-    })
+// =======================================================================================================
 
 
     // ENVIAR PEDIDO PARA O WHATTSAPP
-const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
+/*const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
 btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     // 1. Capturar os dados pessoais e de entrega
@@ -960,7 +1113,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     // Opcional: Fechar o modal de pedido após enviar
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto'; // Libera a rolagem da página
-}); 
+}); */
 
 // ... (resto do seu código JavaScript) ...
 
@@ -1035,7 +1188,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
             divFuncionamento.appendChild(p3)
 
             let p4 = document.createElement('p')
-            p4.textContent = '<- Ver os horários | TESTE2'
+            p4.textContent = '<- Ver os horários'
             p4.classList.add('msgverhorarios')
             divFuncionamento.appendChild(p4)
 
@@ -1057,97 +1210,3 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     }
 
     exibirOpenClose();
-
-    // EVENTO OPÇÃO ENTREGA
-    let opcaoEntrega = document.querySelector('.CEntrega')
-    let Formul = document.querySelector('#formEntrega')
-
-    
-
-    opcaoEntrega.addEventListener('click', function() {
-        document.querySelector('#formEntrega').style.display = 'flex'
-    })
-
-    // EVENTO OPÇÃO RETIRADA
-    let opcaoRetirada = document.querySelector('.CRetirada')
-    
-    opcaoRetirada.addEventListener('click', function() {
-
-        document.querySelector('#formEntrega').style.display = 'none'
-
-        document.querySelector('#Bairro').value = 'Selecionar'
-        document.querySelector('#Rua').value = ''
-        document.querySelector('#Numero').value = ''
-        document.querySelector('#complemento').value = ''
-        
-    }) 
-
-
-
-
-    function verificarCampos() {
-
-    const inputNome = document.getElementById('nomeUsuario')
-    const valorNome = inputNome.value;
-
-    const inputCell = document.getElementById('cellUsuario')
-    const valorCell = inputCell.value;
-
-    const selectBairro = document.getElementById('Bairro')
-    const valorBairro = selectBairro.value;
-
-    const inputRua = document.getElementById('Rua')
-    const valorRua = inputRua.value;
-
-    const inputNumero = document.getElementById('NumeroCasa')
-    const valorNumero = inputNumero.value
-
-    const erroNome = document.getElementById('erroNome')
-    const erroCell = document.getElementById('erroCell')
-    const erroBairro = document.getElementById('erroBairro')
-    const erroRua = document.getElementById('erroRua')
-    const erroNumero = document.getElementById('erroNumero')
-      
-      let todosPreenchidos = true;
-      
-      if (!valorNome) {
-        erroNome.style.display = 'block';
-        todosPreenchidos = false;
-    } else {
-      erroNome.style.display = 'none';
-    }
-
-      if (!valorCell) {
-        erroCell.style.display = 'block';
-        todosPreenchidos = false;
-      } else {
-        erroCell.style.display = 'none'
-      }
-
-      if (valorBairro === 'Selecionar' || !valorBairro) {
-        erroBairro.style.display = 'block'
-        todosPreenchidos = false;
-      } else {
-        erroBairro.style.display = 'none';
-      }
-
-      if (!valorRua) {
-        erroRua.style.display = 'block';
-        todosPreenchidos = false;
-      } else {
-        erroRua.style.display = 'none';
-      }
-
-      if (!valorNumero) {
-        erroNumero.style.display = 'block'
-        todosPreenchidos = false;
-      } else {
-        erroNumero.style.display = 'none'
-      }
-
-      // Retorna o resultado final
-      return todosPreenchidos
-
-
-
-    }
