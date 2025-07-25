@@ -1011,6 +1011,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
 
     let divModalConteudo = document.querySelector('.ContModalFazerPedido')
+
     function abrirModalPedidoEListarItens() {
           
           exibirModalDados.style.display = 'none'
@@ -1019,21 +1020,32 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
           precoItens = 0
 
         itensCarrinho.forEach(function(item) {
+
+        let divControleItemIndividual = document.createElement('div')
+        divControleItemIndividual.classList.add('divControleItemIndividual')
+        
         let addPedido = document.createElement('li')
         addPedido.textContent = `Item: ${item.quantidade}x ${item.produto.nome} `;
-        divItensListaPedido.appendChild(addPedido)
+        divControleItemIndividual.appendChild(addPedido)
+
+        let addIngredientes = document.createElement('p')
+        addIngredientes.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`
+        divControleItemIndividual.appendChild(addIngredientes)
 
         let addPreco = document.createElement('span')
         addPreco.textContent = ` Preço: R$ ${item.produto.preco.toFixed(2).replace('.', ',')}`
         addPreco.classList.add('precoFazerPedido')
-        divItensListaPedido.appendChild(addPreco)
-
+        divControleItemIndividual.appendChild(addPreco)
+        
+        divItensListaPedido.appendChild(divControleItemIndividual)
         
         precoItens += item.produto.preco * item.quantidade
       })
 
       totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
-
+      
+      
+      
     }
 
     

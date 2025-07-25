@@ -987,11 +987,6 @@ background-color: white;
     font-size: 1rem;
 }
 
-#Pedido {
-    border: 1px solid gray;
-    padding: 45px;
-}
-
 #voltarPedido, #Finalizar-Pedido {
     border-radius: 25px;
     background-Color: black;
@@ -1013,16 +1008,30 @@ background-color: white;
     padding: 2´x;
 }
 
+.seuPedidoNome {
+    text-align: center;
+}
+
 #Pedido {
     margin-top: 25px;
-    
+    border: 1px solid gray;
+    padding: 45px;
 }
 
 #itensListadosNoPedido {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 50px;
 }
+
+.divControleItemIndividual {
+    border: 1px solid gray;
+}
+
+.divControleItemIndividual  li, p, span {
+    margin: 15px;
+}
+
 .formas-pagamento {
     display: flex;
     flex-direction: column;
