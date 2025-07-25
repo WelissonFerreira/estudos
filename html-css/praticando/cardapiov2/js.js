@@ -1009,13 +1009,14 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
     }
 
+
+    let divModalConteudo = document.querySelector('.ContModalFazerPedido')
     function abrirModalPedidoEListarItens() {
           
           exibirModalDados.style.display = 'none'
           exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
           precoItens = 0
-
 
         itensCarrinho.forEach(function(item) {
         let addPedido = document.createElement('li')
@@ -1027,12 +1028,12 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         addPreco.classList.add('precoFazerPedido')
         divItensListaPedido.appendChild(addPreco)
 
+        
         precoItens += item.produto.preco * item.quantidade
       })
 
-            totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
+      totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
 
-          
     }
 
     
@@ -1041,7 +1042,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
 
     // ENVIAR PEDIDO PARA O WHATTSAPP
-/*const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
+const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
 btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     // 1. Capturar os dados pessoais e de entrega
@@ -1113,7 +1114,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     // Opcional: Fechar o modal de pedido após enviar
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto'; // Libera a rolagem da página
-}); */
+}); 
 
 // ... (resto do seu código JavaScript) ...
 

@@ -1519,29 +1519,31 @@
             <p>Seu pedido: </p>
             <div id="itensListadosNoPedido">
             </div>
-        </div>
-        
+            
+            <div class="formas-pagamento">
+                <h4>Forma de Pagamento:</h4>
+                <div>
+                    <input type="radio" name="formaPagamento" id="Pix">
+                    <label for="pagamentoPix">PIX</label>
+                </div>
+                
+                <div>
+                    <input type="radio" name="formaPagamento" id="pagamentoCartao">
+                    <label for="pagamentoCartao">Cartão</label>
+                </div>
+            
+                <div>
+                    <input type="radio" name="formaPagamento" id="pagamentoDinheiro">
+                    <label for="pagamentoDinheiro">Dinheiro</label>
+                </div>
+                
+                <span id="ValorTotalPedidoFinal">Total: R$: </span>
+            </div>
 
-        <div class="formas-pagamento">
-            <h4>Forma de Pagamento:</h4>
-            <div>
-                <input type="radio" name="formaPagamento" id="Pix">
-                <label for="pagamentoPix">PIX</label>
+            <div id="divBotoesPedido">
+                <button id="Finalizar-Pedido">Finalizar Pedido</button>
             </div>
-            <div>
-                <input type="radio" name="formaPagamento" id="pagamentoCartao">
-                <label for="pagamentoCartao">Cartão</label>
-            </div>
-            <div>
-                <input type="radio" name="formaPagamento" id="pagamentoDinheiro">
-                <label for="pagamentoDinheiro">Dinheiro</label>
-            </div>
-            <span id="ValorTotalPedidoFinal">Total: R$: </span>
-        </div>
-
-        <div id="divBotoesPedido">
-            <button id="Finalizar-Pedido">Finalizar Pedido</button>
-        </div>
+        </div>  
     </div>
 </div>
 
