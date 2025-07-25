@@ -1143,6 +1143,12 @@ background-color: white;
         justify-content: space-around;
     }
 
+    #menu-opcoes {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
     .navbar li a {
     display: block;
     padding: 3px 2px;
