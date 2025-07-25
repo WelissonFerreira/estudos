@@ -979,7 +979,7 @@ background-color: white;
     width: 100%;
     max-width: 600px;
     height: 100%;
-    border: 1px solid #888;
+    /*border: 1px solid #888;*/
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1014,8 +1014,9 @@ background-color: white;
 
 #Pedido {
     margin-top: 25px;
-    border: 1px solid gray;
-    padding: 45px;
+    /*border: 1px solid gray;*/
+    padding: 10px;
+    height: 100%;
 }
 
 #itensListadosNoPedido {
@@ -1036,7 +1037,7 @@ background-color: white;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 25px;
+    margin-top: 40px;
 }
 
 #ValorTotalPedidoFinal {
