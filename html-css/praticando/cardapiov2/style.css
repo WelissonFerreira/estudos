@@ -1142,10 +1142,10 @@ background-color: white;
 
     .navbar li a {
     display: block;
-    padding: 5px 5px;
+    padding: 3px 2px;
     text-decoration: none;
     color: black;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
 }
     .item-pai {
         width: 97%;
