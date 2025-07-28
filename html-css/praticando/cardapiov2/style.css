@@ -796,8 +796,8 @@ footer {
     /* border-radius: 5px; */ /* Cantos arredondados */
     font-weight: bold;
     font-size: 1.4rem;
-    width: 15px; /* Largura fixa */
-    height: 15px; /* Altura fixa */
+    width: 100% /* Largura fixa */
+    height: 100%; /* Altura fixa */
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;
