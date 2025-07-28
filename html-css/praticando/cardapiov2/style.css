@@ -780,6 +780,7 @@ footer {
   align-items: center;
   gap: 5px;
   border: 1px solid gray;
+  border-radius: 10px;
   align-self: center;
 }
 
@@ -790,7 +791,6 @@ footer {
     border: 1px solid white;
     cursor: pointer;
     height: 30px;
-    /* border-radius: 5px; */ /* Cantos arredondados */
     font-weight: bold;
     font-size: 1.4rem;
     display: flex; /* Para centralizar o + e - */
@@ -1190,7 +1190,11 @@ background-color: white;
     align-items: center;
     /*padding-top: 1px;*/
 
-}
+}       
+    
+    .btnAumentar {
+        margin-bottom: 3px;
+    }
 
 }
 
