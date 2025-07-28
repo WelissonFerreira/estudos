@@ -698,14 +698,7 @@ footer {
 
 
 
-.divControleBotoes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  border: 1px solid gray;
-  
-}
+
 
 .imagemProduto {
   width: 90px;
@@ -784,7 +777,14 @@ footer {
 
 
 
-
+.divControleBotoes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid gray;
+  align-self: center;
+}
 
 
 .btnDiminuir, .btnAumentar, .btnRemover {
@@ -795,8 +795,6 @@ footer {
     /* border-radius: 5px; */ /* Cantos arredondados */
     font-weight: bold;
     font-size: 1.4rem;
-    width: 100%; /* Largura fixa */
-    height: 100%; /* Altura fixa */
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;
