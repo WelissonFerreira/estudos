@@ -1010,6 +1010,7 @@ background-color: white;
 
 .seuPedidoNome {
     text-align: center;
+    margin-bottom: 15px;
 }
 
 #Pedido {
@@ -1017,6 +1018,7 @@ background-color: white;
     /*border: 1px solid gray;*/
     padding: 10px;
     height: 100%;
+    
 }
 
 #itensListadosNoPedido {
@@ -1029,7 +1031,7 @@ background-color: white;
     border: 1px solid gray;
 }
 
-.divControleItemIndividual  li, p, span {
+.divControleItemIndividual  .appPedido, .precoFazerPedido, .addIngredientes {
     margin: 15px;
 }
 

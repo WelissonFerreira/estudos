@@ -1027,10 +1027,12 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         let addPedido = document.createElement('li')
         addPedido.textContent = `Item: ${item.quantidade}x ${item.produto.nome} `;
         divControleItemIndividual.appendChild(addPedido)
+        addPedido.classList.add('appPedido')
 
         let addIngredientes = document.createElement('p')
         addIngredientes.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`
         divControleItemIndividual.appendChild(addIngredientes)
+        addIngredientes.classList.add('addIngredientes')
 
         let addPreco = document.createElement('span')
         addPreco.textContent = ` Preço: R$ ${item.produto.preco.toFixed(2).replace('.', ',')}`
