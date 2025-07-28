@@ -1009,6 +1009,11 @@ background-color: white;
     
 }
 
+#inputTroco {
+    margin-top: 5px;
+    width: 300px;
+}
+
 #itensListadosNoPedido {
     display: flex;
     flex-direction: column;

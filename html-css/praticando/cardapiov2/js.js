@@ -1055,82 +1055,112 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 // =======================================================================================================
 
 
-    // ENVIAR PEDIDO PARA O WHATTSAPP
+// ENVIAR PEDIDO PARA O WHATSAPP
 const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
-btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
+btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
     // 1. Capturar os dados pessoais e de entrega
-    let nomeCliente = document.querySelector('#nome').value;
-    let telefoneCliente = document.querySelector('#cell').value;
+    let nomeCliente = document.querySelector('#nomeUsuario').value;
+    let telefoneCliente = document.querySelector('#cellUsuario').value;
     let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
 
-    let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`; // Título mais descritivo
+    let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
 
-    // Adiciona os dados do cliente
+    // Dados do cliente
     mensagemWhatsApp += `*Dados do Cliente:*\n`;
     mensagemWhatsApp += `Nome: ${nomeCliente}\n`;
     mensagemWhatsApp += `Telefone: ${telefoneCliente}\n`;
-    mensagemWhatsApp += `Tipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`; // Formata melhor o tipo de pedido
+    mensagemWhatsApp += `Tipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`;
 
-    // Se for entrega, adiciona os detalhes do endereço
+    // Endereço se for entrega
     if (tipoPedido === 'Entrega') {
         let bairro = document.querySelector('#Bairro').value;
         let rua = document.querySelector('#Rua').value;
-        let numero = document.querySelector('#Numero').value;
+        let numero = document.querySelector('#NumeroCasa').value;
         let complemento = document.querySelector('#complemento').value;
 
         mensagemWhatsApp += `\n*Endereço de Entrega:*\n`;
         mensagemWhatsApp += `Bairro: ${bairro}\n`;
         mensagemWhatsApp += `Rua: ${rua}\n`;
         mensagemWhatsApp += `Número: ${numero}\n`;
-        if (complemento) { // Adiciona o complemento apenas se houver
+        if (complemento) {
             mensagemWhatsApp += `Complemento: ${complemento}\n`;
         }
     }
 
-    // --- Adicionar os itens do carrinho e CALCULAR O TOTAL AQUI ---
+    // Itens do pedido
     mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
 
-    // Crie uma variável local para o total final que será enviado no WhatsApp
-    let totalFinalParaWhatsApp = 0; 
+    let totalFinalParaWhatsApp = 0;
 
     if (itensCarrinho.length > 0) {
         itensCarrinho.forEach((item, index) => {
-          
-            linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})`;
+            let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})`;
             if (item.observacao && item.observacao.trim() !== '') {
-              linhaItem += `Observação: ${item.observacao} \n`
+                linhaItem += `\n  - Observação: ${item.observacao}`;
             }
-
-            mensagemWhatsApp += linhaItem + `\n`
-            // SOME O PREÇO DE CADA ITEM AO TOTAL FINAL DO WHATSAPP
-            totalFinalParaWhatsApp += item.produto.preco * item.quantidade; 
+            mensagemWhatsApp += linhaItem + `\n`;
+            totalFinalParaWhatsApp += item.produto.preco * item.quantidade;
         });
     } else {
         mensagemWhatsApp += `Nenhum item adicionado ao carrinho.\n`;
     }
 
-    // Adiciona o total final do pedido (usando a nova variável totalFinalParaWhatsApp)
     mensagemWhatsApp += `\n*Total do Pedido: R$ ${totalFinalParaWhatsApp.toFixed(2).replace('.', ',')}*\n`;
 
-    // Seu número de WhatsApp (inclua o código do país e DDD, sem formatação)
-    let numeroWhatsApp = '558299261614'; 
+    // Informações de pagamento
+    let formaPagamentoSelecionada = document.querySelector('input[name="formaPagamento"]:checked');
+    let textoFormaPagamento = 'Não especificada';
 
-    // Codifica a mensagem para URL
+    if (formaPagamentoSelecionada) {
+        if (formaPagamentoSelecionada.id === 'Pix') {
+            textoFormaPagamento = 'PIX';
+        } else if (formaPagamentoSelecionada.id === 'pagamentoCartao') {
+            textoFormaPagamento = 'Cartão';
+        } else if (formaPagamentoSelecionada.id === 'pagamentoDinheiro') {
+            textoFormaPagamento = 'Dinheiro';
+        }
+    }
+
+    mensagemWhatsApp += `\n*Informações de Pagamento:*\n`;
+    mensagemWhatsApp += `Forma de Pagamento: ${textoFormaPagamento}\n`;
+
+    // Troco — sem verificar display, só forma de pagamento e valor válido
+    let inputTrocoElement = document.getElementById('inputTroco');
+let valorTroco = inputTrocoElement ? inputTrocoElement.value.trim() : '';
+
+console.log('Valor do troco capturado:', valorTroco);
+
+if (textoFormaPagamento === 'Dinheiro') {
+    let valorTrocoNum = parseFloat(valorTroco);
+    console.log('Valor do troco como número:', valorTrocoNum);
+    if (!isNaN(valorTrocoNum) && valorTrocoNum > 0) {
+        mensagemWhatsApp += `Precisa de troco para: R$ ${valorTrocoNum.toFixed(2).replace('.', ',')}\n`;
+    } else {
+        mensagemWhatsApp += `Não precisa de troco.\n`;
+    }
+} else {
+    mensagemWhatsApp += `Não precisa de troco.\n`;
+}
+
+
+    // Número do WhatsApp (com DDI e DDD)
+    let numeroWhatsApp = '558299261614';
+
+    // Codifica mensagem para URL
     let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
 
-    // Constrói o link do WhatsApp
+    // Link WhatsApp
     let linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
 
-    // Abre o link em uma nova aba
+    // Abre WhatsApp em nova aba
     window.open(linkWhatsApp, '_blank');
 
-    // Opcional: Fechar o modal de pedido após enviar
+    // Fecha modal e libera rolagem da página
     document.querySelector('#ModalFazerPedido').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Libera a rolagem da página
-}); 
+    document.body.style.overflow = 'auto';
+});
 
-// ... (resto do seu código JavaScript) ...
 
 
 
@@ -1225,3 +1255,32 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function() {
     }
 
     exibirOpenClose();
+
+    let opcaoDinheiro = document.getElementById('pagamentoDinheiro')
+    let divPIX = document.getElementById('controlePIX')
+    let opcaoPIX = document.getElementById('Pix')
+    let opcaoCartao = document.getElementById('pagamentoCartao')
+    let opcaoTroco = document.getElementById('inputTroco')
+
+    // Evento clique em dinheiro liberar opção troco.
+    opcaoDinheiro.addEventListener('click', function () {
+      opcaoTroco.style.display = 'block'
+    })
+
+    opcaoPIX.addEventListener('click', function() {
+      opcaoTroco.style.display = 'none'
+    })
+
+    opcaoCartao.addEventListener('click', function() {
+      opcaoTroco.style.display = 'none'
+    })
+
+
+
+
+
+      
+
+
+
+

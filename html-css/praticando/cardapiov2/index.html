@@ -1532,9 +1532,11 @@
                     <label for="pagamentoCartao">Cartão</label>
                 </div>
             
-                <div>
+                <div id="controlePIX">
                     <input type="radio" name="formaPagamento" id="pagamentoDinheiro">
                     <label for="pagamentoDinheiro">Dinheiro</label>
+                    <input type="number" name="inputTroco" id="inputTroco" placeholder="Troco para quanto? Se não precisar, deixe vazio..." style="display: none;">
+                    <label for="inputTroco"></label>
                 </div>
                 
                 <span id="ValorTotalPedidoFinal">Total: R$: </span>
