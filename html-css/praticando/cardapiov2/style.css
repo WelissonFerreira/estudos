@@ -1198,6 +1198,33 @@ background-color: white;
     
     
     }
+    
+    .divControleBotoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid gray;
+    align-self: center;
+}
+
+    .btnDiminuir, .btnAumentar, .btnRemover {
+    color: black;
+    background-Color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    height: 30px;
+    /* border-radius: 5px; */ /* Cantos arredondados */
+    font-weight: bold;
+    font-size: 1.4rem;
+    display: flex; /* Para centralizar o + e - */
+    justify-content: center;
+    align-items: center;
+    /*padding-top: 1px;*/
+
+}
+
+    
 
 }
 
@@ -1229,6 +1256,31 @@ background-color: white;
         width: 95%;
     
     }
+
+        .divControleBotoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid gray;
+    align-self: center;
+}
+
+    .btnDiminuir, .btnAumentar, .btnRemover {
+    color: black;
+    background-Color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    height: 30px;
+    /* border-radius: 5px; */ /* Cantos arredondados */
+    font-weight: bold;
+    font-size: 1.4rem;
+    display: flex; /* Para centralizar o + e - */
+    justify-content: center;
+    align-items: center;
+    /*padding-top: 1px;*/
+
+}
 
 }
 
