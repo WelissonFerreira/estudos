@@ -792,6 +792,7 @@ footer {
     background-Color: white;
     border: 1px solid white;
     cursor: pointer;
+    height: 30px;
     /* border-radius: 5px; */ /* Cantos arredondados */
     font-weight: bold;
     font-size: 1.4rem;
@@ -808,8 +809,6 @@ footer {
 
 .btnRemover {
 
-    border-radius: 5px;
-    padding: 0;
     background-color: #303030;
     color: white;
 }
