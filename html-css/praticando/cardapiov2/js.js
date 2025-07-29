@@ -840,7 +840,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
 
         let h3Total = valorTotalCarrinho.querySelector('h3');
-            h3Total.textContent = `Total: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
+            h3Total.textContent = `TOTAL: R$ ${somaDoTotal.toFixed(2).replace('.',',')}`;
             h3Total.classList.add('precoCarrinhoTotal')
 
         
@@ -1323,4 +1323,38 @@ if (textoFormaPagamento === 'Dinheiro') {
 
     opcaoCartao.addEventListener('click', function() {
       opcaoTroco.style.display = 'none'
+    })
+
+    // EVENTO BOTÃO OUTRAS OPÇÕES DE BEBIDAS
+
+    let outrasOpcoesBebidas = document.getElementById('verOutrasBebidas')
+    let grupoCoca = document.getElementById('grupoCoca')
+    let grupoGuarana = document.getElementById('grupoGuarana')
+    let grupoFanta = document.getElementById('grupoFanta')
+    let grupoSoda = document.getElementById('grupoSoda')
+
+    outrasOpcoesBebidas.addEventListener('click', function() {
+      
+      if (grupoCoca.style.display === 'flex' ) {
+        grupoCoca.style.display = 'none'
+        grupoGuarana.style.display = 'flex'
+
+      } else if (grupoGuarana.style.display === 'flex') {
+        grupoGuarana.style.display = 'none'
+        grupoFanta.style.display = 'flex'
+      } else if (grupoFanta.style.display === 'flex') {
+        grupoFanta.style.display = 'none'
+        grupoSoda.style.display = 'flex'
+      } else {
+        grupoSoda.style.display = 'none'
+        grupoCoca.style.display = 'flex'
+      }
+
+    })
+
+    
+    let fecharSugestoes = document.getElementById('fecharSugestoes')
+
+    fecharSugestoes.addEventListener('click', function() {
+      sugestaoBebidas.style.display = 'none'
     })
