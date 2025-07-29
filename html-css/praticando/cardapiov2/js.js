@@ -475,6 +475,7 @@ let catalogoDeProdutos = {
 // 2. Variável para TODOS os botões "Ver mais"
 let btnAbriModal = document.querySelectorAll('.botaomodal');
 
+
 // FUNÇÃO PARA VER DETALHES DOS PRODUTOS
 btnAbriModal.forEach(function(botaoAtual) {
     botaoAtual.addEventListener('click', function(event) {
@@ -521,6 +522,7 @@ let btnCarrinhoContador = document.querySelectorAll('.AdicionarCarrinho')
 let contadorCarrinho = document.querySelector('.contcarrinho')
 let valorCarrinho = 0
 let itensCarrinho = [];
+let sugestaoBebidas = document.querySelector('#sugestaoBebidas')
 
 // FUNÇÃO CONTADOR DO CARRINHO
 // Para cada botão de adicionar ao carrinho, adicione um 'click listener'
@@ -552,6 +554,10 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
                 quantidade: 1
             });
         }
+
+
+
+
         // *** FIM DO NOVO CÓDIGO ***
         // Chama a Função atualizar o carrinho este pode continuar
         atualizarCarrinho();
@@ -616,16 +622,32 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     }
 });
 
+
+
+
+
      //FUNÇÃO EXIBIR ITENS DO CARRINHO
     let itensDoCarrinhoDiv = document.querySelector('#itens-do-carrinho')
+
     function mostrarItensDoCarrinho() {
         itensDoCarrinhoDiv.textContent = "" // Limpa o conteúdo atual
         // Próximo passo: verificar se o carrinho está vazio
         if (itensCarrinho.length === 0) {
-            
+            sugestaoBebidas.style.display = 'none';
             
 
         } else {
+
+            let temLancheNoCarrinho = itensCarrinho.some(item => item.produto.tipo === 'lanche');
+
+            if (temLancheNoCarrinho) {
+            sugestaoBebidas.style.display = 'block'; // Ou 'flex'
+            // Você pode querer esconder as sugestões se elas já estiverem abertas
+            // para evitar que fiquem visíveis o tempo todo se o usuário abrir e fechar o carrinho
+            } else {
+            sugestaoBebidas.style.display = 'none'; // Se não tiver lanche, esconda as sugestões
+    }
+
             itensCarrinho.forEach(function(item) {
 
     // 1. Criar a DIV principal do item do carrinho
@@ -666,6 +688,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     divProdutoDescricao.appendChild(h3NomeProduto);
     divProdutoDescricao.appendChild(descricaoProduto);
 
+    
 
     // 4. Lógica CONDICIONAL para ingredientes (só para lanches)
     if (item.produto.tipo === 'lanche') {
@@ -675,18 +698,24 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         divProdutoDescricao.appendChild(ingredientesProdutos); // Anexe ingredientes se for lanche
 
         // Crie a div para observações e seus elementos (será filha de divProdutoDescricao)
-      let divObs = document.createElement('div');
-      divObs.classList.add('divObs');
-      let labelObs = document.createElement('label');
-      let inputObs = document.createElement('input');
-      inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...';
-      inputObs.classList.add('inputObs');
-      inputObs.addEventListener('input', function() {
+        let divObs = document.createElement('div');
+        divObs.classList.add('divObs');
+        let labelObs = document.createElement('label');
+        let inputObs = document.createElement('input');
+        inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...';
+        inputObs.classList.add('inputObs');
+        inputObs.addEventListener('input', function() {
         item.observacao = inputObs.value;
       });
+
       divObs.appendChild(labelObs);
       divObs.appendChild(inputObs);
       divProdutoDescricao.appendChild(divObs); // Adicione a div de observações APÓS os ingredientes, se houver
+
+      
+
+      
+
     }
 
     
@@ -1021,7 +1050,10 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
         itensCarrinho.forEach(function(item) {
 
-        let divControleItemIndividual = document.createElement('div')
+        let divControleItemIndividual = document.createElement('div');
+
+        if (item.produto.tipo === 'lanche') {
+        
         divControleItemIndividual.classList.add('divControleItemIndividual')
         
         let addPedido = document.createElement('li')
@@ -1041,7 +1073,26 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         
         divItensListaPedido.appendChild(divControleItemIndividual)
         
+        
+
+        } else if (item.produto.tipo === 'bebida') {
+          let addPedido = document.createElement('li')
+          addPedido.textContent = `Item: ${item.quantidade} x ${item.produto.nome} `;
+          divControleItemIndividual.appendChild(addPedido)
+          addPedido.classList.add('appPedido')
+
+          let addPreco = document.createElement('span')
+          addPreco.textContent = ` Preço: R$ ${item.produto.preco.toFixed(2).replace('.', ',')} ` 
+          addPreco.classList.add('precoFazerPedido')
+          divControleItemIndividual.appendChild(addPreco)
+
+
+          divControleItemIndividual.classList.add('divControleItemIndividual');
+          divItensListaPedido.appendChild(divControleItemIndividual)
+        }
+
         precoItens += item.produto.preco * item.quantidade
+
       })
 
       totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
@@ -1050,7 +1101,6 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
       
     }
 
-    
 
 // =======================================================================================================
 
@@ -1274,13 +1324,3 @@ if (textoFormaPagamento === 'Dinheiro') {
     opcaoCartao.addEventListener('click', function() {
       opcaoTroco.style.display = 'none'
     })
-
-
-
-
-
-      
-
-
-
-

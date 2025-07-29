@@ -1271,6 +1271,39 @@ background-color: white;
 
 }
 
+#sugestaoBebidas {
+    /* Posição fixa na tela, não rola com o conteúdo */
+    position: fixed; 
+    
+    /* Centraliza horizontalmente */
+    left: 50%;
+    /* Centraliza verticalmente */
+    top: 50%;
+    /* Ajusta a posição exata para o centro do elemento */
+    transform: translate(-50%, -50%); 
+    
+    /* Garante que fique acima de outros elementos (valor alto) */
+    z-index: 1000; 
+    
+    /* Fundo branco (ou outra cor) para o modal */
+    background-color: white; 
+    
+    /* Preenchimento interno */
+    padding: 20px; 
+    /* Cantos arredondados */
+    border-radius: 8px; 
+    /* Sombra para dar profundidade */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    
+    /* Largura e altura máximas, para ser responsivo */
+    max-width: 90%; 
+    max-height: 90%;
+    overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo for muito grande */
+
+    /* Inicialmente oculto (isso pode estar no seu HTML com style="display: none;") */
+    /* display: none; */ 
+}
+
 @media screen and (min-width: 601px) and (max-width: 1024px) {
         .navbar {
         width: 100%;
