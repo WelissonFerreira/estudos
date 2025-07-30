@@ -1118,6 +1118,7 @@ background-color: white;
 
 .divControleItemIndividual {
     border: 1px solid gray;
+    padding: 10px;
 }
 
 .divControleItemIndividual  .appPedido, .precoFazerPedido, .addIngredientes {

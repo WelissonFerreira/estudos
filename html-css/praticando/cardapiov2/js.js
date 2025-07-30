@@ -279,7 +279,7 @@ let catalogoDeProdutos = {
       imagem: ""
     },
 
-     "produto-xfrango": {
+    "produto-xfrango": {
       tipo: "lanche",
       nome: "X-Frango",
       preco: 22.00,
@@ -578,6 +578,34 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
     });
 });
 
+    // FUNÇÃO ADICIONAR BEBIDAS NO MODAL DE SUGESTÃO
+
+    let adicionarBebida = document.querySelectorAll('.adicionar-bebida')
+    adicionarBebida.forEach(function(botaoBebida) {
+      botaoBebida.addEventListener('click', function() {
+        seletorBebida = botaoBebida.dataset.produtoId
+        bebidaCompleta = catalogoDeProdutos[seletorBebida]
+
+        let bebidaExistente = itensCarrinho.find(function(bebida) {
+            return bebida.produtoId === seletorBebida
+        })
+
+        if (bebidaExistente) {
+          bebidaExistente.quantidade = bebidaExistente.quantidade + 1
+        } else {
+          itensCarrinho.push ({
+            produtoId: seletorBebida,
+            produto: bebidaCompleta,
+            quantidade: 1
+          });
+        }
+
+        atualizarCarrinho()
+
+      })
+    })
+
+
 // ==========================================================================================
 let abrirCarrinho = document.querySelector('#botaoCarrinho')
 let modalCarrinho = document.querySelector('#ModalCarrinho')
@@ -639,13 +667,14 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         } else {
 
             let temLancheNoCarrinho = itensCarrinho.some(item => item.produto.tipo === 'lanche');
+            let temBebidaNoCarrinho = itensCarrinho.some(item => item.produto.tipo === 'bebida');
 
-            if (temLancheNoCarrinho) {
+            if (temLancheNoCarrinho && !temBebidaNoCarrinho) {
             sugestaoBebidas.style.display = 'block'; // Ou 'flex'
             // Você pode querer esconder as sugestões se elas já estiverem abertas
             // para evitar que fiquem visíveis o tempo todo se o usuário abrir e fechar o carrinho
             } else {
-            sugestaoBebidas.style.display = 'none'; // Se não tiver lanche, esconda as sugestões
+            sugestaoBebidas.style.display = 'none'; 
     }
 
             itensCarrinho.forEach(function(item) {
@@ -799,6 +828,10 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         }
     
     }
+
+
+
+
 
 // ==========================================================================================
 
