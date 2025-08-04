@@ -1266,14 +1266,22 @@ if (textoFormaPagamento === 'Dinheiro') {
     let openClose = document.getElementById('open-close')
     let data = new Date()
     let hora = data.getHours()
-    //let hora = 10
+    let dia = data.getDay()
+    //let hora = 19
 
     function AbertoFechado() {
-        if (hora >= 18  && hora < 24 ) {
+
+        if (dia === 1) {
+          return false
+        } else {
+          if (hora >= 18  && hora < 24 ) {
             return true
         } else {
             return false
         }
+
+        }
+        
     }
 
 
