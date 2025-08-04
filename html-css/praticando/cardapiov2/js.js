@@ -377,7 +377,7 @@ let catalogoDeProdutos = {
         nome: "Coca-Cola 250 ml" ,
         preco: 6.00 ,
         descricao: "Coca-Cola em lata de 250 ml",
-        imagem: ""
+        imagem: "https://s3-sa-east-1.amazonaws.com/loja2/5f3dd775f8306fac0109bb1f4df90bba.png"
     },
 
     "produto-guarana250ml": {
