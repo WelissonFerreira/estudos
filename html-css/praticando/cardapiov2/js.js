@@ -19,7 +19,7 @@ let catalogoDeProdutos = {
             "Salada",
             "Tomate"
         ],
-        imagem: ""
+        imagem: "imagens/lanches/especialgrandec.png"
     },
 
     "produto-arthur-baby": {
@@ -52,7 +52,7 @@ let catalogoDeProdutos = {
             "Catchup",
             "Maionese"
         ],
-        imagem: ""
+        imagem: "imagens/lanches/passaportecarne.png"
     },
 
     "produto-passaporte-frango": {
