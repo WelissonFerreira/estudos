@@ -19,7 +19,7 @@ let catalogoDeProdutos = {
             "Salada",
             "Tomate"
         ],
-        imagem: "imagens/lanches/especialgrandec.png"
+        imagem: "imagens/lanches/especial4grande.png"
     },
 
     "produto-arthur-baby": {
@@ -70,7 +70,7 @@ let catalogoDeProdutos = {
             "Molho Rosé",
             "Salada"
         ],
-        imagem: ""
+        imagem: "imagens/lanches/passaportefrango.png"
     },
 
     "produto-xbacon": {
@@ -89,7 +89,7 @@ let catalogoDeProdutos = {
             "Salada",
             "Tomate"
         ],
-        imagem: ""
+        imagem: "imagens/lanches/x-bacon.png"
     },
 
 
@@ -111,7 +111,7 @@ let catalogoDeProdutos = {
             "Maionese",
             "Batata Palha",
         ],
-        imagem: ""
+        imagem: "imagens/lanches/passaportecarnesol.png"
     },
 
     "produto-passaporte-misto": {
@@ -130,7 +130,7 @@ let catalogoDeProdutos = {
         "Maionese",
         "Batata Palha",
       ],
-      imagem: ""
+      imagem: "imagens/lanches/passaportemisto.png"
     },
 
     "produto-xtudo": {
@@ -151,7 +151,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada"
       ],
-      imagem: ""
+      imagem: "imagens/lanches/x-tudo.jpg"
     },
 
     "produto-misto-quente": {
@@ -176,7 +176,7 @@ let catalogoDeProdutos = {
         "Pão Assado na chapa",
         "3 Fatias de Queijo"
       ],
-      imagem: ""
+      imagem: "imagens/lanches/queijo-quente.jpg"
     },
 
     "produto-americano": {
