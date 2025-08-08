@@ -1399,3 +1399,11 @@ if (textoFormaPagamento === 'Dinheiro') {
     fecharSugestoes.addEventListener('click', function() {
       sugestaoBebidas.style.display = 'none'
     })
+
+    let qrcode = document.getElementById('qrcode')
+    let modalQRCode = document.getElementById('ModalQRCode')
+    qrcode.addEventListener('click', function(event) {
+      event.preventDefault();
+      modalQRCode.style.display = 'block'
+
+    })

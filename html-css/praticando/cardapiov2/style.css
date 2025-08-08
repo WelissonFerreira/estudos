@@ -369,6 +369,12 @@ span {
     color: black;
 }
 
+.preco-riscado {
+    font-weight: bolder;
+    color: rgb(85, 83, 83);
+    text-decoration: line-through;
+}
+
 .spanmenu {
     color: black;
     font-size: 0.8rem;
