@@ -243,29 +243,7 @@ header {
 }
 
 /* CONTROLE DE IMAGENS, SANDUICHES, BEBIDAS, AÇAI... */
-/*.fotosanduba {
-    width: 80%;
-    border-radius: 10px;
-    object-fit: cover;
-    display: block;
-}
 
-.fotosanduba-especial {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    display: block;
-}
-
-
-.card-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-}*/
 
 .fotosanduba {
     width: 100%;
@@ -289,10 +267,12 @@ header {
     overflow: hidden;
 }
 
-
 .fotobebidas {
-    width: 100px;
-    height: 80px;
+    width: auto;
+    max-width: none;
+    height: 100%;
+    display: block;
+    object-fit: contain;
     
 }
 
@@ -300,7 +280,29 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100px;
+    width: 100px;
+    flex: 0 0 100px;
+    overflow: hidden;
+    border-radius: 10px;
 }
+/*.fotobebidas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    
+}
+
+.card-image-bebidas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    border-radius: 10px;
+}*/
 
 
 
@@ -335,16 +337,15 @@ header {
 
 .close-button-carrinho {
     position: absolute;
-    font-size: 0.5rem;
-    font-weight: bolder;
+    font-size: 2rem;
+    font-weight: bold;
     top: 0px;
     right: 25px;
     padding: 5px 10px;
-    border: none;
     cursor: pointer;
-    background-color: black;
-    color: white;
-    border-radius: 15px;
+    color: black;
+    background-color: transparent;
+    border: none;
 }
 
 
@@ -523,6 +524,60 @@ footer {
     background-color: #E8931F;
 }
 
+#ModalQRCode {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    
+}
+
+#card-imagem-qrcode {
+    display: flex;
+    position: relative;
+    width: 95%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+.fotoQRCODE {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    
+    
+}
+
+.txtQRCODE {
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.close-button-qrcode {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    background-color: none;
+    margin-top: 5px;
+}
+
 .modal-content {
     background-color: white;
     color: black;
@@ -577,10 +632,18 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 0;
-    right: 0;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    padding: 10px;
 }
+
+.close-button-vermais {
+    text-align: right;
+    font-size: 2rem;
+}
+
+
 
 /* MODAL HORÁRIOS */
 #modalhorarios {
@@ -1102,7 +1165,7 @@ background-color: white;
     font-size: 1rem;
 }
 
-#voltarPedido, #Finalizar-Pedido {
+#Finalizar-Pedido {
     border-radius: 25px;
     background-Color: black;
     color: white;
@@ -1118,14 +1181,13 @@ background-color: white;
 #voltarPedido {
     position: absolute;
     left: 5px;
-    top: 5px;
-    font-size: 0.5rem;
-    font-weight: bolder;
-    padding: 5px 10px;
+    top: 0px;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1px 10px;
     border: none;
     cursor: pointer;
-    background-color: black;
-    color: white;
+    color: black;
     border-radius: 15px;
 }
 
@@ -1217,30 +1279,33 @@ background-color: white;
 .close-button-dados {
     position: absolute;
     top: 15px;
-    right: 22px;
-    font-size: 0.5rem;
-    font-weight: bolder;
+    right: 10px;
+    font-size: 2rem;
+    font-weight: bold;
     width: 50px;
-    padding: 6px 10px;
-    border: none;
+    padding: 5px 10px;
     cursor: pointer;
-    background-color: black;
-    color: white;
-    border-radius: 15px;
+    color: black;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 20px;
 }
 
 .close-button-pedido {
     position: absolute;
     font-size: 0.5rem;
     font-weight: bolder;
-    top: 10px;
+    top: 0px;
     right: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    width: 50px;
     padding: 5px 10px;
-    border: none;
     cursor: pointer;
-    background-color: black;
-    color: white;
-    border-radius: 15px;
+    color: black;
+    background-color: transparent;
+    border: none;
+    
 }
 
 #nome, #cell, #Bairro, #Rua, #Numero, #complemento {
@@ -1333,6 +1398,8 @@ background-color: white;
     .btnAumentar {
         margin-bottom: 3px;
     }
+
+
 
 }
 

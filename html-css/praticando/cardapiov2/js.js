@@ -164,7 +164,7 @@ let catalogoDeProdutos = {
         "2 Fatias de Queijo",
         "2 Fatias de Presunto"
       ],
-      imagem: ""
+      imagem: "imagens/lanches/mistoquente.png"
     },
 
     "produto-queijo-quente": {
@@ -192,7 +192,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada"
       ],
-      imagem: ""
+      imagem: "imagens/lanches/americano2.png"
     },
 
     "produto-bauru": {
@@ -208,7 +208,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada",
     ],
-      imagem: ""
+      imagem: "imagens/lanches/bauruatt.png"
     },
 
     "produto-hamburguer": {
@@ -224,7 +224,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada"
     ],
-      imagem: ""
+      imagem: "imagens/lanches/hamburgueratt.png"
     },
 
     "produto-xburguer": {
@@ -241,7 +241,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada"
     ],
-      imagem: ""
+      imagem: "imagens/lanches/x-burguer.png"
     },
 
     "produto-xsalsicha": {
@@ -258,7 +258,7 @@ let catalogoDeProdutos = {
         "Molho",
         "Salada"
     ],
-      imagem: ""
+      imagem: "imagens/lanches/x-salsicha.png"
     },
 
     "produto-minuano": {
@@ -276,7 +276,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada"
     ],
-      imagem: ""
+      imagem: "imagens/lanches/minuano1.png"
     },
 
     "produto-xfrango": {
@@ -294,7 +294,7 @@ let catalogoDeProdutos = {
         "Molho Rosé",
         "Salada"
     ],
-      imagem: ""
+      imagem: "imagens/lanches/xfrango.png"
     },
 
     "produto-XCarneDeSol": {
@@ -306,7 +306,7 @@ let catalogoDeProdutos = {
         "Pão",
         "Carne de Sol",
     ],
-      imagem: ""
+      imagem: "imagens/lanches/carnedesolcaipira.png"
     },
 
     "produto-xcalabresa": {
@@ -315,7 +315,7 @@ let catalogoDeProdutos = {
       preco: 20.00,
       descricao: "X-Calabresa topadão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/xcalabresa.png"
     },
 
     "produto-FrangoSalada": {
@@ -324,7 +324,7 @@ let catalogoDeProdutos = {
       preco: 22.00,
       descricao: "Frango Salada naquele padrão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/frango salada.png"
     },
 
     "produto-xfile": {
@@ -333,7 +333,7 @@ let catalogoDeProdutos = {
       preco: 23.00,
       descricao: "X-Filé topadão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/xfile.png"
     },
 
     "produto-filebacon": {
@@ -342,7 +342,7 @@ let catalogoDeProdutos = {
       preco: 26.00,
       descricao: "Filé-Bacon topadão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/filebacon.png"
     },
 
     "produto-frangobresa": {
@@ -351,7 +351,7 @@ let catalogoDeProdutos = {
       preco: 25.00,
       descricao: "Frango-Bresa topadão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/frangobresa.png"
     },
 
     "produto-filefrango": {
@@ -360,7 +360,7 @@ let catalogoDeProdutos = {
       preco: 26.00,
       descricao: "Filé-Frango topadão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/xfrango.png"
     },
 
     "produto-CarneDeSolCaipira": {
@@ -369,7 +369,7 @@ let catalogoDeProdutos = {
       preco: 25.00,
       descricao: "Carne de Sol Caipira topadão",
       ingredientes: ["1x Pão..."],
-      imagem: ""
+      imagem: "imagens/lanches/carnedesolcaipira.png"
     },
 
     "produto-cocacola250ml": {
@@ -377,7 +377,7 @@ let catalogoDeProdutos = {
         nome: "Coca-Cola 250 ml" ,
         preco: 6.00 ,
         descricao: "Coca-Cola em lata de 250 ml",
-        imagem: "https://s3-sa-east-1.amazonaws.com/loja2/5f3dd775f8306fac0109bb1f4df90bba.png"
+        imagem: "imagens/bebidas/cocacola350ml.png"
     },
 
     "produto-guarana250ml": {
@@ -385,7 +385,7 @@ let catalogoDeProdutos = {
       nome: "Guaraná 250ml",
       preco: 6.00,
       descricao: "Guanará em lata de 250 ml",
-      imagem: ""
+      imagem: "imagens/bebidas/GUARANALATA340ML.png"
     },
 
     "produto-fanta250ml": {
@@ -393,7 +393,7 @@ let catalogoDeProdutos = {
       nome: "Fanta 250ml",
       preco: 6.00,
       descricao: "Fanta em lata de 250 ml",
-      imagem: ""
+      imagem: "imagens/bebidas/Fantalata350ml.png"
     },
 
     "produto-soda250ml": {
@@ -401,7 +401,7 @@ let catalogoDeProdutos = {
       nome: "Soda 250ml",
       preco: 6.00,
       descricao: "Soda em lata de 250 ml",
-      imagem: ""
+      imagem: "imagens/bebidas/sodalata.png"
     },
 
     "produto-cocacola1L": {
@@ -409,7 +409,7 @@ let catalogoDeProdutos = {
       nome: "Coca-Cola 1L",
       preco: 10.00,
       descricao: "Coca-Cola 1L",
-      imagem: ""
+      imagem: "imagens/bebidas/coca1L.png"
     },
 
     "produto-guarana1L": {
@@ -417,7 +417,7 @@ let catalogoDeProdutos = {
       nome: "Guaraná 1L",
       preco: 8.00,
       descricao: "Guaraná 1L",
-      imagem: ""
+      imagem: "imagens/bebidas/GUARANA1L.png"
     },
 
     "produto-fanta1L": {
@@ -425,7 +425,7 @@ let catalogoDeProdutos = {
       nome: "Fanta 1L",
       preco: 8.00,
       descricao: "Fanta 1L",
-      imagem: ""
+      imagem: "imagens/bebidas/fanta1L.png"
     },
 
     "produto-soda1L": {
@@ -433,7 +433,7 @@ let catalogoDeProdutos = {
       nome: "Soda 1L",
       preco: 8.00,
       descricao: "Soda 1L",
-      imagem: ""
+      imagem: "imagens/bebidas/soda1L.png"
     },
 
     "produto-cocacola2L": {
@@ -441,7 +441,7 @@ let catalogoDeProdutos = {
       nome: "Coca-Cola 2L",
       preco: 13.00,
       descricao: "Coca-Cola 2L",
-      imagem: ""
+      imagem: "imagens/bebidas/cocacola2L.png"
     },
 
     "produto-guarana2L": {
@@ -449,7 +449,7 @@ let catalogoDeProdutos = {
       nome: "Guaraná 2L",
       preco: 12.00,
       descricao: "Guaraná 2L",
-      imagem: ""
+      imagem: "imagens/bebidas/Guarana2L.png"
     },
 
     "produto-fanta2L": {
@@ -457,7 +457,7 @@ let catalogoDeProdutos = {
       nome: "Fanta 2L",
       preco: 12.00,
       descricao: "Fanta 2L",
-      imagem: ""
+      imagem: "imagens/bebidas/Fanta2L.png"
     },
 
     "produto-soda2L": {
@@ -489,7 +489,7 @@ btnAbriModal.forEach(function(botaoAtual) {
         document.body.style.overflow = 'hidden';
     
         // 1. Encontrar o botão de fechar DENTRO DESTE modal que abriu
-        let fecharbotaomodal = modalParaAbrir.querySelector('.close-button')
+        let fecharbotaomodal = modalParaAbrir.querySelector('.close-button-vermais')
 
         // 2. Adicionar um evento de clique a ESTE botão de fechar
         fecharbotaomodal.addEventListener('click', function() {
@@ -1404,6 +1404,12 @@ if (textoFormaPagamento === 'Dinheiro') {
     let modalQRCode = document.getElementById('ModalQRCode')
     qrcode.addEventListener('click', function(event) {
       event.preventDefault();
-      modalQRCode.style.display = 'block'
+      modalQRCode.style.display = 'flex'
 
+    })
+
+    let botaofecharQRCODE = document.querySelector('.close-button-qrcode')
+
+    botaofecharQRCODE.addEventListener('click', function() {
+      modalQRCode.style.display = 'none'
     })
