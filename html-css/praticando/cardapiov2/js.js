@@ -1300,13 +1300,22 @@ if (textoFormaPagamento === 'Dinheiro') {
     let data = new Date()
     let hora = data.getHours()
     let dia = data.getDay()
-    //let hora = 19
+    //let hora = 10
 
     function AbertoFechado() {
 
-        if (dia === 1) {
+        /*Exemplo de código se fecha-se algum dia o estabelecimento */
+
+        /* if (dia === 1) {
           return false
         } else {
+          if (hora >= 18 && hora < 24) {
+          return true
+          } else {
+            return false
+          } */
+
+          // Como abre todo santo dia, fizemos só a condição do horário.
           if (hora >= 18  && hora < 24 ) {
             return true
         } else {
@@ -1315,7 +1324,7 @@ if (textoFormaPagamento === 'Dinheiro') {
 
         }
         
-    }
+    
 
 
 
