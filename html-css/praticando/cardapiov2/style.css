@@ -932,6 +932,12 @@ footer {
 
 .btnAumentar:hover,
 .btnDiminuir:hover {
+    transition: background-color 1s ease-in-out;
+    
+}
+
+.btnAumentar:hover,
+.btnDiminuir:hover {
     background-color: #edbb5a; /* Efeito de hover */
     color: black;
     
