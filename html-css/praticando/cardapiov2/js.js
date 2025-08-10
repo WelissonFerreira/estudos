@@ -1230,7 +1230,7 @@ if (textoFormaPagamento === 'Dinheiro') {
 
 
     // Número do WhatsApp (com DDI e DDD)
-    let numeroWhatsApp = '558299261614';
+    let numeroWhatsApp = '5582988204888';
 
     // Codifica mensagem para URL
     let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
