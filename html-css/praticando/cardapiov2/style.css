@@ -1044,7 +1044,7 @@ footer {
 
 /* Conteúdo do Modal de Dados - Onde está o formulário */
 .ConteudoModalDados {
-    background-color: white; /* O fundo que você quer para o formulário */
+    background-color: #E8931F; /* O fundo que você quer para o formulário */
     color: black;
     margin: 0;           /* Sem margens externas, preenche o pai */
     padding: 20px;       /* Padding interno para o conteúdo do formulário */
@@ -1053,7 +1053,6 @@ footer {
     max-width: none;     /* Crucial para não limitar a largura em mobile */
     border: none;        /* Remove a borda se quiser um visual limpo */
     border-radius: 0;    /* Remove o arredondamento */
-
     display: flex;
     flex-direction: column; /* Organiza o conteúdo interno em coluna */
     justify-content: start; /* Alinha o conteúdo ao topo */
@@ -1143,7 +1142,7 @@ footer {
 }
 
 .ContModalFazerPedido {
-background-color: white;
+    background-color: #E8931F;
     color: black;
     margin: auto; 
     padding: 20px;
@@ -1172,6 +1171,7 @@ background-color: white;
 }
 
 #voltarPedido {
+    background-color: #E8931F;
     position: absolute;
     left: 5px;
     top: 0px;
