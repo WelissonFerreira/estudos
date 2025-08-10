@@ -1198,6 +1198,9 @@ footer {
 #inputTroco {
     margin-top: 5px;
     width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
 }
 
 #itensListadosNoPedido {
@@ -1207,7 +1210,7 @@ footer {
 }
 
 .divControleItemIndividual {
-    border: 1px solid gray;
+    border: 1px solid black;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -1408,15 +1411,15 @@ footer {
     
     }
 
-        .divControleBotoes {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        gap: 10px;
-        border: 1px solid gray;
-        align-self: center;
-        width: 120px;
+    .divControleBotoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    border: 1px solid gray;
+    align-self: center;
+    width: 120px;
 }
 
     .btnDiminuir, .btnAumentar, .btnRemover {
