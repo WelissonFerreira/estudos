@@ -1408,13 +1408,15 @@ footer {
     
     }
 
-            .divControleBotoes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-    border: 1px solid gray;
-    align-self: center;
+        .divControleBotoes {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        gap: 10px;
+        border: 1px solid gray;
+        align-self: center;
+        width: 120px;
 }
 
     .btnDiminuir, .btnAumentar, .btnRemover {
