@@ -35,7 +35,7 @@ let catalogoDeProdutos = {
             "1x Salada",
             "1x Tomate"
         ],
-        imagem: "imagens/lanches/arthurbab"
+        imagem: "imagens/lanches/arthurbabyatt.png"
     },
 
     "produto-passaporte-carne": {
@@ -326,7 +326,7 @@ let catalogoDeProdutos = {
       preco: 22.00,
       descricao: "Frango Salada naquele padrão",
       ingredientes: ["1x Pão..."],
-      imagem: "imagens/lanches/frango salada.png"
+      imagem: "imagens/lanches/frangosalada.png"
     },
 
     "produto-xfile": {
@@ -387,7 +387,7 @@ let catalogoDeProdutos = {
       nome: "Guaraná em lata",
       preco: 6.00,
       descricao: "Guanará em lata de 250 ml",
-      imagem: "imagens/bebidas/GUARANALATA340ML.png"
+      imagem: "imagens/bebidas/GuaranaLataATTpngSFundo.png"
     },
 
     "produto-fanta250ml": {
@@ -419,7 +419,7 @@ let catalogoDeProdutos = {
       nome: "Guaraná 1L",
       preco: 8.00,
       descricao: "Guaraná 1L",
-      imagem: "imagens/bebidas/GUARANA1L.png"
+      imagem: "imagens/bebidas/guarana1LA.png"
     },
 
     "produto-fanta1L": {
@@ -427,7 +427,7 @@ let catalogoDeProdutos = {
       nome: "Fanta 1L",
       preco: 8.00,
       descricao: "Fanta 1L",
-      imagem: "imagens/bebidas/fanta1L.png"
+      imagem: "imagens/bebidas/fanta1LA.png"
     },
 
     "produto-soda1L": {
@@ -435,7 +435,7 @@ let catalogoDeProdutos = {
       nome: "Soda 1L",
       preco: 8.00,
       descricao: "Soda 1L",
-      imagem: "imagens/bebidas/soda1L.png"
+      imagem: "imagens/bebidas/soda1LA.png"
     },
 
     "produto-cocacola2L": {
@@ -443,7 +443,7 @@ let catalogoDeProdutos = {
       nome: "Coca-Cola 2L",
       preco: 13.00,
       descricao: "Coca-Cola 2L",
-      imagem: "imagens/bebidas/cocacola2L.png"
+      imagem: "imagens/bebidas/Coca2LA.png"
     },
 
     "produto-guarana2L": {
@@ -451,7 +451,7 @@ let catalogoDeProdutos = {
       nome: "Guaraná 2L",
       preco: 12.00,
       descricao: "Guaraná 2L",
-      imagem: "imagens/bebidas/Guarana2L.png"
+      imagem: "imagens/bebidas/Guarana2LA.png"
     },
 
     "produto-fanta2L": {
@@ -459,7 +459,7 @@ let catalogoDeProdutos = {
       nome: "Fanta 2L",
       preco: 12.00,
       descricao: "Fanta 2L",
-      imagem: "imagens/bebidas/Fanta2L.png"
+      imagem: "imagens/bebidas/Fanta2LA.png"
     },
 
     "produto-soda2L": {
@@ -732,6 +732,8 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         let divObs = document.createElement('div');
         divObs.classList.add('divObs');
         let labelObs = document.createElement('label');
+        labelObs.textContent = 'Observação: '
+        labelObs.classList.add('labelObs')
         let inputObs = document.createElement('input');
         inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...';
         inputObs.classList.add('inputObs');
@@ -1091,10 +1093,16 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         
         divControleItemIndividual.classList.add('divControleItemIndividual')
         
+
         let addPedido = document.createElement('li')
         addPedido.textContent = `Item: ${item.quantidade}x ${item.produto.nome} `;
         divControleItemIndividual.appendChild(addPedido)
         addPedido.classList.add('appPedido')
+
+        let pedidoImagem = document.createElement('img')
+        pedidoImagem.src = `${item.produto.imagem}`
+        pedidoImagem.classList.add('imagemPedidoFinal')
+        divControleItemIndividual.appendChild(pedidoImagem)
 
         let addIngredientes = document.createElement('p')
         addIngredientes.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`
@@ -1115,6 +1123,11 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
           addPedido.textContent = `Item: ${item.quantidade} x ${item.produto.nome} `;
           divControleItemIndividual.appendChild(addPedido)
           addPedido.classList.add('appPedido')
+          
+          let pedidoImagem = document.createElement('img')
+          pedidoImagem.src = `${item.produto.imagem}`
+          pedidoImagem.classList.add('imagemPedidoFinal')
+          divControleItemIndividual.appendChild(pedidoImagem)
 
           let addPreco = document.createElement('span')
           addPreco.textContent = ` Preço: R$ ${item.produto.preco.toFixed(2).replace('.', ',')} ` 

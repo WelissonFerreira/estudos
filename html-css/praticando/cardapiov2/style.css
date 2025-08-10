@@ -286,23 +286,7 @@ header {
     overflow: hidden;
     border-radius: 10px;
 }
-/*.fotobebidas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-    
-}
 
-.card-image-bebidas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100px;
-    overflow: hidden;
-    border-radius: 10px;
-}*/
 
 
 
@@ -783,7 +767,7 @@ footer {
     align-items: center;
     margin: auto;
     
-  
+    
 }
 
 .divInfoProdutos {
@@ -796,12 +780,12 @@ footer {
 }
 
 .divProdutoDescricao {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  gap: 10px;
-  
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    
 }
 
 
@@ -809,9 +793,10 @@ footer {
 
 
 .imagemProduto {
-  width: 90px;
-  height: 90px;
-  border-radius: 10px;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .controles-quantidade {
@@ -858,19 +843,20 @@ footer {
 }
 
 .descricaoProduto {
-  color: black;
-  font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 400;
+    color: black;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
 
 }
 
 .ingredientesProdutos {
-  line-height: 1.2;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    padding-bottom: 10px;
 }
 
 .precoCarrinhoTotal {
@@ -879,19 +865,26 @@ footer {
 }
 
 .inputObs {
-  width: 250px;
-  height: 25px;
+    width: 300px;
+    height: 50px;
+}
+
+.labelObs {
+    color: black;
+    display: inline-block;
+    padding-bottom: 7px;
+    
 }
 
 
 
 .divControleBotoes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  border: 1px solid gray;
-  align-self: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid gray;
+    align-self: center;
 }
 
 
@@ -902,7 +895,7 @@ footer {
     cursor: pointer;
     height: 30px;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 3rem;
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;
@@ -1139,7 +1132,7 @@ footer {
 /* MODAL FINALIZAR PEDIDO */
 
 #ModalFazerPedido {
-    background-color: white;
+    background-color: #E8931F;
     display: none;
     z-index: 1001;
     /*border: solid 1px;*/
@@ -1216,6 +1209,10 @@ footer {
 .divControleItemIndividual {
     border: 1px solid gray;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .divControleItemIndividual  .appPedido, .precoFazerPedido, .addIngredientes {
@@ -1242,6 +1239,12 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 25px;
+}
+
+.imagemPedidoFinal {
+    width: 100px;
+    height: 100px;
+    
 }
 
 /* FORMULÁRIO */
@@ -1472,9 +1475,11 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 10px;
     border: 1px solid gray;
     align-self: center;
+    width: 100px;
 }
 
     .btnDiminuir, .btnAumentar, .btnRemover {
