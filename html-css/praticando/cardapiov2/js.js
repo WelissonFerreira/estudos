@@ -46,10 +46,12 @@ let catalogoDeProdutos = {
         ingredientes: [
             "Pão",
             "Carne Moída",
-            "1x Salsicha",
+            "Salsicha",
+            "Tomate Verde",
             "Batata Palha",
             "Milho e Ervilha",
-            "Catchup",
+            "Queijo Ralado",
+            "Katchup",
             "Maionese"
         ],
         imagem: "imagens/lanches/passaportecarne.png"
@@ -62,13 +64,13 @@ let catalogoDeProdutos = {
         descricao: "Passaporte de frango super recheado",
         ingredientes: [
             "Pão",
-            "Bacon",
-            "Hambúrguer",
-            "Ovo",
-            "Queijo",
-            "Presunto",
-            "Molho Rosé",
-            "Salada"
+            "Frango Desfiado",
+            "Salsicha",
+            "Tomate Verdeo",
+            "Milho e Ervilha",
+            "Queijo Ralado",
+            "Maionese",
+            "Batata Palha"
         ],
         imagem: "imagens/lanches/passaportefrango.png"
     },
@@ -99,9 +101,9 @@ let catalogoDeProdutos = {
         preco: 25.00,
         descricao: "Passaporte de Carne de Sol super recheado",
         ingredientes: [ 
-            "Pão",
+            "Pão Sedão",
             "Carne de Sol",
-            "1x Salsicha",
+            "Salsicha",
             "Catupiry",
             "Queijo Coalho",
             "Tomate Verde",
@@ -374,7 +376,7 @@ let catalogoDeProdutos = {
 
     "produto-cocacola250ml": {
         tipo: "bebida",
-        nome: "Coca-Cola 250 ml" ,
+        nome: "Coca-Cola em lata" ,
         preco: 6.00 ,
         descricao: "Coca-Cola em lata de 250 ml",
         imagem: "imagens/bebidas/cocacola350ml.png"
@@ -382,7 +384,7 @@ let catalogoDeProdutos = {
 
     "produto-guarana250ml": {
       tipo: "bebida",
-      nome: "Guaraná 250ml",
+      nome: "Guaraná em lata",
       preco: 6.00,
       descricao: "Guanará em lata de 250 ml",
       imagem: "imagens/bebidas/GUARANALATA340ML.png"
@@ -392,7 +394,7 @@ let catalogoDeProdutos = {
       tipo: "bebida",
       nome: "Fanta 250ml",
       preco: 6.00,
-      descricao: "Fanta em lata de 250 ml",
+      descricao: "Fanta em lata",
       imagem: "imagens/bebidas/Fantalata350ml.png"
     },
 
@@ -400,7 +402,7 @@ let catalogoDeProdutos = {
       tipo: "bebida",
       nome: "Soda 250ml",
       preco: 6.00,
-      descricao: "Soda em lata de 250 ml",
+      descricao: "Soda em lata",
       imagem: "imagens/bebidas/sodalata.png"
     },
 
@@ -465,7 +467,7 @@ let catalogoDeProdutos = {
       nome: "Soda 2L",
       preco: 12.00,
       descricao: "Soda 2L",
-      imagem: ""
+      imagem: "imagens/bebidas/soda2LA.png"
     }
 
 }
