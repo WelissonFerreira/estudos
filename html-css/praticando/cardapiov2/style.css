@@ -895,7 +895,8 @@ footer {
     cursor: pointer;
     height: 30px;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 1.5rem;
+    width: 30px;
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;
@@ -909,8 +910,8 @@ footer {
 
 .btnRemover {
 
-    background-color: #303030;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .btnAumentar:hover,
@@ -1419,8 +1420,15 @@ footer {
     gap: 10px;
     border: 1px solid gray;
     align-self: center;
-    width: 120px;
+    
 }
+
+/* Botão Remover */
+
+.btnRemover {
+    width: 10px;
+}
+
 
     .btnDiminuir, .btnAumentar, .btnRemover {
     color: black;
@@ -1428,13 +1436,11 @@ footer {
     border: 1px solid white;
     cursor: pointer;
     height: 30px;
-    /* border-radius: 5px; */ /* Cantos arredondados */
     font-weight: bold;
     font-size: 1.4rem;
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;
-    /*padding-top: 1px;*/
 
 }       
     
@@ -1484,7 +1490,7 @@ footer {
     gap: 10px;
     border: 1px solid gray;
     align-self: center;
-    width: 100px;
+    width: 130px;
 }
 
     .btnDiminuir, .btnAumentar, .btnRemover {
@@ -1502,6 +1508,11 @@ footer {
     /*padding-top: 1px;*/
 
 }
+
+    .btnDiminuir:hover, .btnAumentar:hover, .btnRemover:hover {
+        background-color: #E8931F;
+        cursor: pointer;
+    }
     .btnAumentar {
         margin-bottom: 3px;
     }
