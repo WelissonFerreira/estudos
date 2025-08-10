@@ -1256,6 +1256,11 @@ footer {
     
 }
 
+.CRetirada, .CEntrega {
+    width: 20px;
+    height: 20px;
+}
+
 
 
 .opcao-pedido {
