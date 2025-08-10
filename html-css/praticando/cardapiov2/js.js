@@ -735,7 +735,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         labelObs.textContent = 'Observação: '
         labelObs.classList.add('labelObs')
         let inputObs = document.createElement('input');
-        inputObs.placeholder = 'Observação: Sem maionese, sem tomate, etc...';
+        inputObs.placeholder = 'Ex: sem maionese, sem tomate, etc...';
         inputObs.classList.add('inputObs');
         inputObs.addEventListener('input', function() {
         item.observacao = inputObs.value;
