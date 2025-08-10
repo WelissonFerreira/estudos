@@ -35,7 +35,7 @@ let catalogoDeProdutos = {
             "1x Salada",
             "1x Tomate"
         ],
-        imagem: ""
+        imagem: "imagens/lanches/arthurbab"
     },
 
     "produto-passaporte-carne": {
