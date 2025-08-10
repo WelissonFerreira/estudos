@@ -316,7 +316,23 @@ header {
     padding: 5px 10px;
     cursor: pointer;
     white-space: nowrap;
+    position: relative;
 
+}
+
+.msgAdicionado {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%); /* Ajusta para centralizar de fato */
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.5s ease-in-out; /* Adiciona uma transição suave */
+    pointer-events: none; /* Garante que a mensagem não interfere com cliques */
+    z-index: 1000; /* Garante que a mensagem fique acima de outros elementos */
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.7rem;
+    color: black; /* Escolha uma cor para a mensagem */
+    /* Outros estilos, como background, padding, etc. */
 }
 
 .close-button-carrinho {
@@ -1417,9 +1433,10 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    gap: 10px;
+    gap: 5px;
     border: 1px solid gray;
     align-self: center;
+    width: 130px;
     
 }
 
@@ -1437,7 +1454,7 @@ footer {
     cursor: pointer;
     height: 30px;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     display: flex; /* Para centralizar o + e - */
     justify-content: center;
     align-items: center;

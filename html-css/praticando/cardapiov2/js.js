@@ -526,11 +526,29 @@ let valorCarrinho = 0
 let itensCarrinho = [];
 let sugestaoBebidas = document.querySelector('#sugestaoBebidas')
 
+
 // FUNÇÃO CONTADOR DO CARRINHO
 // Para cada botão de adicionar ao carrinho, adicione um 'click listener'
 btnCarrinhoContador.forEach(function(botaoCarrinho) {
     botaoCarrinho.addEventListener('click', function() {
         // Incrementa o valor do contador do carrinho (este pode continuar)
+      
+        let msgAdicionado = document.createElement('span')
+        msgAdicionado.textContent = `Adicionado com sucesso!`
+        msgAdicionado.classList.add('msgAdicionado')
+      
+      // Anexa a mensagem ao botão, não ao body.
+      botaoCarrinho.appendChild(msgAdicionado)
+      
+      // Torna a mensagem visível
+      msgAdicionado.style.opacity = '1';
+
+
+        // Usa o setTimeout para esconder a mensagem depois de 1.5 segundos
+        setTimeout(function() {
+            msgAdicionado.style.opacity = '0';
+        }, 1500);
+
     
     
         // Pega o ID único do produto a partir do atributo 'data-produto-id' do botão clicado
