@@ -411,7 +411,7 @@ let catalogoDeProdutos = {
       nome: "Coca-Cola 1L",
       preco: 10.00,
       descricao: "Coca-Cola 1L",
-      imagem: "imagens/bebidas/coca1L.png"
+      imagem: "imagens/bebidas/Coca1LA.png"
     },
 
     "produto-guarana1L": {
