@@ -1562,9 +1562,21 @@ footer {
         margin-bottom: 3px;
     }
 
+    #open-close {
+        display: flex;
+        flex-direction: column;
+    }
 
+    .msgfuncionamento {
+        width: 80px;
+    }
+    .msgverhorarios {
+        width: 150px;
+    }
 
 }
+
+
 
 @media screen and (min-width: 401px) and (max-width: 600px) {
 
