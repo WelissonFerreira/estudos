@@ -753,7 +753,7 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         labelObs.textContent = 'Observação: '
         labelObs.classList.add('labelObs')
         let inputObs = document.createElement('input');
-        inputObs.placeholder = 'Ex: sem maionese, sem tomate, etc...';
+        inputObs.placeholder = 'Ex: sem maionese, sem tomate, etc';
         inputObs.classList.add('inputObs');
         inputObs.addEventListener('input', function() {
         item.observacao = inputObs.value;
@@ -918,6 +918,11 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
 
     btnVoltar.addEventListener('click', function(event) {
         event.preventDefault();
+        
+        btnVoltar.classList.add('clicado')
+        setTimeout(() => {
+          btnVoltar.classList.remove('clicado')
+        }, 300);
         exibirModalDados.style.display = 'none'
         modalCarrinho.style.display = 'block'
     })
@@ -942,6 +947,10 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     let precoTotalDosItens = 0
 
       btnAvancar.addEventListener('click', function() {
+      btnAvancar.classList.add('clicado')
+      setTimeout(() => {
+    btnAvancar.classList.remove('clicado');
+      }, 300);
 
       let possoAvancar = false
 
@@ -1411,13 +1420,17 @@ if (textoFormaPagamento === 'Dinheiro') {
     // EVENTO BOTÃO OUTRAS OPÇÕES DE BEBIDAS
 
     let outrasOpcoesBebidas = document.getElementById('verOutrasBebidas')
+    outrasOpcoesBebidas.classList.add('verOutrasBebidas')
     let grupoCoca = document.getElementById('grupoCoca')
     let grupoGuarana = document.getElementById('grupoGuarana')
     let grupoFanta = document.getElementById('grupoFanta')
     let grupoSoda = document.getElementById('grupoSoda')
 
     outrasOpcoesBebidas.addEventListener('click', function() {
-      
+
+      outrasOpcoesBebidas.classList.toggle('clicado')
+
+
       if (grupoCoca.style.display === 'flex' ) {
         grupoCoca.style.display = 'none'
         grupoGuarana.style.display = 'flex'
@@ -1433,13 +1446,19 @@ if (textoFormaPagamento === 'Dinheiro') {
         grupoCoca.style.display = 'flex'
       }
 
+       // remove a classe depois de 300ms
+        setTimeout(() => {
+        outrasOpcoesBebidas.classList.remove('clicado');
+        }, 300);
+
     })
 
     
     let fecharSugestoes = document.getElementById('fecharSugestoes')
-
+    fecharSugestoes.classList.add('fecharSugestoes')
     fecharSugestoes.addEventListener('click', function() {
       sugestaoBebidas.style.display = 'none'
+      
     })
 
     let qrcode = document.getElementById('qrcode')

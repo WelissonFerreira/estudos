@@ -51,9 +51,23 @@ header {
 }
 
 /* Logo */
+.bannermenu {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    padding-bottom: 5px;
+}
+
 .logomenu {
-    width: 150px;
-    height: 150px; 
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 100;
+    top: 100%;
+    border: 3px solid white;
+    border-radius: 50px;
+    margin-top: 5px;
+    
 }
 
 #topomenu {
@@ -61,6 +75,8 @@ header {
     align-items: center;
     justify-content: center;
     background-color: #E8931F;
+    width: 100vw;
+    position: relative;
 }
 
 #open-close {
@@ -69,8 +85,9 @@ header {
     margin: auto;
     flex-direction: column;
     align-items: center;
-    padding: 5px;
+    padding: 85px;
     background-color: #E8931F;
+    padding-bottom: 10px;
 }
 
 .msgfuncionamento {
@@ -220,6 +237,7 @@ header {
     display: flex;
     gap: 15px;
     align-items: center;
+    padding-left: 7px;
 }
 
 
@@ -230,7 +248,7 @@ header {
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    gap: 2px;
+    
 
 }
 
@@ -249,6 +267,7 @@ header {
     width: 100%;
     height: 100%;
     display: block;
+    border-radius: 20px;
 }
 
 .fotosanduba-especial {
@@ -358,7 +377,7 @@ header {
     font-style: normal;
     font-size: 1.2rem;
     padding-bottom: 5px;
-    margin-top: 10px;
+    
     color: black;
     /*margin-left: -65px*/
 
@@ -692,7 +711,7 @@ footer {
 
     .modal-sub-titulos {
         text-align: center;
-        margin-right: 50px;
+        display: block;
         padding: 10px;
         font-family: Lato, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-weight: 700;
@@ -737,7 +756,6 @@ footer {
     background-color: #E8931F;
     margin: 15% auto; /* Centraliza o modal na tela */
     padding: 20px;
-    width: 80%; /* Largura do modal */
     max-width: 500px; /* Largura máxima do modal */
     /*border: 1px solid #888;*/
     /*border-radius: 10px; /* Bordas arredondadas */
@@ -750,13 +768,21 @@ footer {
 }
 
 #ModalCarrinho {
-  background-Color: #E8931F;
+    background-Color: #E8931F;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .h3Carrinho {
     margin: auto;
     margin-bottom: 15px;
     color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 
@@ -765,7 +791,6 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 25px;
     border: 1px solid gray;
     box-shadow: 1px 1px 8px 1px gray;
     padding: 10px;
@@ -825,20 +850,22 @@ footer {
 }
 
 #finalizar-compra {
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
     margin-top: 10px;
     font-size: 1rem;
     border: none;
     border-radius: 25px;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 5px 10px;
     cursor: pointer;
     white-space: nowrap;
 }
 
 #finalizar-compra:hover {
-    background-color: #edbb5a;
-    color: black;
+    background-color: black;
+    color: white;
 }
 
 
@@ -846,6 +873,9 @@ footer {
     font-size: 1rem;
     text-align: center;
     color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 /* Botões do Carrinho */
@@ -855,7 +885,9 @@ footer {
     /*text-align: left;*/
     color: black;
     font-size: 17px;
-    font-style: bolder;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .descricaoProduto {
@@ -883,12 +915,21 @@ footer {
 .inputObs {
     width: 300px;
     height: 50px;
+    padding: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    border-radius: 10px;
 }
 
 .labelObs {
     color: black;
     display: inline-block;
     padding-bottom: 7px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    
     
 }
 
@@ -966,6 +1007,9 @@ footer {
 .titulo-bebida-sugestao {
     text-align: center;
     padding: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .grupo-bebida {
@@ -992,6 +1036,10 @@ footer {
     
 }
 
+.psugestao, .spansugestao {
+    font-family: "Quicksand", sans-serif;
+}
+
 .adicionar-bebida {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
@@ -1001,7 +1049,7 @@ footer {
     border: none;
     border-radius: 25px;
     background-color: #E8931F;
-    color: black;
+    color: white;
     padding: 5px 10px;
     cursor: pointer;
 }
@@ -1015,7 +1063,8 @@ footer {
     margin-top: 10px;
 }
 
-#verOutrasBebidas {
+
+.verOutrasBebidas {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-weight: bolder;
@@ -1024,14 +1073,21 @@ footer {
     border: none;
     border-radius: 25px;
     padding: 5px 10px;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     cursor: pointer;
-    
-
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#fecharSugestoes {
+.verOutrasBebidas.clicado {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+.fecharSugestoes {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-weight: bolder;
@@ -1040,10 +1096,13 @@ footer {
     border: none;
     border-radius: 25px;
     padding: 5px 10px;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     cursor: pointer;
 }
+
+
+
 
 /* MODAL DADOS */
 
@@ -1139,18 +1198,31 @@ footer {
 
 
 #AvancarPedido, #VoltarPedido {
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
     margin-top: 10px;
     font-size: 1rem;
     border: none;
     border-radius: 25px;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 5px 10px;
     cursor: pointer;
     white-space: nowrap;
-
+    transition: background-color 0.3s ease, color 0.3s ease;
 
 }
+
+#AvancarPedido.clicado {
+    background-color: black;
+    color: white;
+}
+
+#VoltarPedido.clicado {
+    background-color: black;
+    color: white;
+}
+
 
 /* MODAL FINALIZAR PEDIDO */
 
@@ -1179,11 +1251,14 @@ footer {
 
 #Finalizar-Pedido {
     border-radius: 25px;
-    background-Color: black;
-    color: white;
+    background-color: white;
+    color: black;
     cursor: pointer;
     border: none;
     margin: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 #Finalizar-Pedido {
@@ -1224,6 +1299,7 @@ footer {
     height: 40px;
     border-radius: 10px;
     border: none;
+    padding: 8px;
 }
 
 #itensListadosNoPedido {
@@ -1239,10 +1315,21 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
 }
 
 .divControleItemIndividual  .appPedido, .precoFazerPedido, .addIngredientes {
     margin: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.pagamentoPIX, .pagamentoCartao, .pagamentoDinheiro {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .formas-pagamento {
@@ -1255,6 +1342,9 @@ footer {
 #ValorTotalPedidoFinal {
     text-align: center;
     margin-top: 25px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .precoFazerPedido {
@@ -1443,6 +1533,7 @@ footer {
     border: 1px solid gray;
     align-self: center;
     width: 130px;
+    border-radius: 10px;
     
 }
 
