@@ -752,6 +752,7 @@ footer {
 
     .btn-fechado-horarios {
         cursor: pointer;
+        margin-right: 3px;
         
     }
 
