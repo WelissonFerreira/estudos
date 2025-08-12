@@ -197,6 +197,7 @@ option {
     font-weight: 700;
     font-style: normal;
     text-align: center;
+    field-sizing: content;
 }
 
 
