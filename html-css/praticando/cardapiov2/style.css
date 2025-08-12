@@ -37,6 +37,14 @@ main {
     
 }
 
+span {
+    font-size: 0.9rem;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
 
 /* Cabeçalho */
 
@@ -164,47 +172,48 @@ main {
 /* =================================== */
 
 /* MENU TOPO */
-.navbar {
-    list-style-type: none; /* Remove os marcadores de lista */
-    display: flex; /* Transforma em um container flexível */
-    justify-content: center; /* Centraliza os itens horizontalmente dentro do .navbar */
-    align-items: center; /* Centraliza os itens verticalmente (se o .navbar tiver altura definida) */
-    gap: 10px; /* Espaçamento entre os itens */
-    width: 100%;
-    max-width: 600px;
-    /*flex-wrap: wrap;*/
-    margin: auto;
-    margin-top: 20px;
-    
+
+#menu-opcoes {
+    display: flex;
+    align-items: flex-start;
 }
 
-.navbar li a {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
+#menu-categorias {
+    border-radius: 10px;
+    padding: 2px;
+    field-sizing: content;
+    background-color: #E8931F;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
     font-style: normal;
-    background-color: #E8931F; /* Cor de fundo para CADA item */
-    border-radius: 20px; /* Borda arredondada para CADA item */
-    padding: 2px 5px; /* Preenchimento interno para CADA item (texto ao redor) */
-    text-decoration: none; /* Remove sublinhado dos links */
-    color: black; /* Cor do texto do link (branco para contrastar com o laranja) */
-    font-size: 0.9rem; /* Tamanho da fonte do link */
+    margin-top: 5px;
+}
 
-    
+option {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 
 
 #titulo-passaporte, #titulo-sanduiches, #titulo-especiais, #titulo-bebidas {
-    color: black;
-    margin: auto;
-    font-size: 0.7rem;
+    display: inline-block;
     background-color: #E8931F; /* Cor de fundo para CADA item */
+    color: white;
+    font-size: 0.7rem;
+
     border-radius: 20px; /* Borda arredondada para CADA item */
-    padding: 8px 15px; /* Preenchimento interno para CADA item (texto ao redor) */
-    margin-bottom: 10px;
+    padding: 5px 10px; /* Preenchimento interno para CADA item (texto ao redor) */
+
     margin-top: 20px;
-    letter-spacing: 1px;
+    margin-left: 8px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    
 }
 
 
@@ -287,6 +296,7 @@ main {
     width: 100%;
     height: 100%;
     display: block;
+    border-radius: 20px;
 }
 
 
@@ -419,10 +429,7 @@ main {
 }
 
 
-span {
-    font-weight: bolder;
-    color: black;
-}
+
 
 .preco-riscado {
     font-weight: bolder;
@@ -485,12 +492,6 @@ footer {
     color: black;
     /*transition: transform 0.8s ease-out;*/
 }
-
-
-/*.navbarinferior li a:hover {
-    background-Color: #edbb5a;
-    transform: translateY(-10px);
-}*/
 
 /* CONTROLAR CONTADOR DO CARRINHO */
 
@@ -1051,6 +1052,9 @@ footer {
 
 .psugestao, .spansugestao {
     font-family: "Quicksand", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .adicionar-bebida {
@@ -1295,6 +1299,10 @@ footer {
 .seuPedidoNome {
     text-align: center;
     margin-bottom: 15px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-style: normal;
 }
 
 #Pedido {
@@ -1323,6 +1331,7 @@ footer {
 
 .divControleItemIndividual {
     border: 1px solid black;
+    border-radius: 20px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -1332,11 +1341,18 @@ footer {
     font-size: 0.8rem;
 }
 
-.divControleItemIndividual  .appPedido, .precoFazerPedido, .addIngredientes {
+.addIngredientes {
     margin: 15px;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
+}
+
+.appPedido {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: bolder;
+    margin: 15px;
 }
 
 .pagamentoPIX, .pagamentoCartao, .pagamentoDinheiro {
@@ -1362,6 +1378,9 @@ footer {
 
 .precoFazerPedido {
     text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: bolder;
 }
 
 #divBotoesPedido {
@@ -1373,7 +1392,7 @@ footer {
 .imagemPedidoFinal {
     width: 100px;
     height: 100px;
-    
+    border-radius: 10px;
 }
 
 /* FORMULÁRIO */
@@ -1485,19 +1504,7 @@ footer {
  /* ======================================= */
 /* Responsividade para telas pequenas */
 @media screen and (max-width: 400px) {
-    .navbar {
-    
-        width: 100%;
-        padding: 10px 0;
-    }
 
-    .navbar li a {
-    display: block;
-    padding: 5px 5px;
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-}
     .item-pai {
         width: 100%;
     
@@ -1509,28 +1516,15 @@ footer {
  /* ======================================= */
 /* Responsividade para telas pequenas */
 @media screen and (min-width: 300px) and (max-width: 400px) {
-    .navbar {
-    
-        width: 100%;
-        padding: 10px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
+
 
     #menu-opcoes {
         display: flex;
         width: 100%;
-        justify-content: space-around;
+        justify-content: start;
+        padding: 8px;
     }
 
-    .navbar li a {
-    display: block;
-    padding: 3px 2px;
-    text-decoration: none;
-    color: black;
-    font-size: 0.7rem;
-}
     .item-pai {
         width: 97%;
     
@@ -1593,28 +1587,14 @@ footer {
 
 @media screen and (min-width: 401px) and (max-width: 600px) {
 
-    .navbar {
-    
-        width: 100%;
-        padding: 10px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
+
 
     #menu-opcoes {
         display: flex;
         width: 100%;
-        justify-content: space-around;
+        justify-content: start;
     }
 
-    .navbar li a {
-    display: block;
-    padding: 3px 2px;
-    text-decoration: none;
-    color: black;
-    font-size: 0.8rem;
-}
     .item-pai {
         width: 95%;
     
@@ -1661,29 +1641,16 @@ footer {
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-        .navbar {
-        width: 100%;
-        padding: 10px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        
-    }
+
 
     #menu-opcoes {
         display: flex;
         width: 100%;
-        justify-content: space-around;
+        justify-content: start;
 
     }
 
-    .navbar li a {
-    display: block;
-    padding: 3px 2px;
-    text-decoration: none;
-    color: black;
-    font-size: 1.2rem;
-}
+
     .item-pai {
         width: 95%;
     
@@ -1694,14 +1661,7 @@ footer {
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
-        .navbar {
-        width: 100%;
-        padding: 10px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        
-    }
+
 
     #menu-opcoes {
         display: flex;
@@ -1710,13 +1670,7 @@ footer {
 
     }
 
-    .navbar li a {
-    display: block;
-    padding: 3px 2px;
-    text-decoration: none;
-    color: black;
-    font-size: 1.2rem;
-}
+
     .item-pai {
         width: 100%;
     

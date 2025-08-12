@@ -28,12 +28,19 @@ let catalogoDeProdutos = {
         preco: 40.00,
         descricao: "Especial da casa, dividido em 2 pedaços e servem 2 pessoas.",
         ingredientes: [
-            "1x Salsicha",
-            "1x Hamburguer",
-            "1x Calabresa",
-            "1x Bacon",
-            "1x Salada",
-            "1x Tomate"
+            "Pão Grande",
+            "Bacon",
+            "Calabresa",
+            "Frango Desfiado",
+            "Filé de Alcatra",
+            "Salsicha",
+            "Ovos",
+            "Hamburguer",
+            "Queijo",
+            "Presunto",
+            "Molho Rosé",
+            "Salada",
+            "Tomate"
         ],
         imagem: "imagens/lanches/arthurbabyatt.png"
     },
@@ -44,15 +51,16 @@ let catalogoDeProdutos = {
         preco: 17.00,
         descricao: "Passaporte de carne super recheado",
         ingredientes: [
-            "Pão",
+            "Pão Sedão",
             "Carne Moída",
             "Salsicha",
-            "Tomate Verde",
-            "Batata Palha",
+            "Tomate Picado Verde",
             "Milho e Ervilha",
             "Queijo Ralado",
             "Katchup",
-            "Maionese"
+            "Maionese",
+            "Batata Palha"
+            
         ],
         imagem: "imagens/lanches/passaportecarne.png"
     },
@@ -63,12 +71,13 @@ let catalogoDeProdutos = {
         preco: 18.00,
         descricao: "Passaporte de frango super recheado",
         ingredientes: [
-            "Pão",
+            "Pão Sedão",
             "Frango Desfiado",
             "Salsicha",
-            "Tomate Verdeo",
+            "Tomate Picado Verde",
             "Milho e Ervilha",
             "Queijo Ralado",
+            "Katchup",
             "Maionese",
             "Batata Palha"
         ],
@@ -84,12 +93,11 @@ let catalogoDeProdutos = {
             "Pão",
             "Bacon",
             "Hambúrguer",
-            "1x Ovo",
+            "Ovo",
             "Queijo",
             "Presunto",
             "Molho Rosé",
-            "Salada",
-            "Tomate"
+            "Salada"
         ],
         imagem: "imagens/lanches/x-bacon.png"
     },
@@ -103,10 +111,10 @@ let catalogoDeProdutos = {
         ingredientes: [ 
             "Pão Sedão",
             "Carne de Sol",
-            "Salsicha",
             "Catupiry",
             "Queijo Coalho",
-            "Tomate Verde",
+            "Salsicha",
+            "Tomate Picado Verde",
             "Milho e Ervilha",
             "Queijo Ralado",
             "Ketchup",
@@ -122,10 +130,11 @@ let catalogoDeProdutos = {
       preco: 24.00,
       descricao: "Passaporte de Misto super recheado",
       ingredientes: [
-        "Pão",
+        "Pão Sedão",
         "Carne Moída",
         "Frango Desfiado",
         "Salsicha",
+        "Tomate Picado Verde",
         "Milho e Ervilha",
         "Queijo Ralado",
         "Kettchup",
@@ -146,8 +155,8 @@ let catalogoDeProdutos = {
         "Calabresa",
         "Frango Desfiado",
         "Salsicha",
-        "Hamburguer",
         "Ovo",
+        "Hamburguer",
         "Queijo",
         "Presunto",
         "Molho Rosé",
@@ -257,7 +266,7 @@ let catalogoDeProdutos = {
         "Hambúrguer",
         "Queijo",
         "Presunto",
-        "Molho",
+        "Molho Rosé",
         "Salada"
     ],
       imagem: "imagens/lanches/x-salsicha.png"
@@ -306,7 +315,10 @@ let catalogoDeProdutos = {
       descricao: "X-Carne de Sol topadão",
       ingredientes: [
         "Pão",
-        "Carne de Sol",
+        "Carne de Sol Desfiada",
+        "Catupiry",
+        "Queijo",
+        "Presunto"
     ],
       imagem: "imagens/lanches/carnedesolcaipira.png"
     },
@@ -316,7 +328,15 @@ let catalogoDeProdutos = {
       nome: "X-Calabresa",
       preco: 20.00,
       descricao: "X-Calabresa topadão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão",
+        "Calabresa",
+        "Ovo",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/xcalabresa.png"
     },
 
@@ -325,7 +345,15 @@ let catalogoDeProdutos = {
       nome: "Frango Salada",
       preco: 22.00,
       descricao: "Frango Salada naquele padrão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão",
+        "Frango Desfiado",
+        "Hambúrguer",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/frangosalada.png"
     },
 
@@ -334,7 +362,16 @@ let catalogoDeProdutos = {
       nome: "X-Filé",
       preco: 23.00,
       descricao: "X-Filé topadão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão",
+        "Filé de Alcatra",
+        "Ovo",
+        "Queijo",
+        "Presunto",
+        "Ervilha",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/xfile.png"
     },
 
@@ -343,7 +380,16 @@ let catalogoDeProdutos = {
       nome: "Filé Bacon",
       preco: 26.00,
       descricao: "Filé-Bacon topadão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão",
+        "Filé de Alcatra",
+        "Bacon",
+        "Ovo",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/filebacon.png"
     },
 
@@ -352,7 +398,16 @@ let catalogoDeProdutos = {
       nome: "Frango-Bresa",
       preco: 25.00,
       descricao: "Frango-Bresa topadão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão",
+        "Frango Desfiado",
+        "Calabresa",
+        "Ovo",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/frangobresa.png"
     },
 
@@ -361,7 +416,15 @@ let catalogoDeProdutos = {
       nome: "Filé-Frango",
       preco: 26.00,
       descricao: "Filé-Frango topadão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão.",
+        "Filé de Alcatra",
+        "Frango Desfiado",
+        "Queijo",
+        "Presunto",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/xfrango.png"
     },
 
@@ -370,7 +433,15 @@ let catalogoDeProdutos = {
       nome: "Carne de Sol Caipira",
       preco: 25.00,
       descricao: "Carne de Sol Caipira topadão",
-      ingredientes: ["1x Pão..."],
+      ingredientes: [
+        "Pão",
+        "Carne de Sol Desfiada",
+        "Catupiry",
+        "Queijo Coalho",
+        "Milho e Ervilha",
+        "Molho Rosé",
+        "Salada"
+      ],
       imagem: "imagens/lanches/carnedesolcaipira.png"
     },
 
@@ -1474,3 +1545,28 @@ if (textoFormaPagamento === 'Dinheiro') {
     botaofecharQRCODE.addEventListener('click', function() {
       modalQRCode.style.display = 'none'
     })
+
+    /* MENU CATEGORIAS */
+    
+    const menuCategorias = document.getElementById('menu-categorias')
+
+    // Ouvinte de Eventos
+    menuCategorias.addEventListener('change', (event) => {
+      const categoriaID = event.target.value;
+
+      // Se o valor não estiver vazio, rola a página
+      if (categoriaID) {
+        //Encontra a seção correspondente pelo ID
+        const secao = document.getElementById(categoriaID)
+
+        // Rola a página até a seção
+        if (secao) {
+          secao.scrollIntoView({
+            behavior: 'smooth', // Deixa a rolagem suave
+            block: 'start' // Alinha o topo da seção com o topo da janela
+          });
+        }
+      }
+
+
+    });

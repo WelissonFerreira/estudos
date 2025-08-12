@@ -16,7 +16,7 @@
     <div id="topomenu">
         <div class="bannermenu"></div>
         <div class="controleCabecalho">
-            <div class="divlogo"><img class="logomenu" src="imagens/logooficial3.png" alt=""></div>
+            <div class="divlogo"><img class="logomenu" src="imagens/novalogoatualizada.jpg" alt=""></div>
                 <div id="open-close"></div>
             <div class="divpmenu">
                 <p class="pmenu">Seja bem-vindo ao Arthur Lanches! <br> Faça já o seu pedido!</p>
@@ -70,18 +70,20 @@
 
 
     <div id="menu-opcoes">
-        <nav>
-            <ul class="navbar">
-                <li><a href="#titulo-especiais">ESPECIAIS</a></li>
-                <li><a href="#titulo-passaporte">PASSAPORTES</a></li>
-                <li><a href="#titulo-sanduiches">SANDUICHES</a></li>
-                <li><a href="#titulo-bebidas">BEBIDAS</a></li>
-            </ul>
-        </nav>
+        
+        <select id="menu-categorias" name="">
+            <option value="">Selecione uma categoria</option>
+            <option value="titulo-especiais">ESPECIAIS</option>
+            <option value="titulo-passaporte">PASSAPORTES</option>
+            <option value="titulo-sanduiches">SANDUICHES</option>
+            <option value="titulo-bebidas">BEBIDAS</option>
+        </select>
     </div>
     <!-- PRODUTO E MODAL - ESPECIAL ARTHUR GRANDE -->
 
-    <h4 id="titulo-especiais">ESPECIAIS</h4>
+    <div class="divTitulos">
+        <h4 id="titulo-especiais">ESPECIAIS</h4>
+    </div>
 
     <section class="item-pai">
         <div class="card-pai">
@@ -119,6 +121,7 @@
                         <li>2x Presunto</li>
                         <li>Molho Rosé</li>
                         <li>Salada</li>
+                        <li>Tomate</li>
                     </ul>
                     <div class="fotolanchemodal"><img class="fotosanduba"
                             src="imagens/lanches/especial4grande.png">
@@ -174,6 +177,7 @@
                         <li>Presunto</li>
                         <li>Molho Rosé</li>
                         <li>Salada</li>
+                        <li>Tomate</li>
                     </ul>
                     <div class="fotolanchemodal">
                         <img class="fotosanduba"src="imagens/lanches/arthurbabyatt.png">
@@ -190,7 +194,9 @@
         </div>
     </section>
 
-    <h4 id="titulo-passaporte">PASSAPORTES</h4>
+    <div class="divTitulos">
+        <h4 id="titulo-passaporte">PASSAPORTES</h4>
+    </div>
 
         <!-- PRODUTO E MODAL - PASSAPORTE DE CARNE -->
     <section class="item-pai">
@@ -220,15 +226,15 @@
                     <span class="close-button-vermais">&times;</span>
                     <h2>Detalhes do Produto</h2>
                     <ul>
-                        <li>Pão</li>
+                        <li>Pão Sedão</li>
                         <li>Carne Moída</li>
                         <li>Salsicha</li>
-                        <li>Tomate Verde</li>
-                        <li>Batata Palha</li>
+                        <li>Tomate Picado Verde</li>
                         <li>Milho e Ervilha</li>
                         <li>Queijo Ralado</li>
                         <li>Katchup</li>
                         <li>Maionese</li>
+                        <li>Batata Palha</li>
                     </ul>
                     <div class="fotolanchemodal"><img class="fotosanduba"src="imagens/lanches/passaportecarne.png">
                     </div>
@@ -271,10 +277,10 @@
                     <span class="close-button-vermais">&times;</span>
                     <h2>Detalhes do Produto</h2>
                     <ul>
-                        <li>Pão</li>
+                        <li>Pão Sedão</li>
                         <li>Frango Desfiado</li>
                         <li>Salsicha</li>
-                        <li>Tomate Verde</li>
+                        <li>Tomate Picado Verde</li>
                         <li>Milho e Ervilha</li>
                         <li>Queijo Ralado</li>
                         <li>Katchup</li>
@@ -322,10 +328,10 @@
                     <ul>
                         <li>Pão Sedão</li>
                         <li>Carne de Sol</li>
-                        <li>Salsicha</li>
                         <li>Catupiry</li>
                         <li>Queijo Coalho</li>
-                        <li>Tomate Verde</li>
+                        <li>Salsicha</li>
+                        <li>Tomate Picado Verde</li>
                         <li>Milho e Ervilha</li>
                         <li>Queijo Ralado</li>
                         <li>Ketchup</li>
@@ -371,13 +377,14 @@
                     <span class="close-button-vermais">&times;</span>
                     <h2>Detalhes do Produto</h2>
                     <ul>
-                        <li>Pão</li>
+                        <li>Pão Sedão<li>
                         <li>Carne Moída</li>
                         <li>Frango Desfiado</li>
                         <li>Salsicha</li>
+                        <li>Tomate Picado Verde</li>
                         <li>Milho e Ervilha</li>
                         <li>Queijo Ralado</li>
-                        <li>Kettchup</li>
+                        <li>Katchup</li>
                         <li>Maionese</li>
                         <li>Batata Palha</li>
                     </ul>
@@ -395,7 +402,9 @@
 
     <!-- PRODUTO E MODAL - X-TUDO -->
 
-        <h4 id="titulo-sanduiches">SANDUICHES</h4>
+        <div class="divTitulos">
+            <h4 id="titulo-sanduiches">SANDUICHES</h4>
+        </div>
 
     <section class="item-pai">
         <div class="card-pai">
@@ -427,8 +436,8 @@
                         <li>Calabresa</li>
                         <li>Frango Desfiado</li>
                         <li>Salsicha</li>
-                        <li>Hamburguer</li>
                         <li>Ovo</li>
+                        <li>Hamburguer</li>
                         <li>Queijo</li>
                         <li>Presunto</li>
                         <li>Molho Rosé</li>
@@ -889,12 +898,10 @@
                     <h2>Detalhes do Produto</h2>
                     <ul>
                         <li>Pão</li>
-                        <li>Carne de Sol</li>
+                        <li>Carne de Sol Desfiada</li>
                         <li>Catupiry</li>
                         <li>Queijo</li>
                         <li>Presunto</li>
-                        <li>Molho Rosé</li>
-                        <li>Salada</li>
                     </ul>
                     <div class="fotolanchemodal">
                         <img class="fotosanduba"src="imagens/lanches/carnedesolcaipira.png">
@@ -1067,7 +1074,6 @@
                         <li>Ovo</li>
                         <li>Queijo</li>
                         <li>Presunto</li>
-                        <li>Ervilha</li>
                         <li>Molho Rosé</li>
                         <li>Salada</li>
                     </ul>
@@ -1194,9 +1200,9 @@
                         <li>Carne de Sol Desfiada</li>
                         <li>Catupiry</li>
                         <li>Queijo Coalho</li>
+                        <li>Milho e Ervilha</li>
                         <li>Molho Rosé</li>
                         <li>Salada</li>
-                        <li>Milho e Ervilha</li>
                     </ul>
                     <div class="fotolanchemodal">
                         <img class="fotosanduba"src="imagens/lanches/carnedesolcaipira.png">
@@ -1208,7 +1214,9 @@
 
     <!-- REFRIGERANTES LATA -->
 
-        <h4 id="titulo-bebidas">BEBIDAS</h4>
+        <div class="divTitulos">
+            <h4 id="titulo-bebidas">BEBIDAS</h4>
+        </div>
 
     <!-- PRODUTO E MODAL - COCA-COLA 250ML -->
     <section class="item-pai">
@@ -1671,6 +1679,8 @@
                         <option value="Barro Duro">Barro Duro</option>
                         <option value="Serraria">Serraria</option>
                         <option value="Cruz das Almas">Cruz das Almas</option>
+                        <option value="Ponta Verde">Ponta Verde</option>
+                        <option value="Jatiúca">Jatiúca</option>
                     </optgroup>
                 </select>
                 <span id="erroBairro" class="mensagem-erro" style="display: none;">* Necessário Preencher</span>
