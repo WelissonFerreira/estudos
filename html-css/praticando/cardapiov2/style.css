@@ -88,14 +88,15 @@ span {
     border-radius: 50px;
     margin-top: 5px;
     position: absolute;
-    left: 42%;
-    top: -10; 
+    /*left: 42%;*/
 }
 
 .divlogo {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin: auto;
 }
 
 
@@ -187,8 +188,10 @@ span {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
-    margin-top: 5px;
-    margin-left: 8px;
+    /*margin-top: 5px;*/
+    margin-top: 2%;
+    /*margin-left: 8px;*/
+    margin-left: 5vw;
     text-align: center;
 }
 
@@ -210,7 +213,8 @@ option {
     border-radius: 20px; /* Borda arredondada para CADA item */
     padding: 5px 10px; /* Preenchimento interno para CADA item (texto ao redor) */
     margin-top: 20px;
-    margin-left: 15px;
+    margin-left: 5%;
+    /*margin-left: 15px;*/
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -1520,6 +1524,32 @@ footer {
 /* Responsividade para telas pequenas */
 @media screen and (min-width: 300px) and (max-width: 400px) {
 
+    footer {
+  position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
+  bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
+  width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
+  background-Color: #E8931F; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
+  padding: 10px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
+  z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
+
+
+}
+
+.msgAdicionado {
+    position: absolute;
+    bottom: 120%;
+    left: 25%;
+    transform: translateX(-50%); /* Ajusta para centralizar de fato */
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.5s ease-in-out; /* Adiciona uma transição suave */
+    pointer-events: none; /* Garante que a mensagem não interfere com cliques */
+    z-index: 1000; /* Garante que a mensagem fique acima de outros elementos */
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.6rem;
+    color: black; /* Escolha uma cor para a mensagem */
+    /* Outros estilos, como background, padding, etc. */
+
+    }
 
     #menu-opcoes {
         display: flex;
@@ -1659,12 +1689,24 @@ footer {
     
     }
 
+    
 
+    
 
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
 
+
+
+
+.divlogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
 
     #menu-opcoes {
         display: flex;
@@ -1679,6 +1721,5 @@ footer {
     
     }
 }
-
 
 
