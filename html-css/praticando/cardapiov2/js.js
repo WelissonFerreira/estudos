@@ -743,7 +743,6 @@ let scrollPosition = 0
         document.body.style.width = '100%'
         document.body.style.overflow = 'hidden'
 
-        /*document.body.style.overflow = 'hidden';*/
         modalCarrinho.style.display = 'block';
         
 
@@ -994,6 +993,16 @@ let scrollPosition = 0
     const exibirModalDados = document.querySelector('#ModalDados')
     const btnFinalizar = document.getElementById('finalizar-compra')
     btnFinalizar.addEventListener('click', function() {
+
+       // 1. Salva a posição e "congela" o body ANTES de abrir
+    scrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+
+
+
         exibirModalDados.style.display = 'block'
         modalCarrinho.style.display = 'none'
     })
@@ -1018,6 +1027,14 @@ let scrollPosition = 0
 
     const botaoFecharPedido = document.querySelector('.close-button-dados')
     botaoFecharPedido.addEventListener('click', function() {
+
+     // 2. Remove as propriedades de "congelamento" e restaura a rolagem
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = 'auto'; // Reabilita a rolagem
+    window.scrollTo(0, scrollPosition);
+      
     exibirModalDados.style.display = 'none'
     document.body.style.overflow = 'auto'
     
@@ -1193,6 +1210,13 @@ let scrollPosition = 0
 
     function abrirModalPedidoEListarItens() {
           
+        // 1. Salva a posição de rolagem e "congela" a página ANTES de abrir
+        scrollPosition = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
+        document.body.style.overflow = 'hidden';
+
           exibirModalDados.style.display = 'none'
           exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
@@ -1261,6 +1285,29 @@ let scrollPosition = 0
       
       
     }
+
+    const btnVoltarPedido = document.getElementById('voltarPedido')
+        btnVoltarPedido.addEventListener('click', function() {
+        exibirModalPedido.style.display = 'none'
+        exibirModalDados.style.display = 'block'
+    })
+
+    const btnFecharPedido = document.querySelector('.close-button-pedido')
+    btnFecharPedido.addEventListener('click', function() {
+
+     // 2. Remove as propriedades de "congelamento" e restaura a rolagem
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = 'auto'; // Reabilita a rolagem
+    window.scrollTo(0, scrollPosition);
+
+    exibirModalPedido.style.display = 'none'
+    document.body.style.overflow = 'auto'
+    
+
+
+    })
 
 
 // =======================================================================================================
@@ -1378,17 +1425,7 @@ if (textoFormaPagamento === 'Dinheiro') {
 
 
 
-    const btnVoltarPedido = document.getElementById('voltarPedido')
-        btnVoltarPedido.addEventListener('click', function() {
-        exibirModalPedido.style.display = 'none'
-        exibirModalDados.style.display = 'block'
-    })
-
-    const btnFecharPedido = document.querySelector('.close-button-pedido')
-    btnFecharPedido.addEventListener('click', function() {
-    exibirModalPedido.style.display = 'none'
-    document.body.style.overflow = 'auto'
-    })
+    
 
     //FUNÇÃO TOPO (OPEN-CLOSE)
     let openClose = document.getElementById('open-close')
