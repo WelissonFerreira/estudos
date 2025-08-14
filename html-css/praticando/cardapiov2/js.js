@@ -703,14 +703,18 @@ let modalCarrinho = document.querySelector('#ModalCarrinho')
 let fecharCarrinho = document.querySelector('.close-button-carrinho')
 let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio');
 
+let scrollPosition = 0
     // FUNÇÃO FECHAR CARRINHO
 
         fecharCarrinho.addEventListener('click', function() {
         modalCarrinho.style.display = 'none';
+
         document.body.style.overflow = 'auto'
-        
-        
-        })
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollPosition);
+        });
 
         // FUNÇÃO ABRIR CARRINHO
     
@@ -732,11 +736,19 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
         modalCarrinho.style.display = 'none'; 
         document.body.style.overflow = 'auto'; // Garante que a rolagem esteja liberada
     } else {
-        // Se houver itens, esconde a mensagem e abre o modal
-        mensagemCarrinhoVazioDiv.style.display = 'none'; // Esconde a mensagem caso estivesse visível
-        document.body.style.overflow = 'hidden';
+        
+        scrollPosition = window.scrollY;
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${scrollPosition}px`
+        document.body.style.width = '100%'
+        document.body.style.overflow = 'hidden'
+
+        /*document.body.style.overflow = 'hidden';*/
         modalCarrinho.style.display = 'block';
         
+
+        // Se houver itens, esconde a mensagem e abre o modal
+        mensagemCarrinhoVazioDiv.style.display = 'none'; // Esconde a mensagem caso estivesse visível
         atualizarCarrinho();
         
 
