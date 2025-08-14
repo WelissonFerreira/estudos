@@ -182,7 +182,6 @@ span {
 #menu-categorias {
     border-radius: 10px;
     padding: 2px;
-    field-sizing: content;
     background-color: #E8931F;
     color: white;
     font-family: "Poppins", sans-serif;
@@ -200,7 +199,7 @@ option {
     font-weight: 700;
     font-style: normal;
     text-align: center;
-    field-sizing: content;
+
 }
 
 
@@ -384,11 +383,11 @@ option {
 }
 
 .close-button-carrinho {
-    position: absolute;
+    /*position: absolute;*/
     font-size: 2rem;
     font-weight: bold;
-    top: 0px;
-    right: 25px;
+    /*top: 0%;
+    right: 5%; */
     padding: 5px 10px;
     cursor: pointer;
     color: black;
@@ -775,7 +774,7 @@ footer {
 /*  MODAL DO CARRINHO: */
 .modal-content-carrinho {
     background-color: #E8931F;
-    margin: 15% auto; /* Centraliza o modal na tela */
+    margin: 0% auto; /* Centraliza o modal na tela */
     padding: 20px;
     max-width: 500px; /* Largura máxima do modal */
     /*border: 1px solid #888;*/
@@ -786,7 +785,12 @@ footer {
     justify-content: center;
     font-size: 1rem;
     width: 100vw;
+    overflow-y: auto;
+    
+
 }
+
+
 
 #ModalCarrinho {
     background-Color: #E8931F;
@@ -797,6 +801,10 @@ footer {
     left: 0;
 }
 
+.divh3Carrinho {
+    display: flex;
+}
+
 .h3Carrinho {
     margin: auto;
     margin-bottom: 15px;
@@ -804,6 +812,7 @@ footer {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
+    text-align: center;
 }
 
 
@@ -934,7 +943,7 @@ footer {
 }
 
 .inputObs {
-    width: 300px;
+    width: 100%;
     height: 50px;
     padding: 5px;
     font-family: "Poppins", sans-serif;
@@ -1509,16 +1518,6 @@ footer {
 
 
  /* ======================================= */
-/* Responsividade para telas pequenas */
-@media screen and (max-width: 400px) {
-
-    .item-pai {
-        width: 100%;
-    
-    
-    }
-
-}
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
@@ -1534,6 +1533,9 @@ footer {
 
 
 }
+
+
+
 
 .msgAdicionado {
     position: absolute;
@@ -1619,6 +1621,22 @@ footer {
 
 
 @media screen and (min-width: 401px) and (max-width: 600px) {
+
+
+    /*.modal-content-carrinho {
+    background-color: #E8931F;
+    margin: 15% auto;
+    padding: 20px;
+    max-width: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    width: 100vw;
+    overflow-y: auto;
+    height: 100vh;
+    } */
 
 
 
@@ -1721,5 +1739,4 @@ footer {
     
     }
 }
-
 

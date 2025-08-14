@@ -1552,7 +1552,14 @@ if (textoFormaPagamento === 'Dinheiro') {
 
     // Ouvinte de Eventos
     menuCategorias.addEventListener('change', (event) => {
+
+
       const categoriaID = event.target.value;
+
+      const opcaoSelecionada = event.target.options[event.target.selectedIndex];
+      const textoSelecionado = opcaoSelecionada.text
+
+      menuCategorias.style.width = 'auto'
 
       // Se o valor não estiver vazio, rola a página
       if (categoriaID) {
@@ -1570,3 +1577,5 @@ if (textoFormaPagamento === 'Dinheiro') {
 
 
     });
+
+    
