@@ -703,9 +703,16 @@ let modalCarrinho = document.querySelector('#ModalCarrinho')
 let fecharCarrinho = document.querySelector('.close-button-carrinho')
 let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio');
 
-    // FUNÇÃO ABRIR CARRINHO
+    // FUNÇÃO FECHAR CARRINHO
 
+        fecharCarrinho.addEventListener('click', function() {
+        modalCarrinho.style.display = 'none';
+        document.body.style.overflow = 'auto'
         
+        
+        })
+
+        // FUNÇÃO ABRIR CARRINHO
     
         abrirCarrinho.addEventListener('click', function(event) {
         event.preventDefault();
@@ -727,17 +734,13 @@ let mensagemCarrinhoVazioDiv = document.querySelector('#mensagem-carrinho-vazio'
     } else {
         // Se houver itens, esconde a mensagem e abre o modal
         mensagemCarrinhoVazioDiv.style.display = 'none'; // Esconde a mensagem caso estivesse visível
-        modalCarrinho.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        modalCarrinho.style.display = 'block';
+        
         atualizarCarrinho();
         
 
-        fecharCarrinho.addEventListener('click', function() {
-        modalCarrinho.style.display = 'none';
-        document.body.style.overflow = 'auto'
         
-        
-        })
     }
 });
 
