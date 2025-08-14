@@ -180,7 +180,7 @@ span {
 }
 
 #menu-categorias {
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 2px;
     background-color: #E8931F;
     color: white;
@@ -209,7 +209,7 @@ option {
     background-color: #E8931F; /* Cor de fundo para CADA item */
     color: white;
     font-size: 0.7rem;
-    border-radius: 20px; /* Borda arredondada para CADA item */
+    border-radius: 5px; /* Borda arredondada para CADA item */
     padding: 5px 10px; /* Preenchimento interno para CADA item (texto ao redor) */
     margin-top: 20px;
     margin-left: 5%;
@@ -275,7 +275,7 @@ option {
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    
+    gap: 5px;
 
 }
 
@@ -342,11 +342,12 @@ option {
 /* BOTÕES DO PRODUTO, DIV PRINCIPAL, CONTROLE DOS BOTÕES */
 #botoes-produto {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .AdicionarCarrinho {
@@ -355,9 +356,9 @@ option {
     font-weight: bolder;
     font-style: normal;
     font-size: 0.7rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border: none;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: #E8931F;
     color: black;
     padding: 5px 10px;
@@ -419,7 +420,6 @@ option {
     font-style: normal;
     font-weight: 400;
     padding-bottom: 3px;
-    line-height: 1.4;
     color: black;
     margin-right: 3px;
     
@@ -430,7 +430,7 @@ option {
     line-height: 1.2;
     letter-spacing: 1px;
     font-size: 0.8rem;
-    margin-bottom: 20px;
+    
 }
 
 
