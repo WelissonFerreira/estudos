@@ -564,29 +564,37 @@ btnAbriModal.forEach(function(botaoAtual) {
         // 1. Encontrar o botão de fechar DENTRO DESTE modal que abriu
         let fecharbotaomodal = modalParaAbrir.querySelector('.close-button-vermais')
 
+        
         // 2. Adicionar um evento de clique a ESTE botão de fechar
         fecharbotaomodal.addEventListener('click', function() {
             // 3. Fazer APENAS ESTE modal desaparecer
             modalParaAbrir.style.display = 'none';
             document.body.style.overflow = 'auto';
+            
         })
 
-        // Opcional: Fechar o modal clicando fora dele
-        // Esta parte é um pouco mais avançada, mas muito comum para UX.
-        // Adiciona um ouvinte de clique à janela.
-        window.addEventListener('click', function(e) {
-            // Se o clique foi NO PRÓPRIO MODAL (na área escura de fundo)
-            // Lembre-se que o 'modalParaAbrir' é o fundo escuro que cobre a tela.
-            if (e.target === modalParaAbrir) {
-                modalParaAbrir.style.display = 'none'; // Fecha o modal
-            }
-
-        })
+        
 
     })
 
 })
 
+// Opcional: Fechar o modal clicando fora dele
+        // Esta parte é um pouco mais avançada, mas muito comum para UX.
+        // Adiciona um ouvinte de clique à janela.
+
+        
+
+        window.addEventListener('click', function(e) {
+            let modalParaAbrir = document.querySelector('.modal[style*="display: block"]')
+            // Se o clique foi NO PRÓPRIO MODAL (na área escura de fundo)
+            // Lembre-se que o 'modalParaAbrir' é o fundo escuro que cobre a tela.
+            if (e.target === modalParaAbrir) {
+                modalParaAbrir.style.display = 'none'; // Fecha o modal
+                document.body.style.overflow = 'auto';
+            }
+
+        })
 
 
 
@@ -948,7 +956,12 @@ let scrollPosition = 0
 
         if (itensCarrinho.length === 0) {
             modalCarrinho.style.display = 'none'
-            document.body.style.overflow = 'auto'
+            modalCarrinho.style.display = 'none'
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = 'auto'; // Reabilita a rolagem
+            window.scrollTo(0, scrollPosition);
           // Certifique-se de que a mensagem de carrinho vazio temporária não esteja visível aqui
         mensagemCarrinhoVazioDiv.style.display = 'none'; 
         }
