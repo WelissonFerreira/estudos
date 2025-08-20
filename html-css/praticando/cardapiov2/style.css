@@ -229,9 +229,9 @@ option {
 
 /* Parágrafo do menu */
 .pmenu {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-optical-sizing: auto;
-    font-weight: bolder;
+    font-weight: 600;
     font-style: normal;
     font-size: 1.3rem;
     color: black;
@@ -240,6 +240,121 @@ option {
     border-radius: 25px;
     font-size: 1rem;
     margin-top: -10px;
+}
+
+#destaques {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+    font-weight: 700;
+    font-style: normal;
+    color: black;
+    padding: 10px;
+    overflow-x: scroll;
+    
+}
+
+.h4destaquePrincipal {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 10px;
+    padding: 10px;
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: -20px;
+    border-radius: 10px;
+}
+
+.divimage-destaque {
+    display: flex;
+    height: 120px;
+    justify-content: center;
+    
+    
+}
+
+.fotodestaques {
+    height: 120px;
+    border-radius: 20px;
+    width: 75%;
+}
+
+.h4destaque {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: bolder;
+    color: black;
+    
+}
+
+.descricao-destaque {
+    font-size: 0.9rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    
+}
+
+.ingredientes-destaque {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+.span-destaque {
+    margin: 15%;
+}
+
+.span-riscado-destaque {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.botaodestaque {
+    font-size: 0.6rem;
+    margin-top: auto;
+}
+
+.destaqueAdicionar {
+    left: 20%;
+    margin-top: 10%;
+    margin-bottom: 0%;
+    
+}
+
+
+
+.card-destaque {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 5px;
+    box-shadow: 1px 1px 8px 1px gray;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    flex-basis: 200px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    
+}
+
+
+
+
+.conteudo-destaque {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    flex-grow: 1;
+    
 }
 
 
@@ -909,6 +1024,7 @@ footer {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
+    padding: 10px;
 }
 
 /* Botões do Carrinho */
@@ -1041,6 +1157,13 @@ footer {
 }
 
 
+#sugestaoBebidas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
 .titulo-bebida-sugestao {
     text-align: center;
     padding: 15px;
@@ -1065,12 +1188,84 @@ footer {
     justify-content: space-around;
     gap: 15px;
     padding: 5px;
+    border: 1px solid #E8931F;
 }
 
 .imgsugestao {
     width: 80px;
     height: 80px;
     
+}
+
+.imgsugestao-cocacola250 {
+    width: 100px;
+    height: 80px;
+    margin-left: -2%;
+}
+
+.imgsugestao-guarana250 {
+    width: 80px;
+    height: 80px;
+    margin-left: -0%;
+}
+
+.imgsugestao-fanta250 {
+    width: 90px;
+    height: 80px;
+    margin-left: -3%;
+}
+
+.imgsugestao-soda250 {
+    width: 70px;
+    height: 80px;
+    margin-left: -0%;
+}
+
+.imgsugestao-coca1L {
+    width: 130px;
+    height: 100px;
+    margin-left: -8%;
+}
+.imgsugestao-guarana1L {
+    width: 60px;
+    height: 100px;
+    margin-left: -0%;
+}
+
+.imgsugestao-fanta1L {
+    width: 130px;
+    height: 120px;
+    margin-left: -8%;
+}
+
+.imgsugestao-soda1L {
+    width: 120px;
+    height:100px;
+    margin-left: -8%;
+}
+
+.imgsugestao-coca2L {
+    width: 130px;
+    height: 140px;
+    margin-left: -8%;
+}
+
+.imgsugestao-guarana2L {
+    width: 150px;
+    height: 140px;
+    margin-left: -12%;
+}
+
+.imgsugestao-fanta2L {
+    width: 130px;
+    height: 140px;
+    margin-left: -7%;
+}
+
+.imgsugestao-soda2L {
+    width: 80px;
+    height: 120px;
+    margin-left: -5%;
 }
 
 .psugestao, .spansugestao {
@@ -1104,42 +1299,7 @@ footer {
 }
 
 
-.verOutrasBebidas {
-    font-family: "Quicksand", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bolder;
-    font-style: normal;
-    font-size: 0.5rem;
-    border: none;
-    border-radius: 25px;
-    padding: 5px 10px;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
 
-.verOutrasBebidas.clicado {
-    background-color: black;
-    color: white;
-}
-
-
-
-
-.fecharSugestoes {
-    font-family: "Quicksand", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bolder;
-    font-style: normal;
-    font-size: 0.5rem;
-    border: none;
-    border-radius: 25px;
-    padding: 5px 10px;
-    background-color: white;
-    color: black;
-    cursor: pointer;
-}
 
 
 

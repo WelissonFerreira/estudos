@@ -33,3 +33,6 @@ Aí decide:
  • subir com .parentElement,
  • descer com .children ou .querySelector(),
  • andar pros lados com .nextElementSibling.
+
+
+

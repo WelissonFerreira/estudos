@@ -1553,53 +1553,14 @@ if (textoFormaPagamento === 'Dinheiro') {
       opcaoTroco.style.display = 'none'
     })
 
-    // EVENTO BOTÃO OUTRAS OPÇÕES DE BEBIDAS
-
-    let outrasOpcoesBebidas = document.getElementById('verOutrasBebidas')
-    outrasOpcoesBebidas.classList.add('verOutrasBebidas')
-    let grupoCoca = document.getElementById('grupoCoca')
-    let grupoGuarana = document.getElementById('grupoGuarana')
-    let grupoFanta = document.getElementById('grupoFanta')
-    let grupoSoda = document.getElementById('grupoSoda')
-
-    outrasOpcoesBebidas.addEventListener('click', function() {
-
-      outrasOpcoesBebidas.classList.toggle('clicado')
 
 
-      if (grupoCoca.style.display === 'flex' ) {
-        grupoCoca.style.display = 'none'
-        grupoGuarana.style.display = 'flex'
 
-      } else if (grupoGuarana.style.display === 'flex') {
-        grupoGuarana.style.display = 'none'
-        grupoFanta.style.display = 'flex'
-      } else if (grupoFanta.style.display === 'flex') {
-        grupoFanta.style.display = 'none'
-        grupoSoda.style.display = 'flex'
-      } else {
-        grupoSoda.style.display = 'none'
-        grupoCoca.style.display = 'flex'
-      }
-
-       // remove a classe depois de 300ms
-        setTimeout(() => {
-        outrasOpcoesBebidas.classList.remove('clicado');
-        }, 300);
-
-    })
-
-    
-    let fecharSugestoes = document.getElementById('fecharSugestoes')
-    fecharSugestoes.classList.add('fecharSugestoes')
-    fecharSugestoes.addEventListener('click', function() {
-      sugestaoBebidas.style.display = 'none'
-      
-    })
 
     let qrcode = document.getElementById('qrcode')
     let modalQRCode = document.getElementById('ModalQRCode')
     qrcode.addEventListener('click', function(event) {
+      
       event.preventDefault();
       modalQRCode.style.display = 'flex'
 

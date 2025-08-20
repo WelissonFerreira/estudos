@@ -68,6 +68,91 @@
 
 <main id="principal">
 
+    <h4 class="h4destaquePrincipal">Destaques</h4>
+    
+
+    <div id="destaques">
+        
+        <div class="card-destaque">
+            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/especial4grande.png" alt=""></div>
+            <div class="conteudo-destaque">
+                <h4 class="h4destaque">Especial Arthur Grande</h4>
+                <p class="descricao-destaque">Especial da casa, dividido em 4 pedaços e servem 4 pessoas.</p>
+                <p class="ingredientes-destaque">Ingredientes: Pão Grande | Bacon | Calabresa | Frango Desfiado...  <a class="botaomodal botaodestaque" href="#expansao" data-model-target="#model-arthur-grande">Ver mais</a></p>
+                
+            </div>
+            <div>
+                <span class="span-riscado-destaque">R$ 60,00</span>
+                <span class="span-destaque">R$ 55,00</span>
+                <button class="AdicionarCarrinho destaqueAdicionar" data-produto-id="produto-arthur-grande"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar</button>
+            </div>
+            
+        </div>
+
+        <div class="card-destaque">
+            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/x-tudo.jpg" alt=""></div>
+            <div class="conteudo-destaque">
+                <h4 class="h4destaque">X-Tudo</h4>
+                <p class="descricao-destaque">X-Tudo super recheado. Serve 2 pessoas.</p>
+                <p class="ingredientes-destaque">Ingredientes: Pão Grande | Bacon | Calabresa | Frango Desfiado | Salsicha...<a class="botaomodal botaodestaque" href="#expansao" data-model-target="#model-xtudo">Ver mais</a> </p>
+            </div>
+            <div>
+                <span class="span-riscado-destaque">R$ 40,00</span>
+                <span class="span-destaque">R$ 34,00</span>
+                <button class="AdicionarCarrinho destaqueAdicionar" data-produto-id="produto-xtudo"><i
+                        class="fa-solid fa-cart-plus"></i> Adicionar</button>
+            </div>
+        </div>
+
+        <div class="card-destaque">
+            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/passaportecarnesol.png" alt=""></div>
+            <div class="conteudo-destaque">
+                <h4 class="h4destaque">Passaporte de Carne de Sol</h4>
+                <p class="descricao-destaque">Passaporte de Carne de Sol super recheado</p>
+                <p class="ingredientes-destaque">Ingredientes: Pão Bola | Carne de Sol | Salsicha...<a class="botaomodal botaodestaque" href="#expansao" data-model-target="#model-passaporte-carne">Ver mais</a> </p>
+            </div>
+            <div>
+                <span class="span-riscado-destaque">R$ 30,00</span>
+                <span class="span-destaque">R$ 25,00</span>
+                <button class="AdicionarCarrinho destaqueAdicionar" data-produto-id="produto-passaporte-carnesol"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar</button>
+            </div>
+        </div>
+
+        <div class="card-destaque">
+            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/carnedesolcaipira.png" alt=""></div>
+            <div class="conteudo-destaque">
+                <h4 class="h4destaque">Carne de Sol Caipira</h4>
+                <p class="descricao-destaque">Carne de Sol Caipira topadão</p>
+                <p class="ingredientes-destaque">Ingredientes: Pão | Carne de Sol Desfiada | Catupiry | Queijo | Presunto</p>
+            </div>
+            <div>
+                <span class="span-riscado-destaque">R$ 30,00</span>
+                <span class="span-destaque">R$ 25,00</span>
+                <button class="AdicionarCarrinho destaqueAdicionar" data-produto-id="produto-XCarneDeSol"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar</button>
+            </div>
+        </div>
+
+        <div class="card-destaque">
+            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/xfile.png" alt=""></div>
+            <div class="conteudo-destaque">
+                <h4 class="h4destaque">X-Filé</h4>
+                <p class="descricao-destaque">X-Filé topadão</p>
+                <p class="ingredientes-destaque">Ingredientes: Pão | Filé de Alcatra | Ovo | Queijo | Presunto | Ervilha...<a class="botaomodal botaodestaque" href="#expansao" data-model-target="#model-xfile">Ver mais</a>  </p>
+            </div>
+            <div>
+                <span class="span-riscado-destaque">R$ 60,00</span>
+                <span class="span-destaque">R$ 55,00</span>
+                <button class="AdicionarCarrinho destaqueAdicionar" data-produto-id="produto-xfile"><i
+                            class="fa-solid fa-cart-plus"></i> Adicionar</button>
+            </div>
+        </div>
+
+
+    </div>
+
 
     <div id="menu-opcoes">
         
@@ -1567,107 +1652,102 @@
         </div>
 
             <!-- SUGESTÕES DE BEBIDAS -->
-    <div id="sugestaoBebidas" style="display: none;">
+    <div id="sugestaoBebidas">
         <div class="grupo-bebida" id="grupoCoca" style="display: flex;">  
             <h4 class="titulo-bebida-sugestao">Bebida para acompanhar?</h4>
             <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/cocacola350ml.png" alt="">
+                <img class="imgsugestao-cocacola250" src="imagens/bebidas/cocacola350ml.png" alt="">
                 <p class="psugestao">Coca-Cola 250ml</p>
                 <span class="spansugestao">R$ 6,00</span>
                 <button class="adicionar-bebida" data-produto-id="produto-cocacola250ml">Adicionar</button> 
             </div>
 
             <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/Coca1LA.png" alt="">
-                <p class="psugestao">Coca-Cola 1L</p>
-                <span class="spansugestao">R$ 10,00</span>
-                <button class="adicionar-bebida" data-produto-id="produto-cocacola1L">Adicionar</button>
-            </div>
-
-            <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/Coca2LA.png" alt="">
-                <p class="psugestao">Coca-Cola 2L</p>
-                <span class="spansugestao">R$ 13,00</span>
-                <button class="adicionar-bebida" data-produto-id="produto-cocacola2L">Adicionar</button>
-            </div>
-        </div>
-
-        <div class="grupo-bebida" id="grupoGuarana" style="display: none;">
-            <h4 class="titulo-bebida-sugestao">GUARANÁ</h4>
-            <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/GuaranaLataATTpngSFundo.png" alt="">
+                <img class="imgsugestao-guarana250" src="imagens/bebidas/GuaranaLataATTpngSFundo.png" alt="">
                 <p class="psugestao">Guaraná 250ml</p>
                 <span class="spansugestao">R$ 6,00</span>
                 <button class="adicionar-bebida" data-produto-id="produto-guarana250ml">Adicionar</button> 
             </div>
 
             <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/guarana1LA.png" alt="">
-                <p class="psugestao">Guaraná 1L</p>
-                <span class="spansugestao">R$ 8,00</span>
-                <button class="adicionar-bebida" data-produto-id="produto-guarana1L">Adicionar</button> 
-            </div>
-
-            <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/Guarana2LA.png" alt="">
-                <p class="psugestao">Guaraná 2L</p>
-                <span class="spansugestao">R$ 12,00</span>
-                <button class="adicionar-bebida" data-produto-id="produto-guarana2L">Adicionar</button> 
-            </div>
-        </div>
-
-        <div class="grupo-bebida" id="grupoFanta" style="display: none;"> 
-            <h4 class="titulo-bebida-sugestao">FANTA</h4>
-            <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/Fantalata350ml.png" alt="">
+                <img class="imgsugestao-fanta250" src="imagens/bebidas/Fantalata350ml.png" alt="">
                 <p class="psugestao">Fanta 250ml</p>
                 <span class="spansugestao">R$ 6,00</span>
                 <button class="adicionar-bebida" data-produto-id="produto-fanta250ml">Adicionar</button> 
             </div>
 
             <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/fanta1LA.png" alt="">
+                <img class="imgsugestao-soda250" src="imagens/bebidas/sodalata.png" alt="">
+                <p class="psugestao">Soda 250ml</p>
+                <span class="spansugestao">R$ 6,00</span>
+                <button class="adicionar-bebida" data-produto-id="produto-soda250ml">Adicionar</button> 
+            </div>
+
+
+            <div class="opcao-bebida">
+                <img class="imgsugestao-coca1L" src="imagens/bebidas/Coca1LA.png" alt="">
+                <p class="psugestao">Coca-Cola 1L</p>
+                <span class="spansugestao">R$ 10,00</span>
+                <button class="adicionar-bebida" data-produto-id="produto-cocacola1L">Adicionar</button>
+            </div>
+
+            <div class="opcao-bebida">
+                <img class="imgsugestao-guarana1L" src="imagens/bebidas/guarana1LA.png" alt="">
+                <p class="psugestao">Guaraná 1L</p>
+                <span class="spansugestao">R$ 8,00</span>
+                <button class="adicionar-bebida" data-produto-id="produto-guarana1L">Adicionar</button> 
+            </div>
+
+            <div class="opcao-bebida">
+                <img class="imgsugestao-fanta1L" src="imagens/bebidas/fanta1LA.png" alt="">
                 <p class="psugestao">Fanta 1L</p>
                 <span class="spansugestao">R$ 10,00</span>
                 <button class="adicionar-bebida" data-produto-id="produto-fanta1L">Adicionar</button> 
             </div>
 
             <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/Fanta2LA.png" alt="">
-                <p class="psugestao">Fanta 2L</p>
-                <span class="spansugestao">R$ 12,00</span>
-                <button class="adicionar-bebida" data-produto-id="produto-fanta2L">Adicionar</button> 
-            </div>
-        </div>
-
-        <div class="grupo-bebida" id="grupoSoda" style="display: none;">
-            <h4 class="titulo-bebida-sugestao">SODA</h4>
-            <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/sodalata.png" alt="">
-                <p class="psugestao">Soda 250ml</p>
-                <span class="spansugestao">R$ 6,00</span>
-                <button class="adicionar-bebida" data-produto-id="produto-soda250ml">Adicionar</button> 
-            </div>
-
-            <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/soda1LA.png" alt="">
+                <img class="imgsugestao-soda1L" src="imagens/bebidas/soda1LA.png" alt="">
                 <p class="psugestao">Soda 1L</p>
                 <span class="spansugestao">R$ 10,00</span>
                 <button class="adicionar-bebida" data-produto-id="produto-soda1L">Adicionar</button> 
             </div>
 
             <div class="opcao-bebida">
-                <img class="imgsugestao" src="imagens/bebidas/soda2LA.png" alt="">
+                <img class="imgsugestao-coca2L" src="imagens/bebidas/Coca2LA.png" alt="">
+                <p class="psugestao">Coca-Cola 2L</p>
+                <span class="spansugestao">R$ 13,00</span>
+                <button class="adicionar-bebida" data-produto-id="produto-cocacola2L">Adicionar</button>
+            </div>
+
+            <div class="opcao-bebida">
+                <img class="imgsugestao-guarana2L" src="imagens/bebidas/Guarana2LA.png" alt="">
+                <p class="psugestao">Guaraná 2L</p>
+                <span class="spansugestao">R$ 12,00</span>
+                <button class="adicionar-bebida" data-produto-id="produto-guarana2L">Adicionar</button> 
+            </div>
+
+            <div class="opcao-bebida">
+                <img class="imgsugestao-fanta2L" src="imagens/bebidas/Fanta2LA.png" alt="">
+                <p class="psugestao">Fanta 2L</p>
+                <span class="spansugestao">R$ 12,00</span>
+                <button class="adicionar-bebida" data-produto-id="produto-fanta2L">Adicionar</button> 
+            </div>
+
+            <div class="opcao-bebida">
+                <img class="imgsugestao-soda2L" src="imagens/bebidas/soda2LA.png" alt="">
                 <p class="psugestao">Soda 2L</p>
                 <span class="spansugestao">R$ 12,00</span>
                 <button class="adicionar-bebida" data-produto-id="produto-soda2L">Adicionar</button> 
             </div>
         </div>
-                <div class="controle-botoes-sugestao">
-                    <button id="verOutrasBebidas">OUTRAS OPÇÕES</button>
-                    <button id="fecharSugestoes">FECHAR</button>
-                </div>
     </div>
+
+        <div id="total-carrinho">
+            <h3>Total: R$ 0,00</h3>
+        </div>
+        <button id="finalizar-compra">AVANÇAR</button>
+    </div>
+</div>
 
         <div id="total-carrinho">
             <h3>Total: R$ 0,00</h3>
