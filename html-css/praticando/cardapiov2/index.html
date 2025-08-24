@@ -68,7 +68,7 @@
 
 <main id="principal">
 
-    <h4 class="h4destaquePrincipal">Destaques</h4>
+    <h4 class="h4destaquePrincipal">DESTAQUES</h4>
     
 
     <div id="destaques">
@@ -106,7 +106,7 @@
         </div>
 
         <div class="card-destaque">
-            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/passaportecarnesol.png" alt=""></div>
+            <div class="divimage-destaque"><img class="fotodestaques" src="imagens/lanches/passaportecarnedesolalternativo2.jpg" alt=""></div>
             <div class="conteudo-destaque">
                 <h4 class="h4destaque">Passaporte de Carne de Sol</h4>
                 <p class="descricao-destaque">Passaporte de Carne de Sol super recheado</p>
@@ -155,18 +155,14 @@
 
 
     <div id="menu-opcoes">
-        
-        <select id="menu-categorias" name="">
-            <option value="">Selecione uma categoria</option>
-            <option value="titulo-especiais">ESPECIAIS</option>
-            <option value="titulo-passaporte">PASSAPORTES</option>
-            <option value="titulo-sanduiches">SANDUICHES</option>
-            <option value="titulo-bebidas">BEBIDAS</option>
-        </select>
+        <button class="botoesCategorias" data-categoria="especiais-categoria">ESPECIAIS</button>
+        <button class="botoesCategorias" data-categoria="passaportes-categoria">PASSAPORTES</button>
+        <button class="botoesCategorias" data-categoria="sanduiches-categoria">SANDUICHES & BURGUER'S</button>
+        <button class="botoesCategorias" data-categoria="bebidas-categoria">BEBIDAS</button>
     </div>
     <!-- PRODUTO E MODAL - ESPECIAL ARTHUR GRANDE -->
 
-    <div class="divTitulos">
+    <div id="especiais-categoria" class="divTitulos">
         <h4 id="titulo-especiais">ESPECIAIS</h4>
     </div>
 
@@ -279,7 +275,7 @@
         </div>
     </section>
 
-    <div class="divTitulos">
+    <div id="passaportes-categoria" class="divTitulos">
         <h4 id="titulo-passaporte">PASSAPORTES</h4>
     </div>
 
@@ -289,7 +285,7 @@
 
             <div class="card-image">
                 <img class="fotosanduba"
-                    src="imagens/lanches/passaportecarne.png">
+                    src="imagens/lanches/passaportecarnealternativo.png">
 
             </div>
 
@@ -321,7 +317,7 @@
                         <li>Maionese</li>
                         <li>Batata Palha</li>
                     </ul>
-                    <div class="fotolanchemodal"><img class="fotosanduba"src="imagens/lanches/passaportecarne.png">
+                    <div class="fotolanchemodal"><img class="fotosanduba"src="imagens/lanches/passaportecarnealternativo.png">
                     </div>
                         <div id="botoes-produto-modal">
                             <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-carne"><i
@@ -340,7 +336,7 @@
         <div class="card-pai">
             <div class="card-image">
                 <img class="fotosanduba"
-                    src="imagens/lanches/passaportefrango.png">
+                    src="imagens/lanches/passaportefrangoalternativo.png">
             </div>
 
             <div class="card-conteudo">
@@ -372,7 +368,7 @@
                         <li>Maionese</li>
                         <li>Batata Palha</li>
                     </ul>
-                    <div class="fotolanchemodal"><img class="fotosanduba"src="imagens/lanches/passaportefrango.png">
+                    <div class="fotolanchemodal"><img class="fotosanduba"src="imagens/lanches/passaportefrangoalternativo.png">
                     </div>
                         <div id="botoes-produto-modal">
                             <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-frango"><i
@@ -389,7 +385,7 @@
         <div class="card-pai">
             <div class="card-image">
                 <img class="fotosanduba"
-                    src="imagens/lanches/passaportecarnesol.png">
+                    src="imagens/lanches/passaportecarnedesolalternativo2.jpg">
             </div>
 
             <div class="card-conteudo">
@@ -424,7 +420,7 @@
                         <li>Batata Palha</li>
                     </ul>
                     <div class="fotolanchemodal">
-                    <img class="fotosanduba"src="imagens/lanches/passaportecarnesol.png">
+                    <img class="fotosanduba"src="imagens/lanches/passaportecarnedesolalternativo2.jpg">
                     </div>
                         <div id="botoes-produto-modal">
                             <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-carnesol"><i
@@ -441,7 +437,7 @@
         <div class="card-pai">
             <div class="card-image">
                 <img class="fotosanduba"
-                    src="imagens/lanches/passaportemisto.png">
+                    src="imagens/lanches/sanduichemistoalternativo.png">
             </div>
 
             <div class="card-conteudo">
@@ -474,7 +470,7 @@
                         <li>Batata Palha</li>
                     </ul>
                     <div class="fotolanchemodal">
-                    <img class="fotosanduba"src="imagens/lanches/passaportemisto.png">
+                    <img class="fotosanduba"src="imagens/lanches/sanduichemistoalternativo.png">
                     </div>
                         <div id="botoes-produto-modal">
                             <button class="AdicionarCarrinho" data-produto-id="produto-passaporte-misto"><i
@@ -487,8 +483,8 @@
 
     <!-- PRODUTO E MODAL - X-TUDO -->
 
-        <div class="divTitulos">
-            <h4 id="titulo-sanduiches">SANDUICHES</h4>
+        <div id="sanduiches-categoria" class="divTitulos">
+            <h4 id="titulo-sanduiches">SANDUICHES & BURGUER'S</h4>
         </div>
 
     <section class="item-pai">
@@ -1327,7 +1323,7 @@
 
     <!-- REFRIGERANTES LATA -->
 
-        <div class="divTitulos">
+        <div id="bebidas-categoria" class="divTitulos">
             <h4 id="titulo-bebidas">BEBIDAS</h4>
         </div>
 
@@ -1621,7 +1617,7 @@
         </li>
 
 
-        <li class="inav"><a href="#"><i class="fa-brands fa-whatsapp"></i><span class="spanmenu">WhatsApp</span></a>
+        <li class="inav"><a id="botaozap" href="#"><i class="fa-brands fa-whatsapp"></i><span class="spanmenu">WhatsApp</span></a>
         </li>
     </ul>
 
@@ -1825,27 +1821,34 @@
             <div id="itensListadosNoPedido">
             </div>
             
+            <h4 class="h4FormaPagamentotxt">Forma de Pagamento:</h4>
             <div class="formas-pagamento">
-                <h4>Forma de Pagamento:</h4>
-                <div>
+                
+
+                <div class="controlePIX">
+                    <input type="radio" name="formaPagamento" id="Dinheiro">
+                    <label class="pagamentoDinheiro" for="pagamentoDinheiro">Dinheiro</label>
+                    
+                </div>
+
+                <div class="controlePIX">
                     <input type="radio" name="formaPagamento" id="Pix">
                     <label class="pagamentoPIX" for="pagamentoPix">PIX</label>
                 </div>
                 
-                <div>
+                <div class="controlePIX">
                     <input type="radio" name="formaPagamento" id="pagamentoCartao">
                     <label class="pagamentoCartao" for="pagamentoCartao">Cartão</label>
                 </div>
-            
-                <div id="controlePIX">
-                    <input type="radio" name="formaPagamento" id="pagamentoDinheiro">
-                    <label class="pagamentoDinheiro" for="pagamentoDinheiro">Dinheiro</label>
-                    <input type="number" name="inputTroco" id="inputTroco" placeholder="Troco para quanto? Se não precisar, deixe vazio..." style="display: none;">
-                    <label for="inputTroco"></label>
-                </div>
-                
-                <span id="ValorTotalPedidoFinal">Total: R$: </span>
             </div>
+            <div class="divTroco">
+                <input type="number" name="inputTroco" id="inputTroco" placeholder="Quanto de troco? Se não precisar, deixe vazio..." style="display: none;">
+                        <label for="inputTroco"></label>
+            </div>
+            <div class="ControleTotalEntrega">
+                    
+                    <span id="ValorTotalPedidoFinal">Total: R$: </span>
+                </div>
 
             <div id="divBotoesPedido">
                 <button id="Finalizar-Pedido">Finalizar Pedido</button>

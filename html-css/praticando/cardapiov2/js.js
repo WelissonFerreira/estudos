@@ -62,7 +62,7 @@ let catalogoDeProdutos = {
             "Batata Palha"
             
         ],
-        imagem: "imagens/lanches/passaportecarne.png"
+        imagem: "imagens/lanches/passaportecarnealternativo.png"
     },
 
     "produto-passaporte-frango": {
@@ -81,7 +81,7 @@ let catalogoDeProdutos = {
             "Maionese",
             "Batata Palha"
         ],
-        imagem: "imagens/lanches/passaportefrango.png"
+        imagem: "imagens/lanches/passaportefrangoalternativo.png"
     },
 
     "produto-xbacon": {
@@ -121,7 +121,7 @@ let catalogoDeProdutos = {
             "Maionese",
             "Batata Palha",
         ],
-        imagem: "imagens/lanches/passaportecarnesol.png"
+        imagem: "imagens/lanches/passaportecarnedesolalternativo2.jpg"
     },
 
     "produto-passaporte-misto": {
@@ -141,7 +141,7 @@ let catalogoDeProdutos = {
         "Maionese",
         "Batata Palha",
       ],
-      imagem: "imagens/lanches/passaportemisto.png"
+      imagem: "imagens/lanches/sanduichemistoalternativo.png"
     },
 
     "produto-xtudo": {
@@ -782,8 +782,8 @@ let scrollPosition = 0
             let temLancheNoCarrinho = itensCarrinho.some(item => item.produto.tipo === 'lanche');
             let temBebidaNoCarrinho = itensCarrinho.some(item => item.produto.tipo === 'bebida');
 
-            if (temLancheNoCarrinho && !temBebidaNoCarrinho) {
-            sugestaoBebidas.style.display = 'block'; // Ou 'flex'
+            if (temLancheNoCarrinho) {
+            sugestaoBebidas.style.display = 'flex'; // Ou 'flex'
             // Você pode querer esconder as sugestões se elas já estiverem abertas
             // para evitar que fiquem visíveis o tempo todo se o usuário abrir e fechar o carrinho
             } else {
@@ -1388,7 +1388,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
             textoFormaPagamento = 'PIX';
         } else if (formaPagamentoSelecionada.id === 'pagamentoCartao') {
             textoFormaPagamento = 'Cartão';
-        } else if (formaPagamentoSelecionada.id === 'pagamentoDinheiro') {
+        } else if (formaPagamentoSelecionada.id === 'Dinheiro') {
             textoFormaPagamento = 'Dinheiro';
         }
     }
@@ -1406,7 +1406,7 @@ if (textoFormaPagamento === 'Dinheiro') {
     let valorTrocoNum = parseFloat(valorTroco);
     console.log('Valor do troco como número:', valorTrocoNum);
     if (!isNaN(valorTrocoNum) && valorTrocoNum > 0) {
-        mensagemWhatsApp += `Precisa de troco para: R$ ${valorTrocoNum.toFixed(2).replace('.', ',')}\n`;
+        mensagemWhatsApp += `| Precisa de troco para: R$ ${valorTrocoNum.toFixed(2).replace('.', ',')}\n`;
     } else {
         mensagemWhatsApp += `Não precisa de troco.\n`;
     }
@@ -1511,7 +1511,7 @@ if (textoFormaPagamento === 'Dinheiro') {
             divFuncionamento.appendChild(p3)
 
             let p4 = document.createElement('p')
-            p4.textContent = '<- Visualizar os dias'
+            p4.textContent = '👈 Visualizar os dias'
             p4.classList.add('msgverhorarios')
             divFuncionamento.appendChild(p4)
 
@@ -1534,25 +1534,29 @@ if (textoFormaPagamento === 'Dinheiro') {
 
     exibirOpenClose();
 
-    let opcaoDinheiro = document.getElementById('pagamentoDinheiro')
+    let opcaoDinheiro = document.getElementById('Dinheiro')
     let divPIX = document.getElementById('controlePIX')
     let opcaoPIX = document.getElementById('Pix')
     let opcaoCartao = document.getElementById('pagamentoCartao')
     let opcaoTroco = document.getElementById('inputTroco')
+    let divformadePagamento = document.querySelector('.formas-pagamento')
 
     // Evento clique em dinheiro liberar opção troco.
     opcaoDinheiro.addEventListener('click', function () {
-      opcaoTroco.style.display = 'block'
+      opcaoTroco.style.display = 'flex'
+      divformadePagamento.style.marginBottom = '35px'
+
     })
 
     opcaoPIX.addEventListener('click', function() {
       opcaoTroco.style.display = 'none'
+      divformadePagamento.style.marginBottom = ''
     })
 
     opcaoCartao.addEventListener('click', function() {
       opcaoTroco.style.display = 'none'
+      divformadePagamento.style.marginBottom = ''
     })
-
 
 
 
@@ -1572,23 +1576,37 @@ if (textoFormaPagamento === 'Dinheiro') {
       modalQRCode.style.display = 'none'
     })
 
+
+
+    // BOTÃO ZAP
+
+  let btnZap = document.getElementById('botaozap')
+    btnZap.addEventListener('click', function() {
+
+    const numeroWhatsApp = '5582988204888'; // Exemplo: 55 = Brasil, 82 = DDD, 999261614 = número
+
+    // 2. Crie a mensagem (opcional, mas muito útil)
+    const mensagemPadrao = 'Olá, gostaria de fazer um pedido!';
+
+    // 3. Monte o link completo para o WhatsApp
+    const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagemPadrao)}`;
+
+    // 4. Abra o link em uma nova aba
+    window.open(linkWhatsApp, '_blank');
+
+    })
+
     /* MENU CATEGORIAS */
     
-    const menuCategorias = document.getElementById('menu-categorias')
+const botoesMenu = document.querySelectorAll('.botoesCategorias')
 
-    // Ouvinte de Eventos
-    menuCategorias.addEventListener('change', (event) => {
+      botoesMenu.forEach(function (botaoSelecionado) {
+        botaoSelecionado.addEventListener('click', function() {
 
+          const categoriaID = botaoSelecionado.dataset.categoria
 
-      const categoriaID = event.target.value;
-
-      const opcaoSelecionada = event.target.options[event.target.selectedIndex];
-      const textoSelecionado = opcaoSelecionada.text
-
-      menuCategorias.style.width = 'auto'
-
-      // Se o valor não estiver vazio, rola a página
-      if (categoriaID) {
+                // Se o valor não estiver vazio, rola a página
+        if (categoriaID) {
         //Encontra a seção correspondente pelo ID
         const secao = document.getElementById(categoriaID)
 
@@ -1601,7 +1619,8 @@ if (textoFormaPagamento === 'Dinheiro') {
         }
       }
 
+        })
 
-    });
+      })
 
     
