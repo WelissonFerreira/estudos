@@ -548,7 +548,7 @@ const precosEntrega = {
   "Farol": 5,
   "Jacintinho": 5,
   "Peixoto": 5,
-  "Poço": 5,
+  "Poço": 7,
   "Barro Duro": 5,
   "Serraria": 7,
   "Cruz das Almas": 7,
