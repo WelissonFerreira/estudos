@@ -543,6 +543,23 @@ let catalogoDeProdutos = {
 
 }
 
+const precosEntrega = {
+  "Feitosa": 2,
+  "Farol": 5,
+  "Jacintinho": 5,
+  "Peixoto": 5,
+  "Poço": 5,
+  "Barro Duro": 5,
+  "Serraria": 7,
+  "Cruz das Almas": 7,
+  "Ponta Verde": 7,
+  "Jatiúca": 7,
+  "Pajuçara": 7,
+  "Jaraguá": 7,
+  "Pitanguinha": 5,
+}
+
+
 
 /* Botão ver mais programado */
 // 2. Variável para TODOS os botões "Ver mais"
@@ -697,7 +714,7 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
             produto: bebidaCompleta,
             quantidade: 1
           });
-        }
+        } 
 
         atualizarCarrinho()
 
@@ -783,7 +800,7 @@ let scrollPosition = 0
             let temBebidaNoCarrinho = itensCarrinho.some(item => item.produto.tipo === 'bebida');
 
             if (temLancheNoCarrinho) {
-            sugestaoBebidas.style.display = 'flex'; // Ou 'flex'
+            sugestaoBebidas.style.display = 'flex+-'; // Ou 'flex'
             // Você pode querer esconder as sugestões se elas já estiverem abertas
             // para evitar que fiquem visíveis o tempo todo se o usuário abrir e fechar o carrinho
             } else {
@@ -943,7 +960,6 @@ let scrollPosition = 0
         }
     
     }
-
 
 
 
@@ -1218,7 +1234,7 @@ let scrollPosition = 0
 
     }
 
-
+    let taxaEntrega = document.getElementById('taxaEntrega')
     let divModalConteudo = document.querySelector('.ContModalFazerPedido')
 
     function abrirModalPedidoEListarItens() {
@@ -1234,6 +1250,9 @@ let scrollPosition = 0
           exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
           precoItens = 0
+
+          const bairroSelecionado = document.getElementById('Bairro').value;
+          valorTaxaDeEntrega = precosEntrega[bairroSelecionado] || 0;
 
         itensCarrinho.forEach(function(item) {
 
@@ -1293,9 +1312,11 @@ let scrollPosition = 0
 
       })
 
-      totalPreco.textContent = `Preço Total: R$ ${precoItens.toFixed(2).replace('.', ',')}`
+      const precoFinal = precoItens + valorTaxaDeEntrega
+
+      totalPreco.textContent = `Preço Total: R$ ${precoFinal.toFixed(2).replace('.', ',')}`
       
-      
+      taxaEntrega.textContent = `Taxa de Entrega: R$ ${valorTaxaDeEntrega.toFixed(2).replace('.', ',')}`
       
     }
 
@@ -1323,6 +1344,8 @@ let scrollPosition = 0
     })
 
 
+
+
 // =======================================================================================================
 
 
@@ -1334,6 +1357,10 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
     let nomeCliente = document.querySelector('#nomeUsuario').value;
     let telefoneCliente = document.querySelector('#cellUsuario').value;
     let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
+    
+
+    // NOVO: Define a taxa de entrega
+    
 
     let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
 
@@ -1368,13 +1395,19 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
         itensCarrinho.forEach((item, index) => {
             let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome} (R$ ${(item.produto.preco * item.quantidade).toFixed(2).replace('.', ',')})`;
             if (item.observacao && item.observacao.trim() !== '') {
-                linhaItem += `\n  - Observação: ${item.observacao}`;
+                linhaItem += `\n  - Observação: ${item.observacao}`;
             }
             mensagemWhatsApp += linhaItem + `\n`;
             totalFinalParaWhatsApp += item.produto.preco * item.quantidade;
         });
     } else {
         mensagemWhatsApp += `Nenhum item adicionado ao carrinho.\n`;
+    }
+
+    // NOVO: Adiciona a taxa de entrega no total e na mensagem
+    if (tipoPedido === 'Entrega') {
+        totalFinalParaWhatsApp += valorTaxaDeEntrega;
+        mensagemWhatsApp += `\nTaxa de Entrega: R$ ${valorTaxaDeEntrega.toFixed(2).replace('.', ',')}\n`;
     }
 
     mensagemWhatsApp += `\n*Total do Pedido: R$ ${totalFinalParaWhatsApp.toFixed(2).replace('.', ',')}*\n`;
@@ -1396,24 +1429,16 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
     mensagemWhatsApp += `\n*Informações de Pagamento:*\n`;
     mensagemWhatsApp += `Forma de Pagamento: ${textoFormaPagamento}\n`;
 
-    // Troco — sem verificar display, só forma de pagamento e valor válido
+    // Troco
     let inputTrocoElement = document.getElementById('inputTroco');
-let valorTroco = inputTrocoElement ? inputTrocoElement.value.trim() : '';
-
-console.log('Valor do troco capturado:', valorTroco);
-
-if (textoFormaPagamento === 'Dinheiro') {
+    let valorTroco = inputTrocoElement ? inputTrocoElement.value.trim() : '';
     let valorTrocoNum = parseFloat(valorTroco);
-    console.log('Valor do troco como número:', valorTrocoNum);
-    if (!isNaN(valorTrocoNum) && valorTrocoNum > 0) {
-        mensagemWhatsApp += `| Precisa de troco para: R$ ${valorTrocoNum.toFixed(2).replace('.', ',')}\n`;
+
+    if (textoFormaPagamento === 'Dinheiro' && !isNaN(valorTrocoNum) && valorTrocoNum > 0) {
+        mensagemWhatsApp += `| Precisa de R$ ${valorTrocoNum.toFixed(2).replace('.', ',')} de troco \n`;
     } else {
         mensagemWhatsApp += `Não precisa de troco.\n`;
     }
-} else {
-    mensagemWhatsApp += `Não precisa de troco.\n`;
-}
-
 
     // Número do WhatsApp (com DDI e DDD)
     let numeroWhatsApp = '5582988204888';
@@ -1431,8 +1456,6 @@ if (textoFormaPagamento === 'Dinheiro') {
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto';
 });
-
-
 
 
 
@@ -1515,6 +1538,9 @@ if (textoFormaPagamento === 'Dinheiro') {
             p4.classList.add('msgverhorarios')
             divFuncionamento.appendChild(p4)
 
+            let btnEntregaTaxa = document.querySelector('.btnEntrega')
+            btnEntregaTaxa.style.display = 'none'
+
 
 
             p3.addEventListener('click', function() {
@@ -1533,6 +1559,18 @@ if (textoFormaPagamento === 'Dinheiro') {
     }
 
     exibirOpenClose();
+
+    let ModalEntrega = document.querySelector('#modalTaxaEntrega')
+    let btnEntregaTaxa = document.querySelector('.btnEntrega')
+    btnEntregaTaxa.addEventListener('click', function() {
+        ModalEntrega.style.display = 'block'
+    })
+
+    let btnfecharModalEntrega = document.querySelector('.close-button-taxas')
+
+    btnfecharModalEntrega.addEventListener('click', function() {
+      ModalEntrega.style.display = 'none'
+    })
 
     let opcaoDinheiro = document.getElementById('Dinheiro')
     let divPIX = document.getElementById('controlePIX')

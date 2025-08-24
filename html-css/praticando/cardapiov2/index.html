@@ -16,6 +16,29 @@
     <div id="topomenu">
         <div class="bannermenu"></div>
         <div class="controleCabecalho">
+            <button class="btnEntrega">Taxa de Entrega 👈</button>
+    
+            <div id="modalTaxaEntrega">
+                <div class="conteudoModalTaxa">
+                    <span class="close-button-taxas">&times;</span>
+                    <span class="modal-sub-titulos">Taxas de Entrega</span>
+                        <ul>
+                            <li class="formapagamento-modal">Feitosa | R$ 2,00</li>
+                            <li class="formapagamento-modal">Jacintinho | R$ 5,00</li>
+                            <li class="formapagamento-modal">Barro Duro | R$ 5,00</li>
+                            <li class="formapagamento-modal">São Jorge | R$ 5,00</li>
+                            <li class="formapagamento-modal">Serraria | R$ 7,00</li>
+                            <li class="formapagamento-modal">Farol | R$ 5,00</li>
+                            <li class="formapagamento-modal">Poço | R$ 7,00</li>
+                            <li class="formapagamento-modal">Cruz das Almas | R$ 7,00</li>
+                            <li class="formapagamento-modal">Jatiúca | R$ 7,00</li>
+                            <li class="formapagamento-modal">Ponta Verde | R$ 7,00</li>
+                            <li class="formapagamento-modal">Pajuçara | R$ 7,00</li>
+                            <li class="formapagamento-modal">Jaraguá | R$ 7,00</li>
+                        </ul>
+
+                </div>
+            </div>
             <div class="divlogo"><img class="logomenu" src="imagens/novalogoatualizada.jpg" alt=""></div>
                 <div id="open-close"></div>
             <div class="divpmenu">
@@ -1782,12 +1805,16 @@
                         <option value="Feitosa">Feitosa</option>
                         <option value="Farol">Farol</option>
                         <option value="Jacintinho">Jacintinho</option>
+                        <option value="Poço">Poço</option>
                         <option value="Peixoto">Peixoto</option>
                         <option value="Barro Duro">Barro Duro</option>
                         <option value="Serraria">Serraria</option>
                         <option value="Cruz das Almas">Cruz das Almas</option>
                         <option value="Ponta Verde">Ponta Verde</option>
                         <option value="Jatiúca">Jatiúca</option>
+                        <option value="Pajuçara">Pajuçara</option>
+                        <option value="Jaraguá">Jaraguá</option>
+                        <option value="Pitanguinha">Pitanguinha</option>
                     </optgroup>
                 </select>
                 <span id="erroBairro" class="mensagem-erro" style="display: none;">* Necessário Preencher</span>
@@ -1846,7 +1873,7 @@
                         <label for="inputTroco"></label>
             </div>
             <div class="ControleTotalEntrega">
-                    
+                    <span id="taxaEntrega">Taxa de Entrega: R$</span>
                     <span id="ValorTotalPedidoFinal">Total: R$: </span>
                 </div>
 

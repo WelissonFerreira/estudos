@@ -809,6 +809,54 @@ footer {
 
 
 
+/* MODAL TAXA DE ENTREGA */
+
+#modalTaxaEntrega {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 60%;
+    margin-top: 100px;
+    display: none;
+
+}
+
+.conteudoModalTaxa {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-button-taxas {
+    position: absolute;
+    left: 90%;
+    top: 5%;
+}
+
+.btnEntrega {
+    background-color: rgb(137, 164, 97);
+    color: white;
+    position: absolute;
+    font-size: 0.6rem;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 2px;
+    margin: 2%;
+    padding: 3px 5px;
+    left: 0%;
+    top: 23%;
+}
+
+
 /* MODAL HORÁRIOS */
 #modalhorarios {
     position: fixed;
@@ -1577,6 +1625,15 @@ font-family: "Quicksand", sans-serif;
     gap: 5px;
     margin-top: 5%;
     width: 100%;
+}
+
+#taxaEntrega {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 0.8rem;
 }
 
 #ValorTotalPedidoFinal {
