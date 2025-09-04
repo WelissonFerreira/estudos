@@ -1529,6 +1529,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
 
             let novoP = document.createElement('p')
             novoP.textContent = 'Estamos funcionando!'
+            novoP.classList.add('novoP')
             openClose.appendChild(novoP)
 
         } else {

@@ -242,6 +242,11 @@ span {
     margin-top: -10px;
 }
 
+.novoP {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
 #destaques {
     display: flex;
     flex-direction: row;
@@ -852,8 +857,8 @@ footer {
     border-radius: 2px;
     margin: 2%;
     padding: 3px 5px;
-    left: 0%;
-    top: 23%;
+    left: 35%;
+    top: 53%;
 }
 
 
