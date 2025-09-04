@@ -561,9 +561,15 @@ const precosEntrega = {
 
 
 
+
+
+
+
 /* Botão ver mais programado */
 // 2. Variável para TODOS os botões "Ver mais"
 let btnAbriModal = document.querySelectorAll('.botaomodal');
+
+
 
 
 // FUNÇÃO PARA VER DETALHES DOS PRODUTOS
@@ -1439,6 +1445,18 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
     } else {
         mensagemWhatsApp += `Não precisa de troco.\n`;
     }
+
+     // --- NOVO: se for PIX, coloca a chave ---
+      if (textoFormaPagamento === 'PIX') {
+    const chavePIX = document.getElementById('inputChavePIX').value;
+    const nomePIX = document.getElementById('inputNomePIX').value;
+    const bancoPIX = document.getElementById('inputBancoPIX').value;
+
+    mensagemWhatsApp +=  `*PIX - Chave CPF: ${chavePIX}*\n` +
+                              `Nome: *${nomePIX}*\n` +
+                              `Banco: ${bancoPIX}\n` + 
+                              `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
+}
 
     // Número do WhatsApp (com DDI e DDD)
     let numeroWhatsApp = '5582988204888';
