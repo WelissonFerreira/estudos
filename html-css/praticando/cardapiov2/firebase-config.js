@@ -5,12 +5,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.1.0/firebase
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
+    apiKey: "AIzaSyAma8_i3oYR4aKkdRv0YzXIuZkxNqtiwaQ",
     authDomain: "backendcardapio.firebaseapp.com",
     projectId: "backendcardapio",
-    storageBucket: "backendcardapio.appspot.com",
-    messagingSenderId: "SEU_MESSAGING_SENDER_ID",
-    appId: "SEU_APP_ID"
+    storageBucket: "backendcardapio.firebasestorage.app",
+    messagingSenderId: "978890242445",
+    appId: "1:978890242445:web:58516a8cc27b5fe54ae5c4"
 };
 
 // Inicializa app Firebase
