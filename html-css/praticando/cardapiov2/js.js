@@ -1,3 +1,9 @@
+
+// 1. IMPORTAÇÕES - SEMPRE NO TOPO!
+import { enviarPedido } from './pedidos-firebase.js';
+
+
+
 let catalogoDeProdutos = {
     "produto-arthur-grande": { // Esta é a CHAVE, que corresponde ao seu data-produto-id
         tipo: "lanche",
@@ -700,32 +706,37 @@ btnCarrinhoContador.forEach(function(botaoCarrinho) {
     });
 });
 
-    // FUNÇÃO ADICIONAR BEBIDAS NO MODAL DE SUGESTÃO
+   // js.js
 
-    let adicionarBebida = document.querySelectorAll('.adicionar-bebida')
-    adicionarBebida.forEach(function(botaoBebida) {
-      botaoBebida.addEventListener('click', function() {
-        seletorBebida = botaoBebida.dataset.produtoId
-        bebidaCompleta = catalogoDeProdutos[seletorBebida]
+// ...
 
-        let bebidaExistente = itensCarrinho.find(function(bebida) {
-            return bebida.produtoId === seletorBebida
-        })
+// FUNÇÃO ADICIONAR BEBIDAS NO MODAL DE SUGESTÃO
 
-        if (bebidaExistente) {
-          bebidaExistente.quantidade = bebidaExistente.quantidade + 1
-        } else {
-          itensCarrinho.push ({
-            produtoId: seletorBebida,
-            produto: bebidaCompleta,
-            quantidade: 1
-          });
-        } 
+let adicionarBebida = document.querySelectorAll('.adicionar-bebida')
+adicionarBebida.forEach(function(botaoBebida) {
+  botaoBebida.addEventListener('click', function() {
+    // CORREÇÃO: Declare a variável com 'let'
+    let seletorBebida = botaoBebida.dataset.produtoId
+    let bebidaCompleta = catalogoDeProdutos[seletorBebida]
 
-        atualizarCarrinho()
-
-      })
+    let bebidaExistente = itensCarrinho.find(function(bebida) {
+      return bebida.produtoId === seletorBebida
     })
+
+    if (bebidaExistente) {
+      bebidaExistente.quantidade = bebidaExistente.quantidade + 1
+    } else {
+      itensCarrinho.push ({
+        produtoId: seletorBebida,
+        produto: bebidaCompleta,
+        quantidade: 1
+      });
+    } 
+
+    atualizarCarrinho()
+
+  })
+})
 
 
 // ==========================================================================================
@@ -1242,6 +1253,7 @@ let scrollPosition = 0
 
     let taxaEntrega = document.getElementById('taxaEntrega')
     let divModalConteudo = document.querySelector('.ContModalFazerPedido')
+    let valorTaxaDeEntrega = 0;
 
     function abrirModalPedidoEListarItens() {
           
@@ -1255,7 +1267,7 @@ let scrollPosition = 0
           exibirModalDados.style.display = 'none'
           exibirModalPedido.style.display = 'block'
           divItensListaPedido.textContent = ``
-          precoItens = 0
+          let precoItens = 0
 
           const bairroSelecionado = document.getElementById('Bairro').value;
           valorTaxaDeEntrega = precosEntrega[bairroSelecionado] || 0;
@@ -1355,18 +1367,38 @@ let scrollPosition = 0
 // =======================================================================================================
 
 
+
+
+
+
+
 // ENVIAR PEDIDO PARA O WHATSAPP
 const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
-btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
+btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
     // 1. Capturar os dados pessoais e de entrega
     let nomeCliente = document.querySelector('#nomeUsuario').value;
     let telefoneCliente = document.querySelector('#cellUsuario').value;
     let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
     
 
-    // NOVO: Define a taxa de entrega
+
     
+     // --- CÓDIGO DO FIREBASE A SER ADICIONADO AQUI ---
+    // 1. Coletar os dados para o Firebase
+    let clienteInfo = {
+        nome: nomeCliente,
+        telefone: telefoneCliente,
+        tipo: tipoPedido
+    };
+    
+    // Coletar os dados do carrinho de forma que o Firebase consiga entender
+    const itensParaFirebase = itensCarrinho.map(item => ({
+        nome: item.produto.nome,
+        preco: item.produto.preco,
+        quantidade: item.quantidade,
+        observacoes: item.observacao || ''
+    }));
 
     let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
 
@@ -1435,13 +1467,21 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
     mensagemWhatsApp += `\n*Informações de Pagamento:*\n`;
     mensagemWhatsApp += `Forma de Pagamento: ${textoFormaPagamento}\n`;
 
-    // Troco
-    let inputTrocoElement = document.getElementById('inputTroco');
-    let valorTroco = inputTrocoElement ? inputTrocoElement.value.trim() : '';
-    let valorTrocoNum = parseFloat(valorTroco);
+   // Troco
+let inputTrocoElement = document.getElementById('inputTroco');
+let valorTroco = 0; // Define um valor inicial numérico
 
-    if (textoFormaPagamento === 'Dinheiro' && !isNaN(valorTrocoNum) && valorTrocoNum > 0) {
-        mensagemWhatsApp += `| Precisa de R$ ${valorTrocoNum.toFixed(2).replace('.', ',')} de troco \n`;
+if (inputTrocoElement) {
+    let valorTrocoString = inputTrocoElement.value.trim();
+    if (valorTrocoString !== '') {
+        // Se a string não estiver vazia, tenta converter para número
+        valorTroco = parseFloat(valorTrocoString);
+    }
+}
+
+
+    if (textoFormaPagamento === 'Dinheiro' && !isNaN(valorTroco) && valorTroco > 0) {
+        mensagemWhatsApp += `| Precisa de R$ ${valorTroco.toFixed(2).replace('.', ',')} de troco \n`;
     } else {
         mensagemWhatsApp += `Não precisa de troco.\n`;
     }
@@ -1458,6 +1498,27 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
                               `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
 }
 
+    // 2. Montar o objeto completo do pedido para o Firebase
+    const pedidoParaFirebase = {
+    cliente: {
+        nome: nomeCliente,
+        telefone: telefoneCliente,
+        tipo: tipoPedido
+    },
+    itens: itensParaFirebase,
+    taxaEntrega: valorTaxaDeEntrega,
+    pagamento: textoFormaPagamento,
+    troco: valorTroco,
+    data: new Date()
+};
+
+    // 3. Chamar a função para enviar para o Firebase
+    // Usamos 'await' aqui porque a função 'enviarPedido' é assíncrona
+    await enviarPedido(pedidoParaFirebase);
+
+
+
+
     // Número do WhatsApp (com DDI e DDD)
     let numeroWhatsApp = '5582988204888';
 
@@ -1473,6 +1534,11 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', function () {
     // Fecha modal e libera rolagem da página
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto';
+
+
+
+
+
 });
 
 
@@ -1680,4 +1746,5 @@ const botoesMenu = document.querySelectorAll('.botoesCategorias')
 
       })
 
-    
+
+
