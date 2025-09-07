@@ -55,19 +55,29 @@ function imprimirPedido(pedido) {
 
 // 4. ESCUTA DOS PEDIDOS DO FIRESTORE
 pedidosRef.onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-        if (change.type === 'added') {
-            const novoPedido = change.doc.data();
-            console.log('Novo pedido recebido do Firestore!');
-            
-            console.log('Dados do pedido recebido:', novoPedido); // <-- Adicione esta linha
+    snapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+            const novoPedido = change.doc.data();
+            const docId = change.doc.id; // <-- Obtém o ID do documento
+            
+            console.log('Novo pedido recebido do Firestore!');
+            
+            // Chama a função de impressão
+            imprimirPedido(novoPedido);
 
-            // Chama a função que acabamos de criar para imprimir
-            imprimirPedido(novoPedido);
-        }
-    });
+            // Adicione a lógica para apagar o documento depois de imprimir
+            db.collection('pedidos').doc(docId).delete()
+                .then(() => {
+                    console.log(`Pedido ${docId} removido do Firestore.`);
+                })
+                .catch(err => {
+                    console.error('Erro ao remover o pedido:', err);
+                });
+        }
+    });
 }, err => {
-    console.error('Erro ao ouvir mudanças no Firestore:', err);
+    console.error('Erro ao ouvir mudanças no Firestore:', err);
 });
+
 
 console.log('Servidor de impressão iniciado. Ouvindo novos pedidos no Firestore...');
