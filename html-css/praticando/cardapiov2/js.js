@@ -545,9 +545,139 @@ let catalogoDeProdutos = {
       preco: 12.00,
       descricao: "Soda 2L",
       imagem: "imagens/bebidas/soda2LA.png"
-    }
+    },
 
+      "produto-sucolaranja700ml": {
+      tipo: "bebida",
+      nome: "Suco Natural Laranja no Copo 700ml",
+      preco: 10.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/sucolaranjacopo500ml.png"
+    },
+
+      "produto-sucolaranja1L": {
+      tipo: "bebida",
+      nome: "Suco Natural Laranja na Jarra 1L",
+      preco: 20.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/jarralaranja1L.png"
+    },
+
+      "produto-suco-polpa-caju": {
+      tipo: "bebida",
+      nome: "Suco Caju da Polpa – 500ml.",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaCaju.jpg"
+    },
+
+      "produto-suco-polpa-caja": {
+      tipo: "bebida",
+      nome: "Suco Cajá da Polpa – 500ml.",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaCaja.png"
+    },
+
+      "produto-suco-polpa-acerola": {
+      tipo: "bebida",
+      nome: "Suco Acerola da Polpa – 500ml",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaAcerola.jpg"
+    },
+
+      "produto-suco-polpa-goiaba": {
+      tipo: "bebida",
+      nome: "Suco Goiaba da Polpa – 500ml",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaGoiaba.jpg"
+    },
+
+      "produto-suco-polpa-graviola": {
+      tipo: "bebida",
+      nome: "Suco Graviola da Polpa – 500ml",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaGraviola.jpg"
+    },
+
+      "produto-suco-polpa-manga": {
+      tipo: "bebida",
+      nome: "Suco Manga da Polpa – 500ml",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaManga.jpg"
+    },
+
+      "produto-suco-polpa-abacaxi": {
+      tipo: "bebida",
+      nome: "Suco Abacaxi da Polpa – 500ml",
+      preco: 7.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaAbacaxi.jpg"
+    },
+
+      "produto-suco-polpa-caju1L": {
+      tipo: "bebida",
+      nome: "Suco Caju da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaCaju.jpg"
+      
+    },
+
+      "produto-suco-polpa-caja1L": {
+      tipo: "bebida",
+      nome: "Suco Caja da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaCaja.png"
+    },
+
+      "produto-suco-polpa-acerola1L": {
+      tipo: "bebida",
+      nome: "Suco Acerola da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaAcerola.jpg"
+    },
+
+      "produto-suco-polpa-goiaba1L": {
+      tipo: "bebida",
+      nome: "Suco Goiaba da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaGoiaba.jpg"
+    },
+
+      "produto-suco-polpa-graviola1L": {
+      tipo: "bebida",
+      nome: "Suco Graviola da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaGraviola.jpg"
+    },
+
+      "produto-suco-polpa-manga1L": {
+      tipo: "bebida",
+      nome: "Suco Manga da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaManga.jpg"
+    },
+
+      "produto-suco-polpa-abacaxi1L": {
+      tipo: "bebida",
+      nome: "Suco Abacaxi da Polpa – 1L",
+      preco: 15.00,
+      descricao: "Espremido na hora, 100% fruta. Refrescante, doce e bom demaisss.",
+      imagem: "imagens/bebidas/PolpaAbacaxi.jpg"
+    },
 }
+
+
 
 const precosEntrega = {
   "Feitosa": 2,
