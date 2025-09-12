@@ -1510,25 +1510,6 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
     let nomeCliente = document.querySelector('#nomeUsuario').value;
     let telefoneCliente = document.querySelector('#cellUsuario').value;
     let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
-    
-
-
-    
-     // --- CÓDIGO DO FIREBASE A SER ADICIONADO AQUI ---
-    // 1. Coletar os dados para o Firebase
-    let clienteInfo = {
-        nome: nomeCliente,
-        telefone: telefoneCliente,
-        tipo: tipoPedido
-    };
-    
-    // Coletar os dados do carrinho de forma que o Firebase consiga entender
-    const itensParaFirebase = itensCarrinho.map(item => ({
-        nome: item.produto.nome,
-        preco: item.produto.preco,
-        quantidade: item.quantidade,
-        observacoes: item.observacao || ''
-    }));
 
     let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
 
@@ -1628,21 +1609,55 @@ if (inputTrocoElement) {
                               `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
 }
 
-    // 2. Montar o objeto completo do pedido para o Firebase
-    const pedidoParaFirebase = {
-    cliente: {
+
+    // --- CÓDIGO DO FIREBASE A SER ADICIONADO AQUI ---
+    // 1. Coletar os dados para o Firebase
+    let clienteInfo = {
         nome: nomeCliente,
         telefone: telefoneCliente,
         tipo: tipoPedido
-    },
-    itens: itensParaFirebase,
-    taxaEntrega: valorTaxaDeEntrega,
-    pagamento: textoFormaPagamento,
-    troco: valorTroco,
-    data: new Date()
+    };
+
+    // **NOVA LÓGICA: ** Adiciona o objeto de endereço SE o pedido for de Entrega
+    if (tipoPedido === 'Entrega') {
+      // Coletar todas as partes do endereço
+      let bairro = document.querySelector('#Bairro').value;
+      let rua = document.querySelector('#Rua').value;
+      let numero = document.querySelector('#NumeroCasa').value;
+      let complemento = document.querySelector('#complemento').value;
+
+      // Objeto para armazenar o endereço
+      let enderecoInfo = {
+        bairro: bairro,
+        rua: rua,
+        numero: numero,
+        complemento: complemento
+      };
+      // Adiciona o objeto endereço completo ao objeto clienteInfo
+      clienteInfo.endereco = enderecoInfo
+    };
+
+    
+    // Coletar os dados do carrinho de forma que o Firebase consiga entender
+    const itensParaFirebase = itensCarrinho.map(item => ({
+        nome: item.produto.nome,
+        preco: item.produto.preco,
+        quantidade: item.quantidade,
+        observacoes: item.observacao || ''
+    }));
+
+
+    //  Montar o objeto completo do pedido para o Firebase
+    const pedidoParaFirebase = {
+      cliente: clienteInfo,
+      itens: itensParaFirebase,
+      taxaEntrega: valorTaxaDeEntrega,
+      pagamento: textoFormaPagamento,
+      troco: valorTroco,
+      data: new Date()
 };
 
-    // 3. Chamar a função para enviar para o Firebase
+    // Chamar a função para enviar para o Firebase
     // Usamos 'await' aqui porque a função 'enviarPedido' é assíncrona
     await enviarPedido(pedidoParaFirebase);
 

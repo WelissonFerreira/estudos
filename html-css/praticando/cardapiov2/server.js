@@ -15,14 +15,36 @@ admin.initializeApp({
 const db = admin.firestore();
 const pedidosRef = db.collection('pedidos');
 
-// 3. FUNÇÃO DE IMPRESSÃO - É AQUI ONDE SEU CÓDIGO ESTAVA FALTANDO
-// Esta função simula a impressão, apenas para testar
-function imprimirPedido(pedido) {
+// 3. FUNÇÃO DE IMPRESSÃO - 
+function imprimirPedido(pedido, tipoComanda) {
+
+    // Converter o Timestamp do Firestore para uma data JavaScript
+    const dataDoPedido = pedido.data.toDate();
+    const dataFormatada = dataDoPedido.toLocaleDateString('pt-BR');
+    const horaFormatada = dataDoPedido.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+
     // Monta a string com todos os dados do pedido
-    let dadosParaImpressao = "--- NOVO PEDIDO ---\n\n";
+    let dadosParaImpressao = `--- NOVO PEDIDO | ARTHUR LANCHES | ${tipoComanda} ---\n\n`;
+    dadosParaImpressao += `Data: ${dataFormatada} | Hora: ${horaFormatada}\n`
     dadosParaImpressao += `Nome do Cliente: ${pedido.cliente.nome}\n`;
     dadosParaImpressao += `Telefone: ${pedido.cliente.telefone}\n`;
     dadosParaImpressao += `Tipo de Pedido: ${pedido.cliente.tipo}\n\n`;
+
+    // CONDIÇÃO DE ENDEREÇO
+
+    if (pedido.cliente.tipo === 'Entrega' && pedido.cliente.endereco) {
+        dadosParaImpressao += `--- ENDEREÇO DE ENTREGA --- \n`;
+        dadosParaImpressao += `Bairro: ${pedido.cliente.endereco.bairro} \n`;
+        dadosParaImpressao += `Rua: ${pedido.cliente.endereco.rua}\n`;
+        dadosParaImpressao += `Número: ${pedido.cliente.endereco.numero}\n`;
+        
+        if (pedido.cliente.endereco.complemento) {
+            dadosParaImpressao += `Complemento: ${pedido.cliente.endereco.complemento}\n`
+        }
+        dadosParaImpressao += `\n`
+
+    }
     
     dadosParaImpressao += "--- ITENS DO PEDIDO ---\n";
     pedido.itens.forEach(item => {
@@ -62,8 +84,14 @@ pedidosRef.onSnapshot(snapshot => {
             
             console.log('Novo pedido recebido do Firestore!');
             
-            // Chama a função de impressão
-            imprimirPedido(novoPedido);
+            // Chama a comanda para a cozinha (sempre)
+            imprimirPedido(novoPedido, '===== COMANDA COZINHA =====');
+
+            // Chama a comanda para o entregador (apenas se for entrega)
+            if (novoPedido.cliente.tipo === 'Entrega') {
+                imprimirPedido(novoPedido, ' ===== COMANDA ENTREGADOR =====')
+            }
+            
 
             // Adicione a lógica para apagar o documento depois de imprimir
             db.collection('pedidos').doc(docId).delete()
