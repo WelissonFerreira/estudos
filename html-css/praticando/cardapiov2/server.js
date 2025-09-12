@@ -1,21 +1,24 @@
 // server.js
 
 // 1. IMPORTAÇÕES E CONFIGURAÇÃO
+// Importa o SDK do Firebase Admin e o módulo de impressão
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 const printer = require('@thiagoelg/node-printer')
 const nomeDaImpressora = 'POS-58';
 
-
+// Inicializa o Firebase com a chave de serviço
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
 
 // 2. REFERÊNCIAS AO FIRESTORE
+// Conecta ao banco de dados e à coleção de pedidos
 const db = admin.firestore();
 const pedidosRef = db.collection('pedidos');
 
-// 3. FUNÇÃO DE IMPRESSÃO - 
+// 3. FUNÇÃO DE IMPRESSÃO
+// Esta função monta a string da comanda e a envia para a impressora
 function imprimirPedido(pedido, tipoComanda) {
 
     // Converter o Timestamp do Firestore para uma data JavaScript
@@ -32,7 +35,7 @@ function imprimirPedido(pedido, tipoComanda) {
     dadosParaImpressao += `Tipo de Pedido: ${pedido.cliente.tipo}\n\n`;
 
     // CONDIÇÃO DE ENDEREÇO
-
+    // Adiciona o endereço se o tipo de pedido for 'Entrega'
     if (pedido.cliente.tipo === 'Entrega' && pedido.cliente.endereco) {
         dadosParaImpressao += `--- ENDEREÇO DE ENTREGA --- \n`;
         dadosParaImpressao += `Bairro: ${pedido.cliente.endereco.bairro} \n`;
@@ -43,23 +46,40 @@ function imprimirPedido(pedido, tipoComanda) {
             dadosParaImpressao += `Complemento: ${pedido.cliente.endereco.complemento}\n`
         }
         dadosParaImpressao += `\n`
-
     }
     
+    // Lista os itens do pedido
     dadosParaImpressao += "--- ITENS DO PEDIDO ---\n";
+    let subtotalItens = 0; // Variável para somar o subtotal
+
     pedido.itens.forEach(item => {
-        dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}\n`;
+        const precoTotalItem = item.preco * item.quantidade;
+        dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoTotalItem.toFixed(2).replace('.', ',')}\n`;
         if (item.observacoes) {
             dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
         }
+        subtotalItens += precoTotalItem;
     });
 
+    // Seção de resumo e valores financeiros
     dadosParaImpressao += "\n--------------------\n";
+    dadosParaImpressao += `Subtotal: R$ ${subtotalItens.toFixed(2).replace('.', ',')}\n`;
+    
+    let valorTotal = subtotalItens;
+    if (pedido.taxaEntrega > 0) {
+        dadosParaImpressao += `Taxa de Entrega: R$ ${pedido.taxaEntrega.toFixed(2).replace('.', ',')}\n`;
+        valorTotal += pedido.taxaEntrega;
+    }
+
+    dadosParaImpressao += `\nTOTAL DO PEDIDO: R$ ${valorTotal.toFixed(2).replace('.', ',')}\n`;
+    
+    dadosParaImpressao += "--------------------\n";
     dadosParaImpressao += `Forma de Pagamento: ${pedido.pagamento}\n`;
+
     if (pedido.troco > 0) {
         dadosParaImpressao += `Troco para: R$ ${pedido.troco.toFixed(2).replace('.', ',')}\n`;
     }
-    dadosParaImpressao += "--------------------\n\n";
+    dadosParaImpressao += "--------------------\n\n\n\n";
 
     // Envia os dados para a impressora
     printer.printDirect({
@@ -76,6 +96,7 @@ function imprimirPedido(pedido, tipoComanda) {
 }
 
 // 4. ESCUTA DOS PEDIDOS DO FIRESTORE
+// Fica 'ouvindo' a coleção de pedidos em tempo real
 pedidosRef.onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
         if (change.type === 'added') {
@@ -89,10 +110,9 @@ pedidosRef.onSnapshot(snapshot => {
 
             // Chama a comanda para o entregador (apenas se for entrega)
             if (novoPedido.cliente.tipo === 'Entrega') {
-                imprimirPedido(novoPedido, ' ===== COMANDA ENTREGADOR =====')
+                imprimirPedido(novoPedido, '===== COMANDA ENTREGADOR =====')
             }
             
-
             // Adicione a lógica para apagar o documento depois de imprimir
             db.collection('pedidos').doc(docId).delete()
                 .then(() => {
@@ -106,6 +126,5 @@ pedidosRef.onSnapshot(snapshot => {
 }, err => {
     console.error('Erro ao ouvir mudanças no Firestore:', err);
 });
-
 
 console.log('Servidor de impressão iniciado. Ouvindo novos pedidos no Firestore...');
