@@ -8,9 +8,42 @@
     box-sizing: border-box;
 }
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
+
+:root{
+    --title-font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --body-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+    --title-size: 1rem;      /* ajuste no seu design */
+    --desc-size: 0.95rem;
+    --price-size: 1.05rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{
+    --title-font: "Playfair Display", serif;
+    --body-font: "Source Sans 3", system-ui, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap');
+:root{
+    --title-font: "Bebas Neue", sans-serif;
+    --body-font: "Rubik", system-ui, sans-serif;
+}
+.menu-price{ font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito:wght@400;600&display=swap');
+:root{
+    --title-font: "Montserrat", system-ui, sans-serif;
+    --body-font: "Nunito", system-ui, sans-serif;
+}
+
+
+
 /* Corpo do site */
 body {
-    background-color: white;
+    width: 100vw;
     font-size: 10px;
     
 }
@@ -26,24 +59,20 @@ main {
     width: 100%;
     height: 100%;
     padding-bottom: 100px;
-    background-color: #252525;
+
     
 }
 
 #principal {
-    background-image: url(imagens/backteste1.jpg);
+    /*background-image: url(imagens/geral/backtransparent2.jpg);*/
+    /*background-size: contain ;*/
+    background: linear-gradient(4deg, #6A0DAD, #E8931F);
     
     /* background-color: #E8931F;*/
     
 }
 
-span {
-    font-size: 0.9rem;
-    color: black;
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
+
 
 
 /* Cabeçalho */
@@ -55,6 +84,8 @@ span {
     justify-content: center;
     position: relative;
     overflow: hidden; /* evita vazamento da imagem */
+    
+
 }
 
 
@@ -76,6 +107,7 @@ span {
     border-bottom-left-radius: 0;  /* canto inferior esquerdo */
     border-bottom-right-radius: 0; /* canto inferior direito */ 
     background-color: #E8931F;
+    /*background-color: #091921;*/
     position: relative;
     margin-top: -30px;
     z-index: 2;
@@ -108,6 +140,7 @@ span {
     flex-direction: column;
     align-items: center;
     background-color: #E8931F;
+    /*background-color: #091921;*/
     padding-bottom: 10px;
     border-radius: 10px;
     margin-top: 40px;
@@ -118,7 +151,7 @@ span {
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    color: rgb(158, 26, 24);
+    color: black;
     font-size: 0.8rem;
     text-decoration: underline;
     cursor: pointer;
@@ -129,16 +162,16 @@ span {
 
 
 .msghorariofuncionamento {
-    background-color: rgb(137, 164, 97);
-    color: white;
+    background: linear-gradient(4deg, #6A0DAD, #E8931F);
+    color: black;
     border-radius: 5px;
     padding: 5px 5px;
     margin-bottom: 5px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     cursor: pointer;
 
 }
@@ -148,28 +181,49 @@ span {
     flex-direction: row;
     align-items: center;
     gap: 5px;
+    background: linear-gradient(4deg, #6A0DAD, #E8931F);
+    border-radius: 5px;
+    padding: 5px 5px;
 }
+    
+
 
 .msgverhorarios {
-    color: white;
+    color: black;
     padding: 2px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     cursor: pointer;
+}
+
+.novoP {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: black;
+    border-radius: 3px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #E8931F;
+    letter-spacing: 2px;
 }
 
 
 
 .btn-fechado-horarios {
-    color: white;
-    background-color: rgb(158, 26, 24);
-    padding: 5px;
-    margin: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: black;
+    padding: 5px 5px;
+    margin: 8px;
     border-radius: 3px;
     cursor: pointer;
+    
+
 }
 
 
@@ -190,23 +244,51 @@ span {
     }
 
     .botoesCategorias {
-        font-family: "Poppins", sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-weight: 700;
         font-style: normal;
-        background-color: #E8931F;
+        background: linear-gradient(272deg, #827e79, #fafafa);
+        color: black;
+        border-radius: 5px;
+        padding: 7px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #botoesacai {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        background: linear-gradient(195deg, #6A0DAD, #9c87ac);
         color: white;
         border-radius: 5px;
-        padding: 5px;
+        padding: 7px;
         border: none;
         cursor: pointer;
     }
 
 
 
-
-#titulo-passaporte, #titulo-sanduiches, #titulo-especiais, #titulo-bebidas {
+#titulo-passaporte, #titulo-sanduiches, #titulo-especiais, #titulo-bebidas, #titulo-porcoes {
     display: inline-block;
-    background-color: #E8931F; /* Cor de fundo para CADA item */
+    background: linear-gradient(272deg, #827e79, #fafafa);
+    color: black;
+    font-size: 0.7rem;
+    border-radius: 5px; /* Borda arredondada para CADA item */
+    padding: 5px 10px; /* Preenchimento interno para CADA item (texto ao redor) */
+    margin-top: 20px;
+    margin-left: 5%;
+    /*margin-left: 15px;*/
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    
+}
+
+#titulo-acai {
+    display: inline-block;
+    background: linear-gradient(195deg, #6A0DAD, #9c87ac);
     color: white;
     font-size: 0.7rem;
     border-radius: 5px; /* Borda arredondada para CADA item */
@@ -214,11 +296,10 @@ span {
     margin-top: 20px;
     margin-left: 5%;
     /*margin-left: 15px;*/
-    font-family: "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-style: normal;
     text-align: left;
-    
 }
 
 
@@ -228,24 +309,49 @@ span {
 /* TITULO PRINCIPAL */
 
 /* Parágrafo do menu */
+.divpmenu {
+    display: block;
+    list-style: none;
+    margin-bottom: 20px;
+    
+}
+
 .pmenu {
-    font-family: "Poppins", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 1.3rem;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-weight: bolder;
+    font-size: 0.8rem;
     color: black;
     text-align: center;
     padding: 10px;
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-top: -10px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 2px #E8931F;
+    
 }
 
-.novoP {
-    font-size: 1rem;
-    margin-bottom: 15px;
+.pmenu2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-weight: bolder;
+    font-size: 0.8rem;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    margin-top: -10px;
+    line-height: 1.5;
+    letter-spacing: 1px;
 }
+
+
+
+/* CONTEUDO PRINCIPAL - DESTAQUE, CARDS, IMG, DESCRIÇÕES, PREÇO */
 
 #destaques {
     display: flex;
@@ -263,33 +369,37 @@ span {
 }
 
 .h4destaquePrincipal {
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
+    font-style: normal;
     margin-top: 10px;
     padding: 8px;
-    color: white;
-    background-color: #E8931F;
+    color: black;
+    background: linear-gradient(272deg, #827e79, #fafafa);
     font-size: 0.8rem;
     text-align: center;
     border-radius: 5px;
     width: fit-content;
     margin: 10px auto;
     margin-bottom: -10px;
+    
 }
+
+/*091921 | 999A9E */
 
 .divimage-destaque {
     display: flex;
-    height: 120px;
-    justify-content: center;
+    height: 140px;
+    padding: 5px;
     
     
 }
 
 .fotodestaques {
-    height: 120px;
+    height: 100%;
     border-radius: 20px;
-    width: 75%;
+    width: 100%;
+    margin: auto;
 }
 
 .h4destaque {
@@ -302,11 +412,12 @@ span {
 }
 
 .descricao-destaque {
-    font-size: 0.9rem;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 1.1rem;
     
 }
 
@@ -316,13 +427,34 @@ span {
     letter-spacing: 1px;
 }
 
+.div-span-destaque {
+    padding: 5px;
+}
+
 .span-destaque {
     margin: 15%;
+    font-size: 0.9rem;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.divPrecosDest {
+    padding: 5px;
+    
 }
 
 .span-riscado-destaque {
     text-decoration: line-through;
     color: gray;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    color: rgb(85, 83, 83);
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: line-through;
 }
 
 .botaodestaque {
@@ -332,12 +464,9 @@ span {
 
 .destaqueAdicionar {
     left: 20%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 0%;
-    
 }
-
-
 
 .card-destaque {
     display: flex;
@@ -347,8 +476,7 @@ span {
     box-shadow: 1px 1px 8px 1px gray;
     border-radius: 10px;
     background-color: white;
-    padding: 10px;
-    flex-basis: 200px;
+    flex-basis: 185px;
     flex-shrink: 0;
     flex-grow: 0;
     
@@ -363,12 +491,11 @@ span {
     gap: 10px;
     justify-content: flex-start;
     flex-grow: 1;
+    padding: 10px;
     
 }
 
 
-
-/* CONTEUDO PRINCIPAL - CARDS, IMG, DESCRIÇÕES, PREÇO */
 .item-pai {
     display: flex;
     flex-direction: row;
@@ -393,6 +520,14 @@ span {
     width: 100%;
 }
 
+.card-bebida {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding-left: 7px;
+    width: 100%;
+}
+
 
 
 
@@ -401,7 +536,7 @@ span {
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    gap: 5px;
+    gap: 10px;
     width: 100%;
 
 }
@@ -419,14 +554,7 @@ span {
 
 .fotosanduba {
     width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 20px;
-}
-
-.fotosanduba-especial {
-    width: 100%;
-    height: 100%;
+    height: 200px;
     display: block;
     border-radius: 20px;
 }
@@ -436,8 +564,8 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    flex: 0 0 120px;
+    height: 100%;
+    flex: 0 0 160px;
     overflow: hidden;
 }
 
@@ -461,7 +589,21 @@ span {
     border-radius: 10px;
 }
 
+.card-image-combo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    width: 100%;
+    overflow: hidden;
+}
 
+.fotosanduba-especial {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 20px;
+}
 
 
 
@@ -477,23 +619,7 @@ span {
     width: 100%;
 }
 
-.AdicionarCarrinho {
-    font-family: "Quicksand", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bolder;
-    font-style: normal;
-    font-size: 0.7rem;
-    letter-spacing: 0.5px;
-    border: none;
-    border-radius: 15px;
-    background-color: #E8931F;
-    color: black;
-    padding: 5px 10px;
-    cursor: pointer;
-    white-space: nowrap;
-    position: relative;
 
-}
 
 .msgAdicionado {
     position: absolute;
@@ -511,15 +637,13 @@ span {
 }
 
 .close-button-carrinho {
-    /*position: absolute;*/
-    font-size: 2rem;
+    font-size: 1.7rem;
+    font-family: "Rubik", sans-serif;
     font-weight: bold;
-    /*top: 0%;
-    right: 5%; */
-    padding: 5px 10px;
-    cursor: pointer;
-    color: black;
-    background-color: transparent;
+    color: grey;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
     border: none;
 }
 
@@ -531,7 +655,7 @@ span {
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding-bottom: 5px;
     
     color: black;
@@ -541,37 +665,55 @@ span {
 
 
 .descricao-produtos {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     padding-bottom: 3px;
     color: black;
     margin-right: 3px;
     
 }
 
+.txtPalavraDestaque {
+    font-size: 1rem;
+    color: rgba(255, 0, 0, 0.664); /* amarelo dourado */
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+}
+
 .descricao-ingredientes {
     color: black;
-    line-height: 1.2;
+    line-height: 1.3rem;
     letter-spacing: 1px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    padding: 2px;
     
 }
 
-
+.preco-normal {
+    font-size: 0.9rem;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
 
 
 .preco-riscado {
+    font-size: 0.8rem;
     font-weight: bolder;
     color: rgb(85, 83, 83);
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
     text-decoration: line-through;
 }
 
 .spanmenu {
     color: black;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 /* Cor de texto padrão para h4, p, span */
@@ -588,12 +730,12 @@ a {
 /* CONTROLE DO MENU INFERIOR */
 
 footer {
-  position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
-  bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
-  width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
-  background-Color: #E8931F; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
-  padding: 10px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
-  z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
+    position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
+    bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
+    width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
+    background: linear-gradient(4deg, #6A0DAD, #E8931F);
+    padding: 10px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
+    z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
 
 
 }
@@ -601,7 +743,6 @@ footer {
 /* MENU INFERIOR */
 
 .navbarinferior {
-    background-Color: #E8931F;
     font-size: 1rem;
     display: flex;
     flex-direction: row;
@@ -686,7 +827,7 @@ footer {
     width: 100%; /* Largura total da tela */
     height: 100%; /* Altura total da tela */
     overflow: auto; /* Permite rolagem se necessário */
-    background-color: #E8931F;
+    background-color: #EC6418;
 }
 
 #ModalQRCode {
@@ -773,7 +914,7 @@ footer {
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    color: #E8931F;
+    color: #EC6418;
     text-decoration: underline;
 }
 
@@ -813,7 +954,6 @@ footer {
 }
 
 
-
 /* MODAL TAXA DE ENTREGA */
 
 #modalTaxaEntrega {
@@ -826,7 +966,7 @@ footer {
     height: 60%;
     margin-top: 100px;
     display: none;
-
+    overflow-y: auto;
 }
 
 .conteudoModalTaxa {
@@ -838,12 +978,19 @@ footer {
     border: 1px solid #888;
     border-radius: 10px;
     position: relative;
+    
 }
 
 .close-button-taxas {
+    font-size: 1.7rem;
+    font-family: "Rubik", sans-serif;
+    color: grey;
+    border-radius: 50px;
+    border: none;
     position: absolute;
     left: 90%;
-    top: 5%;
+    top: 2%;
+    
 }
 
 .btnEntrega {
@@ -858,7 +1005,7 @@ footer {
     margin: 2%;
     padding: 3px 5px;
     left: 35%;
-    top: 53%;
+    top: 85%;
 }
 
 
@@ -940,34 +1087,34 @@ footer {
     }
 
     .close-button-horarios {
+        font-size: 2rem;
         position: absolute;
-        top: 10px;
-        right: 15px;
+        top: 0%;
+        right: 3%;
     }
 /*=================================================== */
 
 /*  MODAL DO CARRINHO: */
 .modal-content-carrinho {
-    background-color: #E8931F;
+    background: linear-gradient(272deg, #999A9E, #091921);
     margin: auto; /* Centraliza o modal na tela */
-    padding: 20px;
+    padding: 10px;
     padding-bottom: 120px;
     max-width: 600px; /* Largura máxima do modal */
     position: relative; /* Para posicionar o botão de fechar */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     font-size: 1rem;
     width: 100vw;
-    
-    
+    overflow-y: auto; /* Permite a rolagem vertical */
+    padding-bottom: 120px;
 
 }
 
 
 
 #ModalCarrinho {
-    background-Color: #E8931F;
+    background: linear-gradient(272deg, #999A9E, #091921);
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -1011,6 +1158,7 @@ footer {
     justify-content: center;
     align-items: center;
     margin: auto;
+
     
     
 }
@@ -1038,11 +1186,51 @@ footer {
 
 
 .imagemProduto {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 100px;
     border-radius: 10px;
     margin-top: 10px;
 }
+
+.imagemProdutoBebida {
+    width: 50px;
+    height: 100px;
+}
+
+.imagemPorcaoCarrinho {
+    width: 100px;   /* ou o tamanho que quiser */
+    height: 100px;  /* altura fixa para não deformar */
+    object-fit: cover;  /* mantém proporção da imagem */
+    border-radius: 10px;
+}
+
+
+.divBebidasItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.divBebidaInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Exemplo de estilo para a imagem da bebida no carrinho */
+.imagemBebidaCarrinho {
+
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px; /* Espaçamento entre a imagem e o texto */
+    border-radius: 5px; /* Bordas arredondadas, se desejar */
+}
+
+
 
 .controles-quantidade {
     display: flex;
@@ -1054,7 +1242,7 @@ footer {
 }
 
 #finalizar-compra {
-font-family: "Quicksand", sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-weight: bold;
     margin-top: 10px;
     font-size: 1rem;
@@ -1105,6 +1293,7 @@ font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: 400;
+    margin: auto;
 
 }
 
@@ -1123,7 +1312,7 @@ font-family: "Quicksand", sans-serif;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .labelObs {
@@ -1146,7 +1335,7 @@ font-family: "Quicksand", sans-serif;
     justify-content: space-around;
     gap: 5px;
     padding: 5px;
-    border: 1px solid gray;
+    border: 1px solid red;
     border-radius: 5px;
     align-self: center;
     width: 40%;
@@ -1211,7 +1400,6 @@ font-family: "Quicksand", sans-serif;
     margin: auto;
 }
 
-
 #sugestaoBebidas {
     display: flex;
     flex-direction: column;
@@ -1243,7 +1431,7 @@ font-family: "Quicksand", sans-serif;
     justify-content: space-around;
     gap: 15px;
     padding: 5px;
-    border: 1px solid #E8931F;
+    border: 1px solid #EC6418;
 }
 
 .imgsugestao {
@@ -1255,19 +1443,19 @@ font-family: "Quicksand", sans-serif;
 .imgsugestao-cocacola250 {
     width: 100px;
     height: 80px;
-    margin-left: -2%;
+    margin-left: -6%;
 }
 
 .imgsugestao-guarana250 {
     width: 80px;
     height: 80px;
-    margin-left: -0%;
+    margin-left: -4%;
 }
 
 .imgsugestao-fanta250 {
     width: 90px;
     height: 80px;
-    margin-left: -3%;
+    margin-left: -6%;
 }
 
 .imgsugestao-soda250 {
@@ -1279,36 +1467,42 @@ font-family: "Quicksand", sans-serif;
 .imgsugestao-coca1L {
     width: 130px;
     height: 100px;
-    margin-left: -8%;
+    margin-left: -12%;
 }
 .imgsugestao-guarana1L {
     width: 60px;
     height: 100px;
-    margin-left: -0%;
+    margin-left: -4%;
 }
 
 .imgsugestao-fanta1L {
     width: 130px;
     height: 120px;
-    margin-left: -8%;
+    margin-left: -14%;
 }
 
-.imgsugestao-soda1L {
+.imgsugestao-aguaGas {
     width: 120px;
-    height:100px;
-    margin-left: -8%;
-}
-
-.imgsugestao-coca2L {
-    width: 130px;
-    height: 140px;
-    margin-left: -8%;
-}
-
-.imgsugestao-guarana2L {
-    width: 150px;
-    height: 140px;
+    height: 100px;
     margin-left: -12%;
+}
+
+.imgsugestao-cocacolamenor {
+    width: 120px;
+    height: 100px;
+    margin-left: -8%;
+}
+
+.imgsugestao-guaranamenor {
+    width: 120px;
+    height: 100px;
+    margin-left: -8%;
+}
+
+.imgsugestao-h20 {
+    width: 120px;
+    height: 120px;
+    margin-left: -14%;
 }
 
 .imgsugestao-fanta2L {
@@ -1323,12 +1517,19 @@ font-family: "Quicksand", sans-serif;
     margin-left: -5%;
 }
 
-.psugestao, .spansugestao {
+.imgsugestao-aguaMineral {
+    width: 40px;
+    height: 100px;
+    margin-left: -2%;
+}
+
+.spansugestao {
     font-family: "Quicksand", sans-serif;
     font-size: 0.8rem;
     font-weight: 700;
     font-style: normal;
 }
+
 
 .adicionar-bebida {
     font-family: "Quicksand", sans-serif;
@@ -1338,7 +1539,7 @@ font-family: "Quicksand", sans-serif;
     font-size: 0.5rem;
     border: none;
     border-radius: 25px;
-    background-color: #E8931F;
+    background-color: #EC6418;
     color: white;
     padding: 5px 10px;
     cursor: pointer;
@@ -1359,7 +1560,7 @@ font-family: "Quicksand", sans-serif;
 
 
 
-/* MODAL DADOS */
+
 
 /* MODAL DADOS - O overlay que cobre a tela toda */
 #ModalDados {
@@ -1378,7 +1579,7 @@ font-family: "Quicksand", sans-serif;
 
 /* Conteúdo do Modal de Dados - Onde está o formulário */
 .ConteudoModalDados {
-    background-color: #E8931F; /* O fundo que você quer para o formulário */
+    background: linear-gradient(272deg, #999A9E, #091921);
     color: black;
     margin: 0;           /* Sem margens externas, preenche o pai */
     padding: 20px;       /* Padding interno para o conteúdo do formulário */
@@ -1421,7 +1622,7 @@ font-family: "Quicksand", sans-serif;
     margin: 0;  /* Remova qualquer margem que possa existir aqui por padrão */
     overflow-y: auto; /* Se o formulário for muito longo, ele rola internamente */
     box-sizing: border-box;
-    background-color: #E8931F;
+    
 }
 
 
@@ -1429,7 +1630,7 @@ font-family: "Quicksand", sans-serif;
 
 
 #nomeUsuario, #cellUsuario, #Bairro, #Rua, #NumeroCasa, #complemento {
-    width: 100%; /* Inputs devem preencher a largura de sua div pai */
+    width: 95%; /* Inputs devem preencher a largura de sua div pai */
     height: 50px;
     box-sizing: border-box; /* Essencial para inputs com padding/border */
     padding: 8px; /* Adicione um padding para que o texto não cole nas bordas do input */
@@ -1439,6 +1640,8 @@ font-family: "Quicksand", sans-serif;
 
 .labelform {
     font-size: 1.4rem;
+    color: white;
+    padding: 5px;
 }
 
 
@@ -1482,14 +1685,14 @@ font-family: "Quicksand", sans-serif;
 /* MODAL FINALIZAR PEDIDO */
 
 #ModalFazerPedido {
-    background-color: #E8931F;
+    background: linear-gradient(272deg, #999A9E, #091921);
     display: none;
     z-index: 1001;
     /*border: solid 1px;*/
 }
 
 .ContModalFazerPedido {
-    background-color: #E8931F;
+    background: linear-gradient(272deg, #999A9E, #091921);
     color: black;
     margin: auto; 
     padding: 20px;
@@ -1514,22 +1717,25 @@ font-family: "Quicksand", sans-serif;
     font-weight: 700;
     font-style: normal;
     padding: 10px 10px;
-    width: 100%;
+    width: 100%
 }
 
 
+
 #voltarPedido {
-    background-color: #E8931F;
+    background-color: white;
     position: absolute;
     left: 5px;
     top: 0px;
-    font-size: 2rem;
+    margin: 5px;
+    font-size: 1.2rem;
+    font-family: "Rubik", sans-serif;
     font-weight: bold;
-    padding: 1px 10px;
+    color: grey;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
     border: none;
-    cursor: pointer;
-    color: black;
-    border-radius: 15px;
 }
 
 .seuPedidoNome {
@@ -1543,11 +1749,17 @@ font-family: "Quicksand", sans-serif;
 
 #Pedido {
     margin-top: 25px;
-    /*border: 1px solid gray;*/
-    padding: 10px;
     height: 100%;
-    background-color: #E8931F;
     
+}
+
+.h4FormaPagamentotxt {
+    margin-top: 5%;
+    text-align: center;
+}
+
+.divTroco {
+    height: 4%;
 }
 
 #inputTroco {
@@ -1557,16 +1769,20 @@ font-family: "Quicksand", sans-serif;
     border-radius: 10px;
     border: none;
     padding: 8px;
+    
+    
 }
 
 #itensListadosNoPedido {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    margin-top: 20%; 
 }
 
 .divControleItemIndividual {
     border: 1px solid black;
+    background-color: white;
     border-radius: 20px;
     padding: 10px;
     display: flex;
@@ -1595,6 +1811,7 @@ font-family: "Quicksand", sans-serif;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
+    
 }
 
 .formas-pagamento {
@@ -1607,9 +1824,13 @@ font-family: "Quicksand", sans-serif;
     margin-top: 10px;
 }
 
-.h4FormaPagamentotxt {
+.ControleTotalEntrega  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
     margin-top: 5%;
-    text-align: center;
+    width: 100%;
 }
 
 .controlePIX {
@@ -1617,19 +1838,6 @@ font-family: "Quicksand", sans-serif;
     flex-direction: row;
     gap: 10px;
     align-items: center;
-}
-
-.divTroco {
-    height: 4%;
-}
-
-.ControleTotalEntrega {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    margin-top: 5%;
-    width: 100%;
 }
 
 #taxaEntrega {
@@ -1658,21 +1866,28 @@ font-family: "Quicksand", sans-serif;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: bolder;
+    
 }
 
 #divBotoesPedido {
     display: flex;
     justify-content: center;
     margin-top: 25px;
+    width: 100%;
 }
 
 .imagemPedidoFinal {
-    width: 100px;
+    
     height: 100px;
     border-radius: 10px;
 }
 
 /* FORMULÁRIO */
+
+.CformEntrega, #formEntrega {
+    overflow: visible;
+}
+
 
 .CformEntrega {
 
@@ -1688,10 +1903,12 @@ font-family: "Quicksand", sans-serif;
     
 }
 
-.CRetirada, .CEntrega {
+.CRetirada, .CEntrega, .CAgendamento {
     width: 20px;
     height: 20px;
 }
+
+
 
 
 
@@ -1724,7 +1941,7 @@ font-family: "Quicksand", sans-serif;
 
 .opcao-pedido label {
     flex: 0 0;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     
 }
 
@@ -1736,39 +1953,127 @@ font-family: "Quicksand", sans-serif;
 .opcao-pedido label {
     width: 100%; /* Garante que o label ocupe a largura completa */
     margin-top: 10px; /* Adiciona um espaço acima dos labels */
-    
+    color: white;
 }
+
+
+#formAgendamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* contêiner e grid */
+#calendarioDinamico {
+    width: 100%;
+    max-width: 360px; /* ajuste conforme seu modal */
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.cabecalho-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.cabecalho { padding: 6px 0; }
+
+.dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    justify-items: center;
+}
+
+/* tamanho dos quadrados — sobrescreve o antigo */
+#calendarioDinamico .dia {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+    background: #7f7f7f;
+    color: white;
+    transition: transform .12s, box-shadow .12s;
+}
+
+#calendarioDinamico .dia:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,.25);
+    background-color: black;
+}
+
+/* estados */
+#calendarioDinamico .dia-disponivel { background: #6c6c6c; }
+#calendarioDinamico .dia-indisponivel {
+  background: #dc3545;
+  cursor: not-allowed;
+  opacity: 0.98;
+}
+#calendarioDinamico .dia.selecionado {
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.25) inset;
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* destaque para hoje (opcional) */
+#calendarioDinamico .hoje {
+  outline: 2px solid rgba(255,255,255,0.08);
+  outline-offset: 1px;
+}
+
+/* responsivo: reduz os quadrados em telas muito pequenas */
+@media (max-width: 420px) {
+  #calendarioDinamico .dia { width: 38px; height: 38px; min-width: 38px; min-height: 38px; }
+  .cabecalho-semana { font-size: 12px; }
+}
+
 
 .close-button-dados {
     position: absolute;
     top: 15px;
     right: 10px;
-    font-size: 2rem;
     font-weight: bold;
-    width: 50px;
-    padding: 5px 10px;
-    cursor: pointer;
-    color: black;
-    background-color: transparent;
+    font-size: 1.7rem;
+    font-family: "Rubik", sans-serif;
+    color: grey;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
     border: none;
-    margin-bottom: 20px;
 }
 
 .close-button-pedido {
     position: absolute;
-    font-size: 0.5rem;
-    font-weight: bolder;
     top: 0px;
     right: 10px;
-    font-size: 2rem;
+    margin: 5px;
+    font-size: 1.7rem;
+    font-family: "Rubik", sans-serif;
     font-weight: bold;
-    width: 50px;
-    padding: 5px 10px;
-    cursor: pointer;
-    color: black;
-    background-color: transparent;
+    color: grey;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
     border: none;
     
+    
+}
+
+#Bairro {
+    max-height: 200px; /* altura máxima do dropdown */
+    overflow-y: auto;  /* ativa a rolagem vertical */
 }
 
 #nome, #cell, #Bairro, #Rua, #Numero, #complemento {
@@ -1776,9 +2081,865 @@ font-family: "Quicksand", sans-serif;
     margin-top: 3px;
 }
 
+#ModalPreCarrinho {
+    background-color: white;
+    display: none;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh; /* garante cobertura total da tela */
+    position: fixed; /* fixa o modal na tela */
+    top: 0;
+    left: 0;
+    
+}
+
+.ContModalPreCarrinho {
+    color: black;
+    margin: auto; 
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    overflow-y: auto;
+    padding-bottom: 120px ;
+
+}
+
+.divPrincipal {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    
+}
+
+/* A div que envolve a imagem deve ocupar toda a tela */
+
+.divImagemPre {
+    position: relative;
+    z-index: 1;
+    width: 100vw;      
+    height: 45vh;    
+    overflow: hidden;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin-bottom: 20px;*/
+}
+
+
+
+
+/* A imagem deve preencher a div mantendo proporção e cobrindo tudo */
+.imagemPre {
+    width: 100%;
+    height: 100%;
+    object-position: cover;  /* cobre toda a área da div, cortando se necessário */
+}
+
+.divPrincipalProdutoInfo {
+    display: flex;
+    position: relative;
+    margin-top: -20px;
+    z-index: 2;
+    background-color: white;
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.divConteudoPre {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(209, 204, 204);
+}
+
+.h3ProdutoPre {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 550;
+    
+}
+
+.descricaoPre {
+    font-family: var(--body-font); /* usa a fonte definida no :root */
+    font-size: 0.9rem;
+    
+}
+
+.ingredientesPre {
+    font-family: var(--body-font); /* usa a fonte definida no :root */
+    font-size: 0.9rem;
+    width: 100%;
+    line-height: 1.5;
+    
+}
+
+.close-button-precarrinho {
+    background-color: red;
+}
+
+.divPrincipalPre {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.divH4eP {
+    display: flex;
+    border-bottom: 1px solid  rgb(209, 204, 204);
+    height: 80px;
+}
+
+.divControleH4P {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+
+}
+
+.h4SugestaoBebidas {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: var(--title-size);
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+.pSugestao, .txtAdicional {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.7rem;
+}
+
+.divPrecos {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    
+}
+
+.divPrecosBebida {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.precoPre {
+    font-size: 1rem;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+.PrecoRiscadoPre {
+    font-size: 0.8rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: grey;
+    text-decoration: line-through;
+    
+}
+
+.precoRiscadoBebida {
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    font-size: 0.7rem;
+    color: gray;
+    text-decoration: line-through;
+}
+
+.nomeAdicional {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.precoAdicional {
+    font-family: var(--title-font);
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.precoBebida {
+    font-size: 0.8rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+}
+
+.divSugestaoBebidas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    
+}
+
+.divDividirItensBebidas {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px;
+    
+    
+    
+}
+
+.divItemBebida {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    
+    
+}
+
+.divInfoBebida {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+
+
+.divAdicional {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+}
+
+.divDividirItensAdicionais {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 15px;
+    /*gap: 265px;*/
+    height: 70px;
+}
+
+.divItemAdicional {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    
+}
+
+.divh4PAdcicional {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid rgb(209, 204, 204);
+}
+
+.divBotoesAdicionais {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    margin-right: 50px;
+}
+
+
+
+
+.inputQuantidadeAdicionais {
+    display: none;
+    width: 10px;
+    height: 25px;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+
+.divImagemBebida {
+    display: flex;
+    width:  100px;
+    height: 100px;
+    justify-content: center;
+    
+}
+
+.imgBebidas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.divbotaoFecharPre {
+    position: absolute;
+    left: 90%;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    z-index: 1001;
+}
+
+.divNomePrecoAdiconal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.botaoFecharPre {
+    font-size: 1.7rem;
+    font-family: "Rubik", sans-serif;
+    color: grey;
+    border-radius: 50px;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+
+.divFinalAcoes {
+    display: flex;
+    justify-content: space-between; /* Espaça os elementos */
+    align-items: center; /* Alinha verticalmente no centro */
+    padding: 10px 0; /* Ajuste o espaçamento conforme necessário */
+    width: 100%; /* Garante que ocupe toda a largura */
+    position: fixed;
+    bottom: 0;
+    background: white; /* mantém visível */
+    z-index: 1002; /* acima dos itens roláveis */
+}
+
+.divBotoesAcoes {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* Espaço entre os botões de quantidade */
+    padding: 10px;
+}
+
+.botaoDiminuirPre, .botaoAumentarPre {
+    border: none;
+    color: red;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+
+.divBotoesBebidas {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.inputBebidas {
+    display: none;
+    width: 10px;
+    height: auto;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.aumentarBebidas, .diminuirBebidas {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 1.5rem;
+}
+
+.diminuirAdicionais, .aumentarQuantidadeAdicionais {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 1.5rem;
+}
+
+.inputQuantidadePre {
+    width: 25px; /* Ajuste o tamanho do input */
+    height: auto;
+    text-align: center;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.AdicionarCarrinho {
+    /* Estilos para o botão adicionar, largura, cor, etc. */
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    background-color: red; /* Exemplo, use a cor do seu tema */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
+    margin: 10px;
+}
+
+.AdicionarCarrinho i {
+    font-size: 1.2em;
+}
+
+
+.h4Bebida {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.h4Adicional {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: var(--title-size);
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+/* PRÉ-MODAL AÇAI */
+
+.divTitulosAcompanhamentos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    height: 80px;
+}
+
+.h4Acompanhamentos {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: var(--title-size);
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+
+
+.pLimiteAcompanhamentos {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.8rem;
+}
+
+.divItemAcompanhamento {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    
+}
+
+.divBotoesAcompanhamentos {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+.diminuirAcompanhamento, .aumentarQuantidadeAcompanhamento {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 1.5rem;
+}
+
+.inputQuantidadeAcompanhamento {
+    
+    width: 10px;
+    height: auto;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.divNomePrecoAcompanhamento {
+    padding: 20px;
+}
+
+.nomeAcompanhamento {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.divTitulosFrutas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    height: 80px;
+}
+
+.pLimiteFrutas {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.8rem;
+}
+
+.divItemFruta {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.divNomePrecoFruta {
+    padding: 20px;
+}
+
+.nomeFruta {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.divBotoesFrutas {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+.diminuirFruta, .aumentarQuantidadeFruta {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 1.5rem;
+}
+
+.inputQuantidadeFruta {
+    width: 10px;
+    height: auto;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.divTitulosCoberturas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    height: 80px;
+}
+
+.pLimiteCoberturas {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.8rem;
+}
+
+.divItemCobertura {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(209, 204, 204);
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    height: 80px;
+    
+}
+
+.divNomePrecoCobertura {
+    padding: 20px;
+}
+
+.nomeCobertura {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+}
+
+.diminuirCobertura, .aumentarQuantidadeCobertura {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 1.5rem;
+}
+
+.inputQuantidadeCobertura {
+    width: 10px;
+    height: auto;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.divBotoesCoberturas {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+
+
+.divFinal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    z-index: 1002;
+}
+
+.divBotoesFinal {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    padding: 10px;
+}
+
+.diminuir, .aumentar {
+    border: none;
+    color: red;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+
+.inputQuantidade {
+    width: 25px;
+    height: auto;
+    text-align: center;
+    border: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.botaoAdicionar {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px;
+}
+
+.imagemAcaiCarrinho {
+    width: 120px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    
+}
+
+
 
 
  /* ======================================= */
+
+        /*PRÉ-MODAL BEBIDAS */
+
+        /* Estilos para o Modal de Bebidas */
+.modal-bebida {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-bebida {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+}
+
+.fechar-bebida {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fechar-bebida:hover,
+.fechar-bebida:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.conteudo-modal-bebida {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.imagem-modal-bebida img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.detalhes-modal-bebida {
+    text-align: left;
+    width: 100%;
+}
+
+.detalhes-modal-bebida h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.detalhes-modal-bebida p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.preco-modal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.preco-modal #preco-riscado-modal {
+    color: #888;
+    text-decoration: line-through;
+}
+
+.preco-modal #preco-normal-modal {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.quantidade-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.quantidade-modal button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.quantidade-modal button:hover {
+    background-color: #d35400;
+}
+
+.adicionar-ao-carrinho-modal {
+    margin-top: 20px;
+}
+
+#adicionar-bebida-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#adicionar-bebida-btn:hover {
+    background-color: #229954;
+}
+
+#preco-total-bebida {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+
+
+
 
  /* ======================================= */
 /* Responsividade para telas pequenas */
@@ -1788,7 +2949,7 @@ font-family: "Quicksand", sans-serif;
   position: fixed; /* Isso tira o elemento do fluxo normal e o posiciona em relação à viewport */
   bottom: 0; /* Garante que ele fique fixo na parte inferior da tela */
   width: 100%;  /* Faz com que ele ocupe toda a largura da tela */
-  background-Color: #E8931F; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
+  background-Color: #FD4B01; /* Mantenha a cor de fundo, ou defina uma se ainda não tiver */
   padding: 10px 0; /* Ajuste o padding conforme necessário para dar espaço interno */
   z-index: 1000; /* Garante que o footer fique acima de outros elementos na página */
 
@@ -1798,28 +2959,21 @@ font-family: "Quicksand", sans-serif;
 
 
 
-.msgAdicionado {
-    position: absolute;
-    bottom: 120%;
-    left: 25%;
-    transform: translateX(-50%); /* Ajusta para centralizar de fato */
-    opacity: 0; /* Começa invisível */
-    transition: opacity 0.5s ease-in-out; /* Adiciona uma transição suave */
-    pointer-events: none; /* Garante que a mensagem não interfere com cliques */
-    z-index: 1000; /* Garante que a mensagem fique acima de outros elementos */
-    font-family: "Quicksand", sans-serif;
-    font-size: 0.6rem;
-    color: black; /* Escolha uma cor para a mensagem */
-    /* Outros estilos, como background, padding, etc. */
-
-    }
 
     #menu-opcoes {
         display: flex;
+        flex-direction: row;
         width: 100%;
         justify-content: start;
         padding: 8px;
+        overflow-x: scroll;
+        white-space: nowrap;
+        gap: 10px;
     }
+
+
+
+
 
     .item-pai {
         width: 97%;
@@ -1837,7 +2991,7 @@ font-family: "Quicksand", sans-serif;
 
 
     .btnDiminuir, .btnAumentar, .btnRemover {
-    color: black;
+    color: red;
     background-Color: white;
     border: 1px solid white;
     cursor: pointer;
@@ -1862,9 +3016,7 @@ font-family: "Quicksand", sans-serif;
     .msgfuncionamento {
         width: 80px;
     }
-    .msgverhorarios {
-        width: 150px;
-    }
+
 
 }
 
@@ -1890,7 +3042,7 @@ font-family: "Quicksand", sans-serif;
 
 
     .btnDiminuir, .btnAumentar, .btnRemover {
-    color: black;
+    color: red;
     background-Color: white;
     border: 1px solid white;
     cursor: pointer;
@@ -1906,7 +3058,7 @@ font-family: "Quicksand", sans-serif;
 }
 
     .btnDiminuir:hover, .btnAumentar:hover, .btnRemover:hover {
-        background-color: #E8931F;
+        background-color: black;
         cursor: pointer;
     }
     .btnAumentar {
@@ -1919,8 +3071,7 @@ font-family: "Quicksand", sans-serif;
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
-
-        #menu-opcoes::-webkit-scrollbar {
+    #menu-opcoes::-webkit-scrollbar {
     display: none;
 }
 
@@ -1947,8 +3098,13 @@ font-family: "Quicksand", sans-serif;
 
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
+@media screen and (min-width: 1025px) {
 
+
+#principal {
+    width: 50vw;
+    
+}
 
 
 
@@ -1960,11 +3116,43 @@ font-family: "Quicksand", sans-serif;
     margin: auto;
 }
 
+/* MENU TOPO */
+
+    #menu-opcoes::-webkit-scrollbar {
+    display: none;
+}
+
+    #destaques::-webkit-scrollbar {
+    display: none;
+    
+}
+
+    #destaques {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+    font-weight: 700;
+    font-style: normal;
+    color: black;
+    padding: 10px;
+    overflow-x: scroll;
+    margin: auto;
+    
+}
+
     #menu-opcoes {
         display: flex;
+        flex-direction: row;
         width: 100%;
-        justify-content: space-around;
-
+        justify-content: start;
+        padding: 8px;
+        overflow-x: scroll;
+        white-space: nowrap;
+        gap: 10px;
+        
     }
 
 
@@ -1973,4 +3161,3 @@ font-family: "Quicksand", sans-serif;
     
     }
 }
-
