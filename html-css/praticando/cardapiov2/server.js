@@ -48,7 +48,15 @@ function imprimirPedido(pedido, tipoComanda) {
         let precoBase = parseFloat(item.precoBase) || 0;
         let precoTotalItem = precoBase;
 
-        dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
+         // Verifica se o nome do item contém "açai" (ignorando maiúsculas/minúsculas)
+    if (item.nome.toLowerCase().includes('açai')) {
+        dadosParaImpressao += `AÇAI\n`;
+    } else {
+        dadosParaImpressao += `LANCHE\n`;
+    }
+
+    dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`
+        
 
         if (item.observacoes) {
             dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
@@ -102,7 +110,7 @@ function imprimirPedido(pedido, tipoComanda) {
     dadosParaImpressao += `Forma de Pagamento: ${pedido.pagamento}\n`;
 
     if (pedido.troco > 0) {
-        dadosParaImpressao += `Troco para: R$ ${pedido.troco.toFixed(2).replace('.', ',')}\n`;
+        dadosParaImpressao += ` R$ ${pedido.troco.toFixed(2).replace('.', ',')}\n de troco!`;
     }
     dadosParaImpressao += "--------------------\n\n\n\n";
 
