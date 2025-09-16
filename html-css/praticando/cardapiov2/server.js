@@ -1,6 +1,25 @@
-// A função imprimirPedido completa e corrigida para server.js
-function imprimirPedido(pedido, tipoComanda) {
+// server.js
 
+// 1. IMPORTAÇÕES E CONFIGURAÇÃO
+// Importa o SDK do Firebase Admin e o módulo de impressão
+const admin = require('firebase-admin');
+const serviceAccount = require('./serviceAccountKey.json');
+const printer = require('@thiagoelg/node-printer')
+const nomeDaImpressora = 'POS-58';
+
+// Inicializa o Firebase com a chave de serviço
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
+
+// 2. REFERÊNCIAS AO FIRESTORE
+// Conecta ao banco de dados e à coleção de pedidos
+const db = admin.firestore();
+const pedidosRef = db.collection('pedidos');
+
+// 3. FUNÇÃO DE IMPRESSÃO
+// Esta função monta a string da comanda e a envia para a impressora
+function imprimirPedido(pedido, tipoComanda) {
     const dataDoPedido = pedido.data.toDate();
     const dataFormatada = dataDoPedido.toLocaleDateString('pt-BR');
     const horaFormatada = dataDoPedido.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
@@ -21,58 +40,57 @@ function imprimirPedido(pedido, tipoComanda) {
         }
         dadosParaImpressao += `\n`;
     }
-    
+
     dadosParaImpressao += "--- ITENS DO PEDIDO ---\n";
     let subtotalItens = 0;
 
     pedido.itens.forEach(item => {
-        const precoBase = parseFloat(item.precoBase) || 0;
+        let precoBase = parseFloat(item.precoBase) || 0;
         let precoTotalItem = precoBase;
+
         dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
-        
+
         if (item.observacoes) {
             dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
         }
-        
-        // CORREÇÃO AQUI: Lógica para processar adicionais
+
+        // ADICIONAIS LANCHES (pagos)
         if (item.adicionais && Object.keys(item.adicionais).length > 0) {
             dadosParaImpressao += ` - Adicionais:\n`;
             for (const nomeAdicional in item.adicionais) {
                 const adicional = item.adicionais[nomeAdicional];
-                const quantidadeAdicional = parseInt(adicional.quantidade, 10);
-
-                // Verifica se o adicional tem um preço (é um adicional pago)
                 if (adicional.preco !== undefined) {
                     const precoAdicional = parseFloat(adicional.preco) || 0;
-                    precoTotalItem += (precoAdicional * quantidadeAdicional);
-                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
+                    const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
+                    precoTotalItem += precoAdicional * quantidadeAdicional;
+                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
                 } else {
-                    // Se não tiver preço, é um topping grátis de açaí
-                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional})\n`;
+                    // Açai: apenas quantidade, sem preço
+                    const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
+                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional})\n`;
                 }
             }
         }
 
+        // BEBIDAS
         if (item.bebidas && Object.keys(item.bebidas).length > 0) {
             dadosParaImpressao += ` - Bebidas:\n`;
             for (const nomeBebida in item.bebidas) {
-                const precoBebida = parseFloat(item.bebidas[nomeBebida].preco) || 0;
-                const quantidadeBebida = parseInt(item.bebidas[nomeBebida].quantidade, 10);
-                precoTotalItem += (precoBebida * quantidadeBebida);
-                dadosParaImpressao += `  -> ${nomeBebida} (${quantidadeBebida}) - R$ ${(precoBebida * quantidadeBebida).toFixed(2).replace('.', ',')}\n`;
+                const bebida = item.bebidas[nomeBebida];
+                const quantidadeBebida = parseInt(bebida.quantidade, 10) || 1;
+                const precoBebida = parseFloat(bebida.preco) || 0;
+                precoTotalItem += precoBebida * quantidadeBebida;
+                dadosParaImpressao += `  -> ${nomeBebida} (${quantidadeBebida}) - R$ ${(precoBebida * quantidadeBebida).toFixed(2).replace('.', ',')}\n`;
             }
         }
-        
-        // Adiciona o total do item ao subtotal geral
-        subtotalItens += (precoTotalItem * item.quantidade);
 
-        // Opcional: Adiciona uma linha com o total do item para clareza na comanda
-        dadosParaImpressao += `   -> Total do Item: R$ ${(precoTotalItem * item.quantidade).toFixed(2).replace('.', ',')}\n`;
+        subtotalItens += precoTotalItem * item.quantidade;
+        dadosParaImpressao += `   -> Total do Item: R$ ${(precoTotalItem * item.quantidade).toFixed(2).replace('.', ',')}\n`;
     });
 
     dadosParaImpressao += "\n--------------------\n";
     dadosParaImpressao += `Subtotal: R$ ${subtotalItens.toFixed(2).replace('.', ',')}\n`;
-    
+
     let valorTotal = subtotalItens;
     if (pedido.taxaEntrega > 0) {
         dadosParaImpressao += `Taxa de Entrega: R$ ${pedido.taxaEntrega.toFixed(2).replace('.', ',')}\n`;
@@ -80,7 +98,6 @@ function imprimirPedido(pedido, tipoComanda) {
     }
 
     dadosParaImpressao += `\nTOTAL DO PEDIDO: R$ ${valorTotal.toFixed(2).replace('.', ',')}\n`;
-    
     dadosParaImpressao += "--------------------\n";
     dadosParaImpressao += `Forma de Pagamento: ${pedido.pagamento}\n`;
 
@@ -89,5 +106,50 @@ function imprimirPedido(pedido, tipoComanda) {
     }
     dadosParaImpressao += "--------------------\n\n\n\n";
 
-    console.log(dadosParaImpressao);
+    printer.printDirect({
+        data: Buffer.from(dadosParaImpressao, 'latin1'),
+        printer: nomeDaImpressora,
+        type: 'RAW',
+        success: function(jobID) {
+            console.log('Impressão enviada, ID do trabalho: ' + jobID);
+        },
+        error: function(err) {
+            console.error('Erro ao imprimir:', err);
+        }
+    });
 }
+
+
+// 4. ESCUTA DOS PEDIDOS DO FIRESTORE
+// Fica 'ouvindo' a coleção de pedidos em tempo real
+pedidosRef.onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+            const novoPedido = change.doc.data();
+            const docId = change.doc.id; // <-- Obtém o ID do documento
+            
+            console.log('Novo pedido recebido do Firestore!');
+            
+            // Chama a comanda para a cozinha (sempre)
+            imprimirPedido(novoPedido, '===== COMANDA COZINHA =====');
+
+            // Chama a comanda para o entregador (apenas se for entrega)
+            if (novoPedido.cliente.tipo === 'Entrega') {
+                imprimirPedido(novoPedido, '===== COMANDA ENTREGADOR =====')
+            }
+            
+            // Adicione a lógica para apagar o documento depois de imprimir
+            db.collection('pedidos').doc(docId).delete()
+                .then(() => {
+                    console.log(`Pedido ${docId} removido do Firestore.`);
+                })
+                .catch(err => {
+                    console.error('Erro ao remover o pedido:', err);
+                });
+        }
+    });
+}, err => {
+    console.error('Erro ao ouvir mudanças no Firestore:', err);
+});
+
+console.log('Servidor de impressão iniciado. Ouvindo novos pedidos no Firestore...');
