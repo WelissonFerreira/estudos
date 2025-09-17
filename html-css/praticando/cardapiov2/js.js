@@ -1125,7 +1125,7 @@ let catalogoDeProdutos = {
                 tipo: "acai",
                 nome: "Açai 500ml - Generoso",
                 descricao: "Açaí 500ml: para matar a fome (4 acompanhamentos · 1 fruta · 1 cobertura)",
-                imagem: "imagens/acai/acai200ml.png",
+                imagem: "imagens/acai/acai500ml.png",
                 precoRiscado: 20.00,
                 preco: 14.00,
                 limiteAcompanhamentos: 4,
@@ -1166,7 +1166,7 @@ let catalogoDeProdutos = {
                 tipo: "acai",
                 nome: "Açai 700ml - Família",
                 descricao: "Açaí 700ml: gigante e irresistível (5 acompanhamentos · 1 fruta · 1 cobertura)",
-                imagem: "imagens/acai/acai200ml.png",
+                imagem: "imagens/acai/acai700ml.png",
                 precoRiscado: 20.00,
                 preco: 14.00,
                 limiteAcompanhamentos: 3,
@@ -1769,7 +1769,7 @@ CardProdutos.forEach(cardAtual => {
         atualizarContadorCarrinho()
 
 
-        } else if (produtoSelecionado.tipo === 'acai') {
+        } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
 
     let divPrincipal = document.createElement('div')
     divPrincipal.classList.add('divPrincipal')
