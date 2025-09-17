@@ -1055,7 +1055,7 @@ let catalogoDeProdutos = {
         acompanhamentos: [
                     {nome: "Leite em Pó"},
                     {nome: "Granola"},
-                    {nome: "Ovo Maltine"},
+                    {nome: "OvoMaltine"},
                     {nome: "Sucrilhos"},
                     {nome: "M&M"},
                     {nome: "Paçoca"},
@@ -1093,7 +1093,7 @@ let catalogoDeProdutos = {
                 acompanhamentos: [
                     {nome: "Leite em Pó"},
                     {nome: "Granola"},
-                    {nome: "Ovo Maltine"},
+                    {nome: "OvoMaltine"},
                     {nome: "Sucrilhos"},
                     {nome: "M&M"},
                     {nome: "Paçoca"},
@@ -1105,7 +1105,7 @@ let catalogoDeProdutos = {
                 ],
                 coberturas: [
                     {nome: "Leite Condensado"},
-                    {nome: "Chocolate",},
+                    {nome: "Chocolate"},
                     {nome: "Morango"},
                     {nome: "Amora"},
                     {nome: "Menta"},
@@ -1134,7 +1134,7 @@ let catalogoDeProdutos = {
                 acompanhamentos: [
                     {nome: "Leite em Pó"},
                     {nome: "Granola"},
-                    {nome: "Ovo Maltine"},
+                    {nome: "OvoMaltine"},
                     {nome: "Sucrilhos"},
                     {nome: "M&M"},
                     {nome: "Paçoca"},
@@ -1146,7 +1146,7 @@ let catalogoDeProdutos = {
                 ],
                 coberturas: [
                     {nome: "Leite Condensado"},
-                    {nome: "Chocolate",},
+                    {nome: "Chocolate"},
                     {nome: "Morango"},
                     {nome: "Amora"},
                     {nome: "Menta"},
@@ -1175,7 +1175,7 @@ let catalogoDeProdutos = {
                 acompanhamentos: [
                     {nome: "Leite em Pó"},
                     {nome: "Granola"},
-                    {nome: "Ovo Maltine"},
+                    {nome: "OvoMaltine"},
                     {nome: "Sucrilhos"},
                     {nome: "M&M"},
                     {nome: "Paçoca"},
@@ -1187,7 +1187,7 @@ let catalogoDeProdutos = {
                 ],
                 coberturas: [
                     {nome: "Leite Condensado"},
-                    {nome: "Chocolate",},
+                    {nome: "Chocolate"},
                     {nome: "Morango"},
                     {nome: "Amora"},
                     {nome: "Menta"},
