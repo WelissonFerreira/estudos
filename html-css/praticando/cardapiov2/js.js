@@ -1776,6 +1776,8 @@ console.log("Abrindo modal do produto:", cardAtual);
 
 } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
 
+    conteudoModal.textContent = '';
+
     let divPrincipal = document.createElement('div')
     divPrincipal.classList.add('divPrincipal')
     conteudoModal.appendChild(divPrincipal)
@@ -2212,6 +2214,33 @@ console.log("Abrindo modal do produto:", cardAtual);
             alert('Por favor, selecione a quantidade correta de cada item para o seu açaí. Verifique o limite de cada seção!');
         }
     });
+
+
+    let divbotaoFecharPre = document.createElement('div')
+        divbotaoFecharPre.classList.add('divbotaoFecharPre')
+        conteudoModal.appendChild(divbotaoFecharPre)
+
+
+        let botaoFecharPre = document.createElement('button');
+        botaoFecharPre.innerHTML = '&times;';
+        botaoFecharPre.classList.add('botaoFecharPre');
+        divbotaoFecharPre.appendChild(botaoFecharPre);
+
+        // EVENTO DE FECHAR BOTÃO
+        botaoFecharPre.addEventListener('click', () => {
+            ModalPreCarrinho.style.display = 'none';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = 'auto'; 
+            window.scrollTo(0, scrollPosition);
+
+
+
+
+
+        });
+
     
     atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
 }
