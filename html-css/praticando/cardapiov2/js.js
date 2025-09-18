@@ -1772,7 +1772,7 @@ console.log("Abrindo modal do produto:", cardAtual);
         atualizarContadorCarrinho()
 
 
-        } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
+       } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
 
     let divPrincipal = document.createElement('div')
     divPrincipal.classList.add('divPrincipal')
@@ -1822,223 +1822,216 @@ console.log("Abrindo modal do produto:", cardAtual);
     precoPre.textContent = `R$ ${produtoSelecionado.preco.toFixed(2).replace('.', ',')}`;
     divPrecos.appendChild(precoPre);
 
-   // --- SESSÃO DE ACOMPANHAMENTOS ---
-let divTitulosAcompanhamentos = document.createElement('div');
-divTitulosAcompanhamentos.classList.add('divTitulosAcompanhamentos');
-divPrincipal.appendChild(divTitulosAcompanhamentos);
+    // --- SESSÃO DE ACOMPANHAMENTOS ---
+    let divTitulosAcompanhamentos = document.createElement('div');
+    divTitulosAcompanhamentos.classList.add('divTitulosAcompanhamentos');
+    divPrincipal.appendChild(divTitulosAcompanhamentos);
 
-let h4Acompanhamentos = document.createElement('h4');
-h4Acompanhamentos.classList.add('h4Acompanhamentos');
-h4Acompanhamentos.textContent = `Escolha seus acompanhamentos`;
-divTitulosAcompanhamentos.appendChild(h4Acompanhamentos);
+    let h4Acompanhamentos = document.createElement('h4');
+    h4Acompanhamentos.classList.add('h4Acompanhamentos');
+    h4Acompanhamentos.textContent = `Escolha seus acompanhamentos`;
+    divTitulosAcompanhamentos.appendChild(h4Acompanhamentos);
 
-let pLimiteAcompanhamentos = document.createElement('p');
-pLimiteAcompanhamentos.classList.add('pLimiteAcompanhamentos');
-pLimiteAcompanhamentos.textContent = `Máximo de ${produtoSelecionado.limiteAcompanhamentos} opções`;
-divTitulosAcompanhamentos.appendChild(pLimiteAcompanhamentos);
+    let pLimiteAcompanhamentos = document.createElement('p');
+    pLimiteAcompanhamentos.classList.add('pLimiteAcompanhamentos');
+    pLimiteAcompanhamentos.textContent = `Máximo de ${produtoSelecionado.limiteAcompanhamentos} opções`;
+    divTitulosAcompanhamentos.appendChild(pLimiteAcompanhamentos);
 
-let divTodosAcompanhamentos = document.createElement('div');
-divTodosAcompanhamentos.classList.add('divTodosAcompanhamentos');
-divPrincipal.appendChild(divTodosAcompanhamentos);
+    let divTodosAcompanhamentos = document.createElement('div');
+    divTodosAcompanhamentos.classList.add('divTodosAcompanhamentos');
+    divPrincipal.appendChild(divTodosAcompanhamentos);
 
-let acompanhamentosSelecionados = {};
+    let acompanhamentosSelecionados = {};
 
-produtoSelecionado.acompanhamentos.forEach(acompanhamentoAtual => {
-    console.log("Acompanhamentos:", produtoSelecionado.acompanhamentos);
-    let divItemAcompanhamento = document.createElement('div');
-    divItemAcompanhamento.classList.add('divItemAcompanhamento');
-    divTodosAcompanhamentos.appendChild(divItemAcompanhamento);
+    produtoSelecionado.acompanhamentos.forEach(acompanhamentoAtual => {
+        let divItemAcompanhamento = document.createElement('div');
+        divItemAcompanhamento.classList.add('divItemAcompanhamento');
+        divTodosAcompanhamentos.appendChild(divItemAcompanhamento);
 
-    let divNomePrecoAcompanhamento = document.createElement('div');
-    divNomePrecoAcompanhamento.classList.add('divNomePrecoAcompanhamento');
-    divItemAcompanhamento.appendChild(divNomePrecoAcompanhamento);
+        let divNomePrecoAcompanhamento = document.createElement('div');
+        divNomePrecoAcompanhamento.classList.add('divNomePrecoAcompanhamento');
+        divItemAcompanhamento.appendChild(divNomePrecoAcompanhamento);
 
-    let nomeAcompanhamento = document.createElement('p');
-    nomeAcompanhamento.classList.add('nomeAcompanhamento');
-    nomeAcompanhamento.textContent = `${acompanhamentoAtual.nome}`;
-    divNomePrecoAcompanhamento.appendChild(nomeAcompanhamento);
+        let nomeAcompanhamento = document.createElement('p');
+        nomeAcompanhamento.classList.add('nomeAcompanhamento');
+        nomeAcompanhamento.textContent = `${acompanhamentoAtual.nome}`;
+        divNomePrecoAcompanhamento.appendChild(nomeAcompanhamento);
 
-    let divBotoesAcompanhamentos = document.createElement('div');
-    divBotoesAcompanhamentos.classList.add('divBotoesAcompanhamentos');
-    divItemAcompanhamento.appendChild(divBotoesAcompanhamentos);
+        let divBotoesAcompanhamentos = document.createElement('div');
+        divBotoesAcompanhamentos.classList.add('divBotoesAcompanhamentos');
+        divItemAcompanhamento.appendChild(divBotoesAcompanhamentos);
 
-    let diminuirAcompanhamento = document.createElement('button');
-    diminuirAcompanhamento.classList.add('diminuirAcompanhamento');
-    diminuirAcompanhamento.textContent = `-`;
-    diminuirAcompanhamento.dataset.nome = acompanhamentoAtual.nome;
+        let diminuirAcompanhamento = document.createElement('button');
+        diminuirAcompanhamento.classList.add('diminuirAcompanhamento');
+        diminuirAcompanhamento.textContent = `-`;
+        diminuirAcompanhamento.dataset.nome = acompanhamentoAtual.nome;
 
-    let inputQuantidadeAcompanhamento = document.createElement('input');
-    inputQuantidadeAcompanhamento.classList.add('inputQuantidadeAcompanhamento');
-    inputQuantidadeAcompanhamento.value = 0;
-    inputQuantidadeAcompanhamento.dataset.nome = acompanhamentoAtual.nome;
+        let inputQuantidadeAcompanhamento = document.createElement('input');
+        inputQuantidadeAcompanhamento.classList.add('inputQuantidadeAcompanhamento');
+        inputQuantidadeAcompanhamento.value = 0;
+        inputQuantidadeAcompanhamento.dataset.nome = acompanhamentoAtual.nome;
 
-    let aumentarQuantidadeAcompanhamento = document.createElement('button');
-    aumentarQuantidadeAcompanhamento.classList.add('aumentarQuantidadeAcompanhamento');
-    aumentarQuantidadeAcompanhamento.textContent = `+`;
-    aumentarQuantidadeAcompanhamento.dataset.nome = acompanhamentoAtual.nome;
+        let aumentarQuantidadeAcompanhamento = document.createElement('button');
+        aumentarQuantidadeAcompanhamento.classList.add('aumentarQuantidadeAcompanhamento');
+        aumentarQuantidadeAcompanhamento.textContent = `+`;
+        aumentarQuantidadeAcompanhamento.dataset.nome = acompanhamentoAtual.nome;
 
-    divBotoesAcompanhamentos.appendChild(diminuirAcompanhamento);
-    divBotoesAcompanhamentos.appendChild(inputQuantidadeAcompanhamento);
-    divBotoesAcompanhamentos.appendChild(aumentarQuantidadeAcompanhamento);
+        divBotoesAcompanhamentos.appendChild(diminuirAcompanhamento);
+        divBotoesAcompanhamentos.appendChild(inputQuantidadeAcompanhamento);
+        divBotoesAcompanhamentos.appendChild(aumentarQuantidadeAcompanhamento);
 
-    inputQuantidadeAcompanhamento.style.display = 'none';
-    diminuirAcompanhamento.style.display = 'none';
-});
+        inputQuantidadeAcompanhamento.style.display = 'none';
+        diminuirAcompanhamento.style.display = 'none';
+    });
 
-// NOVO CÓDIGO: Delegação de eventos para Acompanhamentos
-divTodosAcompanhamentos.addEventListener('click', (event) => {
-    const elementoClicado = event.target;
+    // NOVO CÓDIGO: Delegação de eventos para Acompanhamentos
+    divTodosAcompanhamentos.addEventListener('click', (event) => {
+        const elementoClicado = event.target;
 
-    // AUMENTAR
-    if (elementoClicado.classList.contains('aumentarQuantidadeAcompanhamento')) {
-        const nomeAcompanhamento = elementoClicado.dataset.nome;
-        const inputQuantidade = elementoClicado.previousElementSibling;
-        const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
-        
-        const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
-
-        if (quantidadeTotal < produtoSelecionado.limiteAcompanhamentos) {
-            inputQuantidade.style.display = 'block';
-            diminuirBotao.style.display = 'block';
-            inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
-            acompanhamentosSelecionados[nomeAcompanhamento] = parseInt(inputQuantidade.value);
-            pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteAcompanhamentos}`;
-            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-        }
-    } 
-    // DIMINUIR
-    else if (elementoClicado.classList.contains('diminuirAcompanhamento')) {
-        const nomeAcompanhamento = elementoClicado.dataset.nome;
-        const inputQuantidade = elementoClicado.nextElementSibling;
-        const diminuirBotao = elementoClicado;
-        
-        let valorAtual = parseInt(inputQuantidade.value);
-
-        if (valorAtual > 0) {
-            valorAtual -= 1;
-            inputQuantidade.value = valorAtual;
-            acompanhamentosSelecionados[nomeAcompanhamento] = valorAtual;
+        if (elementoClicado.classList.contains('aumentarQuantidadeAcompanhamento')) {
+            const nomeAcompanhamento = elementoClicado.dataset.nome;
+            const inputQuantidade = elementoClicado.previousElementSibling;
+            const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
+            
             const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
-            pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal} de ${produtoSelecionado.limiteAcompanhamentos}`;
-            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+
+            if (quantidadeTotal < produtoSelecionado.limiteAcompanhamentos) {
+                inputQuantidade.style.display = 'block';
+                diminuirBotao.style.display = 'block';
+                inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
+                acompanhamentosSelecionados[nomeAcompanhamento] = parseInt(inputQuantidade.value);
+                pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteAcompanhamentos}`;
+                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+            }
+        } 
+        else if (elementoClicado.classList.contains('diminuirAcompanhamento')) {
+            const nomeAcompanhamento = elementoClicado.dataset.nome;
+            const inputQuantidade = elementoClicado.nextElementSibling;
+            const diminuirBotao = elementoClicado;
+            
+            let valorAtual = parseInt(inputQuantidade.value);
+
+            if (valorAtual > 0) {
+                valorAtual -= 1;
+                inputQuantidade.value = valorAtual;
+                acompanhamentosSelecionados[nomeAcompanhamento] = valorAtual;
+                const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
+                pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal} de ${produtoSelecionado.limiteAcompanhamentos}`;
+                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+            }
+
+            if (valorAtual === 0) {
+                inputQuantidade.style.display = 'none';
+                diminuirBotao.style.display = 'none';
+            }
         }
+    });
 
-        if (valorAtual === 0) {
-            inputQuantidade.style.display = 'none';
-            diminuirBotao.style.display = 'none';
-        }
-    }
-});
+    // --- SESSÃO DE FRUTAS ---
+    let frutasSelecionadas = {};
 
-  // --- SESSÃO DE FRUTAS ---
-let frutasSelecionadas = {};
+    let divTitulosFrutas = document.createElement('div');
+    divTitulosFrutas.classList.add('divTitulosFrutas');
+    divPrincipal.appendChild(divTitulosFrutas);
 
-let divTitulosFrutas = document.createElement('div');
-divTitulosFrutas.classList.add('divTitulosFrutas');
-divPrincipal.appendChild(divTitulosFrutas);
+    let h4Frutas = document.createElement('h4');
+    h4Frutas.classList.add('h4Frutas');
+    h4Frutas.textContent = `Escolha suas frutas`;
+    divTitulosFrutas.appendChild(h4Frutas);
 
-let h4Frutas = document.createElement('h4');
-h4Frutas.classList.add('h4Frutas');
-h4Frutas.textContent = `Escolha suas frutas`;
-divTitulosFrutas.appendChild(h4Frutas);
+    let pLimiteFrutas = document.createElement('p');
+    pLimiteFrutas.classList.add('pLimiteFrutas');
+    pLimiteFrutas.textContent = `Máximo de ${produtoSelecionado.limiteFrutas} opções`;
+    divTitulosFrutas.appendChild(pLimiteFrutas);
 
-let pLimiteFrutas = document.createElement('p');
-pLimiteFrutas.classList.add('pLimiteFrutas');
-pLimiteFrutas.textContent = `Máximo de ${produtoSelecionado.limiteFrutas} opções`;
-divTitulosFrutas.appendChild(pLimiteFrutas);
+    let divTodosFrutas = document.createElement('div');
+    divTodosFrutas.classList.add('divTodosFrutas');
+    divPrincipal.appendChild(divTodosFrutas);
 
-let divTodosFrutas = document.createElement('div');
-divTodosFrutas.classList.add('divTodosFrutas');
-divPrincipal.appendChild(divTodosFrutas);
+    produtoSelecionado.frutas.forEach(frutaAtual => {
+        let divItemFruta = document.createElement('div');
+        divItemFruta.classList.add('divItemFruta');
+        divTodosFrutas.appendChild(divItemFruta);
 
-produtoSelecionado.frutas.forEach(frutaAtual => {
-    console.log("Frutas:", produtoSelecionado.frutas);
+        let divNomePrecoFruta = document.createElement('div');
+        divNomePrecoFruta.classList.add('divNomePrecoFruta');
+        divItemFruta.appendChild(divNomePrecoFruta);
 
-    let divItemFruta = document.createElement('div');
-    divItemFruta.classList.add('divItemFruta');
-    divTodosFrutas.appendChild(divItemFruta);
+        let nomeFruta = document.createElement('p');
+        nomeFruta.classList.add('nomeFruta');
+        nomeFruta.textContent = `${frutaAtual.nome}`;
+        divNomePrecoFruta.appendChild(nomeFruta);
 
-    let divNomePrecoFruta = document.createElement('div');
-    divNomePrecoFruta.classList.add('divNomePrecoFruta');
-    divItemFruta.appendChild(divNomePrecoFruta);
+        let divBotoesFrutas = document.createElement('div');
+        divBotoesFrutas.classList.add('divBotoesFrutas');
+        divItemFruta.appendChild(divBotoesFrutas);
 
-    let nomeFruta = document.createElement('p');
-    nomeFruta.classList.add('nomeFruta');
-    nomeFruta.textContent = `${frutaAtual.nome}`;
-    divNomePrecoFruta.appendChild(nomeFruta);
+        let diminuirFruta = document.createElement('button');
+        diminuirFruta.classList.add('diminuirFruta');
+        diminuirFruta.textContent = `-`;
+        diminuirFruta.dataset.nome = frutaAtual.nome;
 
-    let divBotoesFrutas = document.createElement('div');
-    divBotoesFrutas.classList.add('divBotoesFrutas');
-    divItemFruta.appendChild(divBotoesFrutas);
+        let inputQuantidadeFruta = document.createElement('input');
+        inputQuantidadeFruta.classList.add('inputQuantidadeFruta');
+        inputQuantidadeFruta.value = 0;
+        inputQuantidadeFruta.dataset.nome = frutaAtual.nome;
 
-    let diminuirFruta = document.createElement('button');
-    diminuirFruta.classList.add('diminuirFruta');
-    diminuirFruta.textContent = `-`;
-    diminuirFruta.dataset.nome = frutaAtual.nome;
+        let aumentarQuantidadeFruta = document.createElement('button');
+        aumentarQuantidadeFruta.classList.add('aumentarQuantidadeFruta');
+        aumentarQuantidadeFruta.textContent = `+`;
+        aumentarQuantidadeFruta.dataset.nome = frutaAtual.nome;
 
-    let inputQuantidadeFruta = document.createElement('input');
-    inputQuantidadeFruta.classList.add('inputQuantidadeFruta');
-    inputQuantidadeFruta.value = 0;
-    inputQuantidadeFruta.dataset.nome = frutaAtual.nome;
+        divBotoesFrutas.appendChild(diminuirFruta);
+        divBotoesFrutas.appendChild(inputQuantidadeFruta);
+        divBotoesFrutas.appendChild(aumentarQuantidadeFruta);
 
-    let aumentarQuantidadeFruta = document.createElement('button');
-    aumentarQuantidadeFruta.classList.add('aumentarQuantidadeFruta');
-    aumentarQuantidadeFruta.textContent = `+`;
-    aumentarQuantidadeFruta.dataset.nome = frutaAtual.nome;
+        inputQuantidadeFruta.style.display = 'none';
+        diminuirFruta.style.display = 'none';
+    });
 
-    divBotoesFrutas.appendChild(diminuirFruta);
-    divBotoesFrutas.appendChild(inputQuantidadeFruta);
-    divBotoesFrutas.appendChild(aumentarQuantidadeFruta);
+    // NOVO CÓDIGO: Delegação de eventos para Frutas
+    divTodosFrutas.addEventListener('click', (event) => {
+        const elementoClicado = event.target;
 
-    inputQuantidadeFruta.style.display = 'none';
-    diminuirFruta.style.display = 'none';
-});
-
-// NOVO CÓDIGO: Delegação de eventos para Frutas
-divTodosFrutas.addEventListener('click', (event) => {
-    const elementoClicado = event.target;
-
-    // AUMENTAR
-    if (elementoClicado.classList.contains('aumentarQuantidadeFruta')) {
-        const nomeFruta = elementoClicado.dataset.nome;
-        const inputQuantidade = elementoClicado.previousElementSibling;
-        const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
-        
-        const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
-
-        if (quantidadeTotal < produtoSelecionado.limiteFrutas) {
-            inputQuantidade.style.display = 'block';
-            diminuirBotao.style.display = 'block';
-            inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
-            frutasSelecionadas[nomeFruta] = parseInt(inputQuantidade.value);
-            pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteFrutas}`;
-            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-        }
-    }
-    // DIMINUIR
-    else if (elementoClicado.classList.contains('diminuirFruta')) {
-        const nomeFruta = elementoClicado.dataset.nome;
-        const inputQuantidade = elementoClicado.nextElementSibling;
-        const diminuirBotao = elementoClicado;
-
-        let valorAtual = parseInt(inputQuantidade.value);
-        if (valorAtual > 0) {
-            valorAtual -= 1;
-            inputQuantidade.value = valorAtual;
-            frutasSelecionadas[nomeFruta] = valorAtual;
+        if (elementoClicado.classList.contains('aumentarQuantidadeFruta')) {
+            const nomeFruta = elementoClicado.dataset.nome;
+            const inputQuantidade = elementoClicado.previousElementSibling;
+            const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
+            
             const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
-            pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal} de ${produtoSelecionado.limiteFrutas}`;
-            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+
+            if (quantidadeTotal < produtoSelecionado.limiteFrutas) {
+                inputQuantidade.style.display = 'block';
+                diminuirBotao.style.display = 'block';
+                inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
+                frutasSelecionadas[nomeFruta] = parseInt(inputQuantidade.value);
+                pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteFrutas}`;
+                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+            }
         }
-        if (valorAtual === 0) {
-            inputQuantidade.style.display = 'none';
-            diminuirBotao.style.display = 'none';
+        else if (elementoClicado.classList.contains('diminuirFruta')) {
+            const nomeFruta = elementoClicado.dataset.nome;
+            const inputQuantidade = elementoClicado.nextElementSibling;
+            const diminuirBotao = elementoClicado;
+
+            let valorAtual = parseInt(inputQuantidade.value);
+            if (valorAtual > 0) {
+                valorAtual -= 1;
+                inputQuantidade.value = valorAtual;
+                frutasSelecionadas[nomeFruta] = valorAtual;
+                const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
+                pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal} de ${produtoSelecionado.limiteFrutas}`;
+                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+            }
+            if (valorAtual === 0) {
+                inputQuantidade.style.display = 'none';
+                diminuirBotao.style.display = 'none';
+            }
         }
-    }
-});
+    });
+
     // --- SESSÃO DE COBERTURAS ---
     let coberturasSelecionadas = {};
-    console.log("Coberturas:", produtoSelecionado.coberturas);
     let divTitulosCoberturas = document.createElement('div');
     divTitulosCoberturas.classList.add('divTitulosCoberturas');
     divPrincipal.appendChild(divTitulosCoberturas);
@@ -2058,8 +2051,6 @@ divTodosFrutas.addEventListener('click', (event) => {
     divPrincipal.appendChild(divTodosCoberturas);
 
     produtoSelecionado.coberturas.forEach(coberturaAtual => {
-        
-
         let divItemCobertura = document.createElement('div');
         divItemCobertura.classList.add('divItemCobertura');
         divTodosCoberturas.appendChild(divItemCobertura);
@@ -2098,35 +2089,49 @@ divTodosFrutas.addEventListener('click', (event) => {
 
         inputQuantidadeCobertura.style.display = 'none';
         diminuirCobertura.style.display = 'none';
+    });
 
-        aumentarQuantidadeCobertura.addEventListener('click', (event) => {
-            const nomeCobertura = event.currentTarget.dataset.nome;
-            let quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
+    // NOVO CÓDIGO: Delegação de eventos para Coberturas
+    divTodosCoberturas.addEventListener('click', (event) => {
+        const elementoClicado = event.target;
+
+        if (elementoClicado.classList.contains('aumentarQuantidadeCobertura')) {
+            const nomeCobertura = elementoClicado.dataset.nome;
+            const inputQuantidade = elementoClicado.previousElementSibling;
+            const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
+            
+            const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
+
             if (quantidadeTotal < produtoSelecionado.limiteCoberturas) {
-                inputQuantidadeCobertura.style.display = 'block';
-                diminuirCobertura.style.display = 'block';
-                inputQuantidadeCobertura.value = parseInt(inputQuantidadeCobertura.value) + 1;
-                coberturasSelecionadas[nomeCobertura] = parseInt(inputQuantidadeCobertura.value);
+                inputQuantidade.style.display = 'block';
+                diminuirBotao.style.display = 'block';
+                inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
+                coberturasSelecionadas[nomeCobertura] = parseInt(inputQuantidade.value);
                 pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteCoberturas}`;
                 atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
             }
-        });
-        diminuirCobertura.addEventListener('click', (event) => {
-            const nomeCobertura = event.currentTarget.dataset.nome;
-            let valorAtual = parseInt(inputQuantidadeCobertura.value);
-            let quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
+        } 
+        else if (elementoClicado.classList.contains('diminuirCobertura')) {
+            const nomeCobertura = elementoClicado.dataset.nome;
+            const inputQuantidade = elementoClicado.nextElementSibling;
+            const diminuirBotao = elementoClicado;
+            
+            let valorAtual = parseInt(inputQuantidade.value);
+
             if (valorAtual > 0) {
                 valorAtual -= 1;
-                inputQuantidadeCobertura.value = valorAtual;
+                inputQuantidade.value = valorAtual;
                 coberturasSelecionadas[nomeCobertura] = valorAtual;
-                pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal - 1} de ${produtoSelecionado.limiteCoberturas}`;
+                const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
+                pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal} de ${produtoSelecionado.limiteCoberturas}`;
                 atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
             }
+
             if (valorAtual === 0) {
-                inputQuantidadeCobertura.style.display = 'none';
-                diminuirCobertura.style.display = 'none';
+                inputQuantidade.style.display = 'none';
+                diminuirBotao.style.display = 'none';
             }
-        });
+        }
     });
     
     //====================================================================
@@ -2156,20 +2161,18 @@ divTodosFrutas.addEventListener('click', (event) => {
     divBotoesAcoes.appendChild(botaoAumentarPre);
 
     botaoDiminuirPre.addEventListener('click', () => {
-    // Garante que a comparação é feita com um número
-    const quantidadeAtual = parseInt(inputQuantidadePre.value);
-    if (quantidadeAtual > 1) {
-        inputQuantidadePre.value = quantidadeAtual - 1;
-        atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
-    }
-});
+        const quantidadeAtual = parseInt(inputQuantidadePre.value);
+        if (quantidadeAtual > 1) {
+            inputQuantidadePre.value = quantidadeAtual - 1;
+            atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
+        }
+    });
 
     botaoAumentarPre.addEventListener('click', () => {
-    // Garante que a soma é feita com um número
-    const quantidadeAtual = parseInt(inputQuantidadePre.value);
-    inputQuantidadePre.value = quantidadeAtual + 1;
-    atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
-});
+        const quantidadeAtual = parseInt(inputQuantidadePre.value);
+        inputQuantidadePre.value = quantidadeAtual + 1;
+        atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
+    });
 
     let botaoAdicionar = document.createElement('button');
     botaoAdicionar.classList.add('AdicionarCarrinho');
@@ -2177,45 +2180,37 @@ divTodosFrutas.addEventListener('click', (event) => {
     divFinalAcoes.appendChild(botaoAdicionar);
 
     botaoAdicionar.addEventListener('click', () => {
-    // Coleta a quantidade do açaí principal
-    const quantidade = parseInt(inputQuantidadePre.value);
+        const quantidade = parseInt(inputQuantidadePre.value);
 
-    // Soma a quantidade total de cada tipo de ingrediente selecionado
-    const totalAcompanhamentos = Object.values(acompanhamentosSelecionados).reduce((sum, value) => sum + value, 0);
-    const totalFrutas = Object.values(frutasSelecionadas).reduce((sum, value) => sum + value, 0);
-    const totalCoberturas = Object.values(coberturasSelecionadas).reduce((sum, value) => sum + value, 0);
+        const totalAcompanhamentos = Object.values(acompanhamentosSelecionados).reduce((sum, value) => sum + value, 0);
+        const totalFrutas = Object.values(frutasSelecionadas).reduce((sum, value) => sum + value, 0);
+        const totalCoberturas = Object.values(coberturasSelecionadas).reduce((sum, value) => sum + value, 0);
+        
+        if (totalAcompanhamentos === produtoSelecionado.limiteAcompanhamentos && 
+            totalFrutas === produtoSelecionado.limiteFrutas && 
+            totalCoberturas === produtoSelecionado.limiteCoberturas) {
+
+            const acaiAdicionais = {
+                acompanhamentos: acompanhamentosSelecionados,
+                frutas: frutasSelecionadas,
+                coberturas: coberturasSelecionadas
+            };
+
+            adicionarAoCarrinho(produtoSelecionado, quantidade, acaiAdicionais, {});
+
+            ModalPreCarrinho.style.display = 'none';
+            atualizarCarrinho();
+            atualizarContadorCarrinho();
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = 'auto';
+            window.scrollTo(0, scrollPosition);
+        } else {
+            alert('Por favor, selecione a quantidade correta de cada item para o seu açaí. Verifique o limite de cada seção!');
+        }
+    });
     
-    // VERIFICA SE O TOTAL SELECIONADO É IGUAL AO LIMITE OBRIGATÓRIO
-    // Use 'produtoSelecionado.limiteAcompanhamentos' e os outros limites
-    if (totalAcompanhamentos === produtoSelecionado.limiteAcompanhamentos && 
-        totalFrutas === produtoSelecionado.limiteFrutas && 
-        totalCoberturas === produtoSelecionado.limiteCoberturas) {
-
-        // Se a validação passar, cria o objeto de adicionais
-        const acaiAdicionais = {
-            acompanhamentos: acompanhamentosSelecionados,
-            frutas: frutasSelecionadas,
-            coberturas: coberturasSelecionadas
-        };
-
-        // Adiciona ao carrinho
-        adicionarAoCarrinho(produtoSelecionado, quantidade, acaiAdicionais, {});
-
-        // Fecha o modal e atualiza o carrinho
-        ModalPreCarrinho.style.display = 'none';
-        atualizarCarrinho();
-        atualizarContadorCarrinho();
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = 'auto';
-        window.scrollTo(0, scrollPosition);
-    } else {
-        // Se a validação falhar, exibe uma mensagem de erro
-        alert('Por favor, selecione a quantidade correta de cada item para o seu açaí. Verifique o limite de cada seção!');
-    }
-});
-
     atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
 }
 
