@@ -1771,8 +1771,13 @@ console.log("Abrindo modal do produto:", cardAtual);
         atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
         atualizarContadorCarrinho()
 
+        // PRE MODAL AÇAI
+    
 
-       } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
+    } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
+
+        console.log('tipo:', produtoSelecionado.tipo);
+    console.log('tipo === "acai"?', produtoSelecionado.tipo.toLowerCase().trim() === 'acai');
 
     let divPrincipal = document.createElement('div')
     divPrincipal.classList.add('divPrincipal')
@@ -1884,48 +1889,50 @@ console.log("Abrindo modal do produto:", cardAtual);
         diminuirAcompanhamento.style.display = 'none';
     });
 
-    // NOVO CÓDIGO: Delegação de eventos para Acompanhamentos
     divTodosAcompanhamentos.addEventListener('click', (event) => {
-        const elementoClicado = event.target;
-
-        if (elementoClicado.classList.contains('aumentarQuantidadeAcompanhamento')) {
-            const nomeAcompanhamento = elementoClicado.dataset.nome;
-            const inputQuantidade = elementoClicado.previousElementSibling;
-            const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
-            
-            const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
-
-            if (quantidadeTotal < produtoSelecionado.limiteAcompanhamentos) {
-                inputQuantidade.style.display = 'block';
-                diminuirBotao.style.display = 'block';
-                inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
-                acompanhamentosSelecionados[nomeAcompanhamento] = parseInt(inputQuantidade.value);
-                pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteAcompanhamentos}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-            }
-        } 
-        else if (elementoClicado.classList.contains('diminuirAcompanhamento')) {
-            const nomeAcompanhamento = elementoClicado.dataset.nome;
-            const inputQuantidade = elementoClicado.nextElementSibling;
-            const diminuirBotao = elementoClicado;
-            
-            let valorAtual = parseInt(inputQuantidade.value);
-
-            if (valorAtual > 0) {
-                valorAtual -= 1;
-                inputQuantidade.value = valorAtual;
-                acompanhamentosSelecionados[nomeAcompanhamento] = valorAtual;
-                const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
-                pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal} de ${produtoSelecionado.limiteAcompanhamentos}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-            }
-
-            if (valorAtual === 0) {
-                inputQuantidade.style.display = 'none';
-                diminuirBotao.style.display = 'none';
-            }
+    const elementoClicado = event.target;
+    
+    // Lógica para o botão de Aumentar (+)
+    if (elementoClicado.classList.contains('aumentarQuantidadeAcompanhamento')) {
+        const nomeAcompanhamento = elementoClicado.dataset.nome;
+        const divBotoes = elementoClicado.parentElement;
+        const inputQuantidade = divBotoes.querySelector('.inputQuantidadeAcompanhamento');
+        const diminuirBotao = divBotoes.querySelector('.diminuirAcompanhamento');
+        
+        const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
+        
+        if (quantidadeTotal < produtoSelecionado.limiteAcompanhamentos) {
+            inputQuantidade.style.display = 'block';
+            diminuirBotao.style.display = 'block';
+            inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
+            acompanhamentosSelecionados[nomeAcompanhamento] = parseInt(inputQuantidade.value);
+            pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteAcompanhamentos}`;
+            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
         }
-    });
+    } 
+    // Lógica para o botão de Diminuir (-)
+    else if (elementoClicado.classList.contains('diminuirAcompanhamento')) {
+        const nomeAcompanhamento = elementoClicado.dataset.nome;
+        const divBotoes = elementoClicado.parentElement;
+        const inputQuantidade = divBotoes.querySelector('.inputQuantidadeAcompanhamento');
+        const diminuirBotao = divBotoes.querySelector('.diminuirAcompanhamento');
+        
+        let valorAtual = parseInt(inputQuantidade.value);
+        if (valorAtual > 0) {
+            valorAtual -= 1;
+            inputQuantidade.value = valorAtual;
+            acompanhamentosSelecionados[nomeAcompanhamento] = valorAtual;
+            const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
+            pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal} de ${produtoSelecionado.limiteAcompanhamentos}`;
+            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+        }
+
+        if (valorAtual === 0) {
+            inputQuantidade.style.display = 'none';
+            diminuirBotao.style.display = 'none';
+        }
+    }
+});
 
     // --- SESSÃO DE FRUTAS ---
     let frutasSelecionadas = {};
@@ -1990,45 +1997,49 @@ console.log("Abrindo modal do produto:", cardAtual);
     });
 
     // NOVO CÓDIGO: Delegação de eventos para Frutas
-    divTodosFrutas.addEventListener('click', (event) => {
-        const elementoClicado = event.target;
+   divTodosFrutas.addEventListener('click', (event) => {
+    const elementoClicado = event.target;
+    
+    // Lógica para o botão de Aumentar (+)
+    if (elementoClicado.classList.contains('aumentarQuantidadeFruta')) {
+        const nomeFruta = elementoClicado.dataset.nome;
+        const divBotoes = elementoClicado.parentElement;
+        const inputQuantidade = divBotoes.querySelector('.inputQuantidadeFruta');
+        const diminuirBotao = divBotoes.querySelector('.diminuirFruta');
+        
+        const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
+        
+        if (quantidadeTotal < produtoSelecionado.limiteFrutas) {
+            inputQuantidade.style.display = 'block';
+            diminuirBotao.style.display = 'block';
+            inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
+            frutasSelecionadas[nomeFruta] = parseInt(inputQuantidade.value);
+            pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteFrutas}`;
+            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+        }
+    }
+    // Lógica para o botão de Diminuir (-)
+    else if (elementoClicado.classList.contains('diminuirFruta')) {
+        const nomeFruta = elementoClicado.dataset.nome;
+        const divBotoes = elementoClicado.parentElement;
+        const inputQuantidade = divBotoes.querySelector('.inputQuantidadeFruta');
+        const diminuirBotao = divBotoes.querySelector('.diminuirFruta');
 
-        if (elementoClicado.classList.contains('aumentarQuantidadeFruta')) {
-            const nomeFruta = elementoClicado.dataset.nome;
-            const inputQuantidade = elementoClicado.previousElementSibling;
-            const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
-            
+        let valorAtual = parseInt(inputQuantidade.value);
+        if (valorAtual > 0) {
+            valorAtual -= 1;
+            inputQuantidade.value = valorAtual;
+            frutasSelecionadas[nomeFruta] = valorAtual;
             const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
-
-            if (quantidadeTotal < produtoSelecionado.limiteFrutas) {
-                inputQuantidade.style.display = 'block';
-                diminuirBotao.style.display = 'block';
-                inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
-                frutasSelecionadas[nomeFruta] = parseInt(inputQuantidade.value);
-                pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteFrutas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-            }
+            pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal} de ${produtoSelecionado.limiteFrutas}`;
+            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
         }
-        else if (elementoClicado.classList.contains('diminuirFruta')) {
-            const nomeFruta = elementoClicado.dataset.nome;
-            const inputQuantidade = elementoClicado.nextElementSibling;
-            const diminuirBotao = elementoClicado;
-
-            let valorAtual = parseInt(inputQuantidade.value);
-            if (valorAtual > 0) {
-                valorAtual -= 1;
-                inputQuantidade.value = valorAtual;
-                frutasSelecionadas[nomeFruta] = valorAtual;
-                const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
-                pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal} de ${produtoSelecionado.limiteFrutas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-            }
-            if (valorAtual === 0) {
-                inputQuantidade.style.display = 'none';
-                diminuirBotao.style.display = 'none';
-            }
+        if (valorAtual === 0) {
+            inputQuantidade.style.display = 'none';
+            diminuirBotao.style.display = 'none';
         }
-    });
+    }
+});
 
     // --- SESSÃO DE COBERTURAS ---
     let coberturasSelecionadas = {};
@@ -2092,47 +2103,50 @@ console.log("Abrindo modal do produto:", cardAtual);
     });
 
     // NOVO CÓDIGO: Delegação de eventos para Coberturas
-    divTodosCoberturas.addEventListener('click', (event) => {
-        const elementoClicado = event.target;
+   divTodosCoberturas.addEventListener('click', (event) => {
+    const elementoClicado = event.target;
+    
+    // Lógica para o botão de Aumentar (+)
+    if (elementoClicado.classList.contains('aumentarQuantidadeCobertura')) {
+        const nomeCobertura = elementoClicado.dataset.nome;
+        const divBotoes = elementoClicado.parentElement;
+        const inputQuantidade = divBotoes.querySelector('.inputQuantidadeCobertura');
+        const diminuirBotao = divBotoes.querySelector('.diminuirCobertura');
 
-        if (elementoClicado.classList.contains('aumentarQuantidadeCobertura')) {
-            const nomeCobertura = elementoClicado.dataset.nome;
-            const inputQuantidade = elementoClicado.previousElementSibling;
-            const diminuirBotao = elementoClicado.previousElementSibling.previousElementSibling;
-            
-            const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
-
-            if (quantidadeTotal < produtoSelecionado.limiteCoberturas) {
-                inputQuantidade.style.display = 'block';
-                diminuirBotao.style.display = 'block';
-                inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
-                coberturasSelecionadas[nomeCobertura] = parseInt(inputQuantidade.value);
-                pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteCoberturas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-            }
-        } 
-        else if (elementoClicado.classList.contains('diminuirCobertura')) {
-            const nomeCobertura = elementoClicado.dataset.nome;
-            const inputQuantidade = elementoClicado.nextElementSibling;
-            const diminuirBotao = elementoClicado;
-            
-            let valorAtual = parseInt(inputQuantidade.value);
-
-            if (valorAtual > 0) {
-                valorAtual -= 1;
-                inputQuantidade.value = valorAtual;
-                coberturasSelecionadas[nomeCobertura] = valorAtual;
-                const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
-                pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal} de ${produtoSelecionado.limiteCoberturas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
-            }
-
-            if (valorAtual === 0) {
-                inputQuantidade.style.display = 'none';
-                diminuirBotao.style.display = 'none';
-            }
+        const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
+        
+        if (quantidadeTotal < produtoSelecionado.limiteCoberturas) {
+            inputQuantidade.style.display = 'block';
+            diminuirBotao.style.display = 'block';
+            inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
+            coberturasSelecionadas[nomeCobertura] = parseInt(inputQuantidade.value);
+            pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteCoberturas}`;
+            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
         }
-    });
+    } 
+    // Lógica para o botão de Diminuir (-)
+    else if (elementoClicado.classList.contains('diminuirCobertura')) {
+        const nomeCobertura = elementoClicado.dataset.nome;
+        const divBotoes = elementoClicado.parentElement;
+        const inputQuantidade = divBotoes.querySelector('.inputQuantidadeCobertura');
+        const diminuirBotao = divBotoes.querySelector('.diminuirCobertura');
+        
+        let valorAtual = parseInt(inputQuantidade.value);
+        if (valorAtual > 0) {
+            valorAtual -= 1;
+            inputQuantidade.value = valorAtual;
+            coberturasSelecionadas[nomeCobertura] = valorAtual;
+            const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
+            pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal} de ${produtoSelecionado.limiteCoberturas}`;
+            atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+        }
+
+        if (valorAtual === 0) {
+            inputQuantidade.style.display = 'none';
+            diminuirBotao.style.display = 'none';
+        }
+    }
+});
     
     //====================================================================
     // NOVA DIV PARA OS BOTÕES FINAIS (QUANTIDADE DO PRINCIPAL E ADICIONAR)
