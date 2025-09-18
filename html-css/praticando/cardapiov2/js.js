@@ -2211,7 +2211,7 @@ console.log("Abrindo modal do produto:", cardAtual);
         }
     });
     
-    atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
+    atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
 }
 
         
