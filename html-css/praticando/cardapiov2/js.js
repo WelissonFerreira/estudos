@@ -1448,10 +1448,14 @@ console.log("Abrindo modal do produto:", cardAtual);
         descricaoPre.classList.add('descricaoPre');
         divConteudoPre.appendChild(descricaoPre);
 
-        let ingredientesPre = document.createElement('p')
-        ingredientesPre.classList.add('ingredientesPre')
-        ingredientesPre.textContent = `${produtoSelecionado.ingredientes}`
-        divConteudoPre.appendChild(ingredientesPre)
+        if (produtoSelecionado.tipo === 'lanche') {
+            let ingredientesPre = document.createElement('p')
+            ingredientesPre.classList.add('ingredientesPre')
+            ingredientesPre.textContent = `${produtoSelecionado.ingredientes}`
+            divConteudoPre.appendChild(ingredientesPre)
+        }
+
+        
 
         let divPrecos = document.createElement('div');
         divPrecos.classList.add('divPrecos');
