@@ -3058,63 +3058,115 @@ function calcularPrecoDeItem(item) {
 }
 
 
+// ENVIAR PEDIDO PARA O WHATSAPP E FIREBASE
+const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
+
 btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
     // --- DADOS DO CLIENTE ---
-    const nomeCliente = document.querySelector('#nomeUsuario').value;
-    const telefoneCliente = document.querySelector('#cellUsuario').value;
-    const tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
+    const nomeCliente = document.querySelector('#nomeUsuario').value.trim();
+    const telefoneCliente = document.querySelector('#cellUsuario').value.trim();
+    const tipoPedidoInput = document.querySelector('input[name="TipoPedido"]:checked');
+    const tipoPedido = tipoPedidoInput ? tipoPedidoInput.id : 'Retirada';
 
     // --- MONTAR MENSAGEM WHATSAPP ---
     let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
     mensagemWhatsApp += `*Dados do Cliente:*\nNome: ${nomeCliente}\nTelefone: ${telefoneCliente}\nTipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`;
 
+    let clienteInfo = { nome: nomeCliente, telefone: telefoneCliente, tipo: tipoPedido };
+
     if (tipoPedido === 'Entrega') {
-        const bairro = document.querySelector('#Bairro').value;
-        const rua = document.querySelector('#Rua').value;
-        const numero = document.querySelector('#NumeroCasa').value;
-        const complemento = document.querySelector('#complemento').value;
+        const bairro = document.querySelector('#Bairro').value.trim();
+        const rua = document.querySelector('#Rua').value.trim();
+        const numero = document.querySelector('#NumeroCasa').value.trim();
+        const complemento = document.querySelector('#complemento').value.trim();
 
         mensagemWhatsApp += `\n*Endereço de Entrega:*\nBairro: ${bairro}\nRua: ${rua}\nNúmero: ${numero}\n`;
         if (complemento) mensagemWhatsApp += `Complemento: ${complemento}\n`;
+
+        clienteInfo.endereco = { bairro, rua, numero, complemento };
     }
 
     // --- ITENS DO PEDIDO ---
     mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
     let totalFinalParaWhatsApp = 0;
 
-    if (itensCarrinho.length > 0) {
-        itensCarrinho.forEach((item, index) => {
-            let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome}`;
+    const itensParaFirebase = itensCarrinho.map((item, index) => {
+        let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome}`;
+        const itemParaFirebase = {
+            nome: item.produto.nome,
+            precoBase: item.produto.preco,
+            quantidade: item.quantidade,
+            observacoes: item.observacao || '',
+            adicionais: {},
+            bebidas: {}
+        };
 
-            if (item.produto.tipo === 'acai') {
-                if (item.adicionais.acompanhamentos) linhaItem += `\n  - Acompanhamentos: ${Object.keys(item.adicionais.acompanhamentos).join(', ')}`;
-                if (item.adicionais.frutas) linhaItem += `\n  - Frutas: ${Object.keys(item.adicionais.frutas).join(', ')}`;
-                if (item.adicionais.coberturas) linhaItem += `\n  - Coberturas: ${Object.keys(item.adicionais.coberturas).join(', ')}`;
-            } else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-                linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
+        // --- AÇAÍ: Toppings, Frutas e Coberturas ---
+        if (item.produto.tipo === 'acai') {
+            const adicionaisAcai = Object.assign({}, item.acompanhamentos, item.frutas, item.coberturas);
+
+            // Monta mensagem e objeto Firebase
+            for (const nome in adicionaisAcai) {
+                const quantidade = adicionaisAcai[nome];
+                itemParaFirebase.adicionais[nome] = { quantidade };
             }
 
-            if (item.bebidas && Object.keys(item.bebidas).length > 0) {
-                const listaBebidas = Object.keys(item.bebidas).map(idBebida => {
-                    const bebida = catalogoDeProdutos[idBebida];
-                    return bebida ? `${bebida.nome} (${item.bebidas[idBebida]})` : '';
-                }).filter(Boolean);
-                if (listaBebidas.length > 0) linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
+            if (item.acompanhamentos && Object.keys(item.acompanhamentos).length > 0) {
+                linhaItem += `\n  - Acompanhamentos: ${Object.keys(item.acompanhamentos).join(', ')}`;
             }
+            if (item.frutas && Object.keys(item.frutas).length > 0) {
+                linhaItem += `\n  - Frutas: ${Object.keys(item.frutas).join(', ')}`;
+            }
+            if (item.coberturas && Object.keys(item.coberturas).length > 0) {
+                linhaItem += `\n  - Coberturas: ${Object.keys(item.coberturas).join(', ')}`;
+            }
+        } 
+        // --- LANCHE: Adicionais pagos ---
+        else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
+            for (const nome in item.adicionais) {
+                const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nome);
+                if (adicionalDoProduto) {
+                    const quantidade = item.adicionais[nome];
+                    itemParaFirebase.adicionais[nome] = {
+                        quantidade,
+                        preco: adicionalDoProduto.preco
+                    };
+                }
+            }
+            linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
+        }
 
-            const precoItem = calcularPrecoDeItem(item);
-            linhaItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
+        // --- BEBIDAS ---
+        if (item.bebidas && Object.keys(item.bebidas).length > 0) {
+            const listaBebidas = [];
+            for (const idBebida in item.bebidas) {
+                const bebida = catalogoDeProdutos[idBebida];
+                const quantidade = item.bebidas[idBebida];
+                if (bebida) {
+                    listaBebidas.push(`${bebida.nome} (${quantidade})`);
+                    itemParaFirebase.bebidas[bebida.nome] = { quantidade, preco: bebida.preco };
+                }
+            }
+            if (listaBebidas.length > 0) linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
+        }
 
-            if (item.observacao) linhaItem += `\n  - Observação: ${item.observacao}`;
+        // --- Observações ---
+        if (item.observacao && item.observacao.trim() !== '') {
+            linhaItem += `\n  - Observação: ${item.observacao}`;
+        }
 
-            mensagemWhatsApp += linhaItem + `\n`;
-            totalFinalParaWhatsApp += precoItem;
-        });
-    } else {
-        mensagemWhatsApp += `Nenhum item adicionado ao carrinho.\n`;
-    }
+        // --- Preço total do item ---
+        const precoItem = calcularPrecoDeItem(item);
+        linhaItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
+        totalFinalParaWhatsApp += precoItem;
 
-    if (tipoPedido === 'Entrega') {
+        mensagemWhatsApp += linhaItem + `\n`;
+
+        return itemParaFirebase;
+    });
+
+    // --- TAXA DE ENTREGA ---
+    if (tipoPedido === 'Entrega' && typeof valorTaxaDeEntrega === 'number') {
         totalFinalParaWhatsApp += valorTaxaDeEntrega;
         mensagemWhatsApp += `\nTaxa de Entrega: R$ ${valorTaxaDeEntrega.toFixed(2).replace('.', ',')}\n`;
     }
@@ -3129,14 +3181,22 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
         else if (formaPagamentoSelecionada.id === 'pagamentoCartao') textoFormaPagamento = 'Cartão';
         else if (formaPagamentoSelecionada.id === 'Dinheiro') textoFormaPagamento = 'Dinheiro';
     }
+
     mensagemWhatsApp += `\n*Informações de Pagamento:*\nForma de Pagamento: ${textoFormaPagamento}\n`;
 
+    // --- TROCO ---
     let valorTroco = 0;
     const inputTrocoElement = document.getElementById('inputTroco');
-    if (inputTrocoElement && inputTrocoElement.value.trim() !== '') valorTroco = parseFloat(inputTrocoElement.value.trim());
-    if (textoFormaPagamento === 'Dinheiro' && valorTroco > 0) mensagemWhatsApp += `| Precisa de R$ ${valorTroco.toFixed(2).replace('.', ',')} de troco \n`;
-    else mensagemWhatsApp += `Não precisa de troco.\n`;
+    if (inputTrocoElement && inputTrocoElement.value.trim() !== '') {
+        valorTroco = parseFloat(inputTrocoElement.value.trim());
+    }
+    if (textoFormaPagamento === 'Dinheiro' && valorTroco > 0) {
+        mensagemWhatsApp += `| Precisa de R$ ${valorTroco.toFixed(2).replace('.', ',')} de troco \n`;
+    } else {
+        mensagemWhatsApp += `Não precisa de troco.\n`;
+    }
 
+    // --- PIX ---
     if (textoFormaPagamento === 'PIX') {
         const chavePIX = document.getElementById('inputChavePIX').value;
         const nomePIX = document.getElementById('inputNomePIX').value;
@@ -3144,48 +3204,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
         mensagemWhatsApp += `*PIX - Chave CPF: ${chavePIX}*\nNome: *${nomePIX}*\nBanco: ${bancoPIX}\n----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
     }
 
-    // --- MONTAR OBJETO PARA FIREBASE ---
-    const clienteInfo = { nome: nomeCliente, telefone: telefoneCliente, tipo: tipoPedido };
-    if (tipoPedido === 'Entrega') {
-        clienteInfo.endereco = {
-            bairro: document.querySelector('#Bairro').value,
-            rua: document.querySelector('#Rua').value,
-            numero: document.querySelector('#NumeroCasa').value,
-            complemento: document.querySelector('#complemento').value
-        };
-    }
-
-    const itensParaFirebase = itensCarrinho.map(item => {
-        const itemFirebase = {
-            nome: item.produto.nome,
-            precoBase: item.produto.preco,
-            quantidade: item.quantidade,
-            observacoes: item.observacao || '',
-            bebidas: {},
-            adicionais: {}
-        };
-
-        if (item.produto.tipo !== 'acai' && item.adicionais) {
-            for (const nomeAdicional in item.adicionais) {
-                const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nomeAdicional);
-                if (adicionalDoProduto) {
-                    itemFirebase.adicionais[nomeAdicional] = { quantidade: item.adicionais[nomeAdicional], preco: adicionalDoProduto.preco };
-                }
-            }
-        } else if (item.produto.tipo === 'acai') {
-            itemFirebase.adicionais = { ...item.adicionais };
-        }
-
-        if (item.bebidas) {
-            for (const idBebida in item.bebidas) {
-                const bebida = catalogoDeProdutos[idBebida];
-                if (bebida) itemFirebase.bebidas[bebida.nome] = { quantidade: item.bebidas[idBebida], preco: bebida.preco };
-            }
-        }
-
-        return itemFirebase;
-    });
-
+    // --- MONTAR OBJETO FINAL PARA FIREBASE ---
     const pedidoParaFirebase = {
         cliente: clienteInfo,
         itens: itensParaFirebase,
@@ -3196,7 +3215,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
     };
 
     // --- ENVIA PARA FIREBASE ---
-    await enviarPedido(pedidoParaFirebase);
+    if (typeof enviarPedido === 'function') await enviarPedido(pedidoParaFirebase);
 
     // --- ABRE WHATSAPP ---
     const numeroWhatsApp = '5582988204888';
@@ -3204,7 +3223,8 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`, '_blank');
 
     // --- FECHAR MODAL ---
-    document.querySelector('#ModalFazerPedido').style.display = 'none';
+    const modal = document.querySelector('#ModalFazerPedido');
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 });
 

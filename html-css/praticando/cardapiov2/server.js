@@ -43,37 +43,23 @@ function imprimirPedido(pedido, tipoComanda) {
 
     pedido.itens.forEach(item => {
         const isAcai = item.tipo.toLowerCase() === 'acai';
-        let precoBase = parseFloat(item.preco) || 0;
+        let precoBase = parseFloat(item.precoBase) || 0;
         let precoTotalItem = precoBase;
 
         dadosParaImpressao += isAcai ? `ACAI - ${item.nome}\n` : `LANCHE - ${item.nome}\n`;
         dadosParaImpressao += `${item.quantidade}x R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
 
-        // Adicionais do açaí (toppings)
-        if (isAcai && item.adicionais) {
+        // Adicionais do açaí (todos em item.adicionais)
+        if (isAcai && item.adicionais && Object.keys(item.adicionais).length > 0) {
             dadosParaImpressao += "  - Toppings:\n";
-            if (item.adicionais.acompanhamentos) {
-                for (const nome in item.adicionais.acompanhamentos) {
-                    const qt = item.adicionais.acompanhamentos[nome];
-                    dadosParaImpressao += `    -> ${nome} (${qt})\n`;
-                }
-            }
-            if (item.adicionais.frutas) {
-                for (const nome in item.adicionais.frutas) {
-                    const qt = item.adicionais.frutas[nome];
-                    dadosParaImpressao += `    -> ${nome} (${qt})\n`;
-                }
-            }
-            if (item.adicionais.coberturas) {
-                for (const nome in item.adicionais.coberturas) {
-                    const qt = item.adicionais.coberturas[nome];
-                    dadosParaImpressao += `    -> ${nome} (${qt})\n`;
-                }
+            for (const nome in item.adicionais) {
+                const qt = item.adicionais[nome].quantidade || 1;
+                dadosParaImpressao += `    -> ${nome} (${qt})\n`;
             }
         }
 
         // Adicionais do lanche
-        if (!isAcai && item.adicionais) {
+        if (!isAcai && item.adicionais && Object.keys(item.adicionais).length > 0) {
             dadosParaImpressao += "  - Adicionais:\n";
             for (const nome in item.adicionais) {
                 const adicional = item.adicionais[nome];
@@ -85,7 +71,7 @@ function imprimirPedido(pedido, tipoComanda) {
         }
 
         // Bebidas
-        if (item.bebidas) {
+        if (item.bebidas && Object.keys(item.bebidas).length > 0) {
             dadosParaImpressao += "  - Bebidas:\n";
             for (const nome in item.bebidas) {
                 const bebida = item.bebidas[nome];
