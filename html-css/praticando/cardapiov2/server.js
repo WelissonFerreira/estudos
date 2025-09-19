@@ -45,11 +45,8 @@ function imprimirPedido(pedido, tipoComanda) {
         let precoBase = parseFloat(item.precoBase) || 0;
         let precoTotalItem = precoBase;
 
-        if (item.nome.toLowerCase().includes('açai')) {
-            dadosParaImpressao += `AÇAI\n`;
-        } else {
-            dadosParaImpressao += `LANCHE\n`;
-        }
+        const isAcai = item.nome.toLowerCase().includes('açai');
+        dadosParaImpressao += isAcai ? `AÇAI\n` : `LANCHE\n`;
 
         dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
 
@@ -57,19 +54,18 @@ function imprimirPedido(pedido, tipoComanda) {
             dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
         }
 
-        // ADICIONAIS LANCHES (pagos)
+        // ADICIONAIS (lanches ou açaí)
         if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-            dadosParaImpressao += ` - Adicionais:\n`;
+            dadosParaImpressao += ` - Adicionais/Toppings:\n`;
             for (const nomeAdicional in item.adicionais) {
                 const adicional = item.adicionais[nomeAdicional];
+                const quantidade = parseInt(adicional.quantidade, 10) || 1;
                 if (adicional.preco !== undefined) {
                     const precoAdicional = parseFloat(adicional.preco) || 0;
-                    const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
-                    precoTotalItem += precoAdicional * quantidadeAdicional;
-                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
+                    precoTotalItem += precoAdicional * quantidade;
+                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidade}) - R$ ${(precoAdicional * quantidade).toFixed(2).replace('.', ',')}\n`;
                 } else {
-                    const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
-                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional})\n`;
+                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidade})\n`;
                 }
             }
         }

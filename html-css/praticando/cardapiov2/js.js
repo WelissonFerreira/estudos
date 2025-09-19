@@ -3104,29 +3104,27 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
     }
 
     mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
-
     let totalFinalParaWhatsApp = 0;
 
     if (itensCarrinho.length > 0) {
         itensCarrinho.forEach((item, index) => {
             let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome}`;
-            
+
             if (item.produto.tipo === 'acai') {
-                if (item.acompanhamentos && Object.keys(item.acompanhamentos).length > 0) {
-                    linhaItem += `\n  - Acompanhamentos: ${Object.keys(item.acompanhamentos).join(', ')}`;
+                if (item.acompanhamentos && item.acompanhamentos.length > 0) {
+                    linhaItem += `\n  - Acompanhamentos: ${item.acompanhamentos.join(', ')}`;
                 }
-                if (item.frutas && Object.keys(item.frutas).length > 0) {
-                    linhaItem += `\n  - Frutas: ${Object.keys(item.frutas).join(', ')}`;
+                if (item.frutas && item.frutas.length > 0) {
+                    linhaItem += `\n  - Frutas: ${item.frutas.join(', ')}`;
                 }
-                if (item.coberturas && Object.keys(item.coberturas).length > 0) {
-                    linhaItem += `\n  - Coberturas: ${Object.keys(item.coberturas).join(', ')}`;
+                if (item.coberturas && item.coberturas.length > 0) {
+                    linhaItem += `\n  - Coberturas: ${item.coberturas.join(', ')}`;
                 }
-            } 
-            else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-                linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
+            } else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
+                linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
             }
 
-            // AQUI ESTÁ A CORREÇÃO: A LÓGICA DE BEBIDAS DENTRO DO FOR-EACH
+            // Bebidas
             if (item.bebidas && Object.keys(item.bebidas).length > 0) {
                 let listaBebidas = [];
                 for (const idBebida in item.bebidas) {
@@ -3137,7 +3135,7 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
                     }
                 }
                 if (listaBebidas.length > 0) {
-                    linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
+                    linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
                 }
             }
 
@@ -3145,11 +3143,10 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
             linhaItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
 
             if (item.observacao && item.observacao.trim() !== '') {
-                linhaItem += `\n  - Observação: ${item.observacao}`;
+                linhaItem += `\n  - Observação: ${item.observacao}`;
             }
 
             mensagemWhatsApp += linhaItem + `\n`;
-
             totalFinalParaWhatsApp += precoItem;
         });
     } else {
@@ -3163,126 +3160,97 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
 
     mensagemWhatsApp += `\n*Total do Pedido: R$ ${totalFinalParaWhatsApp.toFixed(2).replace('.', ',')}*\n`;
 
+    // Forma de pagamento
     let formaPagamentoSelecionada = document.querySelector('input[name="formaPagamento"]:checked');
     let textoFormaPagamento = 'Não especificada';
-
     if (formaPagamentoSelecionada) {
-        if (formaPagamentoSelecionada.id === 'Pix') {
-            textoFormaPagamento = 'PIX';
-        } else if (formaPagamentoSelecionada.id === 'pagamentoCartao') {
-            textoFormaPagamento = 'Cartão';
-        } else if (formaPagamentoSelecionada.id === 'Dinheiro') {
-            textoFormaPagamento = 'Dinheiro';
-        }
+        if (formaPagamentoSelecionada.id === 'Pix') textoFormaPagamento = 'PIX';
+        else if (formaPagamentoSelecionada.id === 'pagamentoCartao') textoFormaPagamento = 'Cartão';
+        else if (formaPagamentoSelecionada.id === 'Dinheiro') textoFormaPagamento = 'Dinheiro';
     }
+    mensagemWhatsApp += `\n*Informações de Pagamento:*\nForma de Pagamento: ${textoFormaPagamento}\n`;
 
-    mensagemWhatsApp += `\n*Informações de Pagamento:*\n`;
-    mensagemWhatsApp += `Forma de Pagamento: ${textoFormaPagamento}\n`;
-
-    let inputTrocoElement = document.getElementById('inputTroco');
+    // Troco
     let valorTroco = 0;
-
-    if (inputTrocoElement) {
-        let valorTrocoString = inputTrocoElement.value.trim();
-        if (valorTrocoString !== '') {
-            valorTroco = parseFloat(valorTrocoString);
-        }
+    const inputTrocoElement = document.getElementById('inputTroco');
+    if (inputTrocoElement && inputTrocoElement.value.trim() !== '') {
+        valorTroco = parseFloat(inputTrocoElement.value.trim());
     }
-
-    if (textoFormaPagamento === 'Dinheiro' && !isNaN(valorTroco) && valorTroco > 0) {
+    if (textoFormaPagamento === 'Dinheiro' && valorTroco > 0) {
         mensagemWhatsApp += `| Precisa de R$ ${valorTroco.toFixed(2).replace('.', ',')} de troco \n`;
     } else {
         mensagemWhatsApp += `Não precisa de troco.\n`;
     }
 
+    // PIX
     if (textoFormaPagamento === 'PIX') {
         const chavePIX = document.getElementById('inputChavePIX').value;
         const nomePIX = document.getElementById('inputNomePIX').value;
         const bancoPIX = document.getElementById('inputBancoPIX').value;
-
-        mensagemWhatsApp += `*PIX - Chave CPF: ${chavePIX}*\n` +
-            `Nome: *${nomePIX}*\n` +
-            `Banco: ${bancoPIX}\n` + 
-            `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
+        mensagemWhatsApp += `*PIX - Chave CPF: ${chavePIX}*\nNome: *${nomePIX}*\nBanco: ${bancoPIX}\n----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
     }
 
-    let clienteInfo = {
-        nome: nomeCliente,
-        telefone: telefoneCliente,
-        tipo: tipoPedido
-    };
-
+    // Monta objeto do cliente
+    let clienteInfo = { nome: nomeCliente, telefone: telefoneCliente, tipo: tipoPedido };
     if (tipoPedido === 'Entrega') {
-        let bairro = document.querySelector('#Bairro').value;
-        let rua = document.querySelector('#Rua').value;
-        let numero = document.querySelector('#NumeroCasa').value;
-        let complemento = document.querySelector('#complemento').value;
-
-        let enderecoInfo = {
-            bairro: bairro,
-            rua: rua,
-            numero: numero,
-            complemento: complemento
+        clienteInfo.endereco = {
+            bairro: document.querySelector('#Bairro').value,
+            rua: document.querySelector('#Rua').value,
+            numero: document.querySelector('#NumeroCasa').value,
+            complemento: document.querySelector('#complemento').value
         };
-        clienteInfo.endereco = enderecoInfo
-    };
+    }
 
+    // Itens para Firebase
     const itensParaFirebase = itensCarrinho.map(item => {
-    const itemParaFirebase = {
-        nome: item.produto.nome,
-        precoBase: item.produto.preco,
-        quantidade: item.quantidade,
-        observacoes: item.observacao || '',
-        bebidas: {},
-        adicionais: {}
-    };
+        const itemParaFirebase = {
+            nome: item.produto.nome,
+            precoBase: item.produto.preco,
+            quantidade: item.quantidade,
+            observacoes: item.observacao || '',
+            bebidas: {},
+            adicionais: {}
+        };
 
-    // Lógica para lanches e outros itens com adicionais pagos
-    if (item.produto.tipo !== 'acai' && item.adicionais) {
-        for (const nomeAdicional in item.adicionais) {
-            const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nomeAdicional);
-            if (adicionalDoProduto) {
-                itemParaFirebase.adicionais[nomeAdicional] = {
-                    quantidade: item.adicionais[nomeAdicional],
-                    preco: adicionalDoProduto.preco
-                };
+        // Lanches comuns
+        if (item.produto.tipo !== 'acai' && item.adicionais) {
+            for (const nomeAdicional in item.adicionais) {
+                const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nomeAdicional);
+                if (adicionalDoProduto) {
+                    itemParaFirebase.adicionais[nomeAdicional] = {
+                        quantidade: item.adicionais[nomeAdicional],
+                        preco: adicionalDoProduto.preco
+                    };
+                }
             }
         }
-    }
-    
-    // Lógica para açaí (toppings grátis)
-    else if (item.produto.tipo === 'acai') {
-        itemParaFirebase.adicionais = Object.assign(
-            {},
-            item.acompanhamentos,
-            item.frutas,
-            item.coberturas
-        );
-        // Os valores são apenas a quantidade, sem a chave "preco"
-        for (const nomeAdicional in itemParaFirebase.adicionais) {
-            itemParaFirebase.adicionais[nomeAdicional] = {
-                quantidade: itemParaFirebase.adicionais[nomeAdicional]
-            };
+        // Açai
+        else if (item.produto.tipo === 'acai') {
+            const toppings = {};
+            ['acompanhamentos', 'frutas', 'coberturas'].forEach(cat => {
+                if (item[cat] && item[cat].length > 0) {
+                    item[cat].forEach(nome => toppings[nome] = { quantidade: 1 });
+                }
+            });
+            itemParaFirebase.adicionais = toppings;
         }
-    }
-    
-    // Lógica para bebidas
-    if (item.bebidas) {
-        for (const idBebida in item.bebidas) {
-            const bebida = catalogoDeProdutos[idBebida];
-            if (bebida) {
-                itemParaFirebase.bebidas[bebida.nome] = {
-                    quantidade: item.bebidas[idBebida],
-                    preco: bebida.preco
-                };
+
+        // Bebidas
+        if (item.bebidas) {
+            for (const idBebida in item.bebidas) {
+                const bebida = catalogoDeProdutos[idBebida];
+                if (bebida) {
+                    itemParaFirebase.bebidas[bebida.nome] = {
+                        quantidade: item.bebidas[idBebida],
+                        preco: bebida.preco
+                    };
+                }
             }
         }
-    }
 
-    return itemParaFirebase;
-});
+        return itemParaFirebase;
+    });
 
-    
     const pedidoParaFirebase = {
         cliente: clienteInfo,
         itens: itensParaFirebase,
@@ -3292,13 +3260,16 @@ btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
         data: new Date()
     };
 
+    // Envia para o Firebase (e depois o Node imprime)
     await enviarPedido(pedidoParaFirebase);
 
-    let numeroWhatsApp = '5582988204888';
-    let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
-    let linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-
+    // Abre WhatsApp
+    const numeroWhatsApp = '5582988204888';
+    const mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
+    const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
     window.open(linkWhatsApp, '_blank');
+
+    // Fecha modal
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto';
 });
