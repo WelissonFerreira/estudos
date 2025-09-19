@@ -2592,55 +2592,77 @@ function mostrarItensDoCarrinho() {
 let contadorCarrinho = document.querySelector('#contador-carrinho');
 
 function atualizarCarrinho() {
-    const conteudoCarrinho = document.querySelector('#conteudoCarrinho');
-    conteudoCarrinho.innerHTML = '';
+    // Primeiro, mostra os itens no modal para refletir as quantidades e valores
+    mostrarItensDoCarrinho();
 
-    if (itensCarrinho.length === 0) {
-        conteudoCarrinho.innerHTML = '<p>Carrinho vazio</p>';
-        return;
+    let valorTotalCarrinho = document.querySelector('#total-carrinho');
+    let somaDoTotal = 0;
+    let totalItensCarrinho = 0;
+
+    itensCarrinho.forEach(function(item) {
+        // Soma a quantidade de todos os produtos para o contador do carrinho
+        totalItensCarrinho += item.quantidade;
+
+        
+        // Calcula o preço do item principal
+        let precoItem = item.produto.preco * item.quantidade;
+        
+        // Calcula o preço dos adicionais
+        let precoAdicionais = 0;
+        for (const nomeAdicional in item.adicionais) {
+            const quantidadeAdicional = item.adicionais[nomeAdicional];
+            if (quantidadeAdicional > 0) {
+                const adicional = item.produto.adicionais.find(a => a.nome === nomeAdicional);
+                if (adicional) {
+                    precoAdicionais += adicional.preco * quantidadeAdicional;
+                }
+            }
+        }
+        
+        // Calcula o preço das bebidas
+        let precoBebidas = 0;
+        for (const idBebida in item.bebidas) {
+            const quantidadeBebida = item.bebidas[idBebida];
+            if (quantidadeBebida > 0) {
+                const bebida = catalogoDeProdutos[idBebida];
+                if (bebida) {
+                    precoBebidas += bebida.preco * quantidadeBebida;
+                }
+            }
+        }
+        
+        // Soma todos os preços para o total final do carrinho
+        somaDoTotal += (precoItem + precoAdicionais + precoBebidas);
+    });
+
+    // Atualiza o contador de itens no topo do carrinho
+    if (contadorCarrinho) {
+        contadorCarrinho.textContent = `${totalItensCarrinho}`;
     }
 
-    itensCarrinho.forEach((item, index) => {
-        let linhaItem = document.createElement('div');
-        linhaItem.classList.add('linhaItem');
+    // NOVO: Cria o <h3> se ele não existir
+    let h3Total = valorTotalCarrinho.querySelector('h3');
+    if (!h3Total) {
+        h3Total = document.createElement('h3');
+        valorTotalCarrinho.appendChild(h3Total);
+    }
+    // Atualiza o valor total no modal do carrinho
+    h3Total.textContent = `TOTAL: R$ ${somaDoTotal.toFixed(2).replace('.', ',')}`;
+    h3Total.classList.add('precoCarrinhoTotal');
 
-        let textoItem = `${item.quantidade}x ${item.produto.nome}`;
-
-        if (item.produto.tipo === 'acai' && item.adicionais) {
-            const { acompanhamentos, frutas, coberturas } = item.adicionais;
-
-            if (acompanhamentos && Object.keys(acompanhamentos).length > 0) {
-                textoItem += `\n  - Acompanhamentos: ${Object.keys(acompanhamentos).join(', ')}`;
-            }
-            if (frutas && Object.keys(frutas).length > 0) {
-                textoItem += `\n  - Frutas: ${Object.keys(frutas).join(', ')}`;
-            }
-            if (coberturas && Object.keys(coberturas).length > 0) {
-                textoItem += `\n  - Coberturas: ${Object.keys(coberturas).join(', ')}`;
-            }
-        }
-        // Lanches com adicionais
-        else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-            textoItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
-        }
-
-        // Bebidas
-        if (item.bebidas && Object.keys(item.bebidas).length > 0) {
-            let listaBebidas = [];
-            for (const idBebida in item.bebidas) {
-                const bebida = catalogoDeProdutos[idBebida];
-                if (bebida) listaBebidas.push(`${bebida.nome} (${item.bebidas[idBebida]})`);
-            }
-            if (listaBebidas.length > 0) textoItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
-        }
-
-        let precoItem = calcularPrecoDeItem(item);
-        textoItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
-
-        linhaItem.textContent = textoItem;
-        conteudoCarrinho.appendChild(linhaItem);
-    });
+    // Se o carrinho estiver vazio, fecha o modal.
+    if (itensCarrinho.length === 0) {
+        if (modalCarrinho.style.display === 'block') {
+            modalCarrinho.style.display = 'none';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = 'auto'; 
+            window.scrollTo(0, scrollPosition);
+        }
+    }
 }
+
 
 
 // ================================================================================
@@ -3058,175 +3080,238 @@ function calcularPrecoDeItem(item) {
 }
 
 
-// ENVIAR PEDIDO PARA O WHATSAPP E FIREBASE
+// ENVIAR PEDIDO PARA O WHATSAPP
 const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
 btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
-    // --- DADOS DO CLIENTE ---
-    const nomeCliente = document.querySelector('#nomeUsuario').value.trim();
-    const telefoneCliente = document.querySelector('#cellUsuario').value.trim();
-    const tipoPedidoInput = document.querySelector('input[name="TipoPedido"]:checked');
-    const tipoPedido = tipoPedidoInput ? tipoPedidoInput.id : 'Retirada';
+    let nomeCliente = document.querySelector('#nomeUsuario').value;
+    let telefoneCliente = document.querySelector('#cellUsuario').value;
+    let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
 
-    // --- MONTAR MENSAGEM WHATSAPP ---
     let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
-    mensagemWhatsApp += `*Dados do Cliente:*\nNome: ${nomeCliente}\nTelefone: ${telefoneCliente}\nTipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`;
 
-    let clienteInfo = { nome: nomeCliente, telefone: telefoneCliente, tipo: tipoPedido };
+    mensagemWhatsApp += `*Dados do Cliente:*\n`;
+    mensagemWhatsApp += `Nome: ${nomeCliente}\n`;
+    mensagemWhatsApp += `Telefone: ${telefoneCliente}\n`;
+    mensagemWhatsApp += `Tipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`;
 
     if (tipoPedido === 'Entrega') {
-        const bairro = document.querySelector('#Bairro').value.trim();
-        const rua = document.querySelector('#Rua').value.trim();
-        const numero = document.querySelector('#NumeroCasa').value.trim();
-        const complemento = document.querySelector('#complemento').value.trim();
+        let bairro = document.querySelector('#Bairro').value;
+        let rua = document.querySelector('#Rua').value;
+        let numero = document.querySelector('#NumeroCasa').value;
+        let complemento = document.querySelector('#complemento').value;
 
-        mensagemWhatsApp += `\n*Endereço de Entrega:*\nBairro: ${bairro}\nRua: ${rua}\nNúmero: ${numero}\n`;
-        if (complemento) mensagemWhatsApp += `Complemento: ${complemento}\n`;
-
-        clienteInfo.endereco = { bairro, rua, numero, complemento };
+        mensagemWhatsApp += `\n*Endereço de Entrega:*\n`;
+        mensagemWhatsApp += `Bairro: ${bairro}\n`;
+        mensagemWhatsApp += `Rua: ${rua}\n`;
+        mensagemWhatsApp += `Número: ${numero}\n`;
+        if (complemento) {
+            mensagemWhatsApp += `Complemento: ${complemento}\n`;
+        }
     }
 
-    // --- ITENS DO PEDIDO ---
     mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
+
     let totalFinalParaWhatsApp = 0;
 
-    const itensParaFirebase = itensCarrinho.map((item, index) => {
-        let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome}`;
-        const itemParaFirebase = {
-            nome: item.produto.nome,
-            precoBase: item.produto.preco,
-            quantidade: item.quantidade,
-            observacoes: item.observacao || '',
-            adicionais: {},
-            bebidas: {}
-        };
-
-        // --- AÇAÍ: Toppings, Frutas e Coberturas ---
-        if (item.produto.tipo === 'acai') {
-            const adicionaisAcai = Object.assign({}, item.acompanhamentos, item.frutas, item.coberturas);
-
-            // Monta mensagem e objeto Firebase
-            for (const nome in adicionaisAcai) {
-                const quantidade = adicionaisAcai[nome];
-                itemParaFirebase.adicionais[nome] = { quantidade };
+    if (itensCarrinho.length > 0) {
+        itensCarrinho.forEach((item, index) => {
+            let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome}`;
+            
+            if (item.produto.tipo === 'acai') {
+                if (item.acompanhamentos && Object.keys(item.acompanhamentos).length > 0) {
+                    linhaItem += `\n  - Acompanhamentos: ${Object.keys(item.acompanhamentos).join(', ')}`;
+                }
+                if (item.frutas && Object.keys(item.frutas).length > 0) {
+                    linhaItem += `\n  - Frutas: ${Object.keys(item.frutas).join(', ')}`;
+                }
+                if (item.coberturas && Object.keys(item.coberturas).length > 0) {
+                    linhaItem += `\n  - Coberturas: ${Object.keys(item.coberturas).join(', ')}`;
+                }
+            } 
+            else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
+                linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
             }
 
-            if (item.acompanhamentos && Object.keys(item.acompanhamentos).length > 0) {
-                linhaItem += `\n  - Acompanhamentos: ${Object.keys(item.acompanhamentos).join(', ')}`;
-            }
-            if (item.frutas && Object.keys(item.frutas).length > 0) {
-                linhaItem += `\n  - Frutas: ${Object.keys(item.frutas).join(', ')}`;
-            }
-            if (item.coberturas && Object.keys(item.coberturas).length > 0) {
-                linhaItem += `\n  - Coberturas: ${Object.keys(item.coberturas).join(', ')}`;
-            }
-        } 
-        // --- LANCHE: Adicionais pagos ---
-        else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-            for (const nome in item.adicionais) {
-                const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nome);
-                if (adicionalDoProduto) {
-                    const quantidade = item.adicionais[nome];
-                    itemParaFirebase.adicionais[nome] = {
-                        quantidade,
-                        preco: adicionalDoProduto.preco
-                    };
+            // AQUI ESTÁ A CORREÇÃO: A LÓGICA DE BEBIDAS DENTRO DO FOR-EACH
+            if (item.bebidas && Object.keys(item.bebidas).length > 0) {
+                let listaBebidas = [];
+                for (const idBebida in item.bebidas) {
+                    const quantidadeBebida = item.bebidas[idBebida];
+                    const bebida = catalogoDeProdutos[idBebida];
+                    if (bebida) {
+                        listaBebidas.push(`${bebida.nome} (${quantidadeBebida})`);
+                    }
+                }
+                if (listaBebidas.length > 0) {
+                    linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
                 }
             }
-            linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
-        }
 
-        // --- BEBIDAS ---
-        if (item.bebidas && Object.keys(item.bebidas).length > 0) {
-            const listaBebidas = [];
-            for (const idBebida in item.bebidas) {
-                const bebida = catalogoDeProdutos[idBebida];
-                const quantidade = item.bebidas[idBebida];
-                if (bebida) {
-                    listaBebidas.push(`${bebida.nome} (${quantidade})`);
-                    itemParaFirebase.bebidas[bebida.nome] = { quantidade, preco: bebida.preco };
-                }
+            const precoItem = calcularPrecoDeItem(item);
+            linhaItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
+
+            if (item.observacao && item.observacao.trim() !== '') {
+                linhaItem += `\n  - Observação: ${item.observacao}`;
             }
-            if (listaBebidas.length > 0) linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
-        }
 
-        // --- Observações ---
-        if (item.observacao && item.observacao.trim() !== '') {
-            linhaItem += `\n  - Observação: ${item.observacao}`;
-        }
+            mensagemWhatsApp += linhaItem + `\n`;
 
-        // --- Preço total do item ---
-        const precoItem = calcularPrecoDeItem(item);
-        linhaItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
-        totalFinalParaWhatsApp += precoItem;
+            totalFinalParaWhatsApp += precoItem;
+        });
+    } else {
+        mensagemWhatsApp += `Nenhum item adicionado ao carrinho.\n`;
+    }
 
-        mensagemWhatsApp += linhaItem + `\n`;
-
-        return itemParaFirebase;
-    });
-
-    // --- TAXA DE ENTREGA ---
-    if (tipoPedido === 'Entrega' && typeof valorTaxaDeEntrega === 'number') {
+    if (tipoPedido === 'Entrega') {
         totalFinalParaWhatsApp += valorTaxaDeEntrega;
         mensagemWhatsApp += `\nTaxa de Entrega: R$ ${valorTaxaDeEntrega.toFixed(2).replace('.', ',')}\n`;
     }
 
     mensagemWhatsApp += `\n*Total do Pedido: R$ ${totalFinalParaWhatsApp.toFixed(2).replace('.', ',')}*\n`;
 
-    // --- PAGAMENTO ---
     let formaPagamentoSelecionada = document.querySelector('input[name="formaPagamento"]:checked');
     let textoFormaPagamento = 'Não especificada';
+
     if (formaPagamentoSelecionada) {
-        if (formaPagamentoSelecionada.id === 'Pix') textoFormaPagamento = 'PIX';
-        else if (formaPagamentoSelecionada.id === 'pagamentoCartao') textoFormaPagamento = 'Cartão';
-        else if (formaPagamentoSelecionada.id === 'Dinheiro') textoFormaPagamento = 'Dinheiro';
+        if (formaPagamentoSelecionada.id === 'Pix') {
+            textoFormaPagamento = 'PIX';
+        } else if (formaPagamentoSelecionada.id === 'pagamentoCartao') {
+            textoFormaPagamento = 'Cartão';
+        } else if (formaPagamentoSelecionada.id === 'Dinheiro') {
+            textoFormaPagamento = 'Dinheiro';
+        }
     }
 
-    mensagemWhatsApp += `\n*Informações de Pagamento:*\nForma de Pagamento: ${textoFormaPagamento}\n`;
+    mensagemWhatsApp += `\n*Informações de Pagamento:*\n`;
+    mensagemWhatsApp += `Forma de Pagamento: ${textoFormaPagamento}\n`;
 
-    // --- TROCO ---
+    let inputTrocoElement = document.getElementById('inputTroco');
     let valorTroco = 0;
-    const inputTrocoElement = document.getElementById('inputTroco');
-    if (inputTrocoElement && inputTrocoElement.value.trim() !== '') {
-        valorTroco = parseFloat(inputTrocoElement.value.trim());
+
+    if (inputTrocoElement) {
+        let valorTrocoString = inputTrocoElement.value.trim();
+        if (valorTrocoString !== '') {
+            valorTroco = parseFloat(valorTrocoString);
+        }
     }
-    if (textoFormaPagamento === 'Dinheiro' && valorTroco > 0) {
+
+    if (textoFormaPagamento === 'Dinheiro' && !isNaN(valorTroco) && valorTroco > 0) {
         mensagemWhatsApp += `| Precisa de R$ ${valorTroco.toFixed(2).replace('.', ',')} de troco \n`;
     } else {
         mensagemWhatsApp += `Não precisa de troco.\n`;
     }
 
-    // --- PIX ---
     if (textoFormaPagamento === 'PIX') {
         const chavePIX = document.getElementById('inputChavePIX').value;
         const nomePIX = document.getElementById('inputNomePIX').value;
         const bancoPIX = document.getElementById('inputBancoPIX').value;
-        mensagemWhatsApp += `*PIX - Chave CPF: ${chavePIX}*\nNome: *${nomePIX}*\nBanco: ${bancoPIX}\n----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
+
+        mensagemWhatsApp += `*PIX - Chave CPF: ${chavePIX}*\n` +
+            `Nome: *${nomePIX}*\n` +
+            `Banco: ${bancoPIX}\n` + 
+            `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
     }
 
-    // --- MONTAR OBJETO FINAL PARA FIREBASE ---
+    let clienteInfo = {
+        nome: nomeCliente,
+        telefone: telefoneCliente,
+        tipo: tipoPedido
+    };
+
+    if (tipoPedido === 'Entrega') {
+        let bairro = document.querySelector('#Bairro').value;
+        let rua = document.querySelector('#Rua').value;
+        let numero = document.querySelector('#NumeroCasa').value;
+        let complemento = document.querySelector('#complemento').value;
+
+        let enderecoInfo = {
+            bairro: bairro,
+            rua: rua,
+            numero: numero,
+            complemento: complemento
+        };
+        clienteInfo.endereco = enderecoInfo
+    };
+
+    const itensParaFirebase = itensCarrinho.map(item => {
+    const itemParaFirebase = {
+        nome: item.produto.nome,
+        precoBase: item.produto.preco,
+        quantidade: item.quantidade,
+        observacoes: item.observacao || '',
+        bebidas: {},
+        adicionais: {}
+    };
+
+    // Lógica para lanches e outros itens com adicionais pagos
+    if (item.produto.tipo !== 'acai' && item.adicionais) {
+        for (const nomeAdicional in item.adicionais) {
+            const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nomeAdicional);
+            if (adicionalDoProduto) {
+                itemParaFirebase.adicionais[nomeAdicional] = {
+                    quantidade: item.adicionais[nomeAdicional],
+                    preco: adicionalDoProduto.preco
+                };
+            }
+        }
+    }
+    
+    // Lógica para açaí (toppings grátis)
+    else if (item.produto.tipo === 'acai') {
+        itemParaFirebase.adicionais = Object.assign(
+            {},
+            item.acompanhamentos,
+            item.frutas,
+            item.coberturas
+        );
+        // Os valores são apenas a quantidade, sem a chave "preco"
+        for (const nomeAdicional in itemParaFirebase.adicionais) {
+            itemParaFirebase.adicionais[nomeAdicional] = {
+                quantidade: itemParaFirebase.adicionais[nomeAdicional]
+            };
+        }
+    }
+    
+    // Lógica para bebidas
+    if (item.bebidas) {
+        for (const idBebida in item.bebidas) {
+            const bebida = catalogoDeProdutos[idBebida];
+            if (bebida) {
+                itemParaFirebase.bebidas[bebida.nome] = {
+                    quantidade: item.bebidas[idBebida],
+                    preco: bebida.preco
+                };
+            }
+        }
+    }
+
+    return itemParaFirebase;
+});
+
+    
     const pedidoParaFirebase = {
         cliente: clienteInfo,
         itens: itensParaFirebase,
-        taxaEntrega: tipoPedido === 'Entrega' ? valorTaxaDeEntrega : 0,
+        taxaEntrega: valorTaxaDeEntrega,
         pagamento: textoFormaPagamento,
         troco: valorTroco,
         data: new Date()
     };
 
-    // --- ENVIA PARA FIREBASE ---
-    if (typeof enviarPedido === 'function') await enviarPedido(pedidoParaFirebase);
+    await enviarPedido(pedidoParaFirebase);
 
-    // --- ABRE WHATSAPP ---
-    const numeroWhatsApp = '5582988204888';
-    const mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
-    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`, '_blank');
+    let numeroWhatsApp = '5582988204888';
+    let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
+    let linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
 
-    // --- FECHAR MODAL ---
-    const modal = document.querySelector('#ModalFazerPedido');
-    if (modal) modal.style.display = 'none';
+    window.open(linkWhatsApp, '_blank');
+    document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto';
 });
+
+
+
 
 
 
