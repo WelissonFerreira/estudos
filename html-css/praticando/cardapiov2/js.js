@@ -1413,9 +1413,7 @@ console.log("Abrindo modal do produto:", cardAtual);
         
         // DIV PRINCIPAL DO CONTEÚDO (Imagem e texto do produto)
 
-        if (produtoSelecionado.tipo === 'lanche') {
-
-            let divPrincipal = document.createElement('div')
+        let divPrincipal = document.createElement('div')
         divPrincipal.classList.add('divPrincipal')
         conteudoModal.appendChild(divPrincipal)
 
@@ -1468,6 +1466,10 @@ console.log("Abrindo modal do produto:", cardAtual);
         precoPre.classList.add('precoPre');
         precoPre.textContent = `R$ ${produtoSelecionado.preco.toFixed(2).replace('.', ',')}`;
         divPrecos.appendChild(precoPre);
+
+        if (produtoSelecionado.tipo === 'lanche') {
+
+            
 
         // DIV PARA SUGESTÃO DE BEBIDAS
         let divSugestaoBebidas = document.createElement('div');
@@ -1783,7 +1785,7 @@ console.log("Abrindo modal do produto:", cardAtual);
 
     
 
-    let divPrincipal = document.createElement('div')
+   /* let divPrincipal = document.createElement('div')
     divPrincipal.classList.add('divPrincipal')
     conteudoModal.appendChild(divPrincipal)
 
@@ -1829,7 +1831,7 @@ console.log("Abrindo modal do produto:", cardAtual);
     let precoPre = document.createElement('span');
     precoPre.classList.add('precoPre');
     precoPre.textContent = `R$ ${produtoSelecionado.preco.toFixed(2).replace('.', ',')}`;
-    divPrecos.appendChild(precoPre);
+    divPrecos.appendChild(precoPre); */
 
     // --- SESSÃO DE ACOMPANHAMENTOS ---
     let divTitulosAcompanhamentos = document.createElement('div');
