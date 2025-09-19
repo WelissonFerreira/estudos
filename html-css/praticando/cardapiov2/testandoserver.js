@@ -1,6 +1,3 @@
-// Este código simula o seu Front-end e o seu Back-end juntos.
-// Use-o para testar as mudanças.
-
 // SIMULANDO OS CATÁLOGOS QUE VOCÊ TEM NO FRONT-END
 const catalogoDeProdutos = {
     'lanche-1': { nome: "Hamburguer X-Tudo", preco: 25.00 },
@@ -16,15 +13,14 @@ const catalogoDeAdicionais = [
     { nome: "Molho Rosé", preco: 3.00 }
 ];
 
-// SIMULANDO A FUNÇÃO DE IMPRESSÃO
-// Esta é a função FINAL e CORRETA que deve estar no seu server.js
+// FUNÇÃO DE IMPRESSÃO ADAPTADA PARA INGREDIENTES DE AÇAÍ
 function imprimirPedido(pedido, tipoComanda) {
     const dataDoPedido = pedido.data.toDate();
     const dataFormatada = dataDoPedido.toLocaleDateString('pt-BR');
     const horaFormatada = dataDoPedido.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
     let dadosParaImpressao = `--- NOVO PEDIDO | ARTHUR LANCHES | ${tipoComanda} ---\n\n`;
-    dadosParaImpressao += `Data: ${dataFormatada} | Hora: ${horaFormatada}\n`; 
+    dadosParaImpressao += `Data: ${dataFormatada} | Hora: ${horaFormatada}\n`;
     dadosParaImpressao += `Nome do Cliente: ${pedido.cliente.nome}\n`;
     dadosParaImpressao += `Telefone: ${pedido.cliente.telefone}\n`;
     dadosParaImpressao += `Tipo de Pedido: ${pedido.cliente.tipo}\n\n`;
@@ -39,58 +35,87 @@ function imprimirPedido(pedido, tipoComanda) {
         }
         dadosParaImpressao += `\n`;
     }
-    
+
     dadosParaImpressao += "--- ITENS DO PEDIDO ---\n";
     let subtotalItens = 0;
 
     pedido.itens.forEach(item => {
         const precoBase = parseFloat(item.precoBase) || 0;
         let precoTotalItem = precoBase;
+
+        // Detecta se é açaí pelo tipo ou pelo nome
+        const isAcai = item.tipo === 'acai' || item.nome.toLowerCase().includes('acai');
+
         dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
-        
+
         if (item.observacoes) {
             dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
         }
-        
-        if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-            dadosParaImpressao += ` - Adicionais:\n`;
-            for (const nomeAdicional in item.adicionais) {
-                const precoAdicional = parseFloat(item.adicionais[nomeAdicional].preco) || 0;
-                const quantidadeAdicional = parseInt(item.adicionais[nomeAdicional].quantidade, 10);
-                precoTotalItem += (precoAdicional * quantidadeAdicional);
-                dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
+
+        // Ingredientes do açaí
+        if (isAcai && item.ingredientes) {
+            dadosParaImpressao += ` - Ingredientes:\n`;
+            if (item.ingredientes.acompanhamentos) {
+                for (const nome in item.ingredientes.acompanhamentos) {
+                    const qt = item.ingredientes.acompanhamentos[nome];
+                    dadosParaImpressao += `   -> ${nome} (${qt})\n`;
+                }
+            }
+            if (item.ingredientes.frutas) {
+                for (const nome in item.ingredientes.frutas) {
+                    const qt = item.ingredientes.frutas[nome];
+                    dadosParaImpressao += `   -> ${nome} (${qt})\n`;
+                }
+            }
+            if (item.ingredientes.coberturas) {
+                for (const nome in item.ingredientes.coberturas) {
+                    const qt = item.ingredientes.coberturas[nome];
+                    dadosParaImpressao += `   -> ${nome} (${qt})\n`;
+                }
             }
         }
 
+        // Adicionais do lanche
+        if (!isAcai && item.adicionais && Object.keys(item.adicionais).length > 0) {
+            dadosParaImpressao += ` - Adicionais:\n`;
+            for (const nomeAd in item.adicionais) {
+                const adicional = item.adicionais[nomeAd];
+                const qt = adicional.quantidade || 1;
+                const precoAd = parseFloat(adicional.preco) || 0;
+                precoTotalItem += precoAd * qt;
+                dadosParaImpressao += `   -> ${nomeAd} (${qt}) - R$ ${(precoAd * qt).toFixed(2).replace('.', ',')}\n`;
+            }
+        }
+
+        // Bebidas
         if (item.bebidas && Object.keys(item.bebidas).length > 0) {
             dadosParaImpressao += ` - Bebidas:\n`;
             for (const nomeBebida in item.bebidas) {
-                const precoBebida = parseFloat(item.bebidas[nomeBebida].preco) || 0;
-                const quantidadeBebida = parseInt(item.bebidas[nomeBebida].quantidade, 10);
-                precoTotalItem += (precoBebida * quantidadeBebida);
-                dadosParaImpressao += `  -> ${nomeBebida} (${quantidadeBebida}) - R$ ${(precoBebida * quantidadeBebida).toFixed(2).replace('.', ',')}\n`;
+                const bebida = item.bebidas[nomeBebida];
+                const qt = bebida.quantidade || 1;
+                const precoBebida = parseFloat(bebida.preco) || 0;
+                precoTotalItem += precoBebida * qt;
+                dadosParaImpressao += `   -> ${nomeBebida} (${qt}) - R$ ${(precoBebida * qt).toFixed(2).replace('.', ',')}\n`;
             }
         }
-        
+
         subtotalItens += precoTotalItem;
-        dadosParaImpressao += `  -> Total do Item: R$ ${precoTotalItem.toFixed(2).replace('.', ',')}\n`;
+        dadosParaImpressao += `  -> Total do Item: R$ ${precoTotalItem.toFixed(2).replace('.', ',')}\n\n`;
     });
 
-    dadosParaImpressao += "\n--------------------\n";
+    dadosParaImpressao += "--------------------\n";
     dadosParaImpressao += `Subtotal: R$ ${subtotalItens.toFixed(2).replace('.', ',')}\n`;
-    
+
     let valorTotal = subtotalItens;
-    if (pedido.taxaEntrega > 0) {
+    if (pedido.taxaEntrega && pedido.taxaEntrega > 0) {
         dadosParaImpressao += `Taxa de Entrega: R$ ${pedido.taxaEntrega.toFixed(2).replace('.', ',')}\n`;
         valorTotal += pedido.taxaEntrega;
     }
 
     dadosParaImpressao += `\nTOTAL DO PEDIDO: R$ ${valorTotal.toFixed(2).replace('.', ',')}\n`;
-    
     dadosParaImpressao += "--------------------\n";
     dadosParaImpressao += `Forma de Pagamento: ${pedido.pagamento}\n`;
-
-    if (pedido.troco > 0) {
+    if (pedido.troco && pedido.troco > 0) {
         dadosParaImpressao += `Troco para: R$ ${pedido.troco.toFixed(2).replace('.', ',')}\n`;
     }
     dadosParaImpressao += "--------------------\n\n\n\n";
@@ -98,83 +123,42 @@ function imprimirPedido(pedido, tipoComanda) {
     console.log(dadosParaImpressao);
 }
 
-// SIMULANDO A NOVA ESTRUTURA DE DADOS ENVIADA DO FRONT-END
-const pedidoComAdicionaisEBebidas = {
+// TESTANDO COM UM PEDIDO DE AÇAÍ COM INGREDIENTES
+const pedidoTeste = {
     cliente: {
         nome: "João da Silva",
         telefone: "99999999999",
         tipo: "Entrega",
-        endereco: {
-            bairro: "Bairro Central",
-            rua: "Rua das Flores",
-            numero: "123",
-            complemento: "Apartamento 101"
-        }
+        endereco: { bairro: "Central", rua: "Rua A", numero: "123", complemento: "Ap 101" }
     },
     data: { toDate: () => new Date() },
     itens: [
-        { 
-            nome: "Hamburguer X-Tudo", 
-            precoBase: 25.00,
-            quantidade: 1, 
-            observacoes: "sem cebola",
-            adicionais: {
-                "Bacon": { quantidade: 1, preco: 7.00 },
-                "Queijo": { quantidade: 2, preco: 5.00 }
-            },
-            bebidas: {}
-        },
-        { 
-            nome: "Açai 500ml", 
+        {
+            nome: "Açaí 500ml",
+            tipo: "acai",
             precoBase: 22.00,
-            quantidade: 1, 
+            quantidade: 1,
             observacoes: "",
-            adicionais: {},
-            bebidas: {
-                "Refrigerante 2L": { quantidade: 1, preco: 8.00 }
-            }
-        },
-        { 
-            nome: "Batata Frita", 
-            precoBase: 12.50,
-            quantidade: 1, 
-            observacoes: "com pouco sal",
+            ingredientes: {
+                acompanhamentos: { "Granola": 1, "Leite Condensado": 1 },
+                frutas: { "Banana": 1 },
+                coberturas: { "Chocolate": 1 }
+            },
             adicionais: {},
             bebidas: {}
+        },
+        {
+            nome: "Hamburguer X-Tudo",
+            precoBase: 25.00,
+            quantidade: 1,
+            observacoes: "sem cebola",
+            adicionais: { "Bacon": { quantidade: 1, preco: 7 }, "Queijo": { quantidade: 2, preco: 5 } },
+            bebidas: { "Refrigerante 2L": { quantidade: 1, preco: 8 } }
         }
     ],
-    taxaEntrega: 5.00,
+    taxaEntrega: 5,
     pagamento: "PIX",
     troco: 0
 };
 
-// SIMULANDO UM PEDIDO MAIS SIMPLES DE RETIRADA
-const pedidoSimples = {
-    cliente: {
-        nome: "Maria Oliveira",
-        telefone: "98888888888",
-        tipo: "Retirada"
-    },
-    data: { toDate: () => new Date() },
-    itens: [
-        { 
-            nome: "Refrigerante Lata", 
-            precoBase: 8.00, 
-            quantidade: 2, 
-            observacoes: "",
-            adicionais: {},
-            bebidas: {}
-        }
-    ],
-    taxaEntrega: 0,
-    pagamento: "Dinheiro",
-    troco: 20
-};
-
-
-// CHAMANDO A FUNÇÃO DE TESTE
-console.log("--- TESTANDO PEDIDO COM ITENS, ADICIONAIS E BEBIDAS ---");
-imprimirPedido(pedidoComAdicionaisEBebidas, 'COMANDA COZINHA');
-
-console.log("\n\n--- TESTANDO PEDIDO MAIS SIMPLES (SOMENTE ITENS) ---");
-imprimirPedido(pedidoSimples, 'COMANDA COZINHA');
+imprimirPedido(pedidoTeste, "COMANDA COZINHA");
