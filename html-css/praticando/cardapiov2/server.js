@@ -1,10 +1,9 @@
 // server.js
 
 // 1. IMPORTAÇÕES E CONFIGURAÇÃO
-// Importa o SDK do Firebase Admin e o módulo de impressão
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
-const printer = require('@thiagoelg/node-printer')
+const printer = require('@thiagoelg/node-printer');
 const nomeDaImpressora = 'POS-58';
 
 // Inicializa o Firebase com a chave de serviço
@@ -13,14 +12,12 @@ admin.initializeApp({
 });
 
 // 2. REFERÊNCIAS AO FIRESTORE
-// Conecta ao banco de dados e à coleção de pedidos
 const db = admin.firestore();
 const pedidosRef = db.collection('pedidos');
 
 // 3. FUNÇÃO DE IMPRESSÃO
-// Esta função monta a string da comanda e a envia para a impressora
 function imprimirPedido(pedido, tipoComanda) {
-    const dataDoPedido = pedido.data.toDate();
+    const dataDoPedido = pedido.data.toDate ? pedido.data.toDate() : new Date(pedido.data);
     const dataFormatada = dataDoPedido.toLocaleDateString('pt-BR');
     const horaFormatada = dataDoPedido.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
@@ -48,15 +45,13 @@ function imprimirPedido(pedido, tipoComanda) {
         let precoBase = parseFloat(item.precoBase) || 0;
         let precoTotalItem = precoBase;
 
-         // Verifica se o nome do item contém "açai" (ignorando maiúsculas/minúsculas)
-    if (item.nome.toLowerCase().includes('açai')) {
-        dadosParaImpressao += `AÇAI\n`;
-    } else {
-        dadosParaImpressao += `LANCHE\n`;
-    }
+        if (item.nome.toLowerCase().includes('açai')) {
+            dadosParaImpressao += `AÇAI\n`;
+        } else {
+            dadosParaImpressao += `LANCHE\n`;
+        }
 
-    dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`
-        
+        dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
 
         if (item.observacoes) {
             dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
@@ -73,7 +68,6 @@ function imprimirPedido(pedido, tipoComanda) {
                     precoTotalItem += precoAdicional * quantidadeAdicional;
                     dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
                 } else {
-                    // Açai: apenas quantidade, sem preço
                     const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
                     dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional})\n`;
                 }
@@ -127,26 +121,24 @@ function imprimirPedido(pedido, tipoComanda) {
     });
 }
 
-
 // 4. ESCUTA DOS PEDIDOS DO FIRESTORE
-// Fica 'ouvindo' a coleção de pedidos em tempo real
 pedidosRef.onSnapshot(snapshot => {
     snapshot.docChanges().forEach(change => {
         if (change.type === 'added') {
             const novoPedido = change.doc.data();
-            const docId = change.doc.id; // <-- Obtém o ID do documento
-            
+            const docId = change.doc.id;
+
             console.log('Novo pedido recebido do Firestore!');
-            
-            // Chama a comanda para a cozinha (sempre)
+
+            // Imprime comanda para a cozinha
             imprimirPedido(novoPedido, '===== COMANDA COZINHA =====');
 
-            // Chama a comanda para o entregador (apenas se for entrega)
+            // Imprime comanda para entregador, se for entrega
             if (novoPedido.cliente.tipo === 'Entrega') {
-                imprimirPedido(novoPedido, '===== COMANDA ENTREGADOR =====')
+                imprimirPedido(novoPedido, '===== COMANDA ENTREGADOR =====');
             }
-            
-            // Adicione a lógica para apagar o documento depois de imprimir
+
+            // Remove documento após impressão
             db.collection('pedidos').doc(docId).delete()
                 .then(() => {
                     console.log(`Pedido ${docId} removido do Firestore.`);
