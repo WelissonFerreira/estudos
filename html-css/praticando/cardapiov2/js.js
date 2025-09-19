@@ -1076,7 +1076,7 @@ let catalogoDeProdutos = {
                 frutas: [
                     {nome: "Banana"},
                     {nome: "Uva"}
-                ]
+                ],
             },
 
 
@@ -1786,56 +1786,6 @@ console.log("Abrindo modal do produto:", cardAtual);
     
 
 } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
-
-    
-
-   /* let divPrincipal = document.createElement('div')
-    divPrincipal.classList.add('divPrincipal')
-    conteudoModal.appendChild(divPrincipal)
-
-    // Crie e anexe a imagem, nome, preco, etc. do açaí
-    // DIV para organizar as imagens
-    let divImagemPre = document.createElement('div');
-    divImagemPre.classList.add('divImagemPre');
-    divPrincipal.appendChild(divImagemPre);
-
-    let imagemPre = document.createElement('img');
-    imagemPre.src = `${produtoSelecionado.imagem}`;
-    imagemPre.classList.add('imagemPre');
-    divImagemPre.appendChild(imagemPre);
-
-    let divPrincipalProdutoInfo = document.createElement('div');
-    divPrincipalProdutoInfo.classList.add('divPrincipalProdutoInfo');
-    divPrincipal.appendChild(divPrincipalProdutoInfo);
-
-    // DIV para organizar conteúdo, nome, preco, descrição
-    let divConteudoPre = document.createElement('div');
-    divConteudoPre.classList.add('divConteudoPre');
-    divPrincipalProdutoInfo.appendChild(divConteudoPre);
-
-    let h3ProdutoPre = document.createElement('h3');
-    h3ProdutoPre.textContent = `${produtoSelecionado.nome}`;
-    h3ProdutoPre.classList.add('h3ProdutoPre');
-    divConteudoPre.appendChild(h3ProdutoPre);
-
-    let descricaoPre = document.createElement('p');
-    descricaoPre.textContent = `${produtoSelecionado.descricao}`;
-    descricaoPre.classList.add('descricaoPre');
-    divConteudoPre.appendChild(descricaoPre);
-
-    let divPrecos = document.createElement('div');
-    divPrecos.classList.add('divPrecos');
-    divConteudoPre.appendChild(divPrecos);
-
-    let precoRiscadoPre = document.createElement('span');
-    precoRiscadoPre.classList.add('PrecoRiscadoPre');
-    precoRiscadoPre.textContent = `R$ ${produtoSelecionado.precoRiscado.toFixed(2).replace('.', ',')}`;
-    divPrecos.appendChild(precoRiscadoPre);
-
-    let precoPre = document.createElement('span');
-    precoPre.classList.add('precoPre');
-    precoPre.textContent = `R$ ${produtoSelecionado.preco.toFixed(2).replace('.', ',')}`;
-    divPrecos.appendChild(precoPre); */
 
     // --- SESSÃO DE ACOMPANHAMENTOS ---
     let divTitulosAcompanhamentos = document.createElement('div');
