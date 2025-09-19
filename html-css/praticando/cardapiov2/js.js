@@ -1396,7 +1396,7 @@ console.log("Abrindo modal do produto:", cardAtual);
         const seletorPreCarrinho = cardAtual.dataset.produtoId;
         const produtoSelecionado = catalogoDeProdutos[seletorPreCarrinho];
 
-        ModalPreCarrinho.style.display = 'block';
+        
         scrollPosition = window.scrollY;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${scrollPosition}px`;
@@ -1781,7 +1781,7 @@ console.log("Abrindo modal do produto:", cardAtual);
 
 } else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
 
-    conteudoModal.textContent = '';
+    
 
     let divPrincipal = document.createElement('div')
     divPrincipal.classList.add('divPrincipal')
@@ -2249,6 +2249,9 @@ console.log("Abrindo modal do produto:", cardAtual);
     
     atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
 }
+
+
+ModalPreCarrinho.style.display = 'block';
 
     
 
