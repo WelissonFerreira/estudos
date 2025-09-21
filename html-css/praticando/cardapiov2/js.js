@@ -789,6 +789,168 @@ let catalogoDeProdutos = {
 },
 
 
+
+    "produto-acai-200ml": {
+        tipo: "acai",
+        nome: "Açai 200ml - Mini Delícia",
+        descricao: "Açaí 200ml: compacto e saboroso (2 acompanhamentos · 1 fruta · 1 cobertura)",
+        imagem: "imagens/acai/acai200ml.png",
+        precoRiscado: 15.00,
+        preco: 10.00,
+        limiteAcompanhamentos: 2,
+        limiteFrutas: 1,
+        limiteCoberturas: 1,
+        acompanhamentos: [
+                    {nome: "Leite em Pó", preco: 0},
+                    {nome: "Granola", preco: 0},
+                    {nome: "OvoMaltine", preco: 0},
+                    {nome: "Sucrilhos", preco: 0},
+                    {nome: "M&M", preco: 0},
+                    {nome: "Paçoca", preco: 0},
+                    {nome: "Jujuba", preco: 0},
+                    {nome: "Farinha Lacta", preco: 0},
+                    {nome: "Flocos de Arroz", preco: 0},
+                    {nome: "Amendoim", preco: 0},
+                    {nome: "Nescau Cereal", preco: 0}
+                ],
+                coberturas: [
+                    {nome: "Leite Condensado", preco: 0},
+                    {nome: "Chocolate", preco: 0},
+                    {nome: "Morango", preco: 0},
+                    {nome: "Amora", preco: 0},
+                    {nome: "Menta", preco: 0},
+                    {nome: "Doce de Leite", preco: 0}
+                ],
+                frutas: [
+                    {nome: "Banana", preco: 0},
+                    {nome: "Uva", preco: 0}
+                ],
+            },
+
+
+    "produto-acai-300ml": {
+                tipo: "acai",
+                nome: "Açai 300ml - Clássico",
+                descricao: "Açaí 300ml: na medida certa (3 acompanhamentos · 1 fruta · 1 cobertura)",
+                imagem: "imagens/acai/acai200ml.png",
+                precoRiscado: 20.00,
+                preco: 14.00,
+                limiteAcompanhamentos: 3,
+                limiteFrutas: 1,
+                limiteCoberturas: 1,
+                acompanhamentos: [
+                    {nome: "Leite em Pó", preco: 0},
+                    {nome: "Granola", preco: 0},
+                    {nome: "OvoMaltine", preco: 0},
+                    {nome: "Sucrilhos", preco: 0},
+                    {nome: "M&M", preco: 0},
+                    {nome: "Paçoca", preco: 0},
+                    {nome: "Jujuba", preco: 0},
+                    {nome: "Farinha Lacta", preco: 0},
+                    {nome: "Flocos de Arroz", preco: 0},
+                    {nome: "Amendoim", preco: 0},
+                    {nome: "Nescau Cereal", preco: 0}
+                ],
+                coberturas: [
+                    {nome: "Leite Condensado", preco: 0},
+                    {nome: "Chocolate", preco: 0},
+                    {nome: "Morango", preco: 0},
+                    {nome: "Amora", preco: 0},
+                    {nome: "Menta", preco: 0},
+                    {nome: "Doce de Leite", preco: 0}
+                ],
+                frutas: [
+                    {nome: "Banana", preco: 0},
+                    {nome: "Uva", preco: 0},
+                    {nome: "Kiwi", preco: 0}
+                    
+                ],
+                
+                
+    },
+
+        "produto-acai-500ml": {
+                tipo: "acai",
+                nome: "Açai 500ml - Generoso",
+                descricao: "Açaí 500ml: para matar a fome (4 acompanhamentos · 1 fruta · 1 cobertura)",
+                imagem: "imagens/acai/acai500ml.png",
+                precoRiscado: 25.00,
+                preco: 17.00,
+                limiteAcompanhamentos: 4,
+                limiteFrutas: 1,
+                limiteCoberturas: 1,
+                acompanhamentos: [
+                    {nome: "Leite em Pó", preco: 0},
+                    {nome: "Granola", preco: 0},
+                    {nome: "OvoMaltine", preco: 0},
+                    {nome: "Sucrilhos", preco: 0},
+                    {nome: "M&M", preco: 0},
+                    {nome: "Paçoca", preco: 0},
+                    {nome: "Jujuba", preco: 0},
+                    {nome: "Farinha Lacta", preco: 0},
+                    {nome: "Flocos de Arroz", preco: 0},
+                    {nome: "Amendoim", preco: 0},
+                    {nome: "Nescau Cereal", preco: 0}
+                ],
+                coberturas: [
+                    {nome: "Leite Condensado", preco: 0},
+                    {nome: "Chocolate", preco: 0},
+                    {nome: "Morango", preco: 0},
+                    {nome: "Amora", preco: 0},
+                    {nome: "Menta", preco: 0},
+                    {nome: "Doce de Leite", preco: 0}
+                ],
+                frutas: [
+                    {nome: "Banana", preco: 0},
+                    {nome: "Uva", preco: 0},
+                    {nome: "Kiwi", preco: 0}
+                    
+                ],
+                
+                
+    },
+
+        "produto-acai-700ml": {
+                tipo: "acai",
+                nome: "Açai 700ml - Família",
+                descricao: "Açaí 700ml: gigante e irresistível (5 acompanhamentos · 1 fruta · 1 cobertura)",
+                imagem: "imagens/acai/acai700ml.png",
+                precoRiscado: 30.00,
+                preco: 24.00,
+                limiteAcompanhamentos: 3,
+                limiteFrutas: 1,
+                limiteCoberturas: 1,
+                acompanhamentos: [
+                {nome: "Leite em Pó", preco: 0},
+                    {nome: "Granola", preco: 0},
+                    {nome: "OvoMaltine", preco: 0},
+                    {nome: "Sucrilhos", preco: 0},
+                    {nome: "M&M", preco: 0},
+                    {nome: "Paçoca", preco: 0},
+                    {nome: "Jujuba", preco: 0},
+                    {nome: "Farinha Lacta", preco: 0},
+                    {nome: "Flocos de Arroz", preco: 0},
+                    {nome: "Amendoim", preco: 0},
+                    {nome: "Nescau Cereal", preco: 0}
+                ],
+                coberturas: [
+                    {nome: "Leite Condensado", preco: 0},
+                    {nome: "Chocolate", preco: 0},
+                    {nome: "Morango", preco: 0},
+                    {nome: "Amora", preco: 0},
+                    {nome: "Menta", preco: 0},
+                    {nome: "Doce de Leite", preco: 0}
+                ],
+                frutas: [
+                    {nome: "Banana", preco: 0},
+                    {nome: "Uva", preco: 0},
+                    {nome: "Kiwi", preco: 0}
+                    
+                ],
+                
+    },
+
+
     "produto-cocacola250ml": {
         tipo: "bebida",
         nome: "Coca-Cola em lata" ,
@@ -1042,166 +1204,7 @@ let catalogoDeProdutos = {
             imagem: "imagens/bebidas/PolpaAbacaxi.jpg"
     },
 
-    "produto-acai-200ml": {
-        tipo: "acai",
-        nome: "Açai 200ml - Mini Delícia",
-        descricao: "Açaí 200ml: compacto e saboroso (2 acompanhamentos · 1 fruta · 1 cobertura)",
-        imagem: "imagens/acai/acai200ml.png",
-        precoRiscado: 15.00,
-        preco: 10.00,
-        limiteAcompanhamentos: 2,
-        limiteFrutas: 1,
-        limiteCoberturas: 1,
-        acompanhamentos: [
-                    {nome: "Leite em Pó"},
-                    {nome: "Granola"},
-                    {nome: "OvoMaltine"},
-                    {nome: "Sucrilhos"},
-                    {nome: "M&M"},
-                    {nome: "Paçoca"},
-                    {nome: "Jujuba"},
-                    {nome: "Farinha Lacta"},
-                    {nome: "Flocos de Arroz"},
-                    {nome: "Amendoim"},
-                    {nome: "Nescau Cereal"}
-                ],
-                coberturas: [
-                    {nome: "Leite Condensado"},
-                    {nome: "Chocolate"},
-                    {nome: "Morango"},
-                    {nome: "Amora"},
-                    {nome: "Menta"},
-                    {nome: "Doce de Leite"}
-                ],
-                frutas: [
-                    {nome: "Banana"},
-                    {nome: "Uva"}
-                ],
-            },
 
-
-    "produto-acai-300ml": {
-                tipo: "acai",
-                nome: "Açai 300ml - Clássico",
-                descricao: "Açaí 300ml: na medida certa (3 acompanhamentos · 1 fruta · 1 cobertura)",
-                imagem: "imagens/acai/acai200ml.png",
-                precoRiscado: 20.00,
-                preco: 14.00,
-                limiteAcompanhamentos: 3,
-                limiteFrutas: 1,
-                limiteCoberturas: 1,
-                acompanhamentos: [
-                    {nome: "Leite em Pó"},
-                    {nome: "Granola"},
-                    {nome: "OvoMaltine"},
-                    {nome: "Sucrilhos"},
-                    {nome: "M&M"},
-                    {nome: "Paçoca"},
-                    {nome: "Jujuba"},
-                    {nome: "Farinha Lacta"},
-                    {nome: "Flocos de Arroz"},
-                    {nome: "Amendoim"},
-                    {nome: "Nescau Cereal"}
-                ],
-                coberturas: [
-                    {nome: "Leite Condensado"},
-                    {nome: "Chocolate"},
-                    {nome: "Morango"},
-                    {nome: "Amora"},
-                    {nome: "Menta"},
-                    {nome: "Doce de Leite"}
-                ],
-                frutas: [
-                    {nome: "Banana"},
-                    {nome: "Uva"},
-                    {nome: "Kiwi"}
-                    
-                ],
-                
-                
-    },
-
-        "produto-acai-500ml": {
-                tipo: "acai",
-                nome: "Açai 500ml - Generoso",
-                descricao: "Açaí 500ml: para matar a fome (4 acompanhamentos · 1 fruta · 1 cobertura)",
-                imagem: "imagens/acai/acai500ml.png",
-                precoRiscado: 25.00,
-                preco: 17.00,
-                limiteAcompanhamentos: 4,
-                limiteFrutas: 1,
-                limiteCoberturas: 1,
-                acompanhamentos: [
-                    {nome: "Leite em Pó"},
-                    {nome: "Granola"},
-                    {nome: "OvoMaltine"},
-                    {nome: "Sucrilhos"},
-                    {nome: "M&M"},
-                    {nome: "Paçoca"},
-                    {nome: "Jujuba"},
-                    {nome: "Farinha Lacta"},
-                    {nome: "Flocos de Arroz"},
-                    {nome: "Amendoim"},
-                    {nome: "Nescau Cereal"}
-                ],
-                coberturas: [
-                    {nome: "Leite Condensado"},
-                    {nome: "Chocolate"},
-                    {nome: "Morango"},
-                    {nome: "Amora"},
-                    {nome: "Menta"},
-                    {nome: "Doce de Leite"}
-                ],
-                frutas: [
-                    {nome: "Banana"},
-                    {nome: "Uva"},
-                    {nome: "Kiwi"}
-                    
-                ],
-                
-                
-    },
-
-        "produto-acai-700ml": {
-                tipo: "acai",
-                nome: "Açai 700ml - Família",
-                descricao: "Açaí 700ml: gigante e irresistível (5 acompanhamentos · 1 fruta · 1 cobertura)",
-                imagem: "imagens/acai/acai700ml.png",
-                precoRiscado: 30.00,
-                preco: 24.00,
-                limiteAcompanhamentos: 3,
-                limiteFrutas: 1,
-                limiteCoberturas: 1,
-                acompanhamentos: [
-                    {nome: "Leite em Pó"},
-                    {nome: "Granola"},
-                    {nome: "OvoMaltine"},
-                    {nome: "Sucrilhos"},
-                    {nome: "M&M"},
-                    {nome: "Paçoca"},
-                    {nome: "Jujuba"},
-                    {nome: "Farinha Lacta"},
-                    {nome: "Flocos de Arroz"},
-                    {nome: "Amendoim"},
-                    {nome: "Nescau Cereal"}
-                ],
-                coberturas: [
-                    {nome: "Leite Condensado"},
-                    {nome: "Chocolate"},
-                    {nome: "Morango"},
-                    {nome: "Amora"},
-                    {nome: "Menta"},
-                    {nome: "Doce de Leite"}
-                ],
-                frutas: [
-                    {nome: "Banana"},
-                    {nome: "Uva"},
-                    {nome: "Kiwi"}
-                    
-                ],
-                
-                
-    },
 
 
 }
@@ -1271,6 +1274,20 @@ function saoObjetosIguais(obj1, obj2) {
     return true;
 }
 
+function arraysIguais(array1 = [], array2 = []) {
+    // 1. Primeiro, verifique se os tamanhos são diferentes. Se forem, já retorna false.
+    if (array1.length !== array2.length) {
+        return false
+    }
+
+     // 2. Use o método `every` para percorrer e comparar cada elemento.
+    return array1.every((elemento, indice) => {
+        return saoObjetosIguais(elemento, array2[indice]);
+    })
+
+
+}
+
 // ==========================================================================================
 function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanhamentos = [], frutas = [], coberturas = []) {
     let itemExistente = itensCarrinho.find(item =>
@@ -1300,11 +1317,8 @@ function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanha
     atualizarContadorCarrinho();
 }
 
-// Função auxiliar para comparar arrays
-function arraysIguais(arr1 = [], arr2 = []) {
-    if (arr1.length !== arr2.length) return false;
-    return arr1.every((el, i) => el === arr2[i]);
-}
+
+
 
 
 
@@ -1866,7 +1880,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
                 acompanhamentosSelecionados[nomeAcompanhamento] = parseInt(inputQuantidade.value);
                 pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteAcompanhamentos}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+                atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
         } 
         else if (elementoClicado.classList.contains('diminuirAcompanhamento')) {
@@ -1882,7 +1896,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 acompanhamentosSelecionados[nomeAcompanhamento] = valorAtual;
                 const quantidadeTotal = Object.values(acompanhamentosSelecionados).reduce((total, qt) => total + qt, 0);
                 pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal} de ${produtoSelecionado.limiteAcompanhamentos}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+                atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
 
             if (valorAtual === 0) {
@@ -1971,7 +1985,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
                 frutasSelecionadas[nomeFruta] = parseInt(inputQuantidade.value);
                 pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteFrutas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+                atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
         }
         else if (elementoClicado.classList.contains('diminuirFruta')) {
@@ -1986,7 +2000,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 frutasSelecionadas[nomeFruta] = valorAtual;
                 const quantidadeTotal = Object.values(frutasSelecionadas).reduce((total, qt) => total + qt, 0);
                 pLimiteFrutas.textContent = `Frutas: ${quantidadeTotal} de ${produtoSelecionado.limiteFrutas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+                atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
             if (valorAtual === 0) {
                 inputQuantidade.style.display = 'none';
@@ -2073,7 +2087,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
                 coberturasSelecionadas[nomeCobertura] = parseInt(inputQuantidade.value);
                 pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteCoberturas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+                atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
         } 
         else if (elementoClicado.classList.contains('diminuirCobertura')) {
@@ -2089,7 +2103,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 coberturasSelecionadas[nomeCobertura] = valorAtual;
                 const quantidadeTotal = Object.values(coberturasSelecionadas).reduce((total, qt) => total + qt, 0);
                 pLimiteCoberturas.textContent = `Coberturas: ${quantidadeTotal} de ${produtoSelecionado.limiteCoberturas}`;
-                atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, {acompanhamentos: acompanhamentosSelecionados, frutas: frutasSelecionadas, coberturas: coberturasSelecionadas}, {});
+                atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
 
             if (valorAtual === 0) {
@@ -2155,13 +2169,9 @@ console.log("Abrindo modal do produto:", cardAtual);
             totalFrutas === produtoSelecionado.limiteFrutas && 
             totalCoberturas === produtoSelecionado.limiteCoberturas) {
 
-            const acaiAdicionais = {
-                acompanhamentos: acompanhamentosSelecionados,
-                frutas: frutasSelecionadas,
-                coberturas: coberturasSelecionadas
-            };
+                
 
-            adicionarAoCarrinho(produtoSelecionado, quantidade, acaiAdicionais, {});
+            adicionarAoCarrinho(produtoSelecionado, quantidade, {}, {}, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
 
             ModalPreCarrinho.style.display = 'none';
             atualizarCarrinho();
@@ -2345,46 +2355,6 @@ function mostrarItensDoCarrinho() {
     }
 
 
-        if (item.produto.tipo === 'acai') {
-                 // 1. Coletar os acompanhamentos selecionados
-        const acompanhamentosComprados = Object.keys(item.acompanhamentos || {}).filter(key => item.acompanhamentos[key] > 0);
-
-          // 2. Se houver acompanhamentos, exibi-los
-        if (acompanhamentosComprados.length > 0) {
-            let divAcompanhamentosItem = document.createElement('div');
-            divAcompanhamentosItem.classList.add('adicionais-item-carrinho');
-            let pAcompanhamentos = document.createElement('p');
-            pAcompanhamentos.textContent = 'Acompanhamentos: ' + acompanhamentosComprados.map(nome => `${item.acompanhamentos[nome]}x ${nome} `).join(', ');
-            divAcompanhamentosItem.appendChild(pAcompanhamentos);
-            divProdutoDescricao.appendChild(divAcompanhamentosItem);
-    }
-
-         // 3. Coletar as coberturas selecionadas
-    const coberturasCompradas = Object.keys(item.coberturas || {}).filter(key => item.coberturas[key] > 0);
-
-        // 4. Se houver coberturas, exibi-las
-        if (coberturasCompradas.length > 0) {
-            let divCoberturasItem = document.createElement('div');
-            divCoberturasItem.classList.add('adicionais-item-carrinho');
-            let pCoberturas = document.createElement('p');
-            pCoberturas.textContent = 'Coberturas: ' + coberturasCompradas.map(nome => `${item.coberturas[nome]}x ${nome} `).join(', ');
-            divCoberturasItem.appendChild(pCoberturas);
-            divProdutoDescricao.appendChild(divCoberturasItem);
-    }
-
-        const frutasSelecionadas = Object.keys(item.frutas || {}).filter(key => item.frutas[key] > 0);
-
-        // 5. Se houver frutas, exibir
-        if (frutasSelecionadas.length > 0) {
-            let divItemFruta = document.createElement('div');
-            divItemFruta.classList.add('adicionais-item-carrinho');
-            let pFrutas = document.createElement('p')
-            pFrutas.textContent = 'Frutas: ' + frutasSelecionadas.map(nome => `${item.frutas[nome]}x ${nome} `).join(', ');
-            divItemFruta.appendChild(pFrutas);
-            divProdutoDescricao.appendChild(divItemFruta)
-        }
-}
-
 
             // -----------------------------
 
@@ -2397,6 +2367,42 @@ function mostrarItensDoCarrinho() {
 
             divProdutoDescricao.appendChild(h3NomeProduto);
             divProdutoDescricao.appendChild(descricaoProduto);
+
+
+
+            // --- NOVO CÓDIGO INSERIDO AQUI ---
+        if (item.produto.tipo === 'acai') {
+            
+            // Lógica para Acompanhamentos
+    if (item.acompanhamentos && item.acompanhamentos.length > 0) {
+        let divAcompanhamentosItem = document.createElement('div');
+        divAcompanhamentosItem.classList.add('adicionais-item-carrinho');
+        let pAcompanhamentos = document.createElement('p');
+        pAcompanhamentos.textContent = 'Acompanhamentos: ' + item.acompanhamentos.map(a => a.nome).join(', ');
+        divAcompanhamentosItem.appendChild(pAcompanhamentos);
+        divProdutoDescricao.appendChild(divAcompanhamentosItem);
+    }
+
+    // Lógica para Frutas
+    if (item.frutas && item.frutas.length > 0) {
+        let divItemFruta = document.createElement('div');
+        divItemFruta.classList.add('adicionais-item-carrinho');
+        let pFrutas = document.createElement('p');
+        pFrutas.textContent = 'Frutas: ' + item.frutas.map(f => f.nome).join(', ');
+        divItemFruta.appendChild(pFrutas);
+        divProdutoDescricao.appendChild(divItemFruta)
+    }
+    
+    // Lógica para Coberturas
+    if (item.coberturas && item.coberturas.length > 0) {
+        let divCoberturasItem = document.createElement('div');
+        divCoberturasItem.classList.add('adicionais-item-carrinho');
+        let pCoberturas = document.createElement('p');
+        pCoberturas.textContent = 'Coberturas: ' + item.coberturas.map(c => c.nome).join(', ');
+        divCoberturasItem.appendChild(pCoberturas);
+        divProdutoDescricao.appendChild(divCoberturasItem);
+    }
+};
 
             // Adiciona adicionais ao HTML (se existirem)
             const adicionaisComprados = Object.keys(item.adicionais).filter(key => item.adicionais[key] > 0);
