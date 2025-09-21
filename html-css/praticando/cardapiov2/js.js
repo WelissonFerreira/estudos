@@ -1229,6 +1229,17 @@ const precosEntrega = {
     "Pitanguinha": 5,
 }
 
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+
+  preloader.style.opacity = "0"; // inicia fade
+
+setTimeout(() => {
+    preloader.style.display = "none"; // some do DOM
+  }, 500); // tempo igual ao transition
+});
+
+
 
 function atualizarContadorCarrinho() {
     let contador = document.querySelector(".contcarrinho");
