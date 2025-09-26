@@ -1,0 +1,163 @@
+// server.js
+
+// 1. IMPORTAÇÕES E CONFIGURAÇÃO
+// Importa o SDK do Firebase Admin e o módulo de impressão
+const admin = require('firebase-admin');
+const serviceAccount = require('./serviceAccountKey.json');
+const printer = require('@thiagoelg/node-printer')
+const nomeDaImpressora = 'POS-58';
+
+// Inicializa o Firebase com a chave de serviço
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
+
+// 2. REFERÊNCIAS AO FIRESTORE
+// Conecta ao banco de dados e à coleção de pedidos
+const db = admin.firestore();
+const clienteId = 'arthurlanches'
+const pedidosRef = db.collection('clientes').doc(clienteId).collection('pedidos');
+
+// 3. FUNÇÃO DE IMPRESSÃO
+// Esta função monta a string da comanda e a envia para a impressora
+function imprimirPedido(pedido, tipoComanda) {
+    const dataDoPedido = pedido.data.toDate();
+    const dataFormatada = dataDoPedido.toLocaleDateString('pt-BR');
+    const horaFormatada = dataDoPedido.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+    let dadosParaImpressao = `--- NOVO PEDIDO | ARTHUR LANCHES | ${tipoComanda} ---\n\n`;
+    dadosParaImpressao += `Data: ${dataFormatada} | Hora: ${horaFormatada}\n`; 
+    dadosParaImpressao += `Nome do Cliente: ${pedido.cliente.nome}\n`;
+    dadosParaImpressao += `Telefone: ${pedido.cliente.telefone}\n`;
+    dadosParaImpressao += `Tipo de Pedido: ${pedido.cliente.tipo}\n\n`;
+
+    if (pedido.cliente.tipo === 'Entrega' && pedido.cliente.endereco) {
+        dadosParaImpressao += `--- ENDEREÇO DE ENTREGA ---\n`;
+        dadosParaImpressao += `Bairro: ${pedido.cliente.endereco.bairro}\n`;
+        dadosParaImpressao += `Rua: ${pedido.cliente.endereco.rua}\n`;
+        dadosParaImpressao += `Número: ${pedido.cliente.endereco.numero}\n`;
+        if (pedido.cliente.endereco.complemento) {
+            dadosParaImpressao += `Complemento: ${pedido.cliente.endereco.complemento}\n`;
+        }
+        dadosParaImpressao += `\n`;
+    }
+
+    dadosParaImpressao += "--- ITENS DO PEDIDO ---\n";
+    let subtotalItens = 0;
+
+    pedido.itens.forEach(item => {
+        let precoBase = parseFloat(item.precoBase) || 0;
+        let precoTotalItem = precoBase;
+
+        dadosParaImpressao += `${item.quantidade}x ${item.nome} - R$ ${precoBase.toFixed(2).replace('.', ',')}\n`;
+
+        if (item.observacoes) {
+            dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
+        }
+
+        // ADICIONAIS LANCHES (pagos)
+        if (item.adicionais && Object.keys(item.adicionais).length > 0) {
+            dadosParaImpressao += ` - Adicionais:\n`;
+            for (const nomeAdicional in item.adicionais) {
+                const adicional = item.adicionais[nomeAdicional];
+                if (adicional.preco !== undefined) {
+                    const precoAdicional = parseFloat(adicional.preco) || 0;
+                    const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
+                    precoTotalItem += precoAdicional * quantidadeAdicional;
+                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
+                } else {
+                    // Açai: apenas quantidade, sem preço
+                    const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
+                    dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional})\n`;
+                }
+            }
+        }
+
+        // BEBIDAS
+        if (item.bebidas && Object.keys(item.bebidas).length > 0) {
+            dadosParaImpressao += ` - Bebidas:\n`;
+            for (const nomeBebida in item.bebidas) {
+                const bebida = item.bebidas[nomeBebida];
+                const quantidadeBebida = parseInt(bebida.quantidade, 10) || 1;
+                const precoBebida = parseFloat(bebida.preco) || 0;
+                precoTotalItem += precoBebida * quantidadeBebida;
+                dadosParaImpressao += `  -> ${nomeBebida} (${quantidadeBebida}) - R$ ${(precoBebida * quantidadeBebida).toFixed(2).replace('.', ',')}\n`;
+            }
+        }
+
+        subtotalItens += precoTotalItem * item.quantidade;
+        dadosParaImpressao += `   -> Total do Item: R$ ${(precoTotalItem * item.quantidade).toFixed(2).replace('.', ',')}\n`;
+    });
+
+    dadosParaImpressao += "\n--------------------\n";
+    dadosParaImpressao += `Subtotal: R$ ${subtotalItens.toFixed(2).replace('.', ',')}\n`;
+
+    let valorTotal = subtotalItens;
+    if (pedido.taxaEntrega > 0) {
+        dadosParaImpressao += `Taxa de Entrega: R$ ${pedido.taxaEntrega.toFixed(2).replace('.', ',')}\n`;
+        valorTotal += pedido.taxaEntrega;
+    }
+
+    dadosParaImpressao += `\nTOTAL DO PEDIDO: R$ ${valorTotal.toFixed(2).replace('.', ',')}\n`;
+    dadosParaImpressao += "--------------------\n";
+    dadosParaImpressao += `Forma de Pagamento: ${pedido.pagamento}\n`;
+
+    if (pedido.troco > 0) {
+        dadosParaImpressao += `Troco para: R$ ${pedido.troco.toFixed(2).replace('.', ',')}\n`;
+    }
+    dadosParaImpressao += "--------------------\n\n\n\n";
+
+    printer.printDirect({
+        data: Buffer.from(dadosParaImpressao, 'latin1'),
+        printer: nomeDaImpressora,
+        type: 'RAW',
+        success: function(jobID) {
+            console.log('Impressão enviada, ID do trabalho: ' + jobID);
+        },
+        error: function(err) {
+            console.error('Erro ao imprimir:', err);
+        }
+    });
+}
+
+
+// 4. ESCUTA DOS PEDIDOS DO FIRESTORE
+// Fica 'ouvindo' a coleção de pedidos em tempo real
+pedidosRef.where('status', '==', 'pendente_impressao')
+.onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+            const novoPedido = change.doc.data();
+            const docId = change.doc.id; // <-- Obtém o ID do documento
+            
+            console.log(`Novo pedido para imprimir (${docId})`, novoPedido);
+            
+            // Lógica para enviar para a impressora
+            // Percorre o array 'impressoraDestino'
+
+            novoPedido.impressoraDestino.forEach(destino => {
+                if (destino === 'cozinha') {
+                    imprimirPedido(novoPedido, '==== COMANDA COZINHA ====')
+                }
+                if (destino === 'entregador') {
+                    imprimirPedido(novoPedido, '==== COMANDA ENTREGADOR ====')
+                }
+            })
+
+             // Atualiza o status do pedido para 'impresso'
+                // Isso evita que o pedido seja impresso novamente
+                db.collection('clientes').doc(clienteId).collection('pedidos').doc(docId)
+                    .update({ status: 'impresso' })
+                    .then(() => {
+                        console.log(`Pedido ${docId} atualizado para 'impresso'.`);
+                    })
+                    .catch(err => {
+                        console.error('Erro ao atualizar o status do pedido:', err);
+                    });
+            }
+        });
+    }, err => {
+        console.error('Erro ao ouvir mudanças no Firestore:', err);
+});
+
+

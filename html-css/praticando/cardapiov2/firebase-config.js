@@ -1,9 +1,10 @@
-// firebase-config.js (ou no seu arquivo principal)
+// firebase-config.js
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+// Importa as funções que você precisa dos SDKs do Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
+// Suas credenciais do projeto web
 const firebaseConfig = {
     apiKey: "AIzaSyAma8_i3oYR4aKkdRv0YzXIuZkxNqtiwaQ",
     authDomain: "backendcardapio.firebaseapp.com",
@@ -13,10 +14,15 @@ const firebaseConfig = {
     appId: "1:978890242445:web:58516a8cc27b5fe54ae5c4"
 };
 
-// Inicializa app Firebase
+// Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
 
-// Pega referência do Firestore
+// Pega uma referência ao serviço do Firestore
 const db = getFirestore(app);
 
-export { db, collection, addDoc };
+// Exporta os serviços que você usará no seu app
+export {
+    db,
+    collection,
+    addDoc
+};

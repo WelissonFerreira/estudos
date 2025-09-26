@@ -1,2 +1,9 @@
-# Ignora arquivos de configuração do Firebase
+# Ignorar arquivos de chaves secretas do Firebase
 serviceAccountKey.json
+*.json
+
+# Ignorar a pasta de módulos
+node_modules/
+
+# Ignorar arquivos temporários
+.DS_Store

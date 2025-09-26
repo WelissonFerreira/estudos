@@ -1,6 +1,6 @@
 
 // 1. IMPORTAÇÕES - SEMPRE NO TOPO!
-import { enviarPedido } from './pedidos-firebase.js';
+import { db, collection, addDoc } from './firebase-config.js';
 
 
 
@@ -801,29 +801,29 @@ let catalogoDeProdutos = {
         limiteFrutas: 1,
         limiteCoberturas: 1,
         acompanhamentos: [
-                    {nome: "Leite em Pó", preco: 0},
-                    {nome: "Granola", preco: 0},
-                    {nome: "OvoMaltine", preco: 0},
-                    {nome: "Sucrilhos", preco: 0},
-                    {nome: "M&M", preco: 0},
-                    {nome: "Paçoca", preco: 0},
-                    {nome: "Jujuba", preco: 0},
-                    {nome: "Farinha Lacta", preco: 0},
-                    {nome: "Flocos de Arroz", preco: 0},
-                    {nome: "Amendoim", preco: 0},
-                    {nome: "Nescau Cereal", preco: 0}
+                    {nome: "Leite em Pó", quantidade: 0},
+                    {nome: "Granola", quantidade: 0},
+                    {nome: "OvoMaltine", quantidade: 0},
+                    {nome: "Sucrilhos", quantidade: 0},
+                    {nome: "M&M", quantidade: 0},
+                    {nome: "Paçoca", quantidade: 0},
+                    {nome: "Jujuba", quantidade: 0},
+                    {nome: "Farinha Lacta", quantidade: 0},
+                    {nome: "Flocos de Arroz", quantidade: 0},
+                    {nome: "Amendoim", quantidade: 0},
+                    {nome: "Nescau Cereal", quantidade: 0}
                 ],
                 coberturas: [
-                    {nome: "Leite Condensado", preco: 0},
-                    {nome: "Chocolate", preco: 0},
-                    {nome: "Morango", preco: 0},
-                    {nome: "Amora", preco: 0},
-                    {nome: "Menta", preco: 0},
-                    {nome: "Doce de Leite", preco: 0}
+                    {nome: "Leite Condensado", quantidade: 0},
+                    {nome: "Chocolate", quantidade: 0},
+                    {nome: "Morango", quantidade: 0},
+                    {nome: "Amora", quantidade: 0},
+                    {nome: "Menta", quantidade: 0},
+                    {nome: "Doce de Leite", quantidade: 0}
                 ],
                 frutas: [
-                    {nome: "Banana", preco: 0},
-                    {nome: "Uva", preco: 0}
+                    {nome: "Banana", quantidade: 0},
+                    {nome: "Uva", quantidade: 0}
                 ],
             },
 
@@ -839,30 +839,30 @@ let catalogoDeProdutos = {
                 limiteFrutas: 1,
                 limiteCoberturas: 1,
                 acompanhamentos: [
-                    {nome: "Leite em Pó", preco: 0},
-                    {nome: "Granola", preco: 0},
-                    {nome: "OvoMaltine", preco: 0},
-                    {nome: "Sucrilhos", preco: 0},
-                    {nome: "M&M", preco: 0},
-                    {nome: "Paçoca", preco: 0},
-                    {nome: "Jujuba", preco: 0},
-                    {nome: "Farinha Lacta", preco: 0},
-                    {nome: "Flocos de Arroz", preco: 0},
-                    {nome: "Amendoim", preco: 0},
-                    {nome: "Nescau Cereal", preco: 0}
+                    {nome: "Leite em Pó", quantidade: 0},
+                    {nome: "Granola", quantidade: 0},
+                    {nome: "OvoMaltine", quantidade: 0},
+                    {nome: "Sucrilhos", quantidade: 0},
+                    {nome: "M&M", quantidade: 0},
+                    {nome: "Paçoca", quantidade: 0},
+                    {nome: "Jujuba", quantidade: 0},
+                    {nome: "Farinha Lacta", quantidade: 0},
+                    {nome: "Flocos de Arroz", quantidade: 0},
+                    {nome: "Amendoim", quantidade: 0},
+                    {nome: "Nescau Cereal", quantidade: 0}
                 ],
                 coberturas: [
-                    {nome: "Leite Condensado", preco: 0},
-                    {nome: "Chocolate", preco: 0},
-                    {nome: "Morango", preco: 0},
-                    {nome: "Amora", preco: 0},
-                    {nome: "Menta", preco: 0},
-                    {nome: "Doce de Leite", preco: 0}
+                    {nome: "Leite Condensado", quantidade: 0},
+                    {nome: "Chocolate", quantidade: 0},
+                    {nome: "Morango", quantidade: 0},
+                    {nome: "Amora", quantidade: 0},
+                    {nome: "Menta", quantidade: 0},
+                    {nome: "Doce de Leite", quantidade: 0}
                 ],
                 frutas: [
-                    {nome: "Banana", preco: 0},
-                    {nome: "Uva", preco: 0},
-                    {nome: "Kiwi", preco: 0}
+                    {nome: "Banana", quantidade: 0},
+                    {nome: "Uva", quantidade: 0},
+                    {nome: "Kiwi", quantidade: 0}
                     
                 ],
                 
@@ -880,30 +880,30 @@ let catalogoDeProdutos = {
                 limiteFrutas: 1,
                 limiteCoberturas: 1,
                 acompanhamentos: [
-                    {nome: "Leite em Pó", preco: 0},
-                    {nome: "Granola", preco: 0},
-                    {nome: "OvoMaltine", preco: 0},
-                    {nome: "Sucrilhos", preco: 0},
-                    {nome: "M&M", preco: 0},
-                    {nome: "Paçoca", preco: 0},
-                    {nome: "Jujuba", preco: 0},
-                    {nome: "Farinha Lacta", preco: 0},
-                    {nome: "Flocos de Arroz", preco: 0},
-                    {nome: "Amendoim", preco: 0},
-                    {nome: "Nescau Cereal", preco: 0}
+                    {nome: "Leite em Pó", quantidade: 0},
+                    {nome: "Granola", quantidade: 0},
+                    {nome: "OvoMaltine", quantidade: 0},
+                    {nome: "Sucrilhos", quantidade: 0},
+                    {nome: "M&M", quantidade: 0},
+                    {nome: "Paçoca", quantidade: 0},
+                    {nome: "Jujuba", quantidade: 0},
+                    {nome: "Farinha Lacta", quantidade: 0},
+                    {nome: "Flocos de Arroz", quantidade: 0},
+                    {nome: "Amendoim", quantidade: 0},
+                    {nome: "Nescau Cereal", quantidade: 0}
                 ],
                 coberturas: [
-                    {nome: "Leite Condensado", preco: 0},
-                    {nome: "Chocolate", preco: 0},
-                    {nome: "Morango", preco: 0},
-                    {nome: "Amora", preco: 0},
-                    {nome: "Menta", preco: 0},
-                    {nome: "Doce de Leite", preco: 0}
+                    {nome: "Leite Condensado", quantidade: 0},
+                    {nome: "Chocolate", quantidade: 0},
+                    {nome: "Morango", quantidade: 0},
+                    {nome: "Amora", quantidade: 0},
+                    {nome: "Menta", quantidade: 0},
+                    {nome: "Doce de Leite", quantidade: 0}
                 ],
                 frutas: [
-                    {nome: "Banana", preco: 0},
-                    {nome: "Uva", preco: 0},
-                    {nome: "Kiwi", preco: 0}
+                    {nome: "Banana", quantidade: 0},
+                    {nome: "Uva", quantidade: 0},
+                    {nome: "Kiwi", quantidade: 0}
                     
                 ],
                 
@@ -917,7 +917,7 @@ let catalogoDeProdutos = {
                 imagem: "imagens/acai/acai700ml.png",
                 precoRiscado: 30.00,
                 preco: 24.00,
-                limiteAcompanhamentos: 3,
+                limiteAcompanhamentos: 5,
                 limiteFrutas: 1,
                 limiteCoberturas: 1,
                 acompanhamentos: [
@@ -1300,34 +1300,61 @@ function arraysIguais(array1 = [], array2 = []) {
 }
 
 // ==========================================================================================
-function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanhamentos = [], frutas = [], coberturas = []) {
-    let itemExistente = itensCarrinho.find(item =>
-        item.produto.nome === produto.nome &&
-        saoObjetosIguais(item.adicionais, adicionais) &&
-        saoObjetosIguais(item.bebidas, bebidas) &&
-        arraysIguais(item.acompanhamentos, acompanhamentos) &&
-        arraysIguais(item.frutas, frutas) &&
-        arraysIguais(item.coberturas, coberturas)
-    );
+// Na função adicionarAoCarrinho:
+// Mude a lógica para usar apenas saoObjetosIguais
+function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanhamentos = {}, frutas = {}, coberturas = {}) {
 
-    if (itemExistente) {
-        itemExistente.quantidade += parseInt(quantidade);
+    if (AbertoFechado()) {
+
+    let itemExistente = itensCarrinho.find(item =>
+        item.produto.nome === produto.nome &&
+        saoObjetosIguais(item.adicionais, adicionais) &&
+        saoObjetosIguais(item.bebidas, bebidas) &&
+        saoObjetosIguais(item.acompanhamentos, acompanhamentos) && // AQUI
+        saoObjetosIguais(item.frutas, frutas) && // AQUI
+        saoObjetosIguais(item.coberturas, coberturas) // AQUI
+    );
+
+    if (itemExistente) {
+        itemExistente.quantidade += parseInt(quantidade);
+    } else {
+        itensCarrinho.push({
+            produto: produto,
+            quantidade: parseInt(quantidade),
+            adicionais: { ...adicionais },
+            bebidas: { ...bebidas },
+            acompanhamentos: { ...acompanhamentos }, // AQUI
+            frutas: { ...frutas }, // AQUI
+            coberturas: { ...coberturas } // AQUI
+        });
+    }
+
+    atualizarCarrinho();
+    atualizarContadorCarrinho();
+
+
+
+
+
+
+
+
+
+
+
+
+
     } else {
-        itensCarrinho.push({
-            produto: produto,
-            quantidade: parseInt(quantidade),
-            adicionais: { ...adicionais },
-            bebidas: { ...bebidas },
-            acompanhamentos: [...acompanhamentos],
-            frutas: [...frutas],
-            coberturas: [...coberturas]
-        });
+        // Se a função retornar 'false' (fechado por hora ou dia)
+        alert("Desculpe, estamos fechados. Nosso horário de atendimento é das 18:00h à 01:00h, exceto nas Segundas-Feiras.");
+        return; 
     }
 
-    atualizarCarrinho();
-    atualizarContadorCarrinho();
-}
 
+
+
+   
+}
 
 
 
@@ -2716,7 +2743,7 @@ function abrirModalPedidoEListarItens() {
         
         if (listaBebidas.length > 0) {
             let pBebidas = document.createElement('p');
-            pBebidas.textContent = `Bebidas: ${listaBebidas.join(', ')}`;
+            pBebidas.textContent = `Bebidas: ${listaBebidas.join(', ')}x`;
             divControleItemIndividual.appendChild(pBebidas);
             pBebidas.classList.add('addBebidas');
         }
@@ -3060,232 +3087,300 @@ function calcularPrecoDeItem(item) {
 const btnFinalizarPedidoWhatsApp = document.getElementById('Finalizar-Pedido');
 
 btnFinalizarPedidoWhatsApp.addEventListener('click', async function () {
-    let nomeCliente = document.querySelector('#nomeUsuario').value;
-    let telefoneCliente = document.querySelector('#cellUsuario').value;
-    let tipoPedido = document.querySelector('input[name="TipoPedido"]:checked').id;
 
-    let mensagemWhatsApp = `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n\n`;
+    if (btnFinalizarPedidoWhatsApp) {
+    btnFinalizarPedidoWhatsApp.disabled = true;
+    btnFinalizarPedidoWhatsApp.textContent = `Enviando Pedido...`;
+}
 
-    mensagemWhatsApp += `*Dados do Cliente:*\n`;
-    mensagemWhatsApp += `Nome: ${nomeCliente}\n`;
-    mensagemWhatsApp += `Telefone: ${telefoneCliente}\n`;
-    mensagemWhatsApp += `Tipo de Pedido: ${tipoPedido === 'Entrega' ? 'Entrega' : 'Retirada'}\n`;
 
-    if (tipoPedido === 'Entrega') {
-        let bairro = document.querySelector('#Bairro').value;
-        let rua = document.querySelector('#Rua').value;
-        let numero = document.querySelector('#NumeroCasa').value;
-        let complemento = document.querySelector('#complemento').value;
 
-        mensagemWhatsApp += `\n*Endereço de Entrega:*\n`;
-        mensagemWhatsApp += `Bairro: ${bairro}\n`;
-        mensagemWhatsApp += `Rua: ${rua}\n`;
-        mensagemWhatsApp += `Número: ${numero}\n`;
-        if (complemento) {
-            mensagemWhatsApp += `Complemento: ${complemento}\n`;
+    const nomeCliente = document.querySelector('#nomeUsuario')?.value || 'Não informado';
+    const telefoneCliente = document.querySelector('#cellUsuario')?.value || 'Não informado';
+    const tipoPedido = document.querySelector('input[name="TipoPedido"]:checked')?.id || 'Não informado';
+    const bairro = document.querySelector('#Bairro')?.value || 'Não informado';
+    const rua = document.querySelector('#Rua')?.value || 'Não informado';
+    const numero = document.querySelector('#NumeroCasa')?.value || 'Não informado';
+    const complemento = document.querySelector('#complemento')?.value || '';
+
+    // --- 2. Forma de pagamento e troco ---
+    const formaPagamentoSelecionada = document.querySelector('input[name="formaPagamento"]:checked')?.id || 'Não informado';
+    let troco = ''
+    // Declare a variável aqui, antes dos ifs
+    const valorTrocoInput = document.querySelector('#inputTroco')?.value || 0; // Adicione || 0 para garantir que tenha um valor padrão
+    
+    if (formaPagamentoSelecionada === 'Dinheiro') {
+        const valorTroco = document.querySelector('#inputTroco')?.value;
+        if (valorTroco && parseFloat(valorTroco) > 0) {
+            troco = ` | Troco para R$ ${parseFloat(valorTroco).toFixed(2).replace('.', ',')}`;
         }
     }
+    let formaPagamentoMensagem = formaPagamentoSelecionada;
+    if (troco) formaPagamentoMensagem += troco;
 
-    mensagemWhatsApp += `\n*Itens do Pedido:*\n`;
+    // --- NOVO: se for PIX, coloca a chave ---
+    if (formaPagamentoSelecionada === 'Pix') {
+    const chavePIX = document.getElementById('inputChavePIX').value;
+    const nomePIX = document.getElementById('inputNomePIX').value;
+    const bancoPIX = document.getElementById('inputBancoPIX').value;
 
-    let totalFinalParaWhatsApp = 0;
+    formaPagamentoMensagem =    `*PIX - Chave CPNJ: ${chavePIX}*\n` +
+                                `Nome: *${nomePIX}*\n` +
+                                `Banco: ${bancoPIX}\n` + 
+                                `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
+}
 
-    if (itensCarrinho.length > 0) {
-        itensCarrinho.forEach((item, index) => {
-            let linhaItem = `${index + 1}. ${item.quantidade}x ${item.produto.nome}`;
-            
-            if (item.produto.tipo === 'acai') {
-                if (item.acompanhamentos && Object.keys(item.acompanhamentos).length > 0) {
-                    linhaItem += `\n  - Acompanhamentos: ${Object.keys(item.acompanhamentos).join(', ')}`;
-                }
-                if (item.frutas && Object.keys(item.frutas).length > 0) {
-                    linhaItem += `\n  - Frutas: ${Object.keys(item.frutas).join(', ')}`;
-                }
-                if (item.coberturas && Object.keys(item.coberturas).length > 0) {
-                    linhaItem += `\n  - Coberturas: ${Object.keys(item.coberturas).join(', ')}`;
-                }
-            } 
-            else if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-                linhaItem += `\n  - Adicionais: ${Object.keys(item.adicionais).join(', ')}`;
-            }
 
-            // AQUI ESTÁ A CORREÇÃO: A LÓGICA DE BEBIDAS DENTRO DO FOR-EACH
-            if (item.bebidas && Object.keys(item.bebidas).length > 0) {
-                let listaBebidas = [];
-                for (const idBebida in item.bebidas) {
-                    const quantidadeBebida = item.bebidas[idBebida];
-                    const bebida = catalogoDeProdutos[idBebida];
-                    if (bebida) {
-                        listaBebidas.push(`${bebida.nome} (${quantidadeBebida})`);
-                    }
-                }
-                if (listaBebidas.length > 0) {
-                    linhaItem += `\n  - Bebidas: ${listaBebidas.join(', ')}`;
-                }
-            }
 
-            const precoItem = calcularPrecoDeItem(item);
-            linhaItem += ` (R$ ${precoItem.toFixed(2).replace('.', ',')})`;
-
-            if (item.observacao && item.observacao.trim() !== '') {
-                linhaItem += `\n  - Observação: ${item.observacao}`;
-            }
-
-            mensagemWhatsApp += linhaItem + `\n`;
-
-            totalFinalParaWhatsApp += precoItem;
-        });
-    } else {
-        mensagemWhatsApp += `Nenhum item adicionado ao carrinho.\n`;
+    if (!itensCarrinho || itensCarrinho.length === 0) {
+        alert("Selecione pelo menos um produto!");
+        return;
     }
 
-    if (tipoPedido === 'Entrega') {
-        totalFinalParaWhatsApp += valorTaxaDeEntrega;
-        mensagemWhatsApp += `\nTaxa de Entrega: R$ ${valorTaxaDeEntrega.toFixed(2).replace('.', ',')}\n`;
+    // --- 3. Taxa de entrega ---
+    let taxaEntregaValor = precosEntrega[bairro] || 0;
+
+    // --- 4. Montar itens do pedido ---
+    let totalPedido = 0;
+
+    const itensPedido = itensCarrinho.map((item, index) => {
+
+        const produtoInfo = catalogoDeProdutos[item.produto.id] || item.produto; // pega info do catálogo principal
+        const precoBase = produtoInfo.preco * item.quantidade;
+
+        let observacaoTexto = '';
+        let adicionaisTexto = '';
+        let precoAdicionais = 0;
+        let bebidasTexto = '';
+        let precoBebidas = 0;
+        let acompanhamentosTexto = '';
+        let frutasTexto = '';
+        let coberturasTexto = '';
+
+    if (item.produto.tipo === 'lanche') {
+
+    
+    if (item.observacao) {
+        observacaoTexto = ` | Observação: ${item.observacao}`
     }
 
-    mensagemWhatsApp += `\n*Total do Pedido: R$ ${totalFinalParaWhatsApp.toFixed(2).replace('.', ',')}*\n`;
 
-    let formaPagamentoSelecionada = document.querySelector('input[name="formaPagamento"]:checked');
-    let textoFormaPagamento = 'Não especificada';
-
-    if (formaPagamentoSelecionada) {
-        if (formaPagamentoSelecionada.id === 'Pix') {
-            textoFormaPagamento = 'PIX';
-        } else if (formaPagamentoSelecionada.id === 'pagamentoCartao') {
-            textoFormaPagamento = 'Cartão';
-        } else if (formaPagamentoSelecionada.id === 'Dinheiro') {
-            textoFormaPagamento = 'Dinheiro';
+        // Adicionais
+        
+        if (item.adicionais && Object.keys(item.adicionais).length > 0) {
+            adicionaisTexto = Object.entries(item.adicionais)
+                .filter(([nome, qtd]) => qtd > 0)
+                .map(([nome, qtd]) => {
+                    const adicionalInfo = produtoInfo.adicionais?.find(a => a.nome === nome);
+                    const preco = adicionalInfo ? adicionalInfo.preco : 0;
+                    precoAdicionais += preco * qtd;
+                    return `${nome} x${qtd} (R$ ${preco.toFixed(2).replace('.', ',')})`;
+                })
+                .join(', ');
+            if (adicionaisTexto) adicionaisTexto = ` | Adicionais: ${adicionaisTexto}`;
         }
-    }
 
-    mensagemWhatsApp += `\n*Informações de Pagamento:*\n`;
-    mensagemWhatsApp += `Forma de Pagamento: ${textoFormaPagamento}\n`;
+        // Bebidas
 
-    let inputTrocoElement = document.getElementById('inputTroco');
-    let valorTroco = 0;
-
-    if (inputTrocoElement) {
-        let valorTrocoString = inputTrocoElement.value.trim();
-        if (valorTrocoString !== '') {
-            valorTroco = parseFloat(valorTrocoString);
+        if (item.bebidas && Object.keys(item.bebidas).length > 0) {
+            bebidasTexto = Object.entries(item.bebidas)
+                .filter(([nome, qtd]) => qtd > 0)
+                .map(([nome, qtd]) => {
+                    const bebidaInfo = catalogoDeProdutos[nome];
+                    const preco = bebidaInfo ? bebidaInfo.preco : 0;
+                    precoBebidas += preco * qtd;
+                    return `${bebidaInfo?.nome || nome} x${qtd} (R$ ${preco.toFixed(2).replace('.', ',')})`;
+                })
+                .join(', ');
+            if (bebidasTexto) bebidasTexto = ` | Bebidas: ${bebidasTexto}`;
         }
+
+        const precoTotalItem = precoBase + precoAdicionais + precoBebidas;
+        totalPedido += precoTotalItem;
+
+        return `${index + 1}. ${item.quantidade}x ${produtoInfo.nome} ${observacaoTexto} (R$ ${precoBase.toFixed(2).replace('.', ',')})${adicionaisTexto}${bebidasTexto} | Total Item: R$ ${precoTotalItem.toFixed(2).replace('.', ',')}`;
+
+/*Fim do If Lanche */ 
+
+}   else if (item.produto.tipo === 'acai') {
+    const precoBase = produtoInfo.preco * item.quantidade;
+
+    if (item.observacao) {
+        observacaoTexto = `| Observação: ${item.observacao}`;
     }
 
-    if (textoFormaPagamento === 'Dinheiro' && !isNaN(valorTroco) && valorTroco > 0) {
-        mensagemWhatsApp += `| Precisa de R$ ${valorTroco.toFixed(2).replace('.', ',')} de troco \n`;
-    } else {
-        mensagemWhatsApp += `Não precisa de troco.\n`;
-    }
+if (item.acompanhamentos && Object.keys(item.acompanhamentos).length > 0) {
+    acompanhamentosTexto = ` | Acompanhamentos: ${Object.entries(item.acompanhamentos).filter(([nome, quantidade]) => quantidade > 0)
+        .map(([nome, quantidade]) => {
+        return `x${quantidade} ${nome} `;
+    }).join(', ')}`;
+}
 
-    if (textoFormaPagamento === 'PIX') {
-        const chavePIX = document.getElementById('inputChavePIX').value;
-        const nomePIX = document.getElementById('inputNomePIX').value;
-        const bancoPIX = document.getElementById('inputBancoPIX').value;
+    // Lógica para Coberturas
+if (item.coberturas && Object.keys(item.coberturas).length > 0) {
+    coberturasTexto = ` | Coberturas: ${Object.entries(item.coberturas).filter(([nome, quantidade]) => quantidade > 0)
+        .map(([nome, quantidade]) => {
+        return `x${quantidade} ${nome}`;
+    }).join(', ')}`;
+}
 
-        mensagemWhatsApp += `*PIX - Chave CPF: ${chavePIX}*\n` +
-            `Nome: *${nomePIX}*\n` +
-            `Banco: ${bancoPIX}\n` + 
-            `----------- ENVIE O COMPROVANTE ABAIXO, POR GENTILEZA. -------------`;
-    }
+    // Lógica para Frutas
+if (item.frutas && Object.keys(item.frutas).length > 0) {
+    frutasTexto = ` | Frutas: ${Object.entries(item.frutas)
+        .filter(([nome, quantidade]) => quantidade > 0) // <-- AQUI! Filtra itens com quantidade maior que zero
+        .map(([nome, quantidade]) => {
+            return `x${quantidade} ${nome}`;
+        })
+        .join(', ')}`;
+}
 
-    let clienteInfo = {
+        const precoTotalItem = precoBase + precoAdicionais + precoBebidas;
+        totalPedido += precoTotalItem;
+
+
+    return `${index + 1}. ${item.quantidade}x ${produtoInfo.nome} ${observacaoTexto} ${acompanhamentosTexto} ${coberturasTexto} ${frutasTexto} | Total Item: R$ ${precoTotalItem.toFixed(2).replace('.', ',')}`
+
+}
+
+
+
+
+    
+    }).join('\n');
+
+
+
+    // --- 5. Somar taxa de entrega ---
+    totalPedido += taxaEntregaValor;
+
+    // --- 6. Montar mensagem final ---
+let mensagem =  `*-- NOVO PEDIDO - ARTHUR LANCHES --*\n` +
+                `*Dados do Cliente:*\n` +
+                `Nome: ${nomeCliente}\n` +
+                `Telefone: ${telefoneCliente}\n` +
+                `Tipo de Pedido: ${tipoPedido}\n`;
+
+// Adiciona endereço e taxa apenas se for entrega
+if (tipoPedido === "Entrega") {
+    mensagem += `*Endereço de Entrega:*\n` +
+                `Bairro: ${bairro}\n` +
+                `Rua: ${rua}\n` +
+                `Número: ${numero}\n` +
+                `Complemento: ${complemento}\n` +
+                `*Taxa de Entrega: R$ ${taxaEntregaValor.toFixed(2).replace('.', ',')}*\n`;
+}
+
+// Itens do pedido
+mensagem += `*Itens do Pedido:*\n${itensPedido}\n`;
+
+// Total do pedido
+mensagem += `*Total do Pedido${tipoPedido === "Entrega" ? " (Itens + Taxa)" : ""}: R$ ${totalPedido.toFixed(2).replace('.', ',')}*\n`;
+
+// Forma de pagamento
+mensagem += `*Forma de Pagamento: *\n${formaPagamentoMensagem}`;
+
+    // --- 7. MONTAR O OBJETO PARA O FIREBASE (Aqui é a parte adaptada!) ---
+    const clienteInfo = {
         nome: nomeCliente,
         telefone: telefoneCliente,
-        tipo: tipoPedido
-    };
-
+        tipo: tipoPedido};
     if (tipoPedido === 'Entrega') {
-        let bairro = document.querySelector('#Bairro').value;
-        let rua = document.querySelector('#Rua').value;
-        let numero = document.querySelector('#NumeroCasa').value;
-        let complemento = document.querySelector('#complemento').value;
-
-        let enderecoInfo = {
+        const enderecoInfo = {
             bairro: bairro,
             rua: rua,
             numero: numero,
             complemento: complemento
         };
-        clienteInfo.endereco = enderecoInfo
-    };
+        clienteInfo.endereco = enderecoInfo;
+    }
 
     const itensParaFirebase = itensCarrinho.map(item => {
-    const itemParaFirebase = {
-        nome: item.produto.nome,
-        precoBase: item.produto.preco,
-        quantidade: item.quantidade,
-        observacoes: item.observacao || '',
-        bebidas: {},
-        adicionais: {}
-    };
-
-    // Lógica para lanches e outros itens com adicionais pagos
-    if (item.produto.tipo !== 'acai' && item.adicionais) {
-        for (const nomeAdicional in item.adicionais) {
-            const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nomeAdicional);
-            if (adicionalDoProduto) {
+        const itemParaFirebase = {
+            nome: item.produto.nome,
+            precoBase: item.produto.preco,
+            quantidade: item.quantidade,
+            observacoes: item.observacao || '',
+            bebidas: {},
+            adicionais: {}
+        };
+        
+        if (item.produto.tipo !== 'acai' && item.adicionais) {
+            for (const nomeAdicional in item.adicionais) {
+                const adicionalDoProduto = item.produto.adicionais.find(ad => ad.nome === nomeAdicional);
+                if (adicionalDoProduto) {
+                    itemParaFirebase.adicionais[nomeAdicional] = {
+                        quantidade: item.adicionais[nomeAdicional],
+                        preco: adicionalDoProduto.preco
+                    };
+                }
+            }
+        } else if (item.produto.tipo === 'acai') {
+            itemParaFirebase.adicionais = Object.assign(
+                {},
+                item.acompanhamentos,
+                item.frutas,
+                item.coberturas
+            );
+            for (const nomeAdicional in itemParaFirebase.adicionais) {
                 itemParaFirebase.adicionais[nomeAdicional] = {
-                    quantidade: item.adicionais[nomeAdicional],
-                    preco: adicionalDoProduto.preco
+                    quantidade: itemParaFirebase.adicionais[nomeAdicional]
                 };
             }
         }
-    }
-    
-    // Lógica para açaí (toppings grátis)
-    else if (item.produto.tipo === 'acai') {
-        itemParaFirebase.adicionais = Object.assign(
-            {},
-            item.acompanhamentos,
-            item.frutas,
-            item.coberturas
-        );
-        // Os valores são apenas a quantidade, sem a chave "preco"
-        for (const nomeAdicional in itemParaFirebase.adicionais) {
-            itemParaFirebase.adicionais[nomeAdicional] = {
-                quantidade: itemParaFirebase.adicionais[nomeAdicional]
-            };
-        }
-    }
-    
-    // Lógica para bebidas
-    if (item.bebidas) {
-        for (const idBebida in item.bebidas) {
-            const bebida = catalogoDeProdutos[idBebida];
-            if (bebida) {
-                itemParaFirebase.bebidas[bebida.nome] = {
-                    quantidade: item.bebidas[idBebida],
-                    preco: bebida.preco
-                };
+        
+        if (item.bebidas) {
+            for (const idBebida in item.bebidas) {
+                const bebida = catalogoDeProdutos[idBebida];
+                if (bebida) {
+                    itemParaFirebase.bebidas[bebida.nome] = {
+                        quantidade: item.bebidas[idBebida],
+                        preco: bebida.preco
+                    };
+                }
             }
         }
-    }
+        return itemParaFirebase;
+    });
 
-    return itemParaFirebase;
-});
-
-    
+    // Aqui está a nova lógica que envia para o Firestore
     const pedidoParaFirebase = {
         cliente: clienteInfo,
         itens: itensParaFirebase,
-        taxaEntrega: valorTaxaDeEntrega,
-        pagamento: textoFormaPagamento,
-        troco: valorTroco,
-        data: new Date()
+        taxaEntrega: taxaEntregaValor, // Corrigido para a variável correta
+        pagamento: formaPagamentoSelecionada, // Corrigido para a variável correta
+        troco: valorTrocoInput, // Corrigido para a variável correta
+        data: new Date(),
+        // CAMPOS ADICIONADOS PARA O FIREBASE
+        status: 'pendente_impressao',
+        impressoraDestino: ['cozinha', 'entregador']
     };
 
-    await enviarPedido(pedidoParaFirebase);
+    // --- 8. ENVIO PARA O FIREBASE E WHATSAPP ---
+    try {
+        const pedidosRef = collection(db, `clientes/arthurlanches/pedidos`);
+        await addDoc(pedidosRef, pedidoParaFirebase);
+        console.log("Pedido enviado para o Firestore com sucesso!");
+    } catch (error) {
+        console.error("Erro ao enviar o pedido para o Firestore:", error);
+        alert("Ocorreu um erro ao enviar o pedido. Tente novamente ou verifique sua conexão.");
 
+        if (btnFinalizarPedidoWhatsApp) {
+            btnFinalizarPedidoWhatsApp.disabled = false;
+            btnFinalizarPedidoWhatsApp.textContent = `Finalizar Pedido`;
+        }
+
+
+    }
+
+    // A lógica do WhatsApp permanece
     let numeroWhatsApp = '5582988204888';
-    let mensagemCodificada = encodeURIComponent(mensagemWhatsApp);
+    let mensagemCodificada = encodeURIComponent(mensagem);
     let linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
 
     window.open(linkWhatsApp, '_blank');
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto';
 });
-
 
 
 
