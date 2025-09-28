@@ -15,10 +15,9 @@ const db = admin.firestore();
 const clienteId = 'arthurlanches'
 const pedidosRef = db.collection('clientes').doc(clienteId).collection('pedidos');
 
-// ---
 
 // 3. FUNÇÃO DE IMPRESSÃO
-// Agora a função é robusta e lida com diferentes formatos de dados
+// Agora a função é robusta e lida com diferentes formatos de dados, incluindo Açaí
 function imprimirPedido(pedido, tipoComanda) {
     const dataEHora = pedido.data && pedido.data.toDate ? pedido.data.toDate() : new Date(pedido.hora);
     const dataFormatada = dataEHora.toLocaleDateString('pt-BR');
@@ -62,18 +61,41 @@ function imprimirPedido(pedido, tipoComanda) {
                 dadosParaImpressao += ` - Obs: ${item.observacoes}\n`;
             }
             
+            // LÓGICA PARA ITENS DE AÇAÍ: Acompanhamentos, Frutas e Coberturas
+            const adicionarDetalhesAcai = (detalhes, titulo) => {
+                if (detalhes && Object.keys(detalhes).length > 0) {
+                    dadosParaImpressao += ` - ${titulo}:\n`;
+                    for (const nomeDetalhe in detalhes) {
+                        const detalhe = detalhes[nomeDetalhe];
+                        const quantidadeDetalhe = parseInt(detalhe.quantidade, 10) || 1;
+                        
+                        // NOTA: Como você não está salvando o preço individual dos extras do açaí,
+                        // eles são tratados como adicionais sem custo para a comanda.
+                        dadosParaImpressao += `  -> ${nomeDetalhe} (${quantidadeDetalhe})\n`;
+                    }
+                }
+            };
+
+            // Chamando a função para os detalhes do Açaí
+            adicionarDetalhesAcai(item.acompanhamentos, 'Acompanhamentos');
+            adicionarDetalhesAcai(item.frutas, 'Frutas');
+            adicionarDetalhesAcai(item.coberturas, 'Coberturas');
+
+            // LÓGICA PARA ADICIONAIS DE LANCHE (Que possuem preço)
             if (item.adicionais && Object.keys(item.adicionais).length > 0) {
-                dadosParaImpressao += ` - Adicionais:\n`;
-                for (const nomeAdicional in item.adicionais) {
-                    const adicional = item.adicionais[nomeAdicional];
-                    if (adicional.preco !== undefined) {
-                        const precoAdicional = parseFloat(adicional.preco) || 0;
-                        const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
-                        precoTotalItem += precoAdicional * quantidadeAdicional;
-                        dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
-                    } else {
-                        const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
-                        dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional})\n`;
+                // Verifica se 'adicionais' é usado para lanches (com preço)
+                const adicionaisComPreco = Object.values(item.adicionais).some(a => a.preco !== undefined);
+                
+                if (adicionaisComPreco) {
+                    dadosParaImpressao += ` - Adicionais:\n`;
+                    for (const nomeAdicional in item.adicionais) {
+                        const adicional = item.adicionais[nomeAdicional];
+                        if (adicional.preco !== undefined) {
+                            const precoAdicional = parseFloat(adicional.preco) || 0;
+                            const quantidadeAdicional = parseInt(adicional.quantidade, 10) || 1;
+                            precoTotalItem += precoAdicional * quantidadeAdicional;
+                            dadosParaImpressao += `  -> ${nomeAdicional} (${quantidadeAdicional}) - R$ ${(precoAdicional * quantidadeAdicional).toFixed(2).replace('.', ',')}\n`;
+                        }
                     }
                 }
             }
@@ -89,11 +111,14 @@ function imprimirPedido(pedido, tipoComanda) {
                 }
             }
 
+            // O preço base (item.precoBase) já foi somado no início da variável precoTotalItem.
+            // A soma final do subtotal do pedido é feita corretamente aqui:
             subtotalItens += precoTotalItem * item.quantidade;
             dadosParaImpressao += `  -> Total do Item: R$ ${(precoTotalItem * item.quantidade).toFixed(2).replace('.', ',')}\n`;
         });
     }
 
+    // ... (O restante da função de impressão não precisa de alteração)
     dadosParaImpressao += "\n--------------------\n";
     dadosParaImpressao += `Subtotal: R$ ${subtotalItens.toFixed(2).replace('.', ',')}\n`;
 
@@ -117,17 +142,17 @@ function imprimirPedido(pedido, tipoComanda) {
 
     // Adicione esta parte do código para imprimir de verdade
     // Remove o "Simulado" no console.log final para evitar confusão
-    printer.printDirect({
+   /* printer.printDirect({
         data: dadosParaImpressao,
         printer: nomeDaImpressora,
         type: 'RAW',
         success: function(jobID){
         console.log(`Comanda '${tipoComanda}' gerada para o pedido. (ID do trabalho: ${jobID})`);
-      },
-      error: function(err){
+    },
+        error: function(err){
         console.error(`Erro ao imprimir na impressora '${nomeDaImpressora}':`, err);
-      }
-    });
+    }
+    }); */
 
     console.log(dadosParaImpressao);
     console.log(`\nComanda '${tipoComanda}' gerada para o pedido. (Impressão enviada)\n`);

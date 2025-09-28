@@ -1302,7 +1302,7 @@ function arraysIguais(array1 = [], array2 = []) {
 // ==========================================================================================
 // Na função adicionarAoCarrinho:
 // Mude a lógica para usar apenas saoObjetosIguais
-function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanhamentos = {}, frutas = {}, coberturas = {}) {
+function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanhamentos, frutas, coberturas, observacao = '') {
 
     if (AbertoFechado()) {
 
@@ -1312,7 +1312,8 @@ function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanha
         saoObjetosIguais(item.bebidas, bebidas) &&
         saoObjetosIguais(item.acompanhamentos, acompanhamentos) && // AQUI
         saoObjetosIguais(item.frutas, frutas) && // AQUI
-        saoObjetosIguais(item.coberturas, coberturas) // AQUI
+        saoObjetosIguais(item.coberturas, coberturas) && // AQUI
+        item.observacao === observacao
     );
 
     if (itemExistente) {
@@ -1325,7 +1326,8 @@ function adicionarAoCarrinho(produto, quantidade, adicionais, bebidas, acompanha
             bebidas: { ...bebidas },
             acompanhamentos: { ...acompanhamentos }, // AQUI
             frutas: { ...frutas }, // AQUI
-            coberturas: { ...coberturas } // AQUI
+            coberturas: { ...coberturas }, // AQUI
+            observacao: observacao,
         });
     }
 
@@ -1397,73 +1399,27 @@ abrirCarrinho.addEventListener('click', function(event) {
     atualizarCarrinho();
 });
 
+
+
+
+
+
+
+
 // ============================================================================================================
 
 
-/* MODAL PRÉ-CARRINHO */
+//=================== FUNÇÃO QUE RENDERIZA O MODAL LANCHE ==============================
+function modalLanche(produtoSelecionado, adicionaisSelecionados, bebidasSelecionadas, conteudoModal, scrollPosition) {
 
-// ABRIR MODAL AO CLICAR NO CARD
-const CardProdutos = document.querySelectorAll('.card-destaque, .card-pai')
-const ModalPreCarrinho = document.getElementById('ModalPreCarrinho')
-const conteudoModal = document.querySelector('.ContModalPreCarrinho')
-
-CardProdutos.forEach(cardAtual => {
-    cardAtual.addEventListener('click', () => {
-        conteudoModal.textContent = '';
-console.clear();
-console.log("Abrindo modal do produto:", cardAtual);
-
-        
-        
-
-        // AGORA AS VARIÁVEIS SÃO LOCAIS E SÃO REINICIADAS A CADA CLIQUE
-    const adicionaisSelecionados = {};
-    const bebidasSelecionadas = {};
-
-        let divbotaoFecharPre = document.createElement('div')
-        divbotaoFecharPre.classList.add('divbotaoFecharPre')
-        conteudoModal.appendChild(divbotaoFecharPre)
-
-
-        let botaoFecharPre = document.createElement('button');
-        botaoFecharPre.innerHTML = '&times;';
-        botaoFecharPre.classList.add('botaoFecharPre');
-        divbotaoFecharPre.appendChild(botaoFecharPre);
-
-        // EVENTO DE FECHAR BOTÃO
-        botaoFecharPre.addEventListener('click', () => {
-            ModalPreCarrinho.style.display = 'none';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            document.body.style.overflow = 'auto'; 
-            window.scrollTo(0, scrollPosition);
-
-
-
-
-
-        });
-
-        const seletorPreCarrinho = cardAtual.dataset.produtoId;
-        const produtoSelecionado = catalogoDeProdutos[seletorPreCarrinho];
-
-        
-        scrollPosition = window.scrollY;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollPosition}px`;
-        document.body.style.width = '100%';
-        document.body.style.overflow = 'hidden';
-
-        // ====================================================================
-        // CONTEÚDO ESPECÍFICO DO PRODUTO (LANCHE, AÇAI, ETC.)
-        // ====================================================================
-
-        // ====================================================================
-        // Conteúdo Principal do Produto Lanche | (Imagem, Nome, Descrição, Preços)
+     // ====================================================================
+        // Conteúdo Principal do Produto (Imagem, Nome, Descrição, Preços)
         // ====================================================================
         
         // DIV PRINCIPAL DO CONTEÚDO (Imagem e texto do produto)
+
+        
+
 
         let divPrincipal = document.createElement('div')
         divPrincipal.classList.add('divPrincipal')
@@ -1474,7 +1430,7 @@ console.log("Abrindo modal do produto:", cardAtual);
         divImagemPre.classList.add('divImagemPre');
         divPrincipal.appendChild(divImagemPre);
 
-        let imagemPre = document.createElement('img');
+       let imagemPre = document.createElement('img');
         imagemPre.src = `${produtoSelecionado.imagem}`;
         imagemPre.classList.add('imagemPre');
         divImagemPre.appendChild(imagemPre);
@@ -1500,14 +1456,10 @@ console.log("Abrindo modal do produto:", cardAtual);
         descricaoPre.classList.add('descricaoPre');
         divConteudoPre.appendChild(descricaoPre);
 
-        if (produtoSelecionado.tipo === 'lanche') {
-            let ingredientesPre = document.createElement('p')
-            ingredientesPre.classList.add('ingredientesPre')
-            ingredientesPre.textContent = `${produtoSelecionado.ingredientes}`
-            divConteudoPre.appendChild(ingredientesPre)
-        }
-
-        
+        let ingredientesPre = document.createElement('p')
+        ingredientesPre.classList.add('ingredientesPre')
+        ingredientesPre.textContent = `${produtoSelecionado.ingredientes}`
+        divConteudoPre.appendChild(ingredientesPre)
 
         let divPrecos = document.createElement('div');
         divPrecos.classList.add('divPrecos');
@@ -1522,10 +1474,6 @@ console.log("Abrindo modal do produto:", cardAtual);
         precoPre.classList.add('precoPre');
         precoPre.textContent = `R$ ${produtoSelecionado.preco.toFixed(2).replace('.', ',')}`;
         divPrecos.appendChild(precoPre);
-
-        if (produtoSelecionado.tipo === 'lanche') {
-
-            
 
         // DIV PARA SUGESTÃO DE BEBIDAS
         let divSugestaoBebidas = document.createElement('div');
@@ -1551,7 +1499,7 @@ console.log("Abrindo modal do produto:", cardAtual);
         divControleH4P.appendChild(pSugestao)
 
 
-        for (const produtoId in catalogoDeProdutos) {
+        for (const produtoId in catalogoDeProdutos) {
             const produtoAtual = catalogoDeProdutos[produtoId];
             
             if (produtoAtual.tipo === 'bebida') {
@@ -1638,7 +1586,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                     inputBebidas.value = parseInt(inputBebidas.value) + 1;
                     bebidasSelecionadas[idProduto] = parseInt(inputBebidas.value);
                     atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
-                    atualizarContadorCarrinho()
+                    
                 });
 
                 diminuirBebidas.addEventListener('click', (event) => {
@@ -1657,15 +1605,12 @@ console.log("Abrindo modal do produto:", cardAtual);
     }
 
     atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
-    atualizarContadorCarrinho();
+    
 });
-
+}
 }
 
-}
-
-
-     // LÓGICA PARA OS ADICIONAIS, DOM, OBJECT, EVENTOS...
+        // LÓGICA PARA OS ADICIONAIS, DOM, OBJECT, EVENTOS...
         let divAdicional = document.createElement('div');
         divPrincipal.appendChild(divAdicional);
         divAdicional.classList.add('divAdicional');
@@ -1749,7 +1694,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 }
                 adicionaisSelecionados[adicionalAtual.nome] = parseInt(inputQuantidadeAdicionais.value);
                 atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
-                atualizarContadorCarrinho()
+                
 
             });
             
@@ -1759,13 +1704,46 @@ console.log("Abrindo modal do produto:", cardAtual);
                 inputQuantidadeAdicionais.value = parseInt(inputQuantidadeAdicionais.value) + 1;
                 adicionaisSelecionados[adicionalAtual.nome] = parseInt(inputQuantidadeAdicionais.value);
                 atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
-                atualizarContadorCarrinho()
+                
             });
         });
 
+// OBSERVAÇÃO
+
+     // Variável local para armazenar o valor da observação
+let observacaoLanche = ''; // 👈 Use o nome da variável local correto para este modal!
+
+// Otimização: Se você estiver reabrindo um item do carrinho, pode carregar a observação salva
+if (produtoSelecionado.observacao) {
+    observacaoLanche = produtoSelecionado.observacao;
+}
 
 
-        // ====================================================================
+
+let divObsModal = document.createElement('div');
+divObsModal.classList.add('divObsModal'); // Nova classe para estilizar o bloco no modal
+divPrincipal.appendChild(divObsModal); 
+
+let labelObsModal = document.createElement('label');
+labelObsModal.textContent = 'Observação (Opcional):'
+labelObsModal.classList.add('labelObs') 
+
+let inputObsModal = document.createElement('input');
+inputObsModal.placeholder = 'Ex: sem maionese, sem tomate, etc.';
+inputObsModal.classList.add('inputObs'); 
+
+// 1. Carrega o valor inicial
+inputObsModal.value = observacaoLanche;
+
+// 2. Ouve a digitação e atualiza a variável local
+inputObsModal.addEventListener('input', function() {
+    observacaoLanche = inputObsModal.value;
+});
+
+divObsModal.appendChild(labelObsModal);
+divObsModal.appendChild(inputObsModal);
+
+// ====================================================================
         // NOVA DIV PARA OS BOTÕES FINAIS (QUANTIDADE DO PRINCIPAL E ADICIONAR)
         // ====================================================================
         let divFinalAcoes = document.createElement('div');
@@ -1800,14 +1778,14 @@ console.log("Abrindo modal do produto:", cardAtual);
             if (inputQuantidadePre.value > 1) {
                 inputQuantidadePre.value = parseInt(inputQuantidadePre.value) - 1;
                 atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
-                atualizarContadorCarrinho()
+                
             }
         });
         
         botaoAumentarPre.addEventListener('click', () => {
             inputQuantidadePre.value = parseInt(inputQuantidadePre.value) + 1;
             atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
-            atualizarContadorCarrinho()
+            
         });
 
         // Botão Adicionar ao Carrinho
@@ -1818,26 +1796,95 @@ console.log("Abrindo modal do produto:", cardAtual);
 
         // EVENTO DE ADICIONAR AO CARRINHO E FECHAR MODAL
         botaoAdicionar.addEventListener('click', () => {
-            adicionarAoCarrinho(produtoSelecionado, inputQuantidadePre.value, adicionaisSelecionados, bebidasSelecionadas);
+            adicionarAoCarrinho(produtoSelecionado, inputQuantidadePre.value, adicionaisSelecionados, bebidasSelecionadas, {}, {}, {}, observacaoLanche);
             ModalPreCarrinho.style.display = 'none';
             atualizarCarrinho();
-            atualizarContadorCarrinho()
+            
             // RESTAURA O BODY
             document.body.style.position = '';
             document.body.style.top = '';
             document.body.style.width = '';
             document.body.style.overflow = 'auto';
-            window.scrollTo(0, scrollPosition); // volta para a posição original do scroll
+            window.scrollTo(0, scrollPosition)
         });
 
         // Chamar atualizarPreCarrinho para garantir que os preços iniciais estejam corretos
         atualizarPreCarrinho(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, adicionaisSelecionados, bebidasSelecionadas);
         atualizarContadorCarrinho()
+        
+} 
 
-        // PRE MODAL AÇAI
+//=================== FIM DA FUNÇÃO QUE RENDERIZA O MODAL LANCHE ==============================
+
+
+//=================== INICIO DA FUNÇÃO QUE RENDERIZA O MODAL AÇAI ==============================
+
+function acaiModal(produtoSelecionado, conteudoModal, scrollPosition) {
+    
+    // As variáveis de estado (seleções) são definidas localmente:
+    let acompanhamentosSelecionados = {};
+    let frutasSelecionadas = {};
+    let coberturasSelecionadas = {};
+
+
+    let divPrincipal = document.createElement('div')
+    divPrincipal.classList.add('divPrincipal')
+    conteudoModal.appendChild(divPrincipal)
+
+    // =============================================================
+    // 💥 NOVO CÓDIGO AQUI: Crie os elementos de Preço para evitar erros!
+    // Você precisa deles para as chamadas a 'atualizarPreCarrinhoAcai'
+    // =============================================================
+
+
+         // =======================================================
+    // 💥 CÓDIGO PARA ADICIONAR A IMAGEM 💥
+    // =======================================================
+    let divImagemAcai = document.createElement('div');
+    divImagemAcai.classList.add('divImagemAcai');
+    divPrincipal.appendChild(divImagemAcai);
+
+    let imgProdutoAcai = document.createElement('img');
+    // Assume que a URL da imagem está no objeto produtoSelecionado.img
+    imgProdutoAcai.src = produtoSelecionado.imagem; 
+    imgProdutoAcai.alt = `Imagem de ${produtoSelecionado.nome}`;
+    imgProdutoAcai.classList.add('imgProdutoAcai');
+    divImagemAcai.appendChild(imgProdutoAcai);
+    // =======================================================
+    
+    // Crie o cabeçalho básico do produto
+    let divCabecalhoProduto = document.createElement('div');
+    divCabecalhoProduto.classList.add('divCabecalhoProduto');
+    divPrincipal.appendChild(divCabecalhoProduto);
+    
+    let nomeProduto = document.createElement('h3');
+    nomeProduto.textContent = produtoSelecionado.nome;
+    nomeProduto.classList.add('nomeProdutoAcai')
+    divCabecalhoProduto.appendChild(nomeProduto);
     
 
-} else if (produtoSelecionado.tipo && produtoSelecionado.tipo.toLowerCase() === 'acai') {
+    let descricaoPre = document.createElement('p');
+        descricaoPre.textContent = `${produtoSelecionado.descricao}`;
+        descricaoPre.classList.add('descricaoPreAcai');
+        divCabecalhoProduto.appendChild(descricaoPre);
+
+
+
+    let divPrecos = document.createElement('div');
+    divPrecos.classList.add('divPrecosAcai');
+    divCabecalhoProduto.appendChild(divPrecos); 
+    
+    // ** VARIÁVEIS DE PREÇO ** - Declaração no escopo da função
+    let precoRiscadoPre = document.createElement('span'); 
+    precoRiscadoPre.classList.add('PrecoRiscadoPre');
+    divPrecos.appendChild(precoRiscadoPre);
+
+    let precoPre = document.createElement('span'); 
+    precoPre.classList.add('precoPre');
+    divPrecos.appendChild(precoPre);
+    
+    // A 'inputQuantidadePre' será definida mais abaixo, mas é um 'let' 
+    // e estará acessível em todas as chamadas `atualizarPreCarrinhoAcai`
 
     // --- SESSÃO DE ACOMPANHAMENTOS ---
     let divTitulosAcompanhamentos = document.createElement('div');
@@ -1858,7 +1905,7 @@ console.log("Abrindo modal do produto:", cardAtual);
     divTodosAcompanhamentos.classList.add('divTodosAcompanhamentos');
     divPrincipal.appendChild(divTodosAcompanhamentos);
 
-    let acompanhamentosSelecionados = {};
+    //let acompanhamentosSelecionados = {}; // JÁ DECLARADA ACIMA (Melhor prática)
 
     produtoSelecionado.acompanhamentos.forEach(acompanhamentoAtual => {
         let divItemAcompanhamento = document.createElement('div');
@@ -1918,6 +1965,7 @@ console.log("Abrindo modal do produto:", cardAtual);
                 inputQuantidade.value = parseInt(inputQuantidade.value) + 1;
                 acompanhamentosSelecionados[nomeAcompanhamento] = parseInt(inputQuantidade.value);
                 pLimiteAcompanhamentos.textContent = `Acompanhamentos: ${quantidadeTotal + 1} de ${produtoSelecionado.limiteAcompanhamentos}`;
+                // inputQuantidadePre, precoPre e precoRiscadoPre estão acessíveis no escopo
                 atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
             }
         } 
@@ -1945,7 +1993,7 @@ console.log("Abrindo modal do produto:", cardAtual);
     });
 
     // --- SESSÃO DE FRUTAS ---
-    let frutasSelecionadas = {};
+    //let frutasSelecionadas = {}; // JÁ DECLARADA ACIMA (Melhor prática)
 
     let divTitulosFrutas = document.createElement('div');
     divTitulosFrutas.classList.add('divTitulosFrutas');
@@ -2048,7 +2096,7 @@ console.log("Abrindo modal do produto:", cardAtual);
     });
 
     // --- SESSÃO DE COBERTURAS ---
-    let coberturasSelecionadas = {};
+    //let coberturasSelecionadas = {}; // JÁ DECLARADA ACIMA (Melhor prática)
     let divTitulosCoberturas = document.createElement('div');
     divTitulosCoberturas.classList.add('divTitulosCoberturas');
     divPrincipal.appendChild(divTitulosCoberturas);
@@ -2150,6 +2198,46 @@ console.log("Abrindo modal do produto:", cardAtual);
             }
         }
     });
+
+
+
+
+
+
+         // Variável local para armazenar o valor da observação
+let observacaoAcai = ''; // 👈 Use o nome da variável local correto para este modal!
+
+// Otimização: Se você estiver reabrindo um item do carrinho, pode carregar a observação salva
+if (produtoSelecionado.observacao) {
+    observacaoAcai = produtoSelecionado.observacao;
+}
+
+
+
+let divObsModal = document.createElement('div');
+divObsModal.classList.add('divObsModal'); // Nova classe para estilizar o bloco no modal
+divPrincipal.appendChild(divObsModal); 
+
+let labelObsModal = document.createElement('label');
+labelObsModal.textContent = 'Observação (Opcional):'
+labelObsModal.classList.add('labelObs') 
+
+let inputObsModal = document.createElement('input');
+inputObsModal.placeholder = 'Ex: sem maionese, sem tomate, etc.';
+inputObsModal.classList.add('inputObs'); 
+
+// 1. Carrega o valor inicial
+inputObsModal.value = observacaoAcai;
+
+// 2. Ouve a digitação e atualiza a variável local
+inputObsModal.addEventListener('input', function() {
+    observacaoAcai = inputObsModal.value;
+});
+
+divObsModal.appendChild(labelObsModal);
+divObsModal.appendChild(inputObsModal);
+
+
     
     //====================================================================
     // NOVA DIV PARA OS BOTÕES FINAIS (QUANTIDADE DO PRINCIPAL E ADICIONAR)
@@ -2167,7 +2255,7 @@ console.log("Abrindo modal do produto:", cardAtual);
     botaoDiminuirPre.classList.add('botaoDiminuirPre');
     divBotoesAcoes.appendChild(botaoDiminuirPre);
 
-    let inputQuantidadePre = document.createElement('input');
+    let inputQuantidadePre = document.createElement('input'); // ESTA AGORA É DEFINIDA E PODE SER USADA ACIMA
     inputQuantidadePre.classList.add('inputQuantidadePre');
     divBotoesAcoes.appendChild(inputQuantidadePre);
     inputQuantidadePre.value = 1;
@@ -2193,6 +2281,7 @@ console.log("Abrindo modal do produto:", cardAtual);
 
     let botaoAdicionar = document.createElement('button');
     botaoAdicionar.classList.add('AdicionarCarrinho');
+    // NOTE: Se o preço é dinâmico, o texto do botão é atualizado pela função `atualizarPreCarrinhoAcai`
     botaoAdicionar.innerHTML = `<i class="fa-solid fa-cart-plus"></i> Adicionar R$ ${produtoSelecionado.preco.toFixed(2).replace('.', ',')}`;
     divFinalAcoes.appendChild(botaoAdicionar);
 
@@ -2207,9 +2296,8 @@ console.log("Abrindo modal do produto:", cardAtual);
             totalFrutas === produtoSelecionado.limiteFrutas && 
             totalCoberturas === produtoSelecionado.limiteCoberturas) {
 
-                
-
-            adicionarAoCarrinho(produtoSelecionado, quantidade, {}, {}, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
+            // Chamada de adicionarAoCarrinho. Os objetos vazios são para 'adicionais' e 'bebidas'
+            adicionarAoCarrinho(produtoSelecionado, quantidade, {}, {}, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas, observacaoAcai);
 
             ModalPreCarrinho.style.display = 'none';
             atualizarCarrinho();
@@ -2224,50 +2312,110 @@ console.log("Abrindo modal do produto:", cardAtual);
         }
     });
 
-
-    let divbotaoFecharPre = document.createElement('div')
-        divbotaoFecharPre.classList.add('divbotaoFecharPre')
-        conteudoModal.appendChild(divbotaoFecharPre)
-
-
-        let botaoFecharPre = document.createElement('button');
-        botaoFecharPre.innerHTML = '&times;';
-        botaoFecharPre.classList.add('botaoFecharPre');
-        divbotaoFecharPre.appendChild(botaoFecharPre);
-
-        // EVENTO DE FECHAR BOTÃO
-        botaoFecharPre.addEventListener('click', () => {
-            ModalPreCarrinho.style.display = 'none';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            document.body.style.overflow = 'auto'; 
-            window.scrollTo(0, scrollPosition);
-
-
-
-
-
-        });
-
+    // ======================================================================
+    // 💥 CÓDIGO DO BOTÃO FECHAR REMOVIDO DAQUI
+    //    (Ele já é criado uma vez no bloco principal de cliques. Se for duplicado
+    //    aqui, vai criar 2 botões de fechar).
+    // ======================================================================
     
+    // Chamada inicial para preencher os preços e limites
     atualizarPreCarrinhoAcai(inputQuantidadePre, produtoSelecionado, precoPre, precoRiscadoPre, acompanhamentosSelecionados, frutasSelecionadas, coberturasSelecionadas);
 }
 
 
-ModalPreCarrinho.style.display = 'block';
+
+/* MODAL PRÉ-CARRINHO */
+
+// ABRIR MODAL AO CLICAR NO CARD
+const CardProdutos = document.querySelectorAll('.card-destaque, .card-pai')
+const ModalPreCarrinho = document.getElementById('ModalPreCarrinho')
+const conteudoModal = document.querySelector('.ContModalPreCarrinho')
+
+CardProdutos.forEach(cardAtual => {
+    cardAtual.addEventListener('click', () => {
+
+      const seletorPreCarrinho = cardAtual.dataset.produtoId;
+      const produtoSelecionado = catalogoDeProdutos[seletorPreCarrinho];
+    // AGORA AS VARIÁVEIS SÃO LOCAIS E SÃO REINICIADAS A CADA CLIQUE
+      const adicionaisSelecionados = {};
+      const bebidasSelecionadas = {};
+
+        // 2. PREPARAÇÃO DO MODAL (Comum a todos os tipos)
+        conteudoModal.textContent = ''; // 💥 ESSENCIAL: Limpa o conteúdo antigo
+        let scrollPosition = 0
+        let modalConstruido = false
+        
+
+        // --- CRIAÇÃO DO BOTÃO FECHAR (COMO VOCÊ TINHA) ---
+        let divbotaoFecharPre = document.createElement('div');
+        divbotaoFecharPre.classList.add('divbotaoFecharPre');
+        conteudoModal.appendChild(divbotaoFecharPre);
+
+        let botaoFecharPre = document.createElement('button');
+        botaoFecharPre.innerHTML = '&times;';
+        botaoFecharPre.classList.add('botaoFecharPre');
+        divbotaoFecharPre.appendChild(botaoFecharPre);
+
+        // EVENTO DE FECHAR BOTÃO
+        botaoFecharPre.addEventListener('click', () => {
+             // ... Lógica de fechar o modal e restaurar o scroll (como você tinha) ...
+            ModalPreCarrinho.style.display = 'none';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = 'auto'; 
+            window.scrollTo(0, scrollPosition);
+        });
+        // ---------------------------------------------------
 
     
 
 
+    
+        if (produtoSelecionado.tipo === 'lanche') {
+
+            modalLanche(produtoSelecionado, adicionaisSelecionados, bebidasSelecionadas, conteudoModal, scrollPosition)    
+            modalConstruido = true
+            ModalPreCarrinho.style.display = 'block';
+
+
+        } else if (produtoSelecionado.tipo === 'acai') {
+             // 💥 CHAMADA DO MODAL DE LANCHE 💥
+            acaiModal(produtoSelecionado, conteudoModal, scrollPosition)    
+            modalConstruido = true
+            ModalPreCarrinho.style.display = 'block';
+
+
+        } else {
+            // 🚨 SE CAIR AQUI, É UM PRODUTO SEM MODAL CONFIGURADO
+        console.warn(`Tipo de produto '${produtoSelecionado.tipo}' não tem modal configurado. Modal não será aberto.`);
+        // modalConstruido CONTINUA false
+        }
+
+
+    
+        
+         // 4. 🚀 LÓGICA DE ABERTURA: SÓ ABRE SE ALGO FOI CONSTRUÍDO 🚀
+        if (modalConstruido) {
+            
+            scrollPosition = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
+        }
+
+       
+        
+      
 
 
 
        
-
-
-    });
+    }); 
 });
+
+
 
 
 
@@ -2411,35 +2559,42 @@ function mostrarItensDoCarrinho() {
             // --- NOVO CÓDIGO INSERIDO AQUI ---
         if (item.produto.tipo === 'acai') {
             
-            // Lógica para Acompanhamentos
-    if (item.acompanhamentos && item.acompanhamentos.length > 0) {
-        let divAcompanhamentosItem = document.createElement('div');
-        divAcompanhamentosItem.classList.add('adicionais-item-carrinho');
-        let pAcompanhamentos = document.createElement('p');
-        pAcompanhamentos.textContent = 'Acompanhamentos: ' + item.acompanhamentos.map(a => a.nome).join(', ');
-        divAcompanhamentosItem.appendChild(pAcompanhamentos);
-        divProdutoDescricao.appendChild(divAcompanhamentosItem);
-    }
-
-    // Lógica para Frutas
-    if (item.frutas && item.frutas.length > 0) {
-        let divItemFruta = document.createElement('div');
-        divItemFruta.classList.add('adicionais-item-carrinho');
-        let pFrutas = document.createElement('p');
-        pFrutas.textContent = 'Frutas: ' + item.frutas.map(f => f.nome).join(', ');
-        divItemFruta.appendChild(pFrutas);
-        divProdutoDescricao.appendChild(divItemFruta)
-    }
+    // Lógica para Acompanhamentos
+// item.acompanhamentos é um objeto { "Leite em Pó": 1, "Granola": 2 }
+const acompComprados = Object.keys(item.acompanhamentos).filter(nome => item.acompanhamentos[nome] > 0);
+if (acompComprados.length > 0) {
+    let divAcompanhamentosItem = document.createElement('div');
+    divAcompanhamentosItem.classList.add('adicionais-item-carrinho');
+    let pAcompanhamentos = document.createElement('p');
     
-    // Lógica para Coberturas
-    if (item.coberturas && item.coberturas.length > 0) {
-        let divCoberturasItem = document.createElement('div');
-        divCoberturasItem.classList.add('adicionais-item-carrinho');
-        let pCoberturas = document.createElement('p');
-        pCoberturas.textContent = 'Coberturas: ' + item.coberturas.map(c => c.nome).join(', ');
-        divCoberturasItem.appendChild(pCoberturas);
-        divProdutoDescricao.appendChild(divCoberturasItem);
-    }
+    // Converte o objeto para texto: "1x Leite em Pó, 2x Granola"
+    pAcompanhamentos.textContent = 'Acompanhamentos: ' + acompComprados.map(nome => `${item.acompanhamentos[nome]}x ${nome}`).join(', ');
+    
+    divAcompanhamentosItem.appendChild(pAcompanhamentos);
+    divProdutoDescricao.appendChild(divAcompanhamentosItem);
+}
+
+// Lógica para Frutas
+const frutasCompradas = Object.keys(item.frutas).filter(nome => item.frutas[nome] > 0);
+if (frutasCompradas.length > 0) {
+    let divItemFruta = document.createElement('div');
+    divItemFruta.classList.add('adicionais-item-carrinho');
+    let pFrutas = document.createElement('p');
+    pFrutas.textContent = 'Frutas: ' + frutasCompradas.map(nome => `${item.frutas[nome]}x ${nome}`).join(', ');
+    divItemFruta.appendChild(pFrutas);
+    divProdutoDescricao.appendChild(divItemFruta)
+}
+
+// Lógica para Coberturas
+const coberturasCompradas = Object.keys(item.coberturas).filter(nome => item.coberturas[nome] > 0);
+if (coberturasCompradas.length > 0) {
+    let divCoberturasItem = document.createElement('div');
+    divCoberturasItem.classList.add('adicionais-item-carrinho');
+    let pCoberturas = document.createElement('p');
+    pCoberturas.textContent = 'Coberturas: ' + coberturasCompradas.map(nome => `${item.coberturas[nome]}x ${nome}`).join(', ');
+    divCoberturasItem.appendChild(pCoberturas);
+    divProdutoDescricao.appendChild(divCoberturasItem);
+}
 };
 
             // Adiciona adicionais ao HTML (se existirem)
@@ -2453,32 +2608,29 @@ function mostrarItensDoCarrinho() {
                 divProdutoDescricao.appendChild(divAdicionaisItem);
             }
 
-            // Lógica para lanches, que inclui o campo de observação
-            if (item.produto.tipo === 'lanche') {
-                let ingredientesProdutos = document.createElement('p');
-                ingredientesProdutos.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`;
-                ingredientesProdutos.classList.add('ingredientesProdutos');
-                divProdutoDescricao.appendChild(ingredientesProdutos);
+           /// Lógica para lanches: exibe ingredientes
+if (item.produto.tipo === 'lanche') {
+    let ingredientesProdutos = document.createElement('p');
+    if (item.produto.ingredientes && Array.isArray(item.produto.ingredientes)) {
+        ingredientesProdutos.textContent = `Ingredientes: ${item.produto.ingredientes.join(', ')}`;
+    } else {
+        ingredientesProdutos.textContent = `Ingredientes: N/A`;
+    }
+    ingredientesProdutos.classList.add('ingredientesProdutos');
+    divProdutoDescricao.appendChild(ingredientesProdutos);
+}
 
-                let divObs = document.createElement('div');
-                divObs.classList.add('divObs');
-                let labelObs = document.createElement('label');
-                labelObs.textContent = 'Observação: '
-                labelObs.classList.add('labelObs')
-                let inputObs = document.createElement('input');
-                inputObs.placeholder = 'Ex: sem maionese, sem tomate, etc';
-                inputObs.classList.add('inputObs');
-                inputObs.addEventListener('input', function() {
-                    item.observacao = inputObs.value;
-                });
-                if (item.observacao) {
-                    inputObs.value = item.observacao;
-                }
 
-                divObs.appendChild(labelObs);
-                divObs.appendChild(inputObs);
-                divProdutoDescricao.appendChild(divObs);
-            }
+            // 🚀 Lógica para exibir observação
+        if (item.observacao && item.observacao.trim() !== '') { // <--- Esta condição está correta
+            let pObservacao = document.createElement('p');
+            pObservacao.textContent = `Observação: ${item.observacao}`; // <--- Esta leitura está correta
+            pObservacao.classList.add('observacao-item-carrinho');
+            divProdutoDescricao.appendChild(pObservacao);
+    }
+
+
+
 
             // Lógica para adicionar as bebidas
             const bebidasCompradas = Object.keys(item.bebidas).filter(key => item.bebidas[key] > 0);
@@ -2760,7 +2912,54 @@ function abrirModalPedidoEListarItens() {
                 addObservacao.classList.add('addObservacao');
                 divControleItemIndividual.appendChild(addObservacao);
             }
+
+        } else if (item.produto.tipo === 'acai') {
+
+            // 1. Exibir Acompanhamentos
+    const acompComprados = Object.keys(item.acompanhamentos || {}).filter(nome => item.acompanhamentos[nome] > 0);
+    if (acompComprados.length > 0) {
+        let pAcomp = document.createElement('p');
+        pAcomp.textContent = 'Acompanhamentos: ' + acompComprados.map(nome => `${item.acompanhamentos[nome]}x ${nome}`).join(', ');
+        pAcomp.classList.add('addAcaiDetalhe'); // Nova classe para estilizar se necessário
+        divControleItemIndividual.appendChild(pAcomp);
+    }
+
+
+      // 2. Exibir Frutas
+    const frutasCompradas = Object.keys(item.frutas || {}).filter(nome => item.frutas[nome] > 0);
+    if (frutasCompradas.length > 0) {
+        let pFrutas = document.createElement('p');
+        pFrutas.textContent = 'Frutas: ' + frutasCompradas.map(nome => `${item.frutas[nome]}x ${nome}`).join(', ');
+        pFrutas.classList.add('addAcaiDetalhe');
+        divControleItemIndividual.appendChild(pFrutas);
+    }
+
+
+    // 3. Exibir Coberturas
+    const coberturasCompradas = Object.keys(item.coberturas || {}).filter(nome => item.coberturas[nome] > 0);
+    if (coberturasCompradas.length > 0) {
+        let pCoberturas = document.createElement('p');
+        pCoberturas.textContent = 'Coberturas: ' + coberturasCompradas.map(nome => `${item.coberturas[nome]}x ${nome}`).join(', ');
+        pCoberturas.classList.add('addAcaiDetalhe');
+        divControleItemIndividual.appendChild(pCoberturas);
+    }
+
+
+    // 4. Exibir Observação (Se o Açaí também tiver uma)
+    if (item.observacao && item.observacao.trim() !== '') {
+        let addObservacao = document.createElement('p');
+        addObservacao.textContent = `Observação: ${item.observacao}`;
+        addObservacao.classList.add('addObservacao');
+        divControleItemIndividual.appendChild(addObservacao);
+    }
+
+
         }
+
+
+
+
+    
         
         // CORREÇÃO: Usa a função centralizada para calcular o preço
         let precoItemIndividual = calcularPrecoDeItem(item);
@@ -3315,30 +3514,43 @@ mensagem += `*Forma de Pagamento: *\n${formaPagamentoMensagem}`;
                 }
             }
         } else if (item.produto.tipo === 'acai') {
-            itemParaFirebase.adicionais = Object.assign(
-                {},
-                item.acompanhamentos,
-                item.frutas,
-                item.coberturas
-            );
-            for (const nomeAdicional in itemParaFirebase.adicionais) {
-                itemParaFirebase.adicionais[nomeAdicional] = {
-                    quantidade: itemParaFirebase.adicionais[nomeAdicional]
-                };
-            }
-        }
-        
-        if (item.bebidas) {
-            for (const idBebida in item.bebidas) {
-                const bebida = catalogoDeProdutos[idBebida];
-                if (bebida) {
-                    itemParaFirebase.bebidas[bebida.nome] = {
-                        quantidade: item.bebidas[idBebida],
-                        preco: bebida.preco
+            // 1. Inicializa os campos específicos do Açaí
+            itemParaFirebase.acompanhamentos = {};
+            itemParaFirebase.frutas = {};
+            itemParaFirebase.coberturas = {};
+
+            // 2. Processa Acompanhamentos
+            for (const nome in item.acompanhamentos) {
+                if (item.acompanhamentos[nome] > 0) {
+                    itemParaFirebase.acompanhamentos[nome] = {
+                        quantidade: item.acompanhamentos[nome]
+                        // Você pode adicionar 'preco: 0' se souber que não tem custo extra
                     };
                 }
             }
-        }
+
+            // 3. Processa Frutas
+            for (const nome in item.frutas) {
+                if (item.frutas[nome] > 0) {
+                    itemParaFirebase.frutas[nome] = {
+                        quantidade: item.frutas[nome]
+                    };
+                }
+            }
+            
+            // 4. Processa Coberturas
+            for (const nome in item.coberturas) {
+                if (item.coberturas[nome] > 0) {
+                    itemParaFirebase.coberturas[nome] = {
+                        quantidade: item.coberturas[nome]
+                    };
+                }
+            }
+            
+            // 5. Garante que 'adicionais' fique vazio ou pode ser removido
+            // Deixamos vazio, pois não se aplica ao Açaí, mas a estrutura ainda pode existir
+            itemParaFirebase.adicionais = {}; 
+        }
         return itemParaFirebase;
     });
 
@@ -3350,6 +3562,9 @@ mensagem += `*Forma de Pagamento: *\n${formaPagamentoMensagem}`;
         pagamento: formaPagamentoSelecionada, // Corrigido para a variável correta
         troco: valorTrocoInput, // Corrigido para a variável correta
         data: new Date(),
+
+        //status: 'teste-web',
+        //impressoraDestino: []
         // CAMPOS ADICIONADOS PARA O FIREBASE
         status: 'pendente_impressao',
         impressoraDestino: ['cozinha', 'entregador']
@@ -3376,13 +3591,40 @@ mensagem += `*Forma de Pagamento: *\n${formaPagamentoMensagem}`;
     let numeroWhatsApp = '5582988204888';
     let mensagemCodificada = encodeURIComponent(mensagem);
     let linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-
     window.open(linkWhatsApp, '_blank');
+
+
+    document.getElementById('ModalConfirmacaoPedido').style.display = 'block';
+    
+
+    // --- 12. Limpar carrinho ---
+    itensCarrinho = [];
+    atualizarCarrinho(); // (função que você já deve ter para renderizar carrinho)
+    // Atualiza o contador para 0
+    atualizarContadorCarrinho();
+
     document.querySelector('#ModalFazerPedido').style.display = 'none';
     document.body.style.overflow = 'auto';
+
+
+
 });
 
+// Fechar modal de confirmação
+document.getElementById('btnOkConfirmacao').addEventListener('click', () => {
+// 1. Reverte as propriedades de bloqueio
+    document.body.style.position = ''; // Remove 'fixed'
+    document.body.style.top = '';      // Remove o top negativo
+    document.body.style.width = '';    // Remove a largura fixa (se foi definida)
+    document.body.style.overflow = 'auto'; // Reverte o overflow
 
+    // 2. Restaura a posição original da página
+    window.scrollTo(0, scrollPosition);
+
+    // 3. Fecha o modal
+    document.getElementById('ModalConfirmacaoPedido').style.display = 'none';
+
+});
 
 
 
@@ -3409,7 +3651,7 @@ mensagem += `*Forma de Pagamento: *\n${formaPagamentoMensagem}`;
           } */
 
           // Como abre todo santo dia, fizemos só a condição do horário.
-          if (hora >= 18  && hora < 24 ) {
+          if (hora >= 16  && hora < 24 ) {
             return true
         } else {
             return false

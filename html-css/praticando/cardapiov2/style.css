@@ -948,6 +948,24 @@ footer {
     justify-content: center;
 }
 
+.modal-content-final {
+    
+    background-color: white;
+    color: black;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .modal-content li {
     list-style-type: square;
 }
@@ -1818,6 +1836,27 @@ footer {
     
 }
 
+
+/* PARTE AÇAI */
+
+.addAcaiDetalhe {
+    padding: 5px;
+}
+
+.addObservacao {
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+/* ============================= */
+
 #itensListadosNoPedido {
     display: flex;
     flex-direction: column;
@@ -2160,6 +2199,52 @@ footer {
     
 }
 
+/* AÇAI  */
+
+.divCabecalhoProduto {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.nomeProdutoAcai {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 550;
+    padding: 10px;
+}
+
+.divImagemAcai {
+    position: relative;
+    z-index: 1;
+    width: 100vw;      
+    height: 45vh;    
+    overflow: hidden;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgProdutoAcai {
+    width: 100%;
+    height: 100%;
+    object-position: cover;  /* cobre toda a área da div, cortando se necessário */
+}
+
+.descricaoPreAcai {
+    font-family: var(--body-font); /* usa a fonte definida no :root */
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+.divPrecosAcai {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+
 /* A div que envolve a imagem deve ocupar toda a tela */
 
 .divImagemPre {
@@ -2173,9 +2258,6 @@ footer {
     align-items: center;
     /*margin-bottom: 20px;*/
 }
-
-
-
 
 /* A imagem deve preencher a div mantendo proporção e cobrindo tudo */
 .imagemPre {
@@ -2198,6 +2280,8 @@ footer {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+
 
 .divConteudoPre {
     display: flex;
