@@ -142,7 +142,7 @@ function imprimirPedido(pedido, tipoComanda) {
 
     // Adicione esta parte do código para imprimir de verdade
     // Remove o "Simulado" no console.log final para evitar confusão
-   /* printer.printDirect({
+    printer.printDirect({
         data: dadosParaImpressao,
         printer: nomeDaImpressora,
         type: 'RAW',
@@ -152,7 +152,7 @@ function imprimirPedido(pedido, tipoComanda) {
         error: function(err){
         console.error(`Erro ao imprimir na impressora '${nomeDaImpressora}':`, err);
     }
-    }); */
+    }); 
 
     console.log(dadosParaImpressao);
     console.log(`\nComanda '${tipoComanda}' gerada para o pedido. (Impressão enviada)\n`);
