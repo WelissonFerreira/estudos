@@ -3567,6 +3567,7 @@ mensagem += `*Forma de Pagamento: *\n${formaPagamentoMensagem}`;
         //impressoraDestino: []
         // CAMPOS ADICIONADOS PARA O FIREBASE
         status: 'pendente_impressao',
+        //status: 'pendente_impressao',
         impressoraDestino: ['cozinha', 'entregador']
     };
 
@@ -3651,7 +3652,7 @@ document.getElementById('btnOkConfirmacao').addEventListener('click', () => {
           } */
 
           // Como abre todo santo dia, fizemos só a condição do horário.
-          if (hora >= 16  && hora < 24 ) {
+          if (hora >= 17  && hora < 24 ) {
             return true
         } else {
             return false
